@@ -1,0 +1,260 @@
+require('dotenv').config();
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+// --- 1. INIZIALIZZAZIONE DATABASE SQLITE ---
+const dbPath = path.resolve(__dirname, 'database.sqlite');
+const db = new sqlite3.Database(dbPath);
+
+db.serialize(() => {
+// Tabella Utenti (Marco e Paola)
+db.run(`
+CREATE TABLE IF NOT EXISTS users (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+email TEXT UNIQUE NOT NULL,
+pin TEXT NOT NULL
+)
+`);
+
+// Tabella Risultati
+db.run(`
+CREATE TABLE IF NOT EXISTS results (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+score REAL NOT NULL,
+correct_count INTEGER NOT NULL,
+wrong_count INTEGER NOT NULL,
+blank_count INTEGER NOT NULL,
+timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY(user_id) REFERENCES users(id)
+)
+`);
+
+// Tabella Registro Errori
+db.run(`
+CREATE TABLE IF NOT EXISTS errors (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+question TEXT NOT NULL,
+user_answer TEXT,
+correct_answer TEXT,
+topic TEXT,
+explanation TEXT,
+timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY(user_id) REFERENCES users(id)
+)
+`);
+
+// Creazione profili predefiniti per Marco e Paola
+const stmt = db.prepare(`INSERT OR IGNORE INTO users (id, name, email, pin) VALUES (?, ?, ?, ?)`);
+stmt.run(1, 'Marco', 'marco@medicina.it', '1234');
+stmt.run(2, 'Paola', 'paola@medicina.it', '5678');
+stmt.finalize();
+});
+
+// --- 2. API ENDPOINTS ---
+
+// API Login
+app.post('/api/login', (req, res) => {
+const { email, pin } = req.body;
+if (!email || !pin) {
+return res.status(400).json({ error: 'Inserisci sia la mail che il PIN.' });
+}
+
+db.get('SELECT id, name, email FROM users WHERE email = ? AND pin = ?', [email, pin], (err, user) => {
+if (err) return res.status(500).json({ error: 'Errore interno del database.' });
+if (!user) return res.status(401).json({ error: 'Email o PIN errati.' });
+res.json({ success: true, user });
+});
+});
+
+// API Salva Risultati
+app.post('/api/results', (req, res) => {
+const { userId, score, correctCount, wrongCount, blankCount } = req.body;
+if (!userId) return res.status(400).json({ error: 'Utente non identificato.' });
+
+const query = `INSERT INTO results (user_id, score, correct_count, wrong_count, blank_count) VALUES (?, ?, ?, ?, ?)`;
+db.run(query, [userId, score, correctCount, wrongCount, blankCount], function(err) {
+if (err) return res.status(500).json({ error: err.message });
+res.json({ success: true, resultId: this.lastID });
+});
+});
+
+// API Recupero Statistiche Profilo
+app.get('/api/stats/:userId', (req, res) => {
+const { userId } = req.params;
+db.all('SELECT * FROM results WHERE user_id = ? ORDER BY timestamp DESC', [userId], (err, rows) => {
+if (err) return res.status(500).json({ error: err.message });
+res.json(rows);
+});
+});
+
+// --- 3. SERVIZIO PAGINA WEB (HTML/CSS/JS INTEGRATO E RESPONSIVE) ---
+app.get('/', (req, res) => {
+res.send(`
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semestre Filtro Medicina 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background-color: #f4f6f9; color: #333; padding: 15px; }
+.container { max-width: 600px; margin: 20px auto; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+h1 { font-size: 1.5rem; color: #1a365d; text-align: center; margin-bottom: 20px; }
+
+.profile-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.card { border: 2px solid #e2e8f0; padding: 15px; border-radius: 10px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fafafa; }
+.card:hover, .card.selected { border-color: #3182ce; background: #ebf8ff; }
+.card h3 { color: #2b6cb0; font-size: 1.1rem; }
+.card p { font-size: 0.8rem; color: #718096; }
+
+.input-group { margin-bottom: 15px; }
+label { display: block; font-size: 0.85rem; margin-bottom: 5px; font-weight: 600; color: #4a5568; }
+input { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 1rem; outline: none; }
+
+button { width: 100%; padding: 12px; background-color: #3182ce; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+button:hover { background-color: #2b6cb0; }
+
+.dashboard { display: none; }
+.user-header { display: flex; justify-content: space-between; align-items: center; background: #edf2f7; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; }
+.stat-box { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+
+@media (max-width: 480px) {
+body { padding: 5px; }
+.container { padding: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Semestre Filtro Medicina 2026</h1>
+
+<!-- SCHERMATA LOGIN -->
+<div id="login-section">
+<p style="text-align: center; color: #718096; margin-bottom: 15px; font-size: 0.9rem;">Seleziona il tuo profilo ed inserisci il PIN</p>
+
+<div class="profile-selector">
+<div class="card" onclick="selectUser('marco@medicina.it', 'Marco')" id="card-marco">
+<h3>Marco</h3>
+<p>marco@medicina.it</p>
+</div>
+<div class="card" onclick="selectUser('paola@medicina.it', 'Paola')" id="card-paola">
+<h3>Paola</h3>
+<p>paola@medicina.it</p>
+</div>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" id="email" placeholder="Email selezionata">
+</div>
+
+<div class="input-group">
+<label>PIN / Codice Personale</label>
+<input type="password" id="pin" placeholder="Inserisci PIN (es. 1234 o 5678)">
+</div>
+
+<button onclick="login()">Accedi</button>
+<p id="error-msg" style="color: #e53e3e; text-align: center; margin-top: 10px; font-size: 0.85rem;"></p>
+</div>
+
+<!-- DASHBOARD PROFILO -->
+<div id="dashboard-section" class="dashboard">
+<div class="user-header">
+<span>Profilo: <strong id="user-name"></strong></span>
+<button onclick="logout()" style="width: auto; padding: 6px 12px; font-size: 0.8rem; background: #e53e3e;">Esci</button>
+</div>
+
+<h3>Le tue esercitazioni</h3>
+<div id="stats-container" style="margin-top: 15px;"></div>
+</div>
+</div>
+
+<script>
+let activeUser = null;
+
+function selectUser(email, name) {
+document.getElementById('email').value = email;
+document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+if (name === 'Marco') document.getElementById('card-marco').classList.add('selected');
+if (name === 'Paola') document.getElementById('card-paola').classList.add('selected');
+}
+
+async function login() {
+const email = document.getElementById('email').value;
+const pin = document.getElementById('pin').value;
+const errorMsg = document.getElementById('error-msg');
+errorMsg.innerText = '';
+
+try {
+const response = await fetch('/api/login', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ email, pin })
+});
+
+const data = await response.json();
+if (!response.ok) {
+errorMsg.innerText = data.error || 'Errore di accesso';
+return;
+}
+
+activeUser = data.user;
+document.getElementById('login-section').style.display = 'none';
+document.getElementById('dashboard-section').style.display = 'block';
+document.getElementById('user-name').innerText = activeUser.name;
+loadStats();
+} catch (e) {
+errorMsg.innerText = 'Impossibile connettersi al server.';
+}
+}
+
+async function loadStats() {
+const statsContainer = document.getElementById('stats-container');
+try {
+const res = await fetch(\`/api/stats/\${activeUser.id}\`);
+const data = await res.json();
+
+if (data.length === 0) {
+statsContainer.innerHTML = '<p style="color: #718096; font-size: 0.9rem;">Nessuna esercitazione ancora salvata.</p>';
+return;
+}
+
+statsContainer.innerHTML = data.map(s => \`
+<div class="stat-box">
+<strong>Punteggio: \${s.score.toFixed(2)} pt</strong><br>
+<small>Esatte: \${s.correct_count} | Errate: \${s.wrong_count} | Omesse: \${s.blank_count}</small><br>
+<small style="color: #a0aec0;">Data: \${new Date(s.timestamp).toLocaleString('it-IT')}</small>
+</div>
+\`).join('');
+} catch (e) {
+statsContainer.innerHTML = '<p style="color: #e53e3e;">Errore nel caricamento delle statistiche.</p>';
+}
+}
+
+function logout() {
+activeUser = null;
+document.getElementById('pin').value = '';
+document.getElementById('login-section').style.display = 'block';
+document.getElementById('dashboard-section').style.display = 'none';
+}
+</script>
+</body>
+</html>
+`);
+});
+
+// --- 4. AVVIO SERVER ---
+app.listen(PORT, () => {
+console.log(`Server attivo su http://localhost:${PORT}`);
+});
+
