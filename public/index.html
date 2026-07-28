@@ -606,9 +606,11 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
           body: JSON.stringify({ prompt: promptText })
         });
 
-        if (!res.ok) throw new Error('Errore nella comunicazione con il server AI.');
-
         const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.errore || 'Errore nella comunicazione con il server AI.');
+        }
         let parsedQuiz;
         
         try {

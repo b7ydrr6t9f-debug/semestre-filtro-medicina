@@ -14,18 +14,26 @@ res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
 function chiamaGemini(prompt, callback) {
+// Fallisce subito con un messaggio chiaro se la chiave non è configurata su Render
+if (!GEMINI_API_KEY) {
+console.error('[Gemini] GEMINI_API_KEY non è impostata nelle Environment Variables di Render.');
+return callback('Chiave GEMINI_API_KEY non configurata sul server (Render → Environment).', null);
+}
+
 const postData = JSON.stringify({
 contents: [{ parts: [{ text: prompt }] }]
 });
 
 const options = {
 hostname: 'generativelanguage.googleapis.com',
-path: `/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+path: `/v1beta/models/${GEMINI_MODEL}:generateContent`,
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
+'x-goog-api-key': GEMINI_API_KEY,
 'Content-Length': Buffer.byteLength(postData)
 }
 };
@@ -34,23 +42,49 @@ const req = https.request(options, (res) => {
 let data = '';
 res.on('data', (chunk) => data += chunk);
 res.on('end', () => {
+let parsed;
 try {
-const parsed = JSON.parse(data);
-if (parsed.candidates && parsed.candidates[0].content.parts[0].text) {
-callback(null, parsed.candidates[0].content.parts[0].text);
-} else {
-callback("Risposta API non valida o vuota", null);
-}
+parsed = JSON.parse(data);
 } catch (e) {
-callback("Errore nel parsing della risposta Gemini", null);
+console.error('[Gemini] Risposta non-JSON, status', res.statusCode, ':', data.slice(0, 500));
+return callback(`Risposta non valida da Gemini (status ${res.statusCode}).`, null);
 }
+
+// Google ha risposto con un errore esplicito (chiave non valida, modello inesistente, quota, ecc.)
+if (parsed.error) {
+console.error('[Gemini] Errore API, status', res.statusCode, ':', JSON.stringify(parsed.error));
+return callback(`Gemini API (status ${res.statusCode}): ${parsed.error.message || 'errore sconosciuto'}`, null);
+}
+
+if (parsed.candidates && parsed.candidates[0] && parsed.candidates[0].content && parsed.candidates[0].content.parts[0].text) {
+return callback(null, parsed.candidates[0].content.parts[0].text);
+}
+
+// Caso tipico: risposta bloccata dai filtri di sicurezza (finishReason SAFETY, ecc.)
+const finishReason = parsed.candidates && parsed.candidates[0] ? parsed.candidates[0].finishReason : null;
+console.error('[Gemini] Risposta senza testo utilizzabile:', JSON.stringify(parsed).slice(0, 500));
+callback(`Risposta Gemini vuota${finishReason ? ' (motivo: ' + finishReason + ')' : ''}.`, null);
 });
 });
 
-req.on('error', (e) => callback(e.message, null));
+req.on('error', (e) => {
+console.error('[Gemini] Errore di rete verso Google:', e.message);
+callback(`Errore di connessione a Gemini: ${e.message}`, null);
+});
 req.write(postData);
 req.end();
 }
+
+// Endpoint diagnostico: verifica se la chiave è configurata e se Gemini risponde davvero
+app.get('/api/health', (req, res) => {
+if (!GEMINI_API_KEY) {
+return res.json({ chiaveConfigurata: false, modello: GEMINI_MODEL, gemini: 'GEMINI_API_KEY assente su Render' });
+}
+chiamaGemini('Rispondi solo con la parola: OK', (err, risposta) => {
+if (err) return res.json({ chiaveConfigurata: true, modello: GEMINI_MODEL, gemini: `ERRORE: ${err}` });
+res.json({ chiaveConfigurata: true, modello: GEMINI_MODEL, gemini: `OK, risposta: ${risposta.trim()}` });
+});
+});
 
 // Rotta usata dal frontend (Generatore Quiz AI) - il frontend invia già il prompt completo
 app.post('/api/generate-quiz', (req, res) => {
