@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 10000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Database SQLite
 const db = new sqlite3.Database('./database.sqlite', (err) => {
@@ -15,7 +16,7 @@ if (err) console.error("Errore DB:", err.message);
 else console.log("Database SQLite connesso.");
 });
 
-// Tabelle DB
+// Tabelle
 db.serialize(() => {
 db.run(`CREATE TABLE IF NOT EXISTS users (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,16 +31,14 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 user_id INTEGER,
 subject TEXT,
 unit TEXT,
-type TEXT DEFAULT 'ordinaria',
 questions_json TEXT,
 answers_json TEXT,
 score INTEGER,
-time_taken_sec INTEGER DEFAULT 0,
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )`);
 });
 
-// Funzione Helper per chiamata a Gemini API
+// Funzione chiamata Gemini API
 function callGeminiAPI(prompt) {
 return new Promise((resolve, reject) => {
 if (!GEMINI_API_KEY) {
@@ -57,7 +56,7 @@ path: `/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
-'Content-Length': Buffer.byteLength(data)
+'Content-Length': data.length
 }
 };
 
@@ -67,10 +66,10 @@ res.on('data', (chunk) => body += chunk);
 res.on('end', () => {
 try {
 const response = JSON.parse(body);
-if (response.candidates && response.candidates[0].content && response.candidates[0].content.parts[0].text) {
+if (response.candidates && response.candidates[0].content.parts[0].text) {
 resolve(response.candidates[0].content.parts[0].text);
 } else {
-reject(new Error("Risposta API Gemini non valida o vuota."));
+reject(new Error("Risposta API Gemini non valida"));
 }
 } catch (e) {
 reject(e);
@@ -84,7 +83,7 @@ req.end();
 });
 }
 
-// ROTTE UTENTI
+// Rotte API
 app.post('/api/register', (req, res) => {
 const { name, email, pin, recoveryAnswer } = req.body;
 if (!name || !email || !pin) {
@@ -113,28 +112,29 @@ app.post('/api/recover-pin', (req, res) => {
 const { email, recoveryAnswer } = req.body;
 db.get(`SELECT * FROM users WHERE email = ?`, [email], (err, row) => {
 if (err || !row) return res.status(404).json({ error: "Email non trovata." });
+
 if (row.recovery_answer && recoveryAnswer && row.recovery_answer.toLowerCase() !== recoveryAnswer.toLowerCase()) {
 return res.status(400).json({ error: "Risposta di sicurezza errata." });
 }
+
 res.json({ pin: row.pin });
 });
 });
 
-// GENERAZIONE ESERCITAZIONE ORDINARIA
 app.post('/api/generate-exercise', async (req, res) => {
 const { subject, unit } = req.body;
 
-const prompt = `Sei un docente universitario esperto per la preparazione al Test d'Ingresso di Medicina (Syllabus 2026).
-Genera 5 quesiti a risposta multipla specifici per la materia "${subject}" e l'unità del Syllabus "${unit}".
-Rispondi ESCLUSIVAMENTE con un oggetto JSON valido privo di formattazione markdown extra, con questa struttura esatta:
+const prompt = `Sei un professore universitario esperto nel test d'ingresso di Medicina per il Syllabus 2026.
+Genera un'esercitazione da 5 domande a risposta multipla per la materia "${subject}" e la specifica unità "${unit}".
+Rispondi ESCLUSIVAMENTE con un oggetto JSON con questo formato esatto, senza markdown o testo aggiuntivo:
 {
 "questions": [
 {
 "id": 1,
-"question": "Testo della domanda...",
+"question": "Testo del quesito...",
 "options": ["Opzione A", "Opzione B", "Opzione C", "Opzione D"],
 "correct": 0,
-"explanation": "Spiegazione approfondita del motivo per cui la risposta è corretta."
+"explanation": "Spiegazione dettagliata della risposta corretta..."
 }
 ]
 }`;
@@ -145,60 +145,37 @@ const cleanJson = aiText.replace(/```json/g, '').replace(/```/g, '').trim();
 const exerciseData = JSON.parse(cleanJson);
 res.json(exerciseData);
 } catch (err) {
-res.status(500).json({ error: "Impossibile generare test: " + err.message });
+console.error("Errore Gemini:", err.message);
+res.status(500).json({ error: "Impossibile generare l'esercitazione: " + err.message });
 }
 });
 
-// GENERAZIONE MINI-ESERCITAZIONE FINE SETTIMANA SUI MIEI ERRORI
-app.post('/api/generate-weekend-recap', (req, res) => {
-const { userId } = req.body;
+app.post('/api/save-exercise', (req, res) => {
+const { userId, subject, unit, questions, answers, score } = req.body;
 
-db.all(`SELECT questions_json, answers_json, subject, unit FROM exercises WHERE user_id = ?`, [userId], async (err, rows) => {
-if (err || !rows || rows.length === 0) {
-return res.status(400).json({ error: "Nessuno storico errori disponibile per generare la mini-esercitazione." });
+db.run(
+`INSERT INTO exercises (user_id, subject, unit, questions_json, answers_json, score) VALUES (?, ?, ?, ?, ?, ?)`,
+[userId, subject, unit, JSON.stringify(questions), JSON.stringify(answers), score],
+function (err) {
+if (err) return res.status(500).json({ error: "Errore durante il salvataggio." });
+res.json({ success: true, exerciseId: this.lastID });
 }
-
-let mistakesList = [];
-rows.forEach(r => {
-try {
-const questions = JSON.parse(r.questions_json);
-const answers = JSON.parse(r.answers_json);
-questions.forEach((q, idx) => {
-if (answers[idx] !== undefined && answers[idx] !== q.correct) {
-mistakesList.push(`[${r.subject} - ${r.unit}] Domanda: "${q.question}" | Errore dell'utente: Risposta data "${q.options[answers[idx]]}" invece di quella corretta "${q.options[q.correct]}"`);
-}
-});
-} catch(e){}
+);
 });
 
-if (mistakesList.length === 0) {
-return res.status(400).json({ error: "Complimenti! Non hai commesso errori nelle tue esercitazioni passate." });
-}
+app.get('/api/user-history/:userId', (req, res) => {
+const { userId } = req.params;
+db.all(`SELECT * FROM exercises WHERE user_id = ? ORDER BY created_at DESC`, [userId], (err, rows) => {
+if (err) return res.status(500).json({ error: "Errore nel recupero storico." });
+res.json(rows);
+});
+});
 
-const sampledMistakes = mistakesList.slice(-10).join("\n");
-const prompt = `Sei un docente specializzato nella preparazione al test di Medicina 2026.
-L'algoritmo ha raccolto i seguenti errori commessi dallo studente nelle esercitazioni passate:
-${sampledMistakes}
+// Serve la pagina principale
+app.get('*', (req, res) => {
+res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
-Crea una MINI-ESERCITAZIONE DI FINE SETTIMANA da 5 quesiti a risposta multipla mirata a colmare e verificare ESATTAMENTE i concetti errati dallo studente.
-Rispondi ESCLUSIVAMENTE con un JSON con la seguente struttura:
-{
-"questions": [
-{
-"id": 1,
-"question": "Testo del quesito di ripasso...",
-"options": ["Opzione A", "Opzione B", "Opzione C", "Opzione D"],
-"correct": 0,
-"explanation": "Spiegazione per il recupero del concetto..."
-}
-]
-}`;
-
-try {
-const aiText = await callGeminiAPI(prompt);
-const cleanJson = aiText.replace(/```json/g, '').replace(/```/g, '').trim();
-const exerciseData = JSON.parse(cleanJson);
-res.json(exerciseData);
-} catch (e) {
-res.status(500).
-
+app.listen(PORT, () => {
+console.log(`Server avviato sulla porta ${PORT}`);
+});
