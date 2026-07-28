@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semestre Filtro Medicina 2026</title>
+<!-- SheetJS per esportazione Excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+:root {
+--primary: #0284c7;
+--primary-hover: #0369a1;
+--bg: #f8fafc;
+--card-bg: #ffffff;
+--text: #0f172a;
+--border: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { background-color: var(--bg); color: var(--text); padding: 12px; }
+
+.container { max-width: 1050px; margin: 0 auto; }
+
+.card {
+background: var(--card-bg);
+border-radius: 12px;
+padding: 20px;
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+margin-bottom: 20px;
+border: 1px solid var(--border);
+}
+
+h1 { text-align: center; color: var(--primary); margin-bottom: 20px; font-size: 1.6rem; }
+
+.tabs {
+display: flex;
+gap: 6px;
+border-bottom: 2px solid var(--border);
+margin-bottom: 20px;
+overflow-x: auto;
+white-space: nowrap;
+padding-bottom: 4px;
+}
+
+.tab-btn {
+padding: 10px 14px;
+border: none;
+background: none;
+font-size: 0.9rem;
+font-weight: 600;
+color: #64748b;
+cursor: pointer;
+border-bottom: 3px solid transparent;
+transition: all 0.2s;
+}
+
+.tab-btn.active {
+color: var(--primary);
+border-bottom-color: var(--primary);
+}
+
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 0.9rem; }
+input, select {
+width: 100%;
+padding: 10px;
+border: 1px solid var(--border);
+border-radius: 8px;
+font-size: 0.95rem;
+}
+
+button {
+width: 100%;
+padding: 12px;
+background-color: var(--primary);
+color: white;
+border: none;
+border-radius: 8px;
+font-weight: 600;
+cursor: pointer;
+font-size: 1rem;
+transition: background 0.2s;
+}
+button:hover { background-color: var(--primary-hover); }
+button.secondary { background-color: #64748b; }
+button.excel-btn { background-color: #107c41; margin-bottom: 15px; width: auto; padding: 10px 20px; }
+
+.question-card {
+border: 1px solid var(--border);
+padding: 16px;
+border-radius: 8px;
+margin-bottom: 16px;
+background: #fafafa;
+}
+
+.badge {
+display: inline-block;
+padding: 3px 8px;
+font-size: 0.75rem;
+border-radius: 4px;
+font-weight: bold;
+margin-bottom: 8px;
+}
+.badge-multiple { background: #e0f2fe; color: #0369a1; }
+.badge-fill { background: #fef3c7; color: #b45309; }
+
+.option-btn {
+display: block;
+width: 100%;
+text-align: left;
+background: white;
+color: var(--text);
+border: 1px solid var(--border);
+margin-top: 8px;
+font-weight: normal;
+padding: 10px;
+}
+.option-btn.selected { background: #e0f2fe; border-color: var(--primary); }
+.option-btn.correct { background: #dcfce7; border-color: #22c55e; }
+.option-btn.wrong { background: #fee2e2; border-color: #ef4444; }
+
+.explanation {
+margin-top: 10px;
+padding: 10px;
+background: #f0fdf4;
+border-left: 4px solid #22c55e;
+font-size: 0.9rem;
+}
+
+.timer-box {
+position: sticky;
+top: 10px;
+z-index: 100;
+background: #1e293b;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+text-align: center;
+font-size: 1.1rem;
+font-weight: bold;
+margin-bottom: 15px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+font-size: 0.85rem;
+}
+th, td {
+border: 1px solid var(--border);
+padding: 8px;
+text-align: left;
+}
+th { background: #f1f5f9; }
+
+.hidden { display: none !important; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+
+@media (max-width: 600px) {
+body { padding: 6px; }
+.card { padding: 12px; }
+h1 { font-size: 1.2rem; }
+.tab-btn { padding: 6px 8px; font-size: 0.8rem; }
+table { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Semestre Filtro Medicina 2026</h1>
+
+<!-- SEZIONE LOGIN/REGISTRAZIONE -->
+<div id="auth-section" class="card">
+<div class="tabs">
+<button id="tab-btn-login" class="tab-btn active" onclick="switchAuthTab('login')">Accedi</button>
+<button id="tab-btn-register" class="tab-btn" onclick="switchAuthTab('register')">Nuovo Profilo</button>
+<button id="tab-btn-recover" class="tab-btn" onclick="switchAuthTab('recover')">Recupero PIN</button>
+</div>
+
+<div id="login-form">
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="login-email" placeholder="es. marco@medicina.it">
+</div>
+<div class="form-group">
+<label>PIN Personale</label>
+<input type="password" id="login-pin" placeholder="****">
+</div>
+<button onclick="login()">Entra nella Piattaforma</button>
+</div>
+
+<div id="register-form" class="hidden">
+<div class="form-group">
+<label>Nome Completo</label>
+<input type="text" id="reg-name" placeholder="es. Marco Rossi">
+</div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="reg-email" placeholder="es. marco@medicina.it">
+</div>
+<div class="form-group">
+<label>Crea PIN Personale</label>
+<input type="password" id="reg-pin" placeholder="****">
+</div>
+<div class="form-group">
+<label>Parola di Sicurezza (per recupero PIN)</label>
+<input type="text" id="reg-recovery" placeholder="es. Nome del primo animale domestico">
+</div>
+<button onclick="register()">Crea Profilo</button>
+</div>
+
+<div id="recover-form" class="hidden">
+<div class="form-group">
+<label>Inserisci la tua Email</label>
+<input type="email" id="rec-email" placeholder="es. marco@medicina.it">
+</div>
+<div class="form-group">
+<label>Parola di Sicurezza</label>
+<input type="text" id="rec-answer" placeholder="Risposta di sicurezza">
+</div>
+<button onclick="recoverPin()">Recupera il mio PIN</button>
+<div id="recovered-pin-result" style="margin-top:15px; font-weight:bold;"></div>
+</div>
+</div>
+
+<!-- DASHBOARD PRINCIPALE -->
+<div id="app-section" class="hidden">
+<div class="card flex-between">
+<div>Utente: <strong id="user-display-name">-</strong></div>
+<button class="secondary" style="width:auto; padding:6px 12px;" onclick="logout()">Esci</button>
+</div>
+
+<!-- TABS NAVIGAZIONE -->
+<div class="tabs">
+<button id="tab-app-ex" class="tab-btn active" onclick="switchAppTab('exercise')">Esercitazione Unità</button>
+<button id="tab-app-weekend" class="tab-btn" onclick="switchAppTab('weekend')">Riepilogo Fine Settimana</button>
+<button id="tab-app-lessons" class="tab-btn" onclick="switchAppTab('lessons')">Lezioni di Recupero</button>
+<button id="tab-app-excel" class="tab-btn" onclick="switchAppTab('excel')">Valutazione Excel</button>
+</div>
+
+<!-- TAB 1: ESERCITAZIONE UNITA -->
+<div id="tab-exercise" class="card">
+<h3>Esercitazione Giornaliera (31 Domande - 50 Minuti)</h3>
+<p style="font-size:0.85rem; color:#64748b; margin-bottom:15px;">21 Risposta Multipla + 10 Completamento | Regole: +1 Esatta, -0.1 Errata, 0 Omessa</p>
+
+<div class="form-group">
+<label>Seleziona Materia</label>
+<select id="ex-subject" onchange="updateUnits()">
+<option value="Fisica">Fisica</option>
+<option value="Biologia">Biologia</option>
+<option value="Chimica">Chimica</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Seleziona Unità Didattica</label>
+<select id="ex-unit"></select>
+</div>
+
+<button id="btn-generate" onclick="generateExercise('daily')">Genera Test con Gemini AI</button>
+</div>
+
+<!-- TAB 2: RIEPILOGO FINE SETTIMANA -->
+<div id="tab-weekend" class="card hidden">
+<h3>Riepilogo Fine Settimana (Test Errore-Mirato)</h3>
+<p style="font-size:0.85rem; color:#64748b; margin-bottom:15px;">Genera una prova da 31 domande focalizzata sugli argomenti in cui hai commesso errori durante le esercitazioni precedenti.</p>
+<button id="btn-generate-weekend" onclick="generateExercise('weekend')">Genera Test del Fine Settimana</button>
+</div>
+
+<!-- CONTENITORE QUIZ (IN COMUNE) -->
+<div id="quiz-container" class="card hidden">
+<div class="timer-box" id="timer-display">Tempo Rimanente: 50:00</div>
+<h4 id="quiz-title"></h4>
+<br>
+<div id="questions-list"></div>
+<button id="btn-submit-quiz" onclick="submitQuiz()" style="margin-top:15px;">Invia Risposte e Calcola Punteggio</button>
+</div>
+
+<!-- TAB 3: LEZIONI DI RECUPERO -->
+<div id="tab-lessons" class="card hidden">
+<h3>Generatore Lezioni di Recupero</h3>
+<br>
+<div class="form-group">
+<label>Cerca Argomento o Concetto da Recuperare</label>
+<input type="text" id="lesson-topic" placeholder="es. Principio di Archimede, Ciclo di Krebs, pH e POH">
+</div>
+
+<div class="form-group">
+<label>Profondità della Lezione</label>
+<select id="lesson-depth">
+<option value="fast">Ripasso Veloce (Concetti essenziali & Bullet Points)</option>
+<option value="detailed">Dettagliata & Approfondita (Spiegazione completa)</option>
+</select>
+</div>
+
+<button onclick="generateLesson()">Genera Lezione con AI</button>
+
+<div id="lesson-result" class="card hidden" style="margin-top:20px; background:#fafafa;"></div>
+</div>
+
+<!-- TAB 4: VALUTAZIONE EXCEL -->
+<div id="tab-excel" class="card hidden">
+<div class="flex-between">
+<h3>Report e Valutazione Prestazioni</h3>
+<button class="excel-btn" onclick="exportToExcel()">📥 Scarica Report Excel (.xlsx)</button>
+</div>
+
+<div style="overflow-x:auto;">
+<table id="excel-table">
+<thead>
+<tr>
+<th>Data</th>
+<th>Tipo Prova</th>
+<th>Materia / Unità</th>
+<th>Punteggio (+1 / -0.1)</th>
+<th>Tempo Spent</th>
+<th>Esatte</th>
+<th>Errate</th>
+<th>Omesse</th>
+</tr>
+</thead>
+<tbody id="excel-table-body">
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+let currentUser = null;
+let currentQuizData = null;
+let userAnswers = {};
+let timerInterval = null;
+let secondsRemaining = 3000; // 50 minuti
+let rawHistory = [];
+
+const unitsMap = {
+'Fisica': ['Cinematica e Dinamica', 'Meccanica dei Fluidi', 'Termodinamica', 'Elettromagnetismo'],
+'Biologia': ['Biologia Cellulare', 'Genetica ed Ereditarietà', 'Respirazione Cellulare e Metabolismo', 'Anatomia e Fisiologia'],
+'Chimica': ['Struttura dell atomo', 'Legami Chimici', 'Stechiometria e Reazioni', 'Acidi, Basi e pH']
+};
+
+function updateUnits() {
+const subject = document.getElementById('ex-subject').value;
+const unitSelect = document.getElementById('ex-unit');
+unitSelect.innerHTML = '';
+unitsMap[subject].forEach(unit => {
+const opt = document.createElement('option');
+opt.value = unit;
+opt.textContent = unit;
+unitSelect.appendChild(opt);
+});
+}
+updateUnits();
+
+function switchAuthTab(tab) {
+document.getElementById('tab-btn-login').classList.remove('active');
+document.getElementById('tab-btn-register').classList.remove('active');
+document.getElementById('tab-btn-recover').classList.remove('active');
+
+document.getElementById('login-form').classList.add('hidden');
+document.getElementById('register-form').classList.add('hidden');
+document.getElementById('recover-form').classList.add('hidden');
+
+if(tab === 'login') {
+document.getElementById('tab-btn-login').classList.add('active');
+document.getElementById('login-form').classList.remove('hidden');
+} else if(tab === 'register') {
+document.getElementById('tab-btn-register').classList.add('active');
+document.getElementById('register-form').classList.remove('hidden');
+} else if(tab === 'recover') {
+document.getElementById('tab-btn-recover').classList.add('active');
+document.getElementById('recover-form').classList.remove('hidden');
+}
+}
+
+function switchAppTab(tab) {
+['ex','weekend','lessons','excel'].forEach(t => {
+const el = document.getElementById('tab-app-' + t);
+if(el) el.classList.remove('active');
+});
+
+['exercise','weekend','lessons','excel'].forEach(t => {
+const el = document.getElementById('tab-' + t);
+if(el) el.classList.add('hidden');
+});
+
+if(tab === 'exercise') {
+document.getElementById('tab-app-ex').classList.add('active');
+document.getElementById('tab-exercise').classList.remove('hidden');
+} else if(tab === 'weekend') {
+document.getElementById('tab-app-weekend').classList.add('active');
+document.getElementById('tab-weekend').classList.remove('hidden');
+} else if(tab === 'lessons') {
+document.getElementById('tab-app-lessons').classList.add('active');
+document.getElementById('tab-lessons').classList.remove('hidden');
+} else if(tab === 'excel') {
+document.getElementById('tab-app-excel').classList.add('active');
+document.getElementById('tab-excel').classList.remove('hidden');
+loadExcelTable();
+}
+}
+
+async function register() {
+const name = document.getElementById('reg-name').value;
+const email = document.getElementById('reg-email').value;
+const pin = document.getElementById('reg-pin').value;
+const recoveryAnswer = document.getElementById('reg-recovery').value;
+
+const res = await fetch('/api/register', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ name, email, pin, recoveryAnswer })
+});
+
+const data = await res.json();
+if(res.ok) {
+alert('Profilo creato! Ora puoi accedere.');
+switchAuthTab('login');
+} else alert(data.error || 'Errore durante la registrazione.');
+}
+
+async function login() {
+const email = document.getElementById('login-email').value;
+const pin = document.getElementById('login-pin').value;
+
+const res = await fetch('/api/login', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ email, pin })
+});
+
+const data = await res.json();
+if(res.ok) {
+currentUser = data;
+document.getElementById('user-display-name').textContent = currentUser.name;
+document.getElementById('auth-section').classList.add('hidden');
+document.getElementById('app-section').classList.remove('hidden');
+} else alert(data.error || 'Credenziali non valide.');
+}
+
+async function recoverPin() {
+const email = document.getElementById('rec-email').value;
+const recoveryAnswer = document.getElementById('rec-answer').value;
+
+const res = await fetch('/api/recover-pin', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ email, recoveryAnswer })
+});
+
+const data = await res.json();
+const resultDiv = document.getElementById('recovered-pin-result');
+if(res.ok) {
+resultDiv.style.color = 'green';
+resultDiv.textContent = 'Il tuo PIN è: ' + data.pin;
+} else {
+resultDiv.style.color = 'red';
+resultDiv.textContent = data.error || 'Impossibile recuperare PIN.';
+}
+}
+
+function logout() {
+currentUser = null;
+document.getElementById('app-section').classList.add('hidden');
+document.getElementById('auth-section').classList.remove('hidden');
+}
+
+// Generazione Esercitazioni
+async function generateExercise(mode) {
+const subject = document.getElementById('ex-subject').value;
+const unit = document.getElementById('ex-unit').value;
+const btn = mode === 'daily' ? document.getElementById('btn-generate') : document.getElementById('btn-generate-weekend');
+
+btn.disabled = true;
+btn.textContent = 'Generazione 31 Quesiti con Gemini AI in corso... (può richiedere fino a 30s)';
+
+// Se weekend, cerca gli argomenti dove ha sbagliato di più
+let errorTopics = '';
+if (mode === 'weekend') {
+const resHist = await fetch('/api/user-history/' + currentUser.id);
+const history = await resHist.json();
+const wrongUnits = history.filter(h => h.wrong_count > 0).map(h => h.subject + " - " + h.unit);
+errorTopics = wrongUnits.slice(0, 5).join(', ') || 'Generale del Syllabus Medicina';
+}
+
+try {
+const res = await fetch('/api/generate-exercise', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ subject, unit, mode, errorTopics })
+});
+
+const data = await res.json();
+if(res.ok && data.questions) {
+currentQuizData = {
+type: mode === 'daily' ? 'Giornaliera' : 'Fine Settimana',
+subject,
+unit: mode === 'daily' ? unit : 'Riepilogo Errori',
+questions: data.questions
+};
+startQuiz();
+} else alert(data.error || 'Errore generazione test.');
+} catch(e) {
+alert('Errore di connessione.');
+} finally {
+btn.disabled = false;
+btn.textContent = mode === 'daily' ? 'Genera Test con Gemini AI' : 'Genera Test del Fine Settimana';
+}
+}
+
+function startQuiz() {
+userAnswers = {};
+secondsRemaining = 3000; // 50 min
+const container = document.getElementById('questions-list');
+container.innerHTML = '';
+document.getElementById('quiz-title').textContent = currentQuizData.type + ': ' + currentQuizData.subject + ' - ' + currentQuizData.unit;
+
+currentQuizData.questions.forEach((q, qIndex) => {
+const qDiv = document.createElement('div');
+qDiv.className = 'question-card';
+
+const badgeClass = q.type === 'fill' ? 'badge-fill' : 'badge-multiple';
+const badgeText = q.type === 'fill' ? 'Completamento (10)' : 'Risposta Multipla (21)';
+
+qDiv.innerHTML = '<span class="badge ' + badgeClass + '">' + badgeText + '</span><p><strong>' + (qIndex + 1) + '.</strong> ' + q.question + '</p>';
+
+q.options.forEach((opt, oIndex) => {
+const optBtn = document.createElement('button');
+optBtn.className = 'option-btn';
+optBtn.textContent = opt;
+optBtn.onclick = () => selectOption(qIndex, oIndex, optBtn);
+qDiv.appendChild(optBtn);
+});
+
+container.appendChild(qDiv);
+});
+
+document.getElementById('quiz-container').classList.remove('hidden');
+startTimer();
+}
+
+function startTimer() {
+clearInterval(timerInterval);
+timerInterval = setInterval(() => {
+secondsRemaining--;
+const m = Math.floor(secondsRemaining / 60);
+const s = secondsRemaining % 60;
+document.getElementById('timer-display').textContent = 'Tempo Rimanente: ' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+
+if(secondsRemaining <= 0) {
+clearInterval(timerInterval);
+alert('Tempo Massimo Scaduto! Invio automatico delle risposte.');
+submitQuiz();
+}
+}, 1000);
+}
+
+function selectOption(qIndex, oIndex, btn) {
+userAnswers[qIndex] = oIndex;
+const parent = btn.parentElement;
+parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+btn.classList.add('selected');
+}
+
+async function submitQuiz() {
+clearInterval(timerInterval);
+let correctCount = 0;
+let wrongCount = 0;
+let omittedCount = 0;
+
+const qCards = document.querySelectorAll('#questions-list .question-card');
+
+currentQuizData.questions.forEach((q, qIndex) => {
+const selected = userAnswers[qIndex];
+const card = qCards[qIndex];
+const buttons = card.querySelectorAll('.option-btn');
+
+if(selected !== undefined) {
+if(selected === q.correct) {
+correctCount++;
+buttons[selected].classList.add('correct');
+} else {
+wrongCount++;
+buttons[selected].classList.add('wrong');
+buttons[q.correct].classList.add('correct');
+}
+} else {
+omittedCount++;
+buttons[q.correct].classList.add('correct');
+}
+
+const exp = document.createElement('div');
+exp.className = 'explanation';
+exp.innerHTML = '<strong>Spiegazione AI:</strong> ' + q.explanation;
+card.appendChild(exp);
+});
+
+// Calcolo Punteggio Semestre Filtro (+1 esatta, -0.1 errata, 0 omessa)
+const finalScore = (correctCount * 1.0) + (wrongCount * -0.1);
+const timeSpentMin = Math.floor((3000 - secondsRemaining) / 60) + 'm ' + ((3000 - secondsRemaining) % 60) + 's';
+
+document.getElementById('btn-submit-quiz').disabled = true;
+
+await fetch('/api/save-exercise', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({
+userId: currentUser.id,
+type: currentQuizData.type,
+subject: currentQuizData.subject,
+unit: currentQuizData.unit,
+questions: currentQuizData.questions,
+answers: userAnswers,
+score: finalScore.toFixed(1),
+correctCount,
+wrongCount,
+omittedCount,
+timeSpent: timeSpentMin
+})
+});
+
+alert('Test Completato!\n\nPunteggio Semestre Filtro: ' + finalScore.toFixed(1) + '\nEsatte: ' + correctCount + ' | Errate: ' + wrongCount + ' | Omesse: ' + omittedCount);
+}
+
+// Lezioni di Recupero
+async function generateLesson() {
+const topic = document.getElementById('lesson-topic').value;
+const depth = document.getElementById('lesson-depth').value;
+const resultBox = document.getElementById('lesson-result');
+
+if(!topic) return alert('Inserisci un argomento per la lezione.');
+
+resultBox.classList.remove('hidden');
+resultBox.innerHTML = 'Generazione della lezione di recupero con AI in corso...';
+
+const res = await fetch('/api/generate-lesson', {
+method: 'POST',
+headers: {'Content-Type': 'application/json'},
+body: JSON.stringify({ topic, depth })
+});
+
+const data = await res.json();
+if(res.ok) {
+resultBox.innerHTML = data.lesson;
+} else {
+resultBox.innerHTML = '<p style="color:red;">' + (data.error || 'Errore durante la generazione') + '</p>';
+}
+}
+
+// Valutazione Excel
+async function loadExcelTable() {
+const tbody = document.getElementById('excel-table-body');
+tbody.innerHTML = '<tr><td colspan="8">Caricamento dati in corso...</td></tr>';
+
+const res = await fetch('/api/user-history/' + currentUser.id);
+rawHistory = await res.json();
+
+if(!res.ok || rawHistory.length === 0) {
+tbody.innerHTML = '<tr><td colspan="8">Nessun dato registrato. Completa la prima esercitazione!</td></tr>';
+return;
+}
+
+tbody.innerHTML = '';
+rawHistory.forEach(item => {
+const tr = document.createElement('tr');
+tr.innerHTML =
+'<td>' + new Date(item.created_at).toLocaleString('it-IT') + '</td>' +
+'<td>' + (item.type || 'Giornaliera') + '</td>' +
+'<td>' + item.subject + ' - ' + item.unit + '</td>' +
+'<td><strong>' + item.score + '</strong></td>' +
+'<td>' + (item.time_spent || 'N/A') + '</td>' +
+'<td style="color:green; font-weight:bold;">' + (item.correct_count || 0) + '</td>' +
+'<td style="color:red; font-weight:bold;">' + (item.wrong_count || 0) + '</td>' +
+'<td style="color:orange;">' + (item.omitted_count || 0) + '</td>';
+tbody.appendChild(tr);
+});
+}
+
+function exportToExcel() {
+if(!rawHistory || rawHistory.length === 0) return alert('Nessun dato da esportare.');
+
+const excelData = rawHistory.map(item => ({
+'Data': new Date(item.created_at).toLocaleString('it-IT'),
+'Tipo Prova': item.type || 'Giornaliera',
+'Materia': item.subject,
+'Unità': item.unit,
+'Punteggio (+1/-0.1)': item.score,
+'Tempo Impiegato': item.time_spent || 'N/A',
+'Risposte Esatte': item.correct_count || 0,
+'Risposte Errate': item.wrong_count || 0,
+'Risposte Omesse': item.omitted_count || 0
+}));
+
+const worksheet = XLSX.utils.json_to_sheet(excelData);
+const workbook = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(workbook, worksheet, "Valutazione Filtro");
+XLSX.writeFile(workbook, "Valutazione_Medicina_2026.xlsx");
+}
+</script>
+
+</body>
+</html>
