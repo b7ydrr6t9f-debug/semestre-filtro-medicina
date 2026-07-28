@@ -1,9 +1,17 @@
 const express = require('express');
 const https = require('https');
+const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('.'));
+
+// 1. Serve i file statici dalla cartella 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 2. Quando si visita la home page (/), carica public/index.html
+app.get('/', (req, res) => {
+res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -14,7 +22,7 @@ contents: [{ parts: [{ text: prompt }] }]
 
 const options = {
 hostname: 'generativelanguage.googleapis.com',
-path: `/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`
+path: `/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
 method: 'POST',
 headers: {
 'Content-Type': 'application/json',
@@ -44,7 +52,7 @@ req.write(postData);
 req.end();
 }
 
-// 1. Genera Test Giornaliero per Unità
+// Rotte API per la generazione dei test e lezioni
 app.post('/api/genera-test', (req, res) => {
 const { materia, unita } = req.body;
 const prompt = `Crea un test di 31 domande sul programma di ${materia}, nello specifico sull'unità didattica: "${unita}". Fornisci 21 domande a risposta multipla e 10 a risposta aperta, complete di opzioni e soluzioni. Rispondi in formato JSON.`;
@@ -55,7 +63,6 @@ res.json({ domande: risposta });
 });
 });
 
-// 2. Genera Test Fine Settimana
 app.post('/api/genera-test-fine-settimana', (req, res) => {
 const { errori } = req.body;
 const argomenti = errori.map(e => `${e.materia}: ${e.argomento}`).join(', ');
@@ -67,7 +74,6 @@ res.json({ domande: risposta });
 });
 });
 
-// 3. Genera Lezione di Recupero
 app.post('/api/genera-lezione', (req, res) => {
 const { argomento, profondita } = req.body;
 const prompt = `Fornisci una lezione di recupero di livello ${profondita} sull'argomento: "${argomento}". Strutturala con introduzione, punti chiave, spiegazione approfondita ed esempi pratici.`;
