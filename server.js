@@ -52,6 +52,17 @@ req.write(postData);
 req.end();
 }
 
+// Rotta usata dal frontend (Generatore Quiz AI) - il frontend invia già il prompt completo
+app.post('/api/generate-quiz', (req, res) => {
+const { prompt } = req.body;
+if (!prompt) return res.status(400).json({ errore: 'Prompt mancante.' });
+
+chiamaGemini(prompt, (err, risposta) => {
+if (err) return res.status(500).json({ errore: err });
+res.json({ result: risposta });
+});
+});
+
 // Rotte API per la generazione dei test e lezioni
 app.post('/api/genera-test', (req, res) => {
 const { materia, unita } = req.body;

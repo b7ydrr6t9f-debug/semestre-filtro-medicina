@@ -704,8 +704,8 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         }
       });
 
-      // Punteggio standard medicina: +1.5 Esatta, -0.4 Errata, 0 Omessa
-      const punteggioTot = (esatte * 1.5) - (errate * 0.4);
+      // Punteggio ufficiale Semestre Filtro (DM 941/2026): +1 Esatta, -0.1 Errata, 0 Omessa
+      const punteggioTot = (esatte * 1) - (errate * 0.1);
       const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
       const secs = String(secondsElapsed % 60).padStart(2, '0');
       const tempoFormattato = `${mins}:${secs}`;
@@ -720,7 +720,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         punteggio: punteggioTot.toFixed(1),
         tempo: tempoFormattato,
         rateo: rateo,
-        esito: punteggioTot >= (currentQuizData.questions.length * 1.5 * 0.6) ? "Superato" : "Non Superato"
+        esito: punteggioTot >= (currentQuizData.questions.length * 0.6) ? "Superato" : "Non Superato"
       };
 
       valutazioni.unshift(nuovaValutazione);
