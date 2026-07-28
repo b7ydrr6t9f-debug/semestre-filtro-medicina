@@ -14,7 +14,9 @@ res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+// Alias auto-aggiornato da Google al modello Flash stabile più recente (oggi punta a Gemini 3.5 Flash)
+// così l'app non si rompe più ad ogni dismissione di modello come successo con gemini-2.5-flash
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-flash-latest';
 
 function chiamaGemini(prompt, callback) {
 // Fallisce subito con un messaggio chiaro se la chiave non è configurata su Render
