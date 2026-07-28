@@ -44,7 +44,13 @@
           <i data-lucide="book-open" class="w-4 h-4"></i> Syllabus & Unità Didattiche
         </button>
         <button onclick="switchTab('simulator')" id="tab-simulator" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
-          <i data-lucide="cpu" class="w-4 h-4"></i> Generatore Quiz AI
+          <i data-lucide="cpu" class="w-4 h-4"></i> Esercitazioni
+        </button>
+        <button onclick="switchTab('deposito')" id="tab-deposito" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+          <i data-lucide="archive" class="w-4 h-4"></i> Deposito Fine Settimana
+        </button>
+        <button onclick="switchTab('lezioni')" id="tab-lezioni" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> Lezioni di Recupero
         </button>
         <button onclick="switchTab('valutazione')" id="tab-valutazione" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
           <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Valutazione & Excel
@@ -99,17 +105,17 @@
       </div>
     </section>
 
-    <!-- SEZIONE 2: GENERATORE QUIZ AI -->
+    <!-- SEZIONE 2: ESERCITAZIONI -->
     <section id="sec-simulator" class="hidden space-y-6">
       <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
           <i data-lucide="sparkles" class="text-indigo-600"></i>
-          Simulatore d'Esame con Intelligenza Artificiale
+          Esercitazioni per Unità Didattica
         </h2>
-        <p class="text-slate-600 text-sm">Genera quesiti e simulazioni inedite basate fedelmente sul programma delle unità didattiche ufficiali.</p>
+        <p class="text-slate-600 text-sm">Scegli materia e unità didattica: genero un'esercitazione completa di <strong>31 domande</strong> (21 a risposta multipla con 5 opzioni + 10 a completamento), fedele al programma ufficiale.</p>
 
         <!-- Form Configuratore -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Materia</label>
             <select id="sim-materia" onchange="updateSimUnitaOptions()" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
@@ -125,19 +131,10 @@
               <!-- Popolato dinamicamente -->
             </select>
           </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Numero Quesiti</label>
-            <select id="sim-num" class="w-full p-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-              <option value="3">3 Quesiti (Rapido)</option>
-              <option value="5" selected>5 Quesiti (Standard)</option>
-              <option value="10">10 Quesiti (Approfondito)</option>
-            </select>
-          </div>
         </div>
 
         <button onclick="generateQuiz()" id="btn-generate" class="mt-4 w-full md:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
-          <i data-lucide="play" class="w-4 h-4"></i> Genera Quesiti Ora
+          <i data-lucide="play" class="w-4 h-4"></i> Genera Esercitazione (31 domande)
         </button>
       </div>
 
@@ -158,12 +155,68 @@
           <!-- Domande generate d'AI -->
         </div>
 
+        <div id="review-container" class="hidden space-y-6">
+          <!-- Auto-valutazione domande a completamento -->
+        </div>
+
         <div class="bg-white p-4 rounded-xl border border-slate-200 flex justify-end">
-          <button onclick="submitQuiz()" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow transition flex items-center gap-2">
+          <button onclick="submitQuiz()" id="btn-submit-quiz" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow transition flex items-center gap-2">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             Concludi e Calcola Punteggio
           </button>
         </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE 3: DEPOSITO FINE SETTIMANA -->
+    <section id="sec-deposito" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <i data-lucide="archive" class="text-indigo-600"></i>
+          Deposito Errori & Recupero Fine Settimana
+        </h2>
+        <p class="text-slate-600 text-sm">Ogni errore commesso nelle esercitazioni finisce qui. Da questo deposito genero un test di recupero mirato sui tuoi punti deboli.</p>
+
+        <div id="deposito-riepilogo" class="mt-6 space-y-2">
+          <!-- Riepilogo errori per argomento, renderizzato via JS -->
+        </div>
+
+        <button onclick="generaTestDeposito()" id="btn-generate-deposito" class="mt-4 w-full md:w-auto px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i> Genera Test di Recupero dagli Errori
+        </button>
+      </div>
+    </section>
+
+    <!-- SEZIONE 4: LEZIONI DI RECUPERO -->
+    <section id="sec-lezioni" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="text-indigo-600"></i>
+          Lezioni di Recupero
+        </h2>
+        <p class="text-slate-600 text-sm">Cerca un argomento oppure scegli tra quelli suggeriti in base ai tuoi errori. Poi scegli la profondità della lezione.</p>
+
+        <div class="mt-4 relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="lezione-search" placeholder="Cerca un argomento (es. Legge di Poiseuille, glicolisi, legame peptidico...)" class="w-full pl-10 pr-3 py-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+        </div>
+
+        <div id="lezioni-suggerite" class="mt-3 flex flex-wrap gap-2">
+          <!-- Chip argomenti suggeriti dagli errori, renderizzato via JS -->
+        </div>
+
+        <div class="mt-5 flex flex-col sm:flex-row gap-3">
+          <button onclick="generaLezione('breve')" id="btn-lezione-breve" class="flex-1 px-5 py-3 bg-slate-700 hover:bg-slate-800 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
+            <i data-lucide="zap" class="w-4 h-4"></i> Lezione Breve (rapida)
+          </button>
+          <button onclick="generaLezione('dettagliata')" id="btn-lezione-dettagliata" class="flex-1 px-5 py-3 bg-indigo-700 hover:bg-indigo-800 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
+            <i data-lucide="book-open-check" class="w-4 h-4"></i> Lezione Dettagliata (approfondita)
+          </button>
+        </div>
+      </div>
+
+      <div id="lezione-risultato" class="hidden bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <!-- Lezione generata, renderizzata via JS -->
       </div>
     </section>
 
@@ -484,8 +537,9 @@
       }
     };
 
-    // REGISTRO VALUTAZIONI (LOCALSTORAGE)
+    // REGISTRO VALUTAZIONI & REGISTRO ERRORI (LOCALSTORAGE)
     let valutazioni = JSON.parse(localStorage.getItem('med_valutazioni') || '[]');
+    let errori = JSON.parse(localStorage.getItem('med_errori') || '[]');
     let currentQuizData = null;
     let timerInterval = null;
     let secondsElapsed = 0;
@@ -496,16 +550,20 @@
       loadMateria('biologia');
       updateSimUnitaOptions();
       renderValutazioniTable();
+      renderDepositoRiepilogo();
+      renderLezioniSuggerite();
     });
 
     // SWITCH TAB
     function switchTab(tabName) {
-      ['syllabus', 'simulator', 'valutazione'].forEach(t => {
+      ['syllabus', 'simulator', 'deposito', 'lezioni', 'valutazione'].forEach(t => {
         document.getElementById(`sec-${t}`).classList.add('hidden');
         document.getElementById(`tab-${t}`).classList.remove('tab-active');
       });
       document.getElementById(`sec-${tabName}`).classList.remove('hidden');
       document.getElementById(`tab-${tabName}`).classList.add('tab-active');
+      if (tabName === 'deposito') renderDepositoRiepilogo();
+      if (tabName === 'lezioni') renderLezioniSuggerite();
     }
 
     // CARICA MATERIA NEL TAB SYLLABUS
@@ -558,114 +616,202 @@
       });
     }
 
-    // GENERATORE QUIZ AI VIA BACKEND / API GEMINI
-    async function generateQuiz() {
-      const matKey = document.getElementById('sim-materia').value;
-      const unitaId = parseInt(document.getElementById('sim-unita').value);
-      const numQuesiti = parseInt(document.getElementById('sim-num').value);
+    // Estrae il JSON pulito da una risposta testuale di Gemini (rimuove eventuali fence ```json)
+    function pulisciJson(testo) {
+      let clean = testo.trim();
+      if (clean.startsWith("```json")) clean = clean.substring(7);
+      if (clean.startsWith("```")) clean = clean.substring(3);
+      if (clean.endsWith("```")) clean = clean.substring(0, clean.length - 3);
+      return JSON.parse(clean.trim());
+    }
 
-      const materiaObj = SYLLABUS_DATA[matKey];
-      const unitaObj = materiaObj.unita.find(u => u.id === unitaId);
+    // Normalizza un'etichetta di argomento per raggruppare gli errori
+    function normalizzaTopic(t) {
+      return (t || 'Argomento generico').trim();
+    }
 
-      const btnGen = document.getElementById('btn-generate');
-      btnGen.disabled = true;
-      btnGen.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione quesiti in corso...`;
-      lucide.createIcons();
-
-      const promptText = `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
-Crea esattamente ${numQuesiti} quesiti a risposta multipla (5 opzioni: A, B, C, D, E di cui 1 sola esatta) basati ESCLUSIVAMENTE sul seguente programma dell'Unità Didattica:
+    // COSTRUISCE IL PROMPT PER UN'ESERCITAZIONE SU UN'UNITA' DIDATTICA (31 domande: 21 mcq + 10 completamento)
+    function buildEsercitazionePrompt(materiaObj, unitaObj) {
+      return `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
+Crea un'esercitazione di ESATTAMENTE 31 quesiti basati ESCLUSIVAMENTE sul seguente programma dell'Unità Didattica:
 
 Materia: ${materiaObj.title}
 Unità Didattica: ${unitaObj.title}
 Programma Dettagliato:
 ${unitaObj.content}
 
+Di questi 31 quesiti:
+- 21 devono avere "type":"mcq", con "options" (5 opzioni A-E) e "correctIndex" (0-4) dell'opzione corretta.
+- 10 devono avere "type":"completamento": una frase con una lacuna concettuale, senza "options" né "correctIndex", ma con "correctAnswer" (la risposta attesa, breve, 1-5 parole).
+
+Ogni quesito deve includere anche:
+- "materia": "${materiaObj.title}"
+- "topic": etichetta sintetica (3-6 parole) del sotto-argomento specifico trattato, utile per tracciare gli errori dello studente.
+- "explanation": spiegazione sintetica della risposta corretta.
+
 Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di markdown o formattazione extra con questa struttura esatta:
 {
   "questions": [
-    {
-      "id": 1,
-      "question": "Testo della domanda...",
-      "options": [
-        "Opzione A",
-        "Opzione B",
-        "Opzione C",
-        "Opzione D",
-        "Opzione E"
-      ],
-      "correctIndex": 0,
-      "explanation": "Spiegazione sintetica della risposta corretta."
-    }
+    { "id": 1, "type": "mcq", "materia": "...", "topic": "...", "question": "...", "options": ["...","...","...","...","..."], "correctIndex": 0, "explanation": "..." },
+    { "id": 2, "type": "completamento", "materia": "...", "topic": "...", "question": "...", "correctAnswer": "...", "explanation": "..." }
   ]
 }`;
+    }
+
+    // COSTRUISCE IL PROMPT PER IL TEST DI RECUPERO BASATO SUGLI ERRORI DEL DEPOSITO
+    function buildRecuperoPrompt(argomentiErrori, nMcq, nCompletamento) {
+      return `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
+Crea un test di recupero mirato sui seguenti argomenti in cui lo studente ha sbagliato in passato (tra parentesi il numero di errori registrati su ciascuno):
+${argomentiErrori}
+
+Crea ESATTAMENTE ${nMcq + nCompletamento} quesiti: ${nMcq} con "type":"mcq" (5 opzioni A-E in "options", più "correctIndex") e ${nCompletamento} con "type":"completamento" (senza options, con "correctAnswer" breve, 1-5 parole).
+Distribuisci i quesiti sugli argomenti sopra elencati, dando priorità a quelli con più errori. Ogni quesito deve includere anche "materia" (Biologia, Fisica, o Chimica e Prop. Biochimica, a seconda dell'argomento), "topic" (etichetta sintetica dell'argomento) e "explanation" (spiegazione sintetica della risposta corretta).
+
+Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di markdown o formattazione extra con questa struttura esatta:
+{
+  "questions": [
+    { "id": 1, "type": "mcq", "materia": "...", "topic": "...", "question": "...", "options": ["...","...","...","...","..."], "correctIndex": 0, "explanation": "..." },
+    { "id": 2, "type": "completamento", "materia": "...", "topic": "...", "question": "...", "correctAnswer": "...", "explanation": "..." }
+  ]
+}`;
+    }
+
+    // CHIAMA IL BACKEND, RESTITUISCE IL QUIZ PARSATO O LANCIA UN ERRORE CHIARO
+    async function chiedaQuizAlServer(promptText) {
+      const res = await fetch('/api/generate-quiz', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: promptText })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.errore || 'Errore nella comunicazione con il server AI.');
+      try {
+        return pulisciJson(data.result);
+      } catch (e) {
+        throw new Error("Errore durante la formattazione dei dati ricevuti dal modello.");
+      }
+    }
+
+    // GENERA UN'ESERCITAZIONE (31 DOMANDE) SULL'UNITA' DIDATTICA SELEZIONATA
+    async function generateQuiz() {
+      const matKey = document.getElementById('sim-materia').value;
+      const unitaId = parseInt(document.getElementById('sim-unita').value);
+      const materiaObj = SYLLABUS_DATA[matKey];
+      const unitaObj = materiaObj.unita.find(u => u.id === unitaId);
+
+      const btnGen = document.getElementById('btn-generate');
+      btnGen.disabled = true;
+      btnGen.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione delle 31 domande in corso (può richiedere qualche secondo)...`;
+      lucide.createIcons();
 
       try {
-        const res = await fetch('/api/generate-quiz', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: promptText })
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          throw new Error(data.errore || 'Errore nella comunicazione con il server AI.');
-        }
-        let parsedQuiz;
-        
-        try {
-          // Pulizia JSON
-          let cleanJson = data.result.trim();
-          if (cleanJson.startsWith("```json")) cleanJson = cleanJson.substring(7);
-          if (cleanJson.startsWith("```")) cleanJson = cleanJson.substring(3);
-          if (cleanJson.endsWith("```")) cleanJson = cleanJson.substring(0, cleanJson.length - 3);
-          parsedQuiz = JSON.parse(cleanJson.trim());
-        } catch (e) {
-          throw new Error("Errore durante la formattazione dei dati ricevuti dal modello.");
-        }
-
+        const parsedQuiz = await chiedaQuizAlServer(buildEsercitazionePrompt(materiaObj, unitaObj));
         currentQuizData = {
           materia: materiaObj.title,
           unitaTitle: unitaObj.title,
           questions: parsedQuiz.questions
         };
-
         renderQuizUI();
-
       } catch (err) {
         alert("Si è verificato un errore: " + err.message);
       } finally {
         btnGen.disabled = false;
-        btnGen.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i> Genera Quesiti Ora`;
+        btnGen.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i> Genera Esercitazione (31 domande)`;
         lucide.createIcons();
       }
     }
 
-    // RENDERIZZA INTERFACCIA QUIZ
+    // GENERA UN TEST DI RECUPERO DAL DEPOSITO ERRORI
+    async function generaTestDeposito() {
+      if (errori.length === 0) {
+        alert("Il deposito è vuoto: completa qualche esercitazione per iniziare a registrare i tuoi errori.");
+        return;
+      }
+
+      const conteggio = {};
+      errori.forEach(e => {
+        const key = `${e.materia} — ${e.topic}`;
+        conteggio[key] = (conteggio[key] || 0) + 1;
+      });
+      const argomentiOrdinati = Object.entries(conteggio).sort((a, b) => b[1] - a[1]);
+      const argomentiTesto = argomentiOrdinati.map(([k, v]) => `- ${k} (${v} error${v === 1 ? 'e' : 'i'})`).join('\n');
+
+      const nTotal = Math.min(20, Math.max(6, argomentiOrdinati.length * 2));
+      const nMcq = Math.ceil(nTotal * 0.6);
+      const nCompletamento = nTotal - nMcq;
+
+      const btn = document.getElementById('btn-generate-deposito');
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione test di recupero in corso...`;
+      lucide.createIcons();
+
+      try {
+        const parsedQuiz = await chiedaQuizAlServer(buildRecuperoPrompt(argomentiTesto, nMcq, nCompletamento));
+        currentQuizData = {
+          materia: "Recupero Fine Settimana",
+          unitaTitle: `Basato su ${errori.length} error${errori.length === 1 ? 'e' : 'i'} registrat${errori.length === 1 ? 'o' : 'i'}`,
+          questions: parsedQuiz.questions,
+          source: 'deposito'
+        };
+        switchTab('simulator');
+        renderQuizUI();
+      } catch (err) {
+        alert("Si è verificato un errore: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="refresh-cw" class="w-4 h-4"></i> Genera Test di Recupero dagli Errori`;
+        lucide.createIcons();
+      }
+    }
+
+    // RENDERIZZA INTERFACCIA QUIZ (GESTISCE MCQ E COMPLETAMENTO)
     function renderQuizUI() {
       document.getElementById('quiz-area').classList.remove('hidden');
-      document.getElementById('quiz-title-display').textContent = `${currentQuizData.materia} - UD ${currentQuizData.unitaTitle}`;
-      
+      document.getElementById('quiz-title-display').textContent = `${currentQuizData.materia} - ${currentQuizData.unitaTitle}`;
+
       const qContainer = document.getElementById('questions-container');
+      qContainer.classList.remove('hidden');
       qContainer.innerHTML = '';
 
+      const reviewContainer = document.getElementById('review-container');
+      reviewContainer.classList.add('hidden');
+      reviewContainer.innerHTML = '';
+
+      const btnSubmit = document.getElementById('btn-submit-quiz');
+      btnSubmit.classList.remove('hidden');
+      btnSubmit.disabled = false;
+      btnSubmit.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i> Concludi e Calcola Punteggio`;
+
       currentQuizData.questions.forEach((q, idx) => {
-        let optionsHtml = '';
-        q.options.forEach((opt, oIdx) => {
-          optionsHtml += `
-            <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
-              <input type="radio" name="question_${idx}" value="${oIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500">
-              <span class="text-sm text-slate-800">${String.fromCharCode(65 + oIdx)}) ${opt}</span>
-            </label>
-          `;
-        });
+        const badge = q.type === 'completamento'
+          ? `<span class="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-semibold">Completamento</span>`
+          : `<span class="text-xs px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-semibold">Risposta multipla</span>`;
+
+        let bodyHtml;
+        if (q.type === 'completamento') {
+          bodyHtml = `<input type="text" id="completion_${idx}" placeholder="Scrivi qui la tua risposta..." class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">`;
+        } else {
+          let optionsHtml = '';
+          q.options.forEach((opt, oIdx) => {
+            optionsHtml += `
+              <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                <input type="radio" name="question_${idx}" value="${oIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500">
+                <span class="text-sm text-slate-800">${String.fromCharCode(65 + oIdx)}) ${opt}</span>
+              </label>
+            `;
+          });
+          bodyHtml = `<div class="space-y-2">${optionsHtml}</div>`;
+        }
 
         qContainer.innerHTML += `
-          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h4 class="font-bold text-slate-900 text-base flex gap-2">
-              <span class="text-indigo-600 font-mono">Q${idx + 1}.</span> ${q.question}
-            </h4>
-            <div class="space-y-2">${optionsHtml}</div>
+          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+            <div class="flex justify-between items-start gap-3">
+              <h4 class="font-bold text-slate-900 text-base flex gap-2">
+                <span class="text-indigo-600 font-mono">Q${idx + 1}.</span> ${q.question}
+              </h4>
+              ${badge}
+            </div>
+            ${bodyHtml}
           </div>
         `;
       });
@@ -681,57 +827,281 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         document.getElementById('timer-display').textContent = `${mins}:${secs}`;
       }, 1000);
 
+      lucide.createIcons();
       window.scrollTo({ top: document.getElementById('quiz-area').offsetTop - 80, behavior: 'smooth' });
     }
 
-    // SOTTOMISSIONE E CALCOLO PUNTEGGIO QUIZ
+    // FASE 1: CORREGGE AUTOMATICAMENTE LE MCQ, POI MOSTRA L'AUTO-VALUTAZIONE DELLE DOMANDE A COMPLETAMENTO
     function submitQuiz() {
       clearInterval(timerInterval);
-      
-      let esatte = 0;
-      let errate = 0;
-      let omesse = 0;
+
+      currentQuizData.mcqRisultati = { esatte: 0, errate: 0, omesse: 0 };
+      const completamentoIdx = [];
 
       currentQuizData.questions.forEach((q, idx) => {
+        if (q.type === 'completamento') {
+          completamentoIdx.push(idx);
+          return;
+        }
         const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
         if (!selected) {
-          omesse++;
+          currentQuizData.mcqRisultati.omesse++;
+          q._esito = 'omessa';
         } else {
           const val = parseInt(selected.value);
+          q._userAnswerText = q.options[val];
           if (val === q.correctIndex) {
-            esatte++;
+            currentQuizData.mcqRisultati.esatte++;
+            q._esito = 'esatta';
           } else {
-            errate++;
+            currentQuizData.mcqRisultati.errate++;
+            q._esito = 'errata';
           }
         }
       });
 
-      // Punteggio ufficiale Semestre Filtro (DM 941/2026): +1 Esatta, -0.1 Errata, 0 Omessa
+      if (completamentoIdx.length === 0) {
+        finalizeScore();
+        return;
+      }
+
+      // Mostra la fase di auto-valutazione per le domande a completamento
+      document.getElementById('questions-container').classList.add('hidden');
+      const btnSubmit = document.getElementById('btn-submit-quiz');
+      btnSubmit.classList.add('hidden');
+
+      const reviewContainer = document.getElementById('review-container');
+      reviewContainer.classList.remove('hidden');
+      reviewContainer.innerHTML = `
+        <div class="bg-amber-50 border border-amber-200 text-amber-900 text-sm p-4 rounded-xl">
+          <strong>Auto-valutazione domande a completamento.</strong> Confronta la tua risposta con quella attesa e segnala se l'hai considerata corretta.
+        </div>
+      `;
+
+      completamentoIdx.forEach(idx => {
+        const q = currentQuizData.questions[idx];
+        const inputEl = document.getElementById(`completion_${idx}`);
+        q._userAnswerText = inputEl ? inputEl.value.trim() : '';
+
+        reviewContainer.innerHTML += `
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3" id="review-item-${idx}">
+            <h4 class="font-bold text-slate-900 text-sm flex gap-2">
+              <span class="text-amber-600 font-mono">Q${idx + 1}.</span> ${q.question}
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <span class="block text-xs text-slate-500 uppercase font-semibold mb-1">La tua risposta</span>
+                ${q._userAnswerText || '<em class="text-slate-400">Nessuna risposta</em>'}
+              </div>
+              <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+                <span class="block text-xs text-emerald-700 uppercase font-semibold mb-1">Risposta attesa</span>
+                ${q.correctAnswer}
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 italic">${q.explanation || ''}</p>
+            <div class="flex gap-2">
+              <button onclick="segnaCompletamento(${idx}, true)" id="btn-corretta-${idx}" class="flex-1 py-2 rounded-lg border-2 border-emerald-300 text-emerald-700 font-semibold text-sm hover:bg-emerald-50 transition">✓ L'avevo presa bene</button>
+              <button onclick="segnaCompletamento(${idx}, false)" id="btn-sbagliata-${idx}" class="flex-1 py-2 rounded-lg border-2 border-rose-300 text-rose-700 font-semibold text-sm hover:bg-rose-50 transition">✗ Sbagliata / omessa</button>
+            </div>
+          </div>
+        `;
+      });
+
+      reviewContainer.innerHTML += `
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex justify-end">
+          <button onclick="finalizeScore()" id="btn-finalize" disabled class="px-8 py-3 bg-slate-300 text-slate-500 font-bold rounded-lg shadow transition flex items-center gap-2 cursor-not-allowed">
+            <i data-lucide="check-circle" class="w-5 h-5"></i> Valuta prima tutte le domande sopra
+          </button>
+        </div>
+      `;
+
+      lucide.createIcons();
+      window.scrollTo({ top: reviewContainer.offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // SEGNA UNA DOMANDA A COMPLETAMENTO COME AUTO-VALUTATA CORRETTA/SBAGLIATA
+    function segnaCompletamento(idx, corretta) {
+      const q = currentQuizData.questions[idx];
+      q._esito = corretta ? 'esatta' : (q._userAnswerText ? 'errata' : 'omessa');
+
+      const item = document.getElementById(`review-item-${idx}`);
+      item.classList.add(corretta ? 'ring-2' : 'ring-2', corretta ? 'ring-emerald-400' : 'ring-rose-400');
+      document.getElementById(`btn-corretta-${idx}`).classList.toggle('bg-emerald-100', corretta);
+      document.getElementById(`btn-sbagliata-${idx}`).classList.toggle('bg-rose-100', !corretta);
+
+      const tuttiValutati = currentQuizData.questions.every(qq => qq.type !== 'completamento' || qq._esito);
+      const btnFinalize = document.getElementById('btn-finalize');
+      if (tuttiValutati) {
+        btnFinalize.disabled = false;
+        btnFinalize.classList.remove('bg-slate-300', 'text-slate-500', 'cursor-not-allowed');
+        btnFinalize.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'text-white');
+        btnFinalize.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i> Calcola Punteggio Finale`;
+        lucide.createIcons();
+      }
+    }
+
+    // FASE 2: CALCOLA IL PUNTEGGIO FINALE, AGGIORNA IL DEPOSITO ERRORI E SALVA LA VALUTAZIONE
+    function finalizeScore() {
+      let esatte = 0, errate = 0, omesse = 0;
+
+      currentQuizData.questions.forEach(q => {
+        if (q._esito === 'esatta') esatte++;
+        else if (q._esito === 'errata') errate++;
+        else omesse++;
+
+        if (q._esito === 'errata' || q._esito === 'omessa') {
+          errori.push({
+            materia: q.materia || currentQuizData.materia,
+            topic: normalizzaTopic(q.topic),
+            question: q.question,
+            userAnswer: q._userAnswerText || '(nessuna risposta)',
+            correctAnswer: q.type === 'completamento' ? q.correctAnswer : (q.options ? q.options[q.correctIndex] : ''),
+            explanation: q.explanation || '',
+            timestamp: new Date().toISOString()
+          });
+        }
+      });
+
+      // Il deposito tiene al massimo le ultime 400 voci
+      if (errori.length > 400) errori = errori.slice(errori.length - 400);
+      localStorage.setItem('med_errori', JSON.stringify(errori));
+
       const punteggioTot = (esatte * 1) - (errate * 0.1);
       const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
       const secs = String(secondsElapsed % 60).padStart(2, '0');
       const tempoFormattato = `${mins}:${secs}`;
       const oraAttuale = new Date().toLocaleString('it-IT');
-      const rateo = `${esatte}/${currentQuizData.questions.length}`;
+      const totale = currentQuizData.questions.length;
+      const rateo = `${esatte}/${totale}`;
 
-      // Salva in Registro
       const nuovaValutazione = {
         data: oraAttuale,
-        tipoProva: "Simulazione UD",
+        tipoProva: currentQuizData.source === 'deposito' ? "Recupero Weekend" : "Esercitazione UD",
         materiaUnita: `${currentQuizData.materia} - ${currentQuizData.unitaTitle.split('.')[0]}`,
         punteggio: punteggioTot.toFixed(1),
         tempo: tempoFormattato,
         rateo: rateo,
-        esito: punteggioTot >= (currentQuizData.questions.length * 0.6) ? "Superato" : "Non Superato"
+        esito: punteggioTot >= (totale * 0.6) ? "Superato" : "Non Superato"
       };
 
       valutazioni.unshift(nuovaValutazione);
       localStorage.setItem('med_valutazioni', JSON.stringify(valutazioni));
 
       renderValutazioniTable();
-      alert(`Simulazione Completata!\n\nPunteggio: ${punteggioTot.toFixed(1)} Punti\nRisposte Esatte: ${esatte}\nRisposte Errate: ${errate}\nOmesse: ${omesse}\nTempo: ${tempoFormattato}`);
+      renderDepositoRiepilogo();
+      renderLezioniSuggerite();
+
+      alert(`Esercitazione Completata!\n\nPunteggio: ${punteggioTot.toFixed(1)} Punti\nRisposte Esatte: ${esatte}\nRisposte Errate: ${errate}\nOmesse: ${omesse}\nTempo: ${tempoFormattato}\n\nGli errori sono stati aggiunti al Deposito Fine Settimana.`);
+
+      document.getElementById('quiz-area').classList.add('hidden');
+      document.getElementById('questions-container').innerHTML = '';
+      document.getElementById('questions-container').classList.remove('hidden');
+      document.getElementById('review-container').innerHTML = '';
+      document.getElementById('review-container').classList.add('hidden');
 
       switchTab('valutazione');
+    }
+
+    // RIEPILOGO DEL DEPOSITO ERRORI (TAB "DEPOSITO FINE SETTIMANA")
+    function renderDepositoRiepilogo() {
+      const container = document.getElementById('deposito-riepilogo');
+      if (!container) return;
+
+      if (errori.length === 0) {
+        container.innerHTML = `<p class="text-slate-500 text-sm italic p-4 bg-slate-50 rounded-lg border border-slate-200">Nessun errore ancora registrato. Completa un'esercitazione nel tab "Esercitazioni" per iniziare a costruire il tuo deposito.</p>`;
+        return;
+      }
+
+      const conteggio = {};
+      errori.forEach(e => {
+        const key = `${e.materia} — ${normalizzaTopic(e.topic)}`;
+        conteggio[key] = (conteggio[key] || 0) + 1;
+      });
+      const ordinati = Object.entries(conteggio).sort((a, b) => b[1] - a[1]);
+
+      let html = `<div class="flex items-center justify-between mb-2">
+        <span class="text-sm font-semibold text-slate-700">${errori.length} error${errori.length === 1 ? 'e' : 'i'} nel deposito, su ${ordinati.length} argoment${ordinati.length === 1 ? 'o' : 'i'}</span>
+      </div>`;
+
+      ordinati.forEach(([key, count]) => {
+        html += `
+          <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg">
+            <span class="text-sm text-slate-800">${key}</span>
+            <span class="text-xs bg-rose-100 text-rose-800 font-bold px-2.5 py-1 rounded-full">${count}×</span>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // SUGGERISCE ARGOMENTI PER LE LEZIONI DI RECUPERO IN BASE AGLI ERRORI
+    function renderLezioniSuggerite() {
+      const container = document.getElementById('lezioni-suggerite');
+      if (!container) return;
+
+      if (errori.length === 0) {
+        container.innerHTML = `<p class="text-slate-500 text-sm italic">Nessun argomento suggerito ancora: completa qualche esercitazione, oppure cerca liberamente un argomento qui sopra.</p>`;
+        return;
+      }
+
+      const conteggio = {};
+      errori.forEach(e => {
+        const key = normalizzaTopic(e.topic);
+        conteggio[key] = (conteggio[key] || 0) + 1;
+      });
+      const top = Object.entries(conteggio).sort((a, b) => b[1] - a[1]).slice(0, 8);
+
+      container.innerHTML = top.map(([topic, count]) => `
+        <button onclick="document.getElementById('lezione-search').value = ${JSON.stringify(topic)}; document.getElementById('lezione-search').scrollIntoView({behavior:'smooth', block:'center'});" class="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-800 text-xs font-semibold rounded-full transition">
+          ${topic} <span class="opacity-70">(${count}×)</span>
+        </button>
+      `).join('');
+    }
+
+    // GENERA UNA LEZIONE DI RECUPERO (BREVE O DETTAGLIATA) SULL'ARGOMENTO CERCATO
+    async function generaLezione(profondita) {
+      const argomento = document.getElementById('lezione-search').value.trim();
+      if (!argomento) {
+        alert("Scrivi o seleziona prima un argomento da approfondire.");
+        return;
+      }
+
+      const btnBreve = document.getElementById('btn-lezione-breve');
+      const btnDettagliata = document.getElementById('btn-lezione-dettagliata');
+      const btnAttivo = profondita === 'breve' ? btnBreve : btnDettagliata;
+      const labelOriginale = btnAttivo.innerHTML;
+      [btnBreve, btnDettagliata].forEach(b => b.disabled = true);
+      btnAttivo.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione lezione in corso...`;
+      lucide.createIcons();
+
+      const risultatoBox = document.getElementById('lezione-risultato');
+
+      try {
+        const res = await fetch('/api/genera-lezione', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ argomento, profondita })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.errore || 'Errore nella comunicazione con il server AI.');
+
+        risultatoBox.classList.remove('hidden');
+        risultatoBox.innerHTML = `
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+            <h3 class="font-bold text-slate-900 text-lg">${argomento}</h3>
+            <span class="text-xs px-2.5 py-1 rounded-full font-semibold ${profondita === 'breve' ? 'bg-slate-200 text-slate-800' : 'bg-indigo-100 text-indigo-800'}">${profondita === 'breve' ? 'Lezione breve' : 'Lezione dettagliata'}</span>
+          </div>
+          <div class="text-slate-700 text-sm whitespace-pre-line leading-relaxed">${data.lezione}</div>
+        `;
+        risultatoBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        alert("Si è verificato un errore: " + err.message);
+      } finally {
+        [btnBreve, btnDettagliata].forEach(b => b.disabled = false);
+        btnAttivo.innerHTML = labelOriginale;
+        lucide.createIcons();
+      }
     }
 
     // RENDERIZZA TABELLA REGISTRO VALUTAZIONI EXCEL
