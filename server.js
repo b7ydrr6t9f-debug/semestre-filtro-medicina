@@ -2,7 +2,7 @@ const express = require('express');
 const https = require('https');
 const path = require('path');
 const crypto = require('crypto');
-const sqlite3 = require('sqlite3').verbose();
+const { createClient } = require('@libsql/client');
 const app = express();
 
 app.use(express.json());
@@ -16,16 +16,22 @@ res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // ============================================================
-// DATABASE SQLITE (account, deposito errori, registro valutazioni)
-// NOTA: su Render senza un Persistent Disk collegato, il filesystem
-// è EFFIMERO: ad ogni redeploy/riavvio il database viene azzerato.
-// Per una persistenza reale servirebbe un Persistent Disk (a pagamento
-// su Render) montato su questa cartella.
+// DATABASE (libSQL) - account, deposito errori, registro valutazioni
+//
+// Se TURSO_DATABASE_URL è impostata (Environment Variables su Render),
+// i dati vengono salvati su Turso (cloud, gratuito, persistente per sempre).
+// Altrimenti si usa un file locale "database.sqlite": funziona, ma su
+// Render senza Persistent Disk viene azzerato ad ogni redeploy/riavvio.
 // ============================================================
-const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'));
+const usaTurso = !!process.env.TURSO_DATABASE_URL;
+const db = createClient({
+url: process.env.TURSO_DATABASE_URL || 'file:database.sqlite',
+authToken: process.env.TURSO_AUTH_TOKEN
+});
+console.log(`[Database] Modalità: ${usaTurso ? 'Turso (cloud, persistente)' : 'file locale (NON persistente su Render senza Persistent Disk)'}`);
 
-db.serialize(() => {
-db.run(`CREATE TABLE IF NOT EXISTS users (
+async function initDb() {
+await db.execute(`CREATE TABLE IF NOT EXISTS users (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 email TEXT UNIQUE NOT NULL,
 pin_hash TEXT NOT NULL,
@@ -34,23 +40,22 @@ risposta_hash TEXT NOT NULL,
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )`);
 
-db.run(`CREATE TABLE IF NOT EXISTS errori (
+await db.execute(`CREATE TABLE IF NOT EXISTS errori (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 user_id INTEGER NOT NULL,
 materia TEXT, topic TEXT, question TEXT,
 user_answer TEXT, correct_answer TEXT, explanation TEXT,
-timestamp TEXT,
-FOREIGN KEY(user_id) REFERENCES users(id)
+timestamp TEXT
 )`);
 
-db.run(`CREATE TABLE IF NOT EXISTS valutazioni (
+await db.execute(`CREATE TABLE IF NOT EXISTS valutazioni (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 user_id INTEGER NOT NULL,
 data TEXT, tipo_prova TEXT, materia_unita TEXT,
-punteggio TEXT, tempo TEXT, rateo TEXT, esito TEXT,
-FOREIGN KEY(user_id) REFERENCES users(id)
+punteggio TEXT, tempo TEXT, rateo TEXT, esito TEXT
 )`);
-});
+}
+initDb().catch(e => console.error('[Database] Errore inizializzazione:', e.message));
 
 // Hash con salt per PIN e risposta di sicurezza (scrypt, nessuna dipendenza esterna)
 function hashConSalt(valore) {
@@ -70,7 +75,8 @@ return String(email || '').trim().toLowerCase();
 
 // --- AUTENTICAZIONE ---
 
-app.post('/api/auth/registrati', (req, res) => {
+app.post('/api/auth/registrati', async (req, res) => {
+try {
 const email = normEmail(req.body.email);
 const pin = String(req.body.pin || '');
 const domandaSicurezza = String(req.body.domandaSicurezza || '').trim();
@@ -80,113 +86,147 @@ if (!email || !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ error
 if (!/^\d{4,6}$/.test(pin)) return res.status(400).json({ errore: 'Il PIN deve avere tra 4 e 6 cifre numeriche.' });
 if (!domandaSicurezza || !rispostaSicurezza) return res.status(400).json({ errore: 'Domanda e risposta di sicurezza obbligatorie (servono per recuperare il PIN).' });
 
-db.get('SELECT id FROM users WHERE email = ?', [email], (err, row) => {
-if (err) return res.status(500).json({ errore: 'Errore database.' });
-if (row) return res.status(409).json({ errore: 'Esiste già un account con questa email. Usa "Accedi".' });
+const esistente = await db.execute({ sql: 'SELECT id FROM users WHERE email = ?', args: [email] });
+if (esistente.rows.length > 0) return res.status(409).json({ errore: 'Esiste già un account con questa email. Usa "Accedi".' });
 
 const pinHash = hashConSalt(pin);
 const rispostaHash = hashConSalt(rispostaSicurezza.toLowerCase());
 
-db.run('INSERT INTO users (email, pin_hash, domanda_sicurezza, risposta_hash) VALUES (?,?,?,?)',
-[email, pinHash, domandaSicurezza, rispostaHash], function (err2) {
-if (err2) return res.status(500).json({ errore: 'Errore durante la creazione dell\'account.' });
-res.json({ success: true, user: { id: this.lastID, email } });
-});
-});
+const result = await db.execute({
+sql: 'INSERT INTO users (email, pin_hash, domanda_sicurezza, risposta_hash) VALUES (?,?,?,?)',
+args: [email, pinHash, domandaSicurezza, rispostaHash]
 });
 
-app.post('/api/auth/accedi', (req, res) => {
+res.json({ success: true, user: { id: Number(result.lastInsertRowid), email } });
+} catch (e) {
+console.error('[Auth] Errore registrazione:', e.message);
+res.status(500).json({ errore: 'Errore durante la creazione dell\'account.' });
+}
+});
+
+app.post('/api/auth/accedi', async (req, res) => {
+try {
 const email = normEmail(req.body.email);
 const pin = String(req.body.pin || '');
 
-db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
-if (err) return res.status(500).json({ errore: 'Errore database.' });
+const result = await db.execute({ sql: 'SELECT * FROM users WHERE email = ?', args: [email] });
+const user = result.rows[0];
 if (!user || !verificaHash(pin, user.pin_hash)) return res.status(401).json({ errore: 'Email o PIN errati.' });
-res.json({ success: true, user: { id: user.id, email: user.email } });
-});
+res.json({ success: true, user: { id: Number(user.id), email: user.email } });
+} catch (e) {
+console.error('[Auth] Errore login:', e.message);
+res.status(500).json({ errore: 'Errore database.' });
+}
 });
 
 // Step 1 recupero PIN: restituisce la domanda di sicurezza per l'email indicata
-app.post('/api/auth/domanda-sicurezza', (req, res) => {
+app.post('/api/auth/domanda-sicurezza', async (req, res) => {
+try {
 const email = normEmail(req.body.email);
-db.get('SELECT domanda_sicurezza FROM users WHERE email = ?', [email], (err, user) => {
-if (err) return res.status(500).json({ errore: 'Errore database.' });
+const result = await db.execute({ sql: 'SELECT domanda_sicurezza FROM users WHERE email = ?', args: [email] });
+const user = result.rows[0];
 if (!user) return res.status(404).json({ errore: 'Nessun account trovato con questa email.' });
 res.json({ domandaSicurezza: user.domanda_sicurezza });
-});
+} catch (e) {
+res.status(500).json({ errore: 'Errore database.' });
+}
 });
 
 // Step 2 recupero PIN: verifica la risposta e imposta il nuovo PIN
-app.post('/api/auth/recupera-pin', (req, res) => {
+app.post('/api/auth/recupera-pin', async (req, res) => {
+try {
 const email = normEmail(req.body.email);
 const rispostaSicurezza = String(req.body.rispostaSicurezza || '').trim().toLowerCase();
 const nuovoPin = String(req.body.nuovoPin || '');
 
 if (!/^\d{4,6}$/.test(nuovoPin)) return res.status(400).json({ errore: 'Il nuovo PIN deve avere tra 4 e 6 cifre numeriche.' });
 
-db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
-if (err) return res.status(500).json({ errore: 'Errore database.' });
+const result = await db.execute({ sql: 'SELECT * FROM users WHERE email = ?', args: [email] });
+const user = result.rows[0];
 if (!user || !verificaHash(rispostaSicurezza, user.risposta_hash)) return res.status(401).json({ errore: 'Risposta di sicurezza errata.' });
 
 const nuovoPinHash = hashConSalt(nuovoPin);
-db.run('UPDATE users SET pin_hash = ? WHERE id = ?', [nuovoPinHash, user.id], (err2) => {
-if (err2) return res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+await db.execute({ sql: 'UPDATE users SET pin_hash = ? WHERE id = ?', args: [nuovoPinHash, user.id] });
 res.json({ success: true });
-});
-});
+} catch (e) {
+console.error('[Auth] Errore recupero PIN:', e.message);
+res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+}
 });
 
 // --- SINCRONIZZAZIONE DATI (deposito errori + registro valutazioni) ---
 
 // Carica tutti i dati dell'utente al login
-app.get('/api/dati/:userId', (req, res) => {
+app.get('/api/dati/:userId', async (req, res) => {
+try {
 const userId = parseInt(req.params.userId);
-db.all('SELECT * FROM errori WHERE user_id = ? ORDER BY id DESC', [userId], (err, errori) => {
-if (err) return res.status(500).json({ errore: 'Errore database.' });
-db.all('SELECT * FROM valutazioni WHERE user_id = ? ORDER BY id DESC', [userId], (err2, valutazioni) => {
-if (err2) return res.status(500).json({ errore: 'Errore database.' });
+const erroriResult = await db.execute({ sql: 'SELECT * FROM errori WHERE user_id = ? ORDER BY id DESC', args: [userId] });
+const valutazioniResult = await db.execute({ sql: 'SELECT * FROM valutazioni WHERE user_id = ? ORDER BY id DESC', args: [userId] });
+
 res.json({
-errori: errori.map(e => ({ id: e.id, materia: e.materia, topic: e.topic, question: e.question, userAnswer: e.user_answer, correctAnswer: e.correct_answer, explanation: e.explanation, timestamp: e.timestamp })),
-valutazioni: valutazioni.map(v => ({ data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+errori: erroriResult.rows.map(e => ({ id: Number(e.id), materia: e.materia, topic: e.topic, question: e.question, userAnswer: e.user_answer, correctAnswer: e.correct_answer, explanation: e.explanation, timestamp: e.timestamp })),
+valutazioni: valutazioniResult.rows.map(v => ({ data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
 });
-});
-});
+} catch (e) {
+console.error('[Dati] Errore caricamento:', e.message);
+res.status(500).json({ errore: 'Errore database.' });
+}
 });
 
 // Aggiunge nuovi errori dopo un'esercitazione
-app.post('/api/dati/errori', (req, res) => {
+app.post('/api/dati/errori', async (req, res) => {
+try {
 const { userId, nuoviErrori } = req.body;
 if (!userId || !Array.isArray(nuoviErrori) || nuoviErrori.length === 0) return res.json({ success: true });
 
-const stmt = db.prepare('INSERT INTO errori (user_id, materia, topic, question, user_answer, correct_answer, explanation, timestamp) VALUES (?,?,?,?,?,?,?,?)');
-nuoviErrori.forEach(e => {
-stmt.run(userId, e.materia, e.topic, e.question, e.userAnswer, e.correctAnswer, e.explanation, e.timestamp);
+for (const e of nuoviErrori) {
+await db.execute({
+sql: 'INSERT INTO errori (user_id, materia, topic, question, user_answer, correct_answer, explanation, timestamp) VALUES (?,?,?,?,?,?,?,?)',
+args: [userId, e.materia, e.topic, e.question, e.userAnswer, e.correctAnswer, e.explanation, e.timestamp]
 });
-stmt.finalize(err => {
-if (err) return res.status(500).json({ errore: 'Errore salvataggio errori.' });
+}
 res.json({ success: true });
-});
+} catch (e) {
+console.error('[Dati] Errore salvataggio errori:', e.message);
+res.status(500).json({ errore: 'Errore salvataggio errori.' });
+}
 });
 
 // Elimina un errore dal deposito (dopo averlo "spulciato" e ripassato)
-app.delete('/api/dati/errori/:id', (req, res) => {
-db.run('DELETE FROM errori WHERE id = ?', [req.params.id], err => {
-if (err) return res.status(500).json({ errore: 'Errore eliminazione.' });
+app.delete('/api/dati/errori/:id', async (req, res) => {
+try {
+await db.execute({ sql: 'DELETE FROM errori WHERE id = ?', args: [req.params.id] });
 res.json({ success: true });
-});
+} catch (e) {
+res.status(500).json({ errore: 'Errore eliminazione.' });
+}
 });
 
 // Registra una nuova valutazione completata
-app.post('/api/dati/valutazione', (req, res) => {
+app.post('/api/dati/valutazione', async (req, res) => {
+try {
 const { userId, valutazione } = req.body;
 if (!userId || !valutazione) return res.status(400).json({ errore: 'Dati mancanti.' });
 
-db.run('INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, esito) VALUES (?,?,?,?,?,?,?,?)',
-[userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.esito],
-err => {
-if (err) return res.status(500).json({ errore: 'Errore salvataggio valutazione.' });
-res.json({ success: true });
+await db.execute({
+sql: 'INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, esito) VALUES (?,?,?,?,?,?,?,?)',
+args: [userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.esito]
 });
+res.json({ success: true });
+} catch (e) {
+console.error('[Dati] Errore salvataggio valutazione:', e.message);
+res.status(500).json({ errore: 'Errore salvataggio valutazione.' });
+}
+});
+
+// Diagnostica: verifica se il database è configurato su Turso o su file locale
+app.get('/api/db-health', async (req, res) => {
+try {
+await db.execute('SELECT 1');
+res.json({ modalita: usaTurso ? 'Turso (persistente)' : 'file locale (NON persistente su Render senza Persistent Disk)', connesso: true });
+} catch (e) {
+res.json({ modalita: usaTurso ? 'Turso (persistente)' : 'file locale', connesso: false, errore: e.message });
+}
 });
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -228,7 +268,6 @@ console.error('[Gemini] Risposta non-JSON, status', res.statusCode, ':', data.sl
 return callback(`Risposta non valida da Gemini (status ${res.statusCode}).`, null);
 }
 
-// Google ha risposto con un errore esplicito (chiave non valida, modello inesistente, quota, ecc.)
 if (parsed.error) {
 console.error('[Gemini] Errore API, status', res.statusCode, ':', JSON.stringify(parsed.error));
 return callback(`Gemini API (status ${res.statusCode}): ${parsed.error.message || 'errore sconosciuto'}`, null);
@@ -238,7 +277,6 @@ if (parsed.candidates && parsed.candidates[0] && parsed.candidates[0].content &&
 return callback(null, parsed.candidates[0].content.parts[0].text);
 }
 
-// Caso tipico: risposta bloccata dai filtri di sicurezza (finishReason SAFETY, ecc.)
 const finishReason = parsed.candidates && parsed.candidates[0] ? parsed.candidates[0].finishReason : null;
 console.error('[Gemini] Risposta senza testo utilizzabile:', JSON.stringify(parsed).slice(0, 500));
 callback(`Risposta Gemini vuota${finishReason ? ' (motivo: ' + finishReason + ')' : ''}.`, null);
