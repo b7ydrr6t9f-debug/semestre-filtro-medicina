@@ -16,10 +16,90 @@
       color: #2563eb;
       font-weight: 600;
     }
+    .authtab-active {
+      background: white;
+      color: #4338ca;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
 
+  <!-- OVERLAY AUTENTICAZIONE (Accedi / Crea Account / Recupera PIN) -->
+  <div id="auth-overlay" class="fixed inset-0 bg-indigo-950 flex items-center justify-center p-4 z-[100]">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6 justify-center">
+        <i data-lucide="graduation-cap" class="w-8 h-8 text-indigo-600"></i>
+        <h1 class="text-lg font-bold text-slate-900 text-center">Semestre Filtro Medicina 2026</h1>
+      </div>
+
+      <!-- Sotto-tab: Accedi / Crea Account / Recupera PIN -->
+      <div class="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-lg mb-6 text-xs sm:text-sm font-semibold">
+        <button onclick="switchAuthTab('accedi')" id="authtab-accedi" class="py-2 rounded-md transition">Accedi</button>
+        <button onclick="switchAuthTab('registrati')" id="authtab-registrati" class="py-2 rounded-md transition">Crea Account</button>
+        <button onclick="switchAuthTab('recupera')" id="authtab-recupera" class="py-2 rounded-md transition">Recupera PIN</button>
+      </div>
+
+      <p id="auth-errore" class="hidden text-sm text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-3 mb-4"></p>
+      <p id="auth-successo" class="hidden text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-3 mb-4"></p>
+
+      <!-- FORM ACCEDI -->
+      <div id="auth-form-accedi" class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email</label>
+          <input type="email" id="accedi-email" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="tuamail@esempio.it">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">PIN</label>
+          <input type="password" inputmode="numeric" id="accedi-pin" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Il tuo PIN">
+        </div>
+        <button onclick="accedi()" id="btn-accedi" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition">Accedi</button>
+      </div>
+
+      <!-- FORM CREA ACCOUNT -->
+      <div id="auth-form-registrati" class="hidden space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email</label>
+          <input type="email" id="registrati-email" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="tuamail@esempio.it">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">PIN (4-6 cifre numeriche)</label>
+          <input type="password" inputmode="numeric" id="registrati-pin" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Scegli un PIN">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Domanda di sicurezza <span class="normal-case font-normal text-slate-400">(per recuperare il PIN)</span></label>
+          <input type="text" id="registrati-domanda" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Es. Nome del tuo primo animale?">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Risposta</label>
+          <input type="text" id="registrati-risposta" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="La tua risposta">
+        </div>
+        <button onclick="registrati()" id="btn-registrati" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition">Crea Account</button>
+      </div>
+
+      <!-- FORM RECUPERA PIN -->
+      <div id="auth-form-recupera" class="hidden space-y-3">
+        <div id="recupera-step1">
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email</label>
+          <input type="email" id="recupera-email" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none mb-3" placeholder="tuamail@esempio.it">
+          <button onclick="cercaDomandaSicurezza()" id="btn-recupera-step1" class="w-full py-3 bg-slate-700 hover:bg-slate-800 text-white font-bold rounded-lg shadow transition">Continua</button>
+        </div>
+        <div id="recupera-step2" class="hidden space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1" id="recupera-domanda-label">Domanda di sicurezza</label>
+            <input type="text" id="recupera-risposta" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="La tua risposta">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nuovo PIN (4-6 cifre)</label>
+            <input type="password" inputmode="numeric" id="recupera-nuovo-pin" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Nuovo PIN">
+          </div>
+          <button onclick="recuperaPin()" id="btn-recupera-step2" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition">Imposta Nuovo PIN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="app-content" class="hidden contents">
   <!-- Header -->
   <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -30,10 +110,14 @@
           <p class="text-xs text-indigo-200">Piattaforma di Preparazione & Simulazione Esami</p>
         </div>
       </div>
-      <div class="flex items-center space-x-2 bg-indigo-800 px-3 py-1.5 rounded-lg text-sm">
-        <i data-lucide="key" class="w-4 h-4 text-emerald-400"></i>
-        <span class="text-xs text-indigo-200">API Key Server:</span>
-        <span class="font-mono text-emerald-400 font-semibold">Configurata</span>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center space-x-2 bg-indigo-800 px-3 py-1.5 rounded-lg text-sm">
+          <i data-lucide="user-circle" class="w-4 h-4 text-emerald-400"></i>
+          <span class="font-mono text-indigo-100 text-xs sm:text-sm" id="header-user-email">-</span>
+        </div>
+        <button onclick="logout()" class="flex items-center gap-1.5 bg-indigo-800 hover:bg-rose-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
+          <i data-lucide="log-out" class="w-4 h-4"></i> Esci
+        </button>
       </div>
     </div>
     
@@ -156,11 +240,14 @@
         </div>
 
         <div id="review-container" class="hidden space-y-6">
-          <!-- Auto-valutazione domande a completamento -->
+          <!-- Riepilogo correzione automatica, popolato via JS -->
         </div>
 
-        <div class="bg-white p-4 rounded-xl border border-slate-200 flex justify-end">
-          <button onclick="submitQuiz()" id="btn-submit-quiz" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow transition flex items-center gap-2">
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col sm:flex-row justify-end gap-3">
+          <button onclick="annullaRisposte()" id="btn-annulla-risposte" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition flex items-center justify-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Annulla Risposte
+          </button>
+          <button onclick="submitQuiz()" id="btn-submit-quiz" class="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow transition flex items-center justify-center gap-2">
             <i data-lucide="check-circle" class="w-5 h-5"></i>
             Concludi e Calcola Punteggio
           </button>
@@ -181,9 +268,21 @@
           <!-- Riepilogo errori per argomento, renderizzato via JS -->
         </div>
 
-        <button onclick="generaTestDeposito()" id="btn-generate-deposito" class="mt-4 w-full md:w-auto px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
-          <i data-lucide="refresh-cw" class="w-4 h-4"></i> Genera Test di Recupero dagli Errori
-        </button>
+        <div class="mt-4 flex flex-col sm:flex-row gap-3">
+          <button onclick="generaTestDeposito()" id="btn-generate-deposito" class="flex-1 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-medium rounded-lg shadow transition flex items-center justify-center gap-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i> Genera Test di Recupero dagli Errori
+          </button>
+          <button onclick="toggleDepositoDettaglio()" id="btn-spulcia-deposito" class="flex-1 px-6 py-3 bg-white border-2 border-slate-300 hover:bg-slate-50 text-slate-700 font-medium rounded-lg transition flex items-center justify-center gap-2">
+            <i data-lucide="list" class="w-4 h-4"></i> Spulcia Deposito (elenco dettagliato)
+          </button>
+        </div>
+      </div>
+
+      <div id="deposito-dettaglio" class="hidden bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
+        <h3 class="font-bold text-slate-900 flex items-center gap-2"><i data-lucide="search" class="w-4 h-4 text-indigo-600"></i> Elenco errori registrati</h3>
+        <div id="deposito-dettaglio-lista" class="space-y-3">
+          <!-- Elenco dettagliato errori, renderizzato via JS -->
+        </div>
       </div>
     </section>
 
@@ -260,6 +359,7 @@
     </section>
 
   </main>
+  </div>
 
   <script>
     // DATA STORE SYLLABUS UFFICIALI DALLO STAMPATO
@@ -537,22 +637,182 @@
       }
     };
 
-    // REGISTRO VALUTAZIONI & REGISTRO ERRORI (LOCALSTORAGE)
-    let valutazioni = JSON.parse(localStorage.getItem('med_valutazioni') || '[]');
-    let errori = JSON.parse(localStorage.getItem('med_errori') || '[]');
+    // STATO UTENTE, REGISTRO VALUTAZIONI E REGISTRO ERRORI (SINCRONIZZATI CON IL SERVER)
+    let currentUser = null;
+    let valutazioni = [];
+    let errori = [];
     let currentQuizData = null;
     let timerInterval = null;
     let secondsElapsed = 0;
 
-    // INIZIALIZZAZIONE
+    // INIZIALIZZAZIONE: se c'è un utente salvato, entra subito; altrimenti mostra l'accesso
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
+      const savedUser = JSON.parse(localStorage.getItem('med_user') || 'null');
+      if (savedUser && savedUser.id && savedUser.email) {
+        avviaApp(savedUser);
+      } else {
+        switchAuthTab('accedi');
+      }
+    });
+
+    // AVVIA L'APP DOPO IL LOGIN: carica i dati dell'utente dal server e mostra l'interfaccia
+    async function avviaApp(user) {
+      currentUser = user;
+      localStorage.setItem('med_user', JSON.stringify(user));
+      document.getElementById('header-user-email').textContent = user.email;
+
+      try {
+        await ricaricaDatiServer();
+      } catch (e) {
+        errori = [];
+        valutazioni = [];
+      }
+
+      document.getElementById('auth-overlay').classList.add('hidden');
+      document.getElementById('app-content').classList.remove('hidden');
+
       loadMateria('biologia');
       updateSimUnitaOptions();
       renderValutazioniTable();
       renderDepositoRiepilogo();
       renderLezioniSuggerite();
-    });
+      lucide.createIcons();
+    }
+
+    function logout() {
+      localStorage.removeItem('med_user');
+      location.reload();
+    }
+
+    // --- GESTIONE SOTTO-TAB DI AUTENTICAZIONE ---
+    function switchAuthTab(tab) {
+      ['accedi', 'registrati', 'recupera'].forEach(t => {
+        document.getElementById(`auth-form-${t}`).classList.add('hidden');
+        document.getElementById(`authtab-${t}`).classList.remove('authtab-active');
+      });
+      document.getElementById(`auth-form-${tab}`).classList.remove('hidden');
+      document.getElementById(`authtab-${tab}`).classList.add('authtab-active');
+      document.getElementById('recupera-step1').classList.remove('hidden');
+      document.getElementById('recupera-step2').classList.add('hidden');
+      nascondiMessaggiAuth();
+    }
+
+    function mostraErroreAuth(msg) {
+      const el = document.getElementById('auth-errore');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      document.getElementById('auth-successo').classList.add('hidden');
+    }
+    function mostraSuccessoAuth(msg) {
+      const el = document.getElementById('auth-successo');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+      document.getElementById('auth-errore').classList.add('hidden');
+    }
+    function nascondiMessaggiAuth() {
+      document.getElementById('auth-errore').classList.add('hidden');
+      document.getElementById('auth-successo').classList.add('hidden');
+    }
+
+    // ACCEDI CON EMAIL + PIN
+    async function accedi() {
+      const email = document.getElementById('accedi-email').value.trim();
+      const pin = document.getElementById('accedi-pin').value.trim();
+      if (!email || !pin) return mostraErroreAuth('Inserisci email e PIN.');
+
+      const btn = document.getElementById('btn-accedi');
+      btn.disabled = true; btn.textContent = 'Accesso in corso...';
+      try {
+        const res = await fetch('/api/auth/accedi', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, pin })
+        });
+        const data = await res.json();
+        if (!res.ok) { mostraErroreAuth(data.errore); return; }
+        await avviaApp(data.user);
+      } catch (e) {
+        mostraErroreAuth('Impossibile contattare il server.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Accedi';
+      }
+    }
+
+    // CREA UN NUOVO ACCOUNT (EMAIL + PIN + DOMANDA DI SICUREZZA)
+    async function registrati() {
+      const email = document.getElementById('registrati-email').value.trim();
+      const pin = document.getElementById('registrati-pin').value.trim();
+      const domandaSicurezza = document.getElementById('registrati-domanda').value.trim();
+      const rispostaSicurezza = document.getElementById('registrati-risposta').value.trim();
+      if (!email || !pin || !domandaSicurezza || !rispostaSicurezza) return mostraErroreAuth('Compila tutti i campi.');
+
+      const btn = document.getElementById('btn-registrati');
+      btn.disabled = true; btn.textContent = 'Creazione account...';
+      try {
+        const res = await fetch('/api/auth/registrati', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, pin, domandaSicurezza, rispostaSicurezza })
+        });
+        const data = await res.json();
+        if (!res.ok) { mostraErroreAuth(data.errore); return; }
+        await avviaApp(data.user);
+      } catch (e) {
+        mostraErroreAuth('Impossibile contattare il server.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Crea Account';
+      }
+    }
+
+    // RECUPERO PIN - STEP 1: cerca la domanda di sicurezza associata all'email
+    async function cercaDomandaSicurezza() {
+      const email = document.getElementById('recupera-email').value.trim();
+      if (!email) return mostraErroreAuth('Inserisci la tua email.');
+
+      const btn = document.getElementById('btn-recupera-step1');
+      btn.disabled = true; btn.textContent = 'Ricerca in corso...';
+      try {
+        const res = await fetch('/api/auth/domanda-sicurezza', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (!res.ok) { mostraErroreAuth(data.errore); return; }
+        document.getElementById('recupera-domanda-label').textContent = data.domandaSicurezza;
+        document.getElementById('recupera-step1').classList.add('hidden');
+        document.getElementById('recupera-step2').classList.remove('hidden');
+        nascondiMessaggiAuth();
+      } catch (e) {
+        mostraErroreAuth('Impossibile contattare il server.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Continua';
+      }
+    }
+
+    // RECUPERO PIN - STEP 2: verifica la risposta e imposta il nuovo PIN
+    async function recuperaPin() {
+      const email = document.getElementById('recupera-email').value.trim();
+      const rispostaSicurezza = document.getElementById('recupera-risposta').value.trim();
+      const nuovoPin = document.getElementById('recupera-nuovo-pin').value.trim();
+      if (!rispostaSicurezza || !nuovoPin) return mostraErroreAuth('Compila risposta e nuovo PIN.');
+
+      const btn = document.getElementById('btn-recupera-step2');
+      btn.disabled = true; btn.textContent = 'Aggiornamento...';
+      try {
+        const res = await fetch('/api/auth/recupera-pin', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, rispostaSicurezza, nuovoPin })
+        });
+        const data = await res.json();
+        if (!res.ok) { mostraErroreAuth(data.errore); return; }
+        switchAuthTab('accedi');
+        document.getElementById('accedi-email').value = email;
+        mostraSuccessoAuth('PIN aggiornato! Ora puoi accedere con il nuovo PIN.');
+      } catch (e) {
+        mostraErroreAuth('Impossibile contattare il server.');
+      } finally {
+        btn.disabled = false; btn.textContent = 'Imposta Nuovo PIN';
+      }
+    }
 
     // SWITCH TAB
     function switchTab(tabName) {
@@ -832,117 +1092,96 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
     }
 
     // FASE 1: CORREGGE AUTOMATICAMENTE LE MCQ, POI MOSTRA L'AUTO-VALUTAZIONE DELLE DOMANDE A COMPLETAMENTO
-    function submitQuiz() {
-      clearInterval(timerInterval);
+    // NORMALIZZA UN TESTO PER IL CONFRONTO (minuscolo, senza accenti/punteggiatura)
+    function normalizzaTesto(s) {
+      return String(s || '')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // rimuove accenti
+        .replace(/[^\w\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
 
-      currentQuizData.mcqRisultati = { esatte: 0, errate: 0, omesse: 0 };
-      const completamentoIdx = [];
+    // DISTANZA DI LEVENSHTEIN (per tollerare piccoli errori di battitura)
+    function levenshtein(a, b) {
+      const m = a.length, n = b.length;
+      if (m === 0) return n;
+      if (n === 0) return m;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j - 1], dp[i - 1][j], dp[i][j - 1]);
+        }
+      }
+      return dp[m][n];
+    }
+
+    // CORREZIONE AUTOMATICA DI UNA DOMANDA A COMPLETAMENTO (tollerante a piccole variazioni)
+    function correttoCompletamento(rispostaUtente, rispostaAttesa) {
+      const a = normalizzaTesto(rispostaUtente);
+      const b = normalizzaTesto(rispostaAttesa);
+      if (!a) return false;
+      if (a === b) return true;
+      if (a.length >= 4 && b.includes(a)) return true;
+      if (b.length >= 4 && a.includes(b)) return true;
+      const maxLen = Math.max(a.length, b.length);
+      if (maxLen === 0) return false;
+      return levenshtein(a, b) <= Math.max(1, Math.floor(maxLen * 0.25));
+    }
+
+    // AZZERA TUTTE LE RISPOSTE DATE FINORA, SENZA RIGENERARE LE DOMANDE
+    function annullaRisposte() {
+      if (!currentQuizData) return;
+      currentQuizData.questions.forEach((q, idx) => {
+        if (q.type === 'completamento') {
+          const el = document.getElementById(`completion_${idx}`);
+          if (el) el.value = '';
+        } else {
+          document.querySelectorAll(`input[name="question_${idx}"]`).forEach(r => r.checked = false);
+        }
+      });
+    }
+
+    // CORREGGE TUTTO IN AUTOMATICO (MCQ + COMPLETAMENTO) E CALCOLA IL PUNTEGGIO
+    async function submitQuiz() {
+      clearInterval(timerInterval);
 
       currentQuizData.questions.forEach((q, idx) => {
         if (q.type === 'completamento') {
-          completamentoIdx.push(idx);
-          return;
-        }
-        const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
-        if (!selected) {
-          currentQuizData.mcqRisultati.omesse++;
-          q._esito = 'omessa';
+          const inputEl = document.getElementById(`completion_${idx}`);
+          const userVal = inputEl ? inputEl.value.trim() : '';
+          q._userAnswerText = userVal;
+          q._esito = !userVal ? 'omessa' : (correttoCompletamento(userVal, q.correctAnswer) ? 'esatta' : 'errata');
         } else {
-          const val = parseInt(selected.value);
-          q._userAnswerText = q.options[val];
-          if (val === q.correctIndex) {
-            currentQuizData.mcqRisultati.esatte++;
-            q._esito = 'esatta';
+          const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
+          if (!selected) {
+            q._esito = 'omessa';
           } else {
-            currentQuizData.mcqRisultati.errate++;
-            q._esito = 'errata';
+            const val = parseInt(selected.value);
+            q._userAnswerText = q.options[val];
+            q._esito = val === q.correctIndex ? 'esatta' : 'errata';
           }
         }
       });
 
-      if (completamentoIdx.length === 0) {
-        finalizeScore();
-        return;
-      }
-
-      // Mostra la fase di auto-valutazione per le domande a completamento
-      document.getElementById('questions-container').classList.add('hidden');
-      const btnSubmit = document.getElementById('btn-submit-quiz');
-      btnSubmit.classList.add('hidden');
-
-      const reviewContainer = document.getElementById('review-container');
-      reviewContainer.classList.remove('hidden');
-      reviewContainer.innerHTML = `
-        <div class="bg-amber-50 border border-amber-200 text-amber-900 text-sm p-4 rounded-xl">
-          <strong>Auto-valutazione domande a completamento.</strong> Confronta la tua risposta con quella attesa e segnala se l'hai considerata corretta.
-        </div>
-      `;
-
-      completamentoIdx.forEach(idx => {
-        const q = currentQuizData.questions[idx];
-        const inputEl = document.getElementById(`completion_${idx}`);
-        q._userAnswerText = inputEl ? inputEl.value.trim() : '';
-
-        reviewContainer.innerHTML += `
-          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3" id="review-item-${idx}">
-            <h4 class="font-bold text-slate-900 text-sm flex gap-2">
-              <span class="text-amber-600 font-mono">Q${idx + 1}.</span> ${q.question}
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-              <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                <span class="block text-xs text-slate-500 uppercase font-semibold mb-1">La tua risposta</span>
-                ${q._userAnswerText || '<em class="text-slate-400">Nessuna risposta</em>'}
-              </div>
-              <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-200">
-                <span class="block text-xs text-emerald-700 uppercase font-semibold mb-1">Risposta attesa</span>
-                ${q.correctAnswer}
-              </div>
-            </div>
-            <p class="text-xs text-slate-500 italic">${q.explanation || ''}</p>
-            <div class="flex gap-2">
-              <button onclick="segnaCompletamento(${idx}, true)" id="btn-corretta-${idx}" class="flex-1 py-2 rounded-lg border-2 border-emerald-300 text-emerald-700 font-semibold text-sm hover:bg-emerald-50 transition">✓ L'avevo presa bene</button>
-              <button onclick="segnaCompletamento(${idx}, false)" id="btn-sbagliata-${idx}" class="flex-1 py-2 rounded-lg border-2 border-rose-300 text-rose-700 font-semibold text-sm hover:bg-rose-50 transition">✗ Sbagliata / omessa</button>
-            </div>
-          </div>
-        `;
-      });
-
-      reviewContainer.innerHTML += `
-        <div class="bg-white p-4 rounded-xl border border-slate-200 flex justify-end">
-          <button onclick="finalizeScore()" id="btn-finalize" disabled class="px-8 py-3 bg-slate-300 text-slate-500 font-bold rounded-lg shadow transition flex items-center gap-2 cursor-not-allowed">
-            <i data-lucide="check-circle" class="w-5 h-5"></i> Valuta prima tutte le domande sopra
-          </button>
-        </div>
-      `;
-
-      lucide.createIcons();
-      window.scrollTo({ top: reviewContainer.offsetTop - 80, behavior: 'smooth' });
+      await finalizeScore();
     }
 
-    // SEGNA UNA DOMANDA A COMPLETAMENTO COME AUTO-VALUTATA CORRETTA/SBAGLIATA
-    function segnaCompletamento(idx, corretta) {
-      const q = currentQuizData.questions[idx];
-      q._esito = corretta ? 'esatta' : (q._userAnswerText ? 'errata' : 'omessa');
-
-      const item = document.getElementById(`review-item-${idx}`);
-      item.classList.add(corretta ? 'ring-2' : 'ring-2', corretta ? 'ring-emerald-400' : 'ring-rose-400');
-      document.getElementById(`btn-corretta-${idx}`).classList.toggle('bg-emerald-100', corretta);
-      document.getElementById(`btn-sbagliata-${idx}`).classList.toggle('bg-rose-100', !corretta);
-
-      const tuttiValutati = currentQuizData.questions.every(qq => qq.type !== 'completamento' || qq._esito);
-      const btnFinalize = document.getElementById('btn-finalize');
-      if (tuttiValutati) {
-        btnFinalize.disabled = false;
-        btnFinalize.classList.remove('bg-slate-300', 'text-slate-500', 'cursor-not-allowed');
-        btnFinalize.classList.add('bg-emerald-600', 'hover:bg-emerald-700', 'text-white');
-        btnFinalize.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i> Calcola Punteggio Finale`;
-        lucide.createIcons();
-      }
+    // RICARICA ERRORI E VALUTAZIONI DELL'UTENTE LOGGATO DAL SERVER
+    async function ricaricaDatiServer() {
+      const res = await fetch(`/api/dati/${currentUser.id}`);
+      if (!res.ok) throw new Error('Impossibile caricare i dati salvati.');
+      const data = await res.json();
+      errori = data.errori;
+      valutazioni = data.valutazioni;
     }
 
-    // FASE 2: CALCOLA IL PUNTEGGIO FINALE, AGGIORNA IL DEPOSITO ERRORI E SALVA LA VALUTAZIONE
-    function finalizeScore() {
+    // CALCOLA IL PUNTEGGIO FINALE, SALVA GLI ERRORI E LA VALUTAZIONE SUL SERVER (LEGATI ALL'ACCOUNT)
+    async function finalizeScore() {
       let esatte = 0, errate = 0, omesse = 0;
+      const nuoviErrori = [];
 
       currentQuizData.questions.forEach(q => {
         if (q._esito === 'esatta') esatte++;
@@ -950,7 +1189,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         else omesse++;
 
         if (q._esito === 'errata' || q._esito === 'omessa') {
-          errori.push({
+          nuoviErrori.push({
             materia: q.materia || currentQuizData.materia,
             topic: normalizzaTopic(q.topic),
             question: q.question,
@@ -961,10 +1200,6 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
           });
         }
       });
-
-      // Il deposito tiene al massimo le ultime 400 voci
-      if (errori.length > 400) errori = errori.slice(errori.length - 400);
-      localStorage.setItem('med_errori', JSON.stringify(errori));
 
       const punteggioTot = (esatte * 1) - (errate * 0.1);
       const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
@@ -984,8 +1219,21 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         esito: punteggioTot >= (totale * 0.6) ? "Superato" : "Non Superato"
       };
 
-      valutazioni.unshift(nuovaValutazione);
-      localStorage.setItem('med_valutazioni', JSON.stringify(valutazioni));
+      try {
+        await Promise.all([
+          fetch('/api/dati/errori', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: currentUser.id, nuoviErrori })
+          }),
+          fetch('/api/dati/valutazione', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: currentUser.id, valutazione: nuovaValutazione })
+          })
+        ]);
+        await ricaricaDatiServer();
+      } catch (e) {
+        alert("Punteggio calcolato, ma non è stato possibile salvarlo sul server: " + e.message);
+      }
 
       renderValutazioniTable();
       renderDepositoRiepilogo();
@@ -995,11 +1243,58 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 
       document.getElementById('quiz-area').classList.add('hidden');
       document.getElementById('questions-container').innerHTML = '';
-      document.getElementById('questions-container').classList.remove('hidden');
       document.getElementById('review-container').innerHTML = '';
       document.getElementById('review-container').classList.add('hidden');
 
       switchTab('valutazione');
+    }
+
+    // MOSTRA/NASCONDE L'ELENCO DETTAGLIATO DEL DEPOSITO ("SPULCIA DEPOSITO")
+    function toggleDepositoDettaglio() {
+      const box = document.getElementById('deposito-dettaglio');
+      if (box.classList.contains('hidden')) {
+        renderDepositoDettaglioLista();
+        box.classList.remove('hidden');
+      } else {
+        box.classList.add('hidden');
+      }
+    }
+
+    // RENDERIZZA L'ELENCO DETTAGLIATO DI OGNI SINGOLO ERRORE NEL DEPOSITO
+    function renderDepositoDettaglioLista() {
+      const container = document.getElementById('deposito-dettaglio-lista');
+      if (errori.length === 0) {
+        container.innerHTML = `<p class="text-slate-500 text-sm italic">Il deposito è vuoto.</p>`;
+        return;
+      }
+      container.innerHTML = errori.map(e => `
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1.5">
+          <div class="flex justify-between items-start gap-2">
+            <span class="text-xs font-semibold text-indigo-700">${e.materia} — ${e.topic}</span>
+            <button onclick="eliminaErrore(${e.id})" class="text-rose-500 hover:text-rose-700 shrink-0" title="Rimuovi dal deposito">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <p class="text-sm font-medium text-slate-800">${e.question}</p>
+          <p class="text-xs text-slate-600"><strong>La tua risposta:</strong> ${e.userAnswer || '(nessuna risposta)'}</p>
+          <p class="text-xs text-emerald-700"><strong>Risposta corretta:</strong> ${e.correctAnswer}</p>
+          ${e.explanation ? `<p class="text-xs text-slate-500 italic">${e.explanation}</p>` : ''}
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    // RIMUOVE UN SINGOLO ERRORE DAL DEPOSITO (DOPO AVERLO RIPASSATO)
+    async function eliminaErrore(id) {
+      try {
+        await fetch(`/api/dati/errori/${id}`, { method: 'DELETE' });
+        errori = errori.filter(e => e.id !== id);
+        renderDepositoRiepilogo();
+        renderDepositoDettaglioLista();
+        renderLezioniSuggerite();
+      } catch (e) {
+        alert('Errore durante la rimozione dal deposito.');
+      }
     }
 
     // RIEPILOGO DEL DEPOSITO ERRORI (TAB "DEPOSITO FINE SETTIMANA")

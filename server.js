@@ -1,6 +1,8 @@
 const express = require('express');
 const https = require('https');
 const path = require('path');
+const crypto = require('crypto');
+const sqlite3 = require('sqlite3').verbose();
 const app = express();
 
 app.use(express.json());
@@ -11,6 +13,180 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 2. Quando si visita la home page (/), carica public/index.html
 app.get('/', (req, res) => {
 res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ============================================================
+// DATABASE SQLITE (account, deposito errori, registro valutazioni)
+// NOTA: su Render senza un Persistent Disk collegato, il filesystem
+// è EFFIMERO: ad ogni redeploy/riavvio il database viene azzerato.
+// Per una persistenza reale servirebbe un Persistent Disk (a pagamento
+// su Render) montato su questa cartella.
+// ============================================================
+const db = new sqlite3.Database(path.join(__dirname, 'database.sqlite'));
+
+db.serialize(() => {
+db.run(`CREATE TABLE IF NOT EXISTS users (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+email TEXT UNIQUE NOT NULL,
+pin_hash TEXT NOT NULL,
+domanda_sicurezza TEXT NOT NULL,
+risposta_hash TEXT NOT NULL,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)`);
+
+db.run(`CREATE TABLE IF NOT EXISTS errori (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+materia TEXT, topic TEXT, question TEXT,
+user_answer TEXT, correct_answer TEXT, explanation TEXT,
+timestamp TEXT,
+FOREIGN KEY(user_id) REFERENCES users(id)
+)`);
+
+db.run(`CREATE TABLE IF NOT EXISTS valutazioni (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+user_id INTEGER NOT NULL,
+data TEXT, tipo_prova TEXT, materia_unita TEXT,
+punteggio TEXT, tempo TEXT, rateo TEXT, esito TEXT,
+FOREIGN KEY(user_id) REFERENCES users(id)
+)`);
+});
+
+// Hash con salt per PIN e risposta di sicurezza (scrypt, nessuna dipendenza esterna)
+function hashConSalt(valore) {
+const salt = crypto.randomBytes(16).toString('hex');
+const hash = crypto.scryptSync(String(valore), salt, 64).toString('hex');
+return `${salt}:${hash}`;
+}
+function verificaHash(valore, saltHash) {
+const [salt, hash] = (saltHash || '').split(':');
+if (!salt || !hash) return false;
+const verifica = crypto.scryptSync(String(valore), salt, 64).toString('hex');
+return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(verifica, 'hex'));
+}
+function normEmail(email) {
+return String(email || '').trim().toLowerCase();
+}
+
+// --- AUTENTICAZIONE ---
+
+app.post('/api/auth/registrati', (req, res) => {
+const email = normEmail(req.body.email);
+const pin = String(req.body.pin || '');
+const domandaSicurezza = String(req.body.domandaSicurezza || '').trim();
+const rispostaSicurezza = String(req.body.rispostaSicurezza || '').trim();
+
+if (!email || !/^\S+@\S+\.\S+$/.test(email)) return res.status(400).json({ errore: 'Email non valida.' });
+if (!/^\d{4,6}$/.test(pin)) return res.status(400).json({ errore: 'Il PIN deve avere tra 4 e 6 cifre numeriche.' });
+if (!domandaSicurezza || !rispostaSicurezza) return res.status(400).json({ errore: 'Domanda e risposta di sicurezza obbligatorie (servono per recuperare il PIN).' });
+
+db.get('SELECT id FROM users WHERE email = ?', [email], (err, row) => {
+if (err) return res.status(500).json({ errore: 'Errore database.' });
+if (row) return res.status(409).json({ errore: 'Esiste già un account con questa email. Usa "Accedi".' });
+
+const pinHash = hashConSalt(pin);
+const rispostaHash = hashConSalt(rispostaSicurezza.toLowerCase());
+
+db.run('INSERT INTO users (email, pin_hash, domanda_sicurezza, risposta_hash) VALUES (?,?,?,?)',
+[email, pinHash, domandaSicurezza, rispostaHash], function (err2) {
+if (err2) return res.status(500).json({ errore: 'Errore durante la creazione dell\'account.' });
+res.json({ success: true, user: { id: this.lastID, email } });
+});
+});
+});
+
+app.post('/api/auth/accedi', (req, res) => {
+const email = normEmail(req.body.email);
+const pin = String(req.body.pin || '');
+
+db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
+if (err) return res.status(500).json({ errore: 'Errore database.' });
+if (!user || !verificaHash(pin, user.pin_hash)) return res.status(401).json({ errore: 'Email o PIN errati.' });
+res.json({ success: true, user: { id: user.id, email: user.email } });
+});
+});
+
+// Step 1 recupero PIN: restituisce la domanda di sicurezza per l'email indicata
+app.post('/api/auth/domanda-sicurezza', (req, res) => {
+const email = normEmail(req.body.email);
+db.get('SELECT domanda_sicurezza FROM users WHERE email = ?', [email], (err, user) => {
+if (err) return res.status(500).json({ errore: 'Errore database.' });
+if (!user) return res.status(404).json({ errore: 'Nessun account trovato con questa email.' });
+res.json({ domandaSicurezza: user.domanda_sicurezza });
+});
+});
+
+// Step 2 recupero PIN: verifica la risposta e imposta il nuovo PIN
+app.post('/api/auth/recupera-pin', (req, res) => {
+const email = normEmail(req.body.email);
+const rispostaSicurezza = String(req.body.rispostaSicurezza || '').trim().toLowerCase();
+const nuovoPin = String(req.body.nuovoPin || '');
+
+if (!/^\d{4,6}$/.test(nuovoPin)) return res.status(400).json({ errore: 'Il nuovo PIN deve avere tra 4 e 6 cifre numeriche.' });
+
+db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
+if (err) return res.status(500).json({ errore: 'Errore database.' });
+if (!user || !verificaHash(rispostaSicurezza, user.risposta_hash)) return res.status(401).json({ errore: 'Risposta di sicurezza errata.' });
+
+const nuovoPinHash = hashConSalt(nuovoPin);
+db.run('UPDATE users SET pin_hash = ? WHERE id = ?', [nuovoPinHash, user.id], (err2) => {
+if (err2) return res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+res.json({ success: true });
+});
+});
+});
+
+// --- SINCRONIZZAZIONE DATI (deposito errori + registro valutazioni) ---
+
+// Carica tutti i dati dell'utente al login
+app.get('/api/dati/:userId', (req, res) => {
+const userId = parseInt(req.params.userId);
+db.all('SELECT * FROM errori WHERE user_id = ? ORDER BY id DESC', [userId], (err, errori) => {
+if (err) return res.status(500).json({ errore: 'Errore database.' });
+db.all('SELECT * FROM valutazioni WHERE user_id = ? ORDER BY id DESC', [userId], (err2, valutazioni) => {
+if (err2) return res.status(500).json({ errore: 'Errore database.' });
+res.json({
+errori: errori.map(e => ({ id: e.id, materia: e.materia, topic: e.topic, question: e.question, userAnswer: e.user_answer, correctAnswer: e.correct_answer, explanation: e.explanation, timestamp: e.timestamp })),
+valutazioni: valutazioni.map(v => ({ data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+});
+});
+});
+});
+
+// Aggiunge nuovi errori dopo un'esercitazione
+app.post('/api/dati/errori', (req, res) => {
+const { userId, nuoviErrori } = req.body;
+if (!userId || !Array.isArray(nuoviErrori) || nuoviErrori.length === 0) return res.json({ success: true });
+
+const stmt = db.prepare('INSERT INTO errori (user_id, materia, topic, question, user_answer, correct_answer, explanation, timestamp) VALUES (?,?,?,?,?,?,?,?)');
+nuoviErrori.forEach(e => {
+stmt.run(userId, e.materia, e.topic, e.question, e.userAnswer, e.correctAnswer, e.explanation, e.timestamp);
+});
+stmt.finalize(err => {
+if (err) return res.status(500).json({ errore: 'Errore salvataggio errori.' });
+res.json({ success: true });
+});
+});
+
+// Elimina un errore dal deposito (dopo averlo "spulciato" e ripassato)
+app.delete('/api/dati/errori/:id', (req, res) => {
+db.run('DELETE FROM errori WHERE id = ?', [req.params.id], err => {
+if (err) return res.status(500).json({ errore: 'Errore eliminazione.' });
+res.json({ success: true });
+});
+});
+
+// Registra una nuova valutazione completata
+app.post('/api/dati/valutazione', (req, res) => {
+const { userId, valutazione } = req.body;
+if (!userId || !valutazione) return res.status(400).json({ errore: 'Dati mancanti.' });
+
+db.run('INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, esito) VALUES (?,?,?,?,?,?,?,?)',
+[userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.esito],
+err => {
+if (err) return res.status(500).json({ errore: 'Errore salvataggio valutazione.' });
+res.json({ success: true });
+});
 });
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -99,28 +275,6 @@ res.json({ result: risposta });
 });
 });
 
-// Rotte API per la generazione dei test e lezioni
-app.post('/api/genera-test', (req, res) => {
-const { materia, unita } = req.body;
-const prompt = `Crea un test di 31 domande sul programma di ${materia}, nello specifico sull'unità didattica: "${unita}". Fornisci 21 domande a risposta multipla e 10 a risposta aperta, complete di opzioni e soluzioni. Rispondi in formato JSON.`;
-
-chiamaGemini(prompt, (err, risposta) => {
-if (err) return res.status(500).json({ errore: err });
-res.json({ domande: risposta });
-});
-});
-
-app.post('/api/genera-test-fine-settimana', (req, res) => {
-const { errori } = req.body;
-const argomenti = errori.map(e => `${e.materia}: ${e.argomento}`).join(', ');
-const prompt = `Crea un test di recupero del fine settimana incentrato su questi argomenti in cui lo studente ha sbagliato: ${argomenti || "Fisica, Chimica e Biologia generale"}. Rispondi in formato JSON.`;
-
-chiamaGemini(prompt, (err, risposta) => {
-if (err) return res.status(500).json({ errore: err });
-res.json({ domande: risposta });
-});
-});
-
 app.post('/api/genera-lezione', (req, res) => {
 const { argomento, profondita } = req.body;
 const prompt = `Fornisci una lezione di recupero di livello ${profondita} sull'argomento: "${argomento}". Strutturala con introduzione, punti chiave, spiegazione approfondita ed esempi pratici.`;
@@ -133,4 +287,3 @@ res.json({ lezione: risposta });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server attivo sulla porta ${PORT}`));
-
