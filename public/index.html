@@ -362,7 +362,7 @@
   </div>
 
   <script>
-    // DATA STORE SYLLABUS UFFICIALI DALLO STAMPATO
+    // Data store syllabus ufficiali dallo stampato
     const SYLLABUS_DATA = {
       biologia: {
         title: "Biologia",
@@ -637,7 +637,7 @@
       }
     };
 
-    // STATO UTENTE, REGISTRO VALUTAZIONI E REGISTRO ERRORI (SINCRONIZZATI CON IL SERVER)
+    // Stato utente, registro valutazioni e registro errori (sincronizzati con il server)
     let currentUser = null;
     let valutazioni = [];
     let errori = [];
@@ -645,18 +645,19 @@
     let timerInterval = null;
     let secondsElapsed = 0;
 
-    // INIZIALIZZAZIONE: se c'è un utente salvato, entra subito; altrimenti mostra l'accesso
+    // Se c'è già un utente salvato riprende la sessione, altrimenti mostra il login
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       const savedUser = JSON.parse(localStorage.getItem('med_user') || 'null');
-      if (savedUser && savedUser.id && savedUser.email) {
+      if (savedUser && savedUser.id && savedUser.email && savedUser.token) {
         avviaApp(savedUser);
       } else {
+        localStorage.removeItem('med_user');
         switchAuthTab('accedi');
       }
     });
 
-    // AVVIA L'APP DOPO IL LOGIN: carica i dati dell'utente dal server e mostra l'interfaccia
+    // Carica i dati dell'utente dal server e mostra l'interfaccia principale
     async function avviaApp(user) {
       currentUser = user;
       localStorage.setItem('med_user', JSON.stringify(user));
@@ -685,7 +686,20 @@
       location.reload();
     }
 
-    // --- GESTIONE SOTTO-TAB DI AUTENTICAZIONE ---
+    // Wrapper attorno a fetch che allega il token di sessione. Se il server
+    // risponde 401 (sessione mancante o scaduta) riporta l'utente al login
+    // invece di far fallire silenziosamente le chiamate successive.
+    async function authFetch(url, options = {}) {
+      const headers = { ...(options.headers || {}), 'Authorization': `Bearer ${currentUser.token}` };
+      const res = await fetch(url, { ...options, headers });
+      if (res.status === 401) {
+        logout();
+        throw new Error('Sessione scaduta, effettua di nuovo l\'accesso.');
+      }
+      return res;
+    }
+
+    // --- sotto-tab di autenticazione (accedi / crea account / recupera PIN) ---
     function switchAuthTab(tab) {
       ['accedi', 'registrati', 'recupera'].forEach(t => {
         document.getElementById(`auth-form-${t}`).classList.add('hidden');
@@ -715,7 +729,7 @@
       document.getElementById('auth-successo').classList.add('hidden');
     }
 
-    // ACCEDI CON EMAIL + PIN
+    // Accedi con email + PIN
     async function accedi() {
       const email = document.getElementById('accedi-email').value.trim();
       const pin = document.getElementById('accedi-pin').value.trim();
@@ -730,7 +744,7 @@
         });
         const data = await res.json();
         if (!res.ok) { mostraErroreAuth(data.errore); return; }
-        await avviaApp(data.user);
+        await avviaApp({ ...data.user, token: data.token });
       } catch (e) {
         mostraErroreAuth('Impossibile contattare il server.');
       } finally {
@@ -738,7 +752,7 @@
       }
     }
 
-    // CREA UN NUOVO ACCOUNT (EMAIL + PIN + DOMANDA DI SICUREZZA)
+    // Crea un nuovo account (email + PIN + domanda di sicurezza)
     async function registrati() {
       const email = document.getElementById('registrati-email').value.trim();
       const pin = document.getElementById('registrati-pin').value.trim();
@@ -755,7 +769,7 @@
         });
         const data = await res.json();
         if (!res.ok) { mostraErroreAuth(data.errore); return; }
-        await avviaApp(data.user);
+        await avviaApp({ ...data.user, token: data.token });
       } catch (e) {
         mostraErroreAuth('Impossibile contattare il server.');
       } finally {
@@ -763,7 +777,7 @@
       }
     }
 
-    // RECUPERO PIN - STEP 1: cerca la domanda di sicurezza associata all'email
+    // Recupero PIN, step 1: cerca la domanda di sicurezza associata all'email
     async function cercaDomandaSicurezza() {
       const email = document.getElementById('recupera-email').value.trim();
       if (!email) return mostraErroreAuth('Inserisci la tua email.');
@@ -788,7 +802,7 @@
       }
     }
 
-    // RECUPERO PIN - STEP 2: verifica la risposta e imposta il nuovo PIN
+    // Recupero PIN, step 2: verifica la risposta e imposta il nuovo PIN
     async function recuperaPin() {
       const email = document.getElementById('recupera-email').value.trim();
       const rispostaSicurezza = document.getElementById('recupera-risposta').value.trim();
@@ -814,7 +828,7 @@
       }
     }
 
-    // SWITCH TAB
+    // Switch tab
     function switchTab(tabName) {
       ['syllabus', 'simulator', 'deposito', 'lezioni', 'valutazione'].forEach(t => {
         document.getElementById(`sec-${t}`).classList.add('hidden');
@@ -826,7 +840,7 @@
       if (tabName === 'lezioni') renderLezioniSuggerite();
     }
 
-    // CARICA MATERIA NEL TAB SYLLABUS
+    // Carica materia nel tab syllabus
     function loadMateria(materiaKey) {
       ['bio', 'fis', 'chi'].forEach(b => {
         const btn = document.getElementById(`btn-${b}`);
@@ -862,7 +876,7 @@
       container.innerHTML = html;
     }
 
-    // AGGIORNA OPTION UNITA' DIDATTICHE NEL SIMULATORE
+    // Aggiorna option unita' didattiche nel simulatore
     function updateSimUnitaOptions() {
       const matKey = document.getElementById('sim-materia').value;
       const selectUnita = document.getElementById('sim-unita');
@@ -874,6 +888,30 @@
         opt.textContent = `${u.title} (${u.cfu})`;
         selectUnita.appendChild(opt);
       });
+    }
+
+    // Disabilita i bottoni passati e mostra uno spinner su quello attivo;
+    // restituisce una funzione che ripristina tutto allo stato originale.
+    // Evita di ripetere lo stesso blocco disabled/innerHTML in ogni azione async.
+    function impostaCaricamento(bottoni, bottoneAttivo, testo) {
+      const originale = bottoneAttivo.innerHTML;
+      bottoni.forEach(b => b.disabled = true);
+      bottoneAttivo.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> ${testo}`;
+      lucide.createIcons();
+      return () => {
+        bottoni.forEach(b => b.disabled = false);
+        bottoneAttivo.innerHTML = originale;
+        lucide.createIcons();
+      };
+    }
+
+    // Neutralizza i caratteri HTML prima di iniettare in innerHTML testo che
+    // arriva dal modello AI (domande, spiegazioni, lezioni): senza, una
+    // risposta che contenesse markup verrebbe eseguita come HTML nella pagina.
+    function escapeHtml(testo) {
+      const div = document.createElement('div');
+      div.textContent = testo ?? '';
+      return div.innerHTML;
     }
 
     // Estrae il JSON pulito da una risposta testuale di Gemini (rimuove eventuali fence ```json)
@@ -890,7 +928,7 @@
       return (t || 'Argomento generico').trim();
     }
 
-    // COSTRUISCE IL PROMPT PER UN'ESERCITAZIONE SU UN'UNITA' DIDATTICA (31 domande: 21 mcq + 10 completamento)
+    // Costruisce il prompt per un'esercitazione su un'unita' didattica (31 domande: 21 MCQ + 10 completamento)
     function buildEsercitazionePrompt(materiaObj, unitaObj) {
       return `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
 Crea un'esercitazione di ESATTAMENTE 31 quesiti basati ESCLUSIVAMENTE sul seguente programma dell'Unità Didattica:
@@ -918,7 +956,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 }`;
     }
 
-    // COSTRUISCE IL PROMPT PER IL TEST DI RECUPERO BASATO SUGLI ERRORI DEL DEPOSITO
+    // Costruisce il prompt per il test di recupero basato sugli errori del deposito
     function buildRecuperoPrompt(argomentiErrori, nMcq, nCompletamento) {
       return `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
 Crea un test di recupero mirato sui seguenti argomenti in cui lo studente ha sbagliato in passato (tra parentesi il numero di errori registrati su ciascuno):
@@ -936,9 +974,9 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 }`;
     }
 
-    // CHIAMA IL BACKEND, RESTITUISCE IL QUIZ PARSATO O LANCIA UN ERRORE CHIARO
+    // Chiama il backend, restituisce il quiz parsato o lancia un errore chiaro
     async function chiedaQuizAlServer(promptText) {
-      const res = await fetch('/api/generate-quiz', {
+      const res = await authFetch('/api/generate-quiz', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: promptText })
@@ -952,7 +990,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       }
     }
 
-    // GENERA UN'ESERCITAZIONE (31 DOMANDE) SULL'UNITA' DIDATTICA SELEZIONATA
+    // Genera un'esercitazione (31 domande) sull'unita' didattica selezionata
     async function generateQuiz() {
       const matKey = document.getElementById('sim-materia').value;
       const unitaId = parseInt(document.getElementById('sim-unita').value);
@@ -960,9 +998,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       const unitaObj = materiaObj.unita.find(u => u.id === unitaId);
 
       const btnGen = document.getElementById('btn-generate');
-      btnGen.disabled = true;
-      btnGen.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione delle 31 domande in corso (può richiedere qualche secondo)...`;
-      lucide.createIcons();
+      const ripristina = impostaCaricamento([btnGen], btnGen, 'Generazione delle 31 domande in corso (può richiedere qualche secondo)...');
 
       try {
         const parsedQuiz = await chiedaQuizAlServer(buildEsercitazionePrompt(materiaObj, unitaObj));
@@ -975,13 +1011,11 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       } catch (err) {
         alert("Si è verificato un errore: " + err.message);
       } finally {
-        btnGen.disabled = false;
-        btnGen.innerHTML = `<i data-lucide="play" class="w-4 h-4"></i> Genera Esercitazione (31 domande)`;
-        lucide.createIcons();
+        ripristina();
       }
     }
 
-    // GENERA UN TEST DI RECUPERO DAL DEPOSITO ERRORI
+    // Genera un test di recupero dal deposito errori
     async function generaTestDeposito() {
       if (errori.length === 0) {
         alert("Il deposito è vuoto: completa qualche esercitazione per iniziare a registrare i tuoi errori.");
@@ -1001,9 +1035,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       const nCompletamento = nTotal - nMcq;
 
       const btn = document.getElementById('btn-generate-deposito');
-      btn.disabled = true;
-      btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione test di recupero in corso...`;
-      lucide.createIcons();
+      const ripristina = impostaCaricamento([btn], btn, 'Generazione test di recupero in corso...');
 
       try {
         const parsedQuiz = await chiedaQuizAlServer(buildRecuperoPrompt(argomentiTesto, nMcq, nCompletamento));
@@ -1018,13 +1050,11 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       } catch (err) {
         alert("Si è verificato un errore: " + err.message);
       } finally {
-        btn.disabled = false;
-        btn.innerHTML = `<i data-lucide="refresh-cw" class="w-4 h-4"></i> Genera Test di Recupero dagli Errori`;
-        lucide.createIcons();
+        ripristina();
       }
     }
 
-    // RENDERIZZA INTERFACCIA QUIZ (GESTISCE MCQ E COMPLETAMENTO)
+    // Renderizza interfaccia quiz (gestisce MCQ e completamento)
     function renderQuizUI() {
       document.getElementById('quiz-area').classList.remove('hidden');
       document.getElementById('quiz-title-display').textContent = `${currentQuizData.materia} - ${currentQuizData.unitaTitle}`;
@@ -1056,7 +1086,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
             optionsHtml += `
               <label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
                 <input type="radio" name="question_${idx}" value="${oIdx}" class="mt-1 text-indigo-600 focus:ring-indigo-500">
-                <span class="text-sm text-slate-800">${String.fromCharCode(65 + oIdx)}) ${opt}</span>
+                <span class="text-sm text-slate-800">${String.fromCharCode(65 + oIdx)}) ${escapeHtml(opt)}</span>
               </label>
             `;
           });
@@ -1067,7 +1097,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
           <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
             <div class="flex justify-between items-start gap-3">
               <h4 class="font-bold text-slate-900 text-base flex gap-2">
-                <span class="text-indigo-600 font-mono">Q${idx + 1}.</span> ${q.question}
+                <span class="text-indigo-600 font-mono">Q${idx + 1}.</span> ${escapeHtml(q.question)}
               </h4>
               ${badge}
             </div>
@@ -1091,8 +1121,8 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       window.scrollTo({ top: document.getElementById('quiz-area').offsetTop - 80, behavior: 'smooth' });
     }
 
-    // FASE 1: CORREGGE AUTOMATICAMENTE LE MCQ, POI MOSTRA L'AUTO-VALUTAZIONE DELLE DOMANDE A COMPLETAMENTO
-    // NORMALIZZA UN TESTO PER IL CONFRONTO (minuscolo, senza accenti/punteggiatura)
+    // Corregge automaticamente le domande a scelta multipla
+    // Normalizza un testo per il confronto: minuscolo, senza accenti né punteggiatura
     function normalizzaTesto(s) {
       return String(s || '')
         .toLowerCase()
@@ -1102,7 +1132,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         .trim();
     }
 
-    // DISTANZA DI LEVENSHTEIN (per tollerare piccoli errori di battitura)
+    // Distanza di Levenshtein, per tollerare piccoli errori di battitura
     function levenshtein(a, b) {
       const m = a.length, n = b.length;
       if (m === 0) return n;
@@ -1118,7 +1148,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       return dp[m][n];
     }
 
-    // CORREZIONE AUTOMATICA DI UNA DOMANDA A COMPLETAMENTO (tollerante a piccole variazioni)
+    // Corregge una domanda a completamento tollerando piccole variazioni di battitura
     function correttoCompletamento(rispostaUtente, rispostaAttesa) {
       const a = normalizzaTesto(rispostaUtente);
       const b = normalizzaTesto(rispostaAttesa);
@@ -1131,7 +1161,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       return levenshtein(a, b) <= Math.max(1, Math.floor(maxLen * 0.25));
     }
 
-    // AZZERA TUTTE LE RISPOSTE DATE FINORA, SENZA RIGENERARE LE DOMANDE
+    // Azzera tutte le risposte date finora, senza rigenerare le domande
     function annullaRisposte() {
       if (!currentQuizData) return;
       currentQuizData.questions.forEach((q, idx) => {
@@ -1144,7 +1174,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       });
     }
 
-    // CORREGGE TUTTO IN AUTOMATICO (MCQ + COMPLETAMENTO) E CALCOLA IL PUNTEGGIO
+    // Corregge tutto in automatico (MCQ + completamento) e calcola il punteggio
     async function submitQuiz() {
       clearInterval(timerInterval);
 
@@ -1169,16 +1199,16 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       await finalizeScore();
     }
 
-    // RICARICA ERRORI E VALUTAZIONI DELL'UTENTE LOGGATO DAL SERVER
+    // Ricarica errori e valutazioni dell'utente loggato dal server
     async function ricaricaDatiServer() {
-      const res = await fetch(`/api/dati/${currentUser.id}`);
+      const res = await authFetch(`/api/dati/${currentUser.id}`);
       if (!res.ok) throw new Error('Impossibile caricare i dati salvati.');
       const data = await res.json();
       errori = data.errori;
       valutazioni = data.valutazioni;
     }
 
-    // CALCOLA IL PUNTEGGIO FINALE, SALVA GLI ERRORI E LA VALUTAZIONE SUL SERVER (LEGATI ALL'ACCOUNT)
+    // Calcola il punteggio finale, salva gli errori e la valutazione sul server (legati all'account)
     async function finalizeScore() {
       let esatte = 0, errate = 0, omesse = 0;
       const nuoviErrori = [];
@@ -1221,11 +1251,11 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 
       try {
         await Promise.all([
-          fetch('/api/dati/errori', {
+          authFetch('/api/dati/errori', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: currentUser.id, nuoviErrori })
           }),
-          fetch('/api/dati/valutazione', {
+          authFetch('/api/dati/valutazione', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: currentUser.id, valutazione: nuovaValutazione })
           })
@@ -1249,7 +1279,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       switchTab('valutazione');
     }
 
-    // MOSTRA/NASCONDE L'ELENCO DETTAGLIATO DEL DEPOSITO ("SPULCIA DEPOSITO")
+    // Mostra o nasconde l'elenco dettagliato del deposito
     function toggleDepositoDettaglio() {
       const box = document.getElementById('deposito-dettaglio');
       if (box.classList.contains('hidden')) {
@@ -1260,7 +1290,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       }
     }
 
-    // RENDERIZZA L'ELENCO DETTAGLIATO DI OGNI SINGOLO ERRORE NEL DEPOSITO
+    // Renderizza l'elenco dettagliato di ogni singolo errore nel deposito
     function renderDepositoDettaglioLista() {
       const container = document.getElementById('deposito-dettaglio-lista');
       if (errori.length === 0) {
@@ -1270,24 +1300,25 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       container.innerHTML = errori.map(e => `
         <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1.5">
           <div class="flex justify-between items-start gap-2">
-            <span class="text-xs font-semibold text-indigo-700">${e.materia} — ${e.topic}</span>
+            <span class="text-xs font-semibold text-indigo-700">${escapeHtml(e.materia)} — ${escapeHtml(e.topic)}</span>
             <button onclick="eliminaErrore(${e.id})" class="text-rose-500 hover:text-rose-700 shrink-0" title="Rimuovi dal deposito">
               <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
           </div>
-          <p class="text-sm font-medium text-slate-800">${e.question}</p>
-          <p class="text-xs text-slate-600"><strong>La tua risposta:</strong> ${e.userAnswer || '(nessuna risposta)'}</p>
-          <p class="text-xs text-emerald-700"><strong>Risposta corretta:</strong> ${e.correctAnswer}</p>
-          ${e.explanation ? `<p class="text-xs text-slate-500 italic">${e.explanation}</p>` : ''}
+          <p class="text-sm font-medium text-slate-800">${escapeHtml(e.question)}</p>
+          <p class="text-xs text-slate-600"><strong>La tua risposta:</strong> ${escapeHtml(e.userAnswer) || '(nessuna risposta)'}</p>
+          <p class="text-xs text-emerald-700"><strong>Risposta corretta:</strong> ${escapeHtml(e.correctAnswer)}</p>
+          ${e.explanation ? `<p class="text-xs text-slate-500 italic">${escapeHtml(e.explanation)}</p>` : ''}
         </div>
       `).join('');
       lucide.createIcons();
     }
 
-    // RIMUOVE UN SINGOLO ERRORE DAL DEPOSITO (DOPO AVERLO RIPASSATO)
+    // Rimuove un singolo errore dal deposito (dopo averlo ripassato)
     async function eliminaErrore(id) {
+      if (!confirm('Rimuovere questo errore dal deposito?')) return;
       try {
-        await fetch(`/api/dati/errori/${id}`, { method: 'DELETE' });
+        await authFetch(`/api/dati/errori/${id}`, { method: 'DELETE' });
         errori = errori.filter(e => e.id !== id);
         renderDepositoRiepilogo();
         renderDepositoDettaglioLista();
@@ -1297,7 +1328,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       }
     }
 
-    // RIEPILOGO DEL DEPOSITO ERRORI (TAB "DEPOSITO FINE SETTIMANA")
+    // Riepilogo del deposito errori (tab "deposito fine settimana")
     function renderDepositoRiepilogo() {
       const container = document.getElementById('deposito-riepilogo');
       if (!container) return;
@@ -1321,7 +1352,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       ordinati.forEach(([key, count]) => {
         html += `
           <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg">
-            <span class="text-sm text-slate-800">${key}</span>
+            <span class="text-sm text-slate-800">${escapeHtml(key)}</span>
             <span class="text-xs bg-rose-100 text-rose-800 font-bold px-2.5 py-1 rounded-full">${count}×</span>
           </div>
         `;
@@ -1330,7 +1361,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       container.innerHTML = html;
     }
 
-    // SUGGERISCE ARGOMENTI PER LE LEZIONI DI RECUPERO IN BASE AGLI ERRORI
+    // Suggerisce argomenti per le lezioni di recupero in base agli errori
     function renderLezioniSuggerite() {
       const container = document.getElementById('lezioni-suggerite');
       if (!container) return;
@@ -1349,7 +1380,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 
       container.innerHTML = top.map(([topic, count]) => `
         <button type="button" class="chip-argomento-suggerito px-3 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-800 text-xs font-semibold rounded-full transition">
-          ${topic} <span class="opacity-70">(${count}×)</span>
+          ${escapeHtml(topic)} <span class="opacity-70">(${count}×)</span>
         </button>
       `).join('');
 
@@ -1365,7 +1396,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       });
     }
 
-    // GENERA UNA LEZIONE DI RECUPERO (BREVE O DETTAGLIATA) SULL'ARGOMENTO CERCATO
+    // Genera una lezione di recupero (breve o dettagliata) sull'argomento cercato
     async function generaLezione(profondita) {
       const argomento = document.getElementById('lezione-search').value.trim();
       if (!argomento) {
@@ -1376,15 +1407,12 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       const btnBreve = document.getElementById('btn-lezione-breve');
       const btnDettagliata = document.getElementById('btn-lezione-dettagliata');
       const btnAttivo = profondita === 'breve' ? btnBreve : btnDettagliata;
-      const labelOriginale = btnAttivo.innerHTML;
-      [btnBreve, btnDettagliata].forEach(b => b.disabled = true);
-      btnAttivo.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Generazione lezione in corso...`;
-      lucide.createIcons();
+      const ripristina = impostaCaricamento([btnBreve, btnDettagliata], btnAttivo, 'Generazione lezione in corso...');
 
       const risultatoBox = document.getElementById('lezione-risultato');
 
       try {
-        const res = await fetch('/api/genera-lezione', {
+        const res = await authFetch('/api/genera-lezione', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ argomento, profondita })
@@ -1395,22 +1423,20 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
         risultatoBox.classList.remove('hidden');
         risultatoBox.innerHTML = `
           <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-            <h3 class="font-bold text-slate-900 text-lg">${argomento}</h3>
+            <h3 class="font-bold text-slate-900 text-lg">${escapeHtml(argomento)}</h3>
             <span class="text-xs px-2.5 py-1 rounded-full font-semibold ${profondita === 'breve' ? 'bg-slate-200 text-slate-800' : 'bg-indigo-100 text-indigo-800'}">${profondita === 'breve' ? 'Lezione breve' : 'Lezione dettagliata'}</span>
           </div>
-          <div class="text-slate-700 text-sm whitespace-pre-line leading-relaxed">${data.lezione}</div>
+          <div class="text-slate-700 text-sm whitespace-pre-line leading-relaxed">${escapeHtml(data.lezione)}</div>
         `;
         risultatoBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch (err) {
         alert("Si è verificato un errore: " + err.message);
       } finally {
-        [btnBreve, btnDettagliata].forEach(b => b.disabled = false);
-        btnAttivo.innerHTML = labelOriginale;
-        lucide.createIcons();
+        ripristina();
       }
     }
 
-    // RENDERIZZA TABELLA REGISTRO VALUTAZIONI EXCEL
+    // Renderizza tabella registro valutazioni Excel
     function renderValutazioniTable() {
       const tbody = document.getElementById('valutazioni-tbody');
       tbody.innerHTML = '';
@@ -1438,7 +1464,7 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
       });
     }
 
-    // ESPORTAZIONE IN FOGLIO EXCEL (.XLSX)
+    // Esportazione in foglio Excel (.XLSX)
     function exportToExcel() {
       if (valutazioni.length === 0) {
         alert("Non ci sono dati registrati da esportare.");
