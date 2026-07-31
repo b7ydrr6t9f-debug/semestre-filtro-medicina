@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Gestione - Semestre Filtro Medicina</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
+
+  <div id="banner-sessione" class="hidden fixed top-0 inset-x-0 z-[200] bg-amber-500 text-amber-950 px-4 py-2.5 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold shadow">
+    <span><i data-lucide="alarm-clock" class="w-4 h-4 inline -mt-0.5"></i> La sessione sta per scadere.</span>
+    <button onclick="rinnovaSessione()" class="bg-amber-950 text-amber-50 px-3 py-1 rounded-md hover:bg-amber-900 transition">Aggiorna sessione</button>
+    <button onclick="logoutAdmin()" class="border border-amber-950 px-3 py-1 rounded-md hover:bg-amber-600 transition">Esci</button>
+  </div>
+
+  <!-- Accesso: stesse credenziali dell'app studenti, l'accesso è concesso solo se l'account ha ruolo admin -->
+  <div id="admin-auth" class="fixed inset-0 bg-indigo-950 flex items-center justify-center p-4 z-[100]">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6 justify-center">
+        <i data-lucide="shield" class="w-8 h-8 text-indigo-600"></i>
+        <h1 class="text-lg font-bold text-slate-900 text-center">Area Gestione</h1>
+      </div>
+
+      <p id="admin-auth-errore" class="hidden text-sm text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-3 mb-4"></p>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Email</label>
+          <input type="email" id="admin-email" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="email@esempio.it">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">PIN</label>
+          <input type="password" inputmode="numeric" id="admin-pin" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Il tuo PIN">
+        </div>
+        <button onclick="accediAdmin()" id="btn-admin-accedi" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow transition">Accedi</button>
+        <a href="index.html" class="block text-center text-xs text-slate-400 hover:text-slate-600 pt-2">← Torna all'app studenti</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-content" class="hidden contents">
+    <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center space-x-3">
+          <i data-lucide="shield" class="w-8 h-8 text-yellow-400"></i>
+          <div>
+            <h1 class="text-xl font-bold tracking-wide">Area Gestione</h1>
+            <p class="text-xs text-indigo-200">Semestre Filtro Medicina 2026</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center space-x-2 bg-indigo-800 px-3 py-1.5 rounded-lg text-sm">
+            <i data-lucide="user-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span class="font-mono text-indigo-100 text-xs sm:text-sm" id="admin-email-display">-</span>
+          </div>
+          <a href="index.html" class="flex items-center gap-1.5 bg-indigo-800 hover:bg-indigo-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
+            <i data-lucide="graduation-cap" class="w-4 h-4"></i> App Studenti
+          </a>
+          <button onclick="logoutAdmin()" class="flex items-center gap-1.5 bg-indigo-800 hover:bg-rose-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
+            <i data-lucide="log-out" class="w-4 h-4"></i> Esci
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 sm:p-6 w-full flex-1 space-y-6">
+
+      <!-- Statistiche aggregate -->
+      <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-xs text-slate-500 font-semibold uppercase">Studenti</p>
+          <p class="text-2xl font-bold text-indigo-900" id="stat-utenti">-</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-xs text-slate-500 font-semibold uppercase">Simulazioni svolte</p>
+          <p class="text-2xl font-bold text-indigo-900" id="stat-valutazioni">-</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-xs text-slate-500 font-semibold uppercase">Punteggio medio</p>
+          <p class="text-2xl font-bold text-indigo-900" id="stat-media">-</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+          <p class="text-xs text-slate-500 font-semibold uppercase">Argomenti più critici</p>
+          <p class="text-2xl font-bold text-indigo-900" id="stat-argomento-top">-</p>
+        </div>
+      </section>
+
+      <!-- Argomenti più sbagliati in assoluto -->
+      <section class="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+        <h2 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-rose-600"></i> Argomenti più sbagliati (tutti gli studenti)</h2>
+        <div id="lista-argomenti-critici" class="space-y-1.5 text-sm"></div>
+      </section>
+
+      <!-- Elenco studenti -->
+      <section class="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+        <h2 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-indigo-600"></i> Studenti registrati</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-left text-xs text-slate-500 uppercase border-b border-slate-200">
+                <th class="py-2 pr-3">Email</th>
+                <th class="py-2 pr-3">Ruolo</th>
+                <th class="py-2 pr-3 text-center">Errori depositati</th>
+                <th class="py-2 pr-3 text-center">Simulazioni</th>
+                <th class="py-2 pr-3">Ultima attività</th>
+                <th class="py-2 pr-3">Registrato il</th>
+                <th class="py-2"></th>
+              </tr>
+            </thead>
+            <tbody id="tbody-utenti"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

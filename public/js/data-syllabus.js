@@ -1,0 +1,276 @@
+// Programma ufficiale (DM 704/2026) delle tre materie del semestre filtro.
+
+// Data store syllabus ufficiali dallo stampato
+const SYLLABUS_DATA = {
+  biologia: {
+    title: "Biologia",
+    cfu: "6.0 CFU",
+    unita: [
+      {
+        id: 1,
+        title: "Unità didattica 1. Le basi dell'organizzazione biologica e molecolare della vita",
+        cfu: "0,5 CFU",
+        content: `Descrivere e interpretare:
+• L'albero della vita. Gli organismi e la teoria cellulare. Le proprietà fondamentali della materia vivente.
+• I virus: Caratteristiche generali. L'acido nucleico, il capside e l'involucro membranoso. Le varie classi di virus animali. Il ciclo litico e lisogenico di un virus batterico. Il ciclo di un virus animale. Il ciclo di un retrovirus. Modalità di entrata e di uscita di un virus da una cellula animale.
+• La cellula procariotica: la membrana plasmatica, la parete, la membrana esterna, la capsula, le fimbrie e i pili, i flagelli. I batteri Gram positivi e Gram negativi (la colorazione di Gram). Gli eubatteri e gli archeobatteri. Trasferimento genico orizzontale nei batteri: trasformazione, coniugazione e trasduzione: caratteristiche e importanza biologica.
+• La cellula eucariotica: Il sistema delle endomembrane. La generazione del nucleo, l'endosimbiosi per la generazione dei mitocondri. Dagli organismi unicellulari a quelli pluricellulari complessi.
+• Le basi della struttura e funzione delle macromolecole biologiche: Gli zuccheri e i carboidrati. I lipidi. Gli amminoacidi, il legame peptidico e le proteine e la struttura delle proteine, con i loro domini proteici e siti attivi. L'esempio degli enzimi con concetti di base e classi principali (es.: chinasi-fosfatasi, ubiquitinasi-deubiquitinasi, acetilasi-deacetilasi). Le principali modificazioni post-traduzionali delle proteine (es.: la fosforilazione, l'acetilazione, la glicosilazione e l'aggiunta di lipidi). I nucleotidi e gli acidi nucleici. Il modello di Watson e Crick e la doppia elica del DNA. Gli RNA: struttura e funzioni. RNA codificanti e non codificanti.
+• Gli aspetti di base del metabolismo (i concetti di anabolismo e catabolismo, le reazioni di condensazione e di idrolisi).`
+      },
+      {
+        id: 2,
+        title: "Unità didattica 2. I meccanismi cellulari di trasmissione e controllo dell'informazione genetica e epigenetica",
+        cfu: "0,5 CFU",
+        content: `Descrivere e interpretare:
+• Il genoma delle cellule eucariotiche: I cromosomi lineari delle cellule eucariotiche. Organizzazione minimale di un cromosoma eucariotico. Il DNA centromerico e telomerico.
+• La cromatina: I nucleosomi. L'impaccamento del DNA e le proteine istoniche. L'istone H1 e la fibra di 30 nm. L'eucromatina e l'eterocromatina, la metilazione del DNA. Il rimodellamento della cromatina. Le modificazioni post-traduzionali degli istoni e l'epigenetica (l'esempio dell'acetilazione). Le condensine e il ripiegamento della cromatina.
+• Il genoma umano: organizzazione e caratteristiche delle sequenze che lo compongono. Sequenze singole, famiglie geniche (globine, RNA ribosomiali), sequenze ripetute, sequenze ripetute in tandem (minisatelliti, microsatelliti), sequenze ripetute intersperse (LINE, SINE e retrovirus endogeni). Gli elementi mobili del DNA.`
+      },
+      {
+        id: 3,
+        title: "Unità didattica 3. Il flusso dell'informazione",
+        cfu: "1,0 CFU",
+        content: `Descrivere e interpretare:
+• La replicazione del DNA nei procarioti e negli eucarioti: il meccanismo semiconservativo. Le origini di replicazione, la formazione del complesso d'inizio e la forcella replicativa. Lo srotolamento del DNA: le DNA elicasi e le topoisomerasi. La primasi e l'innesco della replicazione. Le DNA polimerasi e le attività di correzione degli errori. Il filamento continuo e discontinuo e i frammenti di Okazaki. La rimozione dell'RNA e la DNA ligasi. La funzione dei telomeri e delle telomerasi. I telomeri e la senescenza replicativa.
+• I geni: il concetto di gene e l'anatomia del gene procariotico ed eucariotico. Geni policistronici e monocistronici. Promotori ed elementi regolativi in cis.
+• La trascrizione nei procarioti e la sua regolazione con il modello dell'operone Lac.
+• Il controllo dell'espressione genica negli eucarioti: trascrizionale, post-trascrizionale, traduzionale e post-traduzionale.
+• La trascrizione negli eucarioti: Le tre RNA polimerasi (I, II, III). I fattori di trascrizione generali. La TATA box. Promotori prossimali e distali (enhancer e silencer). I fattori di trascrizione specifici: l'esempio dei recettori degli ormoni steroidei. Inizio, allungamento e terminazione della trascrizione negli eucarioti.
+• La maturazione degli RNA. RNA messaggero: il capping, la poliadenilazione, lo splicing e lo splicing alternativo, lo spliceosoma e gli snRNA. I ribozimi. Editing del RNA. La regolazione della stabilità del messaggero (deadenilazione e decapucciamento, miRNA e RNA interference). La maturazione degli rRNA e dei tRNA.
+• La sintesi delle proteine: il meccanismo della traduzione. Gli attori della traduzione: rRNA, tRNA e mRNA. La formazione degli aminoacil-tRNA. I ribosomi. Il codice genetico, i codoni e gli anticodoni. La ridondanza, la degenerazione, la non ambiguità e l'universalità del codice genetico. Le regioni non tradotte del mRNA e la loro funzione regolatoria. I fattori di inizio, di allungamento e di terminazione nella traduzione.
+• La maturazione delle proteine: l'importanza del corretto ripiegamento delle proteine. Le proteine chaperon. Gli errori di ripiegamento delle proteine.
+• La regolazione dell'attività biologica delle proteine: degradazione delle proteine. Degradazione proteasomica ubiquitina-dipendente. Proteine simili all'ubiquitina.`
+      },
+      {
+        id: 4,
+        title: "Unità didattica 4. I meccanismi cellulari di trasmissione e controllo dei caratteri selvatici e mutati",
+        cfu: "0,75 CFU",
+        content: `Descrivere e interpretare:
+• Le variazioni del genoma: sostituzione, inserzione o delezione di nucleotidi. Mutazioni geniche e cromosomiche. Il fenomeno dell'espansione di sequenze ripetute. Principi generali sui meccanismi di riparazione del danno al DNA su singolo e doppio filamento.
+• Gli alleli: Omozigosi, eterozigosi ed eterozigosi composta. Dominanza e recessività. Genotipo e fenotipo. Le leggi di Mendel. I caratteri singoli, la segregazione, l'assortimento indipendente. Dominanza incompleta e codominanza. Alleli multipli (poliallelia, sistema ABO dei gruppi sanguigni). La pleiotropia. Epistasi (rapporti mendeliani atipici). Associazione completa e incompleta. Mappe fisiche e genetiche.
+• L'espressione genica modulata dall'ambiente: il concetto di penetranza ed espressività, caratteri poligenici ed eredità quantitativa. Imprinting genomico.
+• Cromosomi umani e cariotipo. La diploidia e i cromosomi omologhi. La tecnica del bandeggio. Euploidia ed alterazioni del cariotipo umano: variazioni del numero dei cromosomi (aneuploidia, poliploidia) e della struttura dei cromosomi (traslocazioni, inversioni, delezioni e inserzioni). L'esempio della trisomia del cromosoma 21.
+• Gli alberi genealogici. Ereditarietà autosomica (dominante e recessiva), ereditarietà associata al cromosoma X (dominante e recessiva), al cromosoma Y, ereditarietà mitocondriale.`
+      },
+      {
+        id: 5,
+        title: "Unità didattica 5. Le strutture cellulari: biogenesi, morfologia e funzioni",
+        cfu: "1,75 CFU",
+        content: `Descrivere e interpretare:
+• Le membrane e i loro componenti. Il modello a mosaico fluido. L'importanza del glicocalice. Asimmetria di membrana.
+• Il trasporto attraverso la membrana plasmatica. Osmosi, diffusione, trasporto passivo. Le proteine canale e i trasportatori. Il trasporto attivo. L'esempio delle pompe ATPasi e dei trasportatori ABC. Aspetti biologici del potenziale di membrana e del potenziale d'azione.
+• Lo smistamento delle proteine: i diversi compartimenti cellulari e le loro relazioni topologiche. I segnali di indirizzamento ai compartimenti.
+• Il nucleo: l'involucro nucleare. Il nucleolo e gli altri condensati nucleari. I pori nucleari. Le nucleoporine. Il trasporto nucleare. I segnali di localizzazione nucleare e di esportazione nucleare. Il ruolo delle importine, delle esportine, della proteina Ran, RanGEF e RanGAP. Regolazione dell'importazione nucleare (esempi: recettore degli ormoni steroidei, NfkB, SREBP1). Trasporto degli RNA dal nucleo al citosol.
+• I mitocondri: struttura e funzioni. Il genoma mitocondriale e le modalità del flusso dell'informazione nei mitocondri. Aspetti biologici di energetica: la glicolisi, la respirazione cellulare (il ciclo degli acidi tricarbossilici, la catena di trasporto degli elettroni, la sintesi di ATP), e il bilancio energetico del processo. Il network mitocondriale e le sue dinamiche: fusione, fissione e le proteine regolatorie. Il trasporto ai mitocondri: i traslocatori TOM, TIM, SAM e OXA per l'importazione delle proteine alla matrice mitocondriale, alla membrana mitocondriale esterna, alla membrana mitocondriale interna e allo spazio intermembrana.
+• I perossisomi: struttura e funzioni biosintetiche, cataboliche e detossificanti. Le peculiarità del trasporto ai perossisomi. Il trasporto mediato da sequenze segnale e recettori. Le perossine e la biogenesi dei perossisomi. Patologie legate ai perossisomi (sindrome di Zellweger).
+• La via secretoria: il reticolo endoplasmatico liscio e ruvido, il cis-Golgi network, l'apparato di Golgi e il trans-Golgi network. Il trasporto al reticolo endoplasmatico: la sequenza di indirizzamento, SRP ed il suo recettore, il traslocone, la peptidasi del segnale. Le modificazioni delle proteine neosintetizzate nel reticolo endoplasmatico. La glicosilazione ed il suo ruolo nel ripiegamento delle proteine tramite calnexina e calreticulina. Il controllo di qualità del reticolo endoplasmatico (esempi: calnexina e immunoglobuline). Ruolo delle proteine chaperon durante la traduzione ed il trasporto agli organelli. Le risposte UPR e l'attivazione del sistema ERAD. L'esempio della fibrosi cistica. Secrezione costitutiva e secrezione regolata.
+• Il traffico vescicolare: formazione delle vescicole. Le proteine di rivestimento e i loro ruoli. L'attracco, l'ormeggio e la fusione di vescicole ai compartimenti bersaglio. Ruolo di NSF, SNAPS, SNARE e RAB. Il ruolo dei fosfoinositidi.
+• L'endocitosi: endocitosi in fase fluida e mediata da recettori. Endocitosi della transferrina, delle LDL e dell'EGF: differenze e peculiarità. Endosomi precoci di smistamento e di riciclo, endosomi tardivi, corpi multivescicolari e lisosomi. Il trasporto ai lisosomi e il mannosio-6-fosfato. Disfunzioni lisosomali e malattie di accumulo. L'endocitosi nelle cellule polarizzate. La transcitosi (esempio delle immunoglobuline). La fagocitosi e le sue funzioni.
+• L'autofagia: macroautofagia, microautofagia e autofagia mediata da chaperon molecolari. L'esempio della mitofagia. Conseguenze delle alterazioni della via autofagica.
+• Il citoscheletro. I microtubuli: Struttura e funzione dei microtubuli. Formazione, allungamento e accorciamento dei microtubuli. Il ruolo del GTP nella stabilità dei microtubuli. Il centrosoma e il complesso γTuRC. Proteine MAP motrici e non motrici. Le dineine e le chinesine. Esempi di alterazioni nelle dineine citoplasmatiche. Le ciglia e i flagelli. I microfilamenti: struttura e funzioni dei microfilamenti di actina. Il processo di polimerizzazione dell'actina: il ruolo dell'ATP e il complesso Arp2/3. Le proteine accessorie dell'actina, le miosine, le proteine di collegamento: gli esempi della distrofina e del sarcomero. Regolazione del citoscheletro di actina tramite proteine della famiglia Rho (Rho, Rac e CDC42). La migrazione cellulare, l'esempio della polarizzazione e chemiotassi dei neutrofili. I filamenti intermedi: Polimerizzazione, struttura e funzioni. Le cheratine e la lamina nucleare. I legami tra diversi elementi del citoscheletro. Le connessioni tra nucleoscheletro e citoscheletro.`
+      },
+      {
+        id: 6,
+        title: "Unità didattica 6. La cellula e l'ambiente, la segnalazione cellulare e la trasduzione del segnale",
+        cfu: "0,75 CFU",
+        content: `Descrivere e interpretare:
+• La matrice extracellulare: struttura e funzioni. Degradazione della matrice extracellulare. Ancoraggio alla matrice tramite le integrine. Le basi generali della meccanotrasduzione e le connessioni con il citoscheletro. L'esempio della fibronectina.
+• La comunicazione tra cellule: Il riconoscimento tra cellule e la formazione dei tessuti (caderine e CAM). I diversi tipi di giunzioni cellulari: giunzioni occludenti, giunzioni aderenti, desmosomi ed emidesmosomi, giunzioni comunicanti.
+• La segnalazione cellulare: da contatto, autocrina, paracrina, endocrina e sinaptica. La trasduzione del segnale: elementi costitutivi e cascate regolative. I recettori di membrana e i recettori intracellulari. L'esempio dell'ossido nitrico e gli ormoni lipidici. I recettori accoppiati a canali ionici. I recettori accoppiati a proteine G: le proteine G monomeriche e trimeriche nella trasduzione del segnale. Le proteine regolatorie: GEF e GAP. Secondi messaggeri e amplificazione del segnale. Desensitizzazione recettoriale, l'esempio della visione. I recettori dotati di attività enzimatica: i recettori tirosin-chinasici, la via Ras-MAP chinasi. Gli oncogeni e la trasduzione del segnale. Segnalazione del recettore per l'insulina e del recettore per l'EGF. La segnalazione dei fosfoinositidi.`
+      },
+      {
+        id: 7,
+        title: "Unità didattica 7. Il controllo della proliferazione e della sopravvivenza cellulare",
+        cfu: "0,75 CFU",
+        content: `Descrivere e interpretare:
+• Il ciclo cellulare: le fasi e i punti di controllo. Le cicline e le chinasi dipendenti da ciclina e la loro modulazione.
+• Il superamento del punto di restrizione e l'entrata in fase S: il ruolo dei fattori di crescita. La ciclina D-Cdk4/6. Fosforilazione di Rb (proteina associata al retinoblastoma) e attivazione di E2F. Gli inibitori del complesso ciclina-CDK. Il danno al DNA e l'attivazione di p53 con l'induzione della riparazione del DNA o dell'apoptosi. Proto-oncogeni, oncogeni e geni oncosoppressori. I virus oncogeni.
+• Le fasi della mitosi. L'ingresso in mitosi. La condensazione dei cromosomi. La formazione del fuso mitotico: i microtubuli astrali, del cinetocore e interpolari. I meccanoenzimi della mitosi, il disassemblaggio della lamina nucleare e la dinamica degli organelli intracellulari. Il complesso NDC80. Il movimento dei cromosomi e del fuso mitotico. Il completamento della mitosi: Il complesso APC/C o ciclosoma. La degradazione delle cicline e della securina. La separazione dei cromatidi fratelli. La citodieresi. La mitosi asimmetrica.
+• Meccanismo molecolare della meiosi delle cellule germinali e sue conseguenze genetiche. Il crossing over. Le differenze tra mitosi e meiosi. Cause di aneuploidia. La meiosi nella gametogenesi umana maschile e femminile. Il concetto della cellula staminale.
+• La morte cellulare: necrosi e apoptosi. La via apoptotica intrinseca ed estrinseca. Le caspasi iniziatrici ed esecutrici. La MOMP, il citocromo C e l'apoptosoma. Le proteine pro- e anti-apoptotiche (la famiglia di BCL2). I recettori di morte e le vie di segnalazione.`
+      }
+    ]
+  },
+  fisica: {
+    title: "Fisica",
+    cfu: "6.0 CFU",
+    unita: [
+      {
+        id: 1,
+        title: "Unità didattica 1. Introduzione ai metodi della fisica",
+        cfu: "0.2 CFU (almeno 20% esercitazioni)",
+        content: `Interpretare elementi di base di matematica e fisica (grafici e formule). Risolvere operazioni tra vettori; eseguire conversioni tra unità di misura:
+• Notazione scientifica.
+• Grandezze fisiche, dimensione ed unità di misura, Sistema Internazionale delle unità di misura.
+• Conversioni tra unità di misura e stima ordine di grandezza. Grandezze estensive ed intensive. Grandezze scalari e vettoriali.
+• Funzioni trigonometriche elementari.
+• Vettori: definizione, componenti, operazioni (esempi: somma, differenza, prodotto scalare e prodotto vettoriale).`
+      },
+      {
+        id: 2,
+        title: "Unità didattica 2. Meccanica",
+        cfu: "1.4 CFU (almeno 25% esercitazioni)",
+        content: `Descrivere e interpretare elementi di meccanica. Risolvere problemi ed esercizi numerici relativi alla meccanica:
+• Cinematica del punto materiale: definizione di posizione e spostamento nel tempo. Concetto di traiettoria e legge oraria. Velocità media e velocità istantanea, accelerazione media e accelerazione istantanea. Studio dei moti rettilinei e curvilinei, con esempi significativi: moto rettilineo uniforme, moto uniformemente accelerato, caduta libera, moto parabolico. Moto circolare uniforme e accelerazione centripeta.
+• Dinamica del punto materiale: analisi delle interazioni tra corpi e formulazione dei tre principi della dinamica. Significato fisico del principio di inerzia e condizioni per l'equilibrio statico (prima legge). Legame tra forza risultante e accelerazione (seconda legge). Azione e reazione tra corpi in interazione (terza legge). Applicazione ai concetti di equilibrio traslazionale. Definizione di forza e principali esempi: forza peso, forza gravitazionale, forze di contatto e forza di attrito (statico e dinamico), tensione, forze elastiche e legge di Hooke per molle ideali.
+• Lavoro ed energia: concetto di lavoro meccanico come effetto di una forza applicata su un corpo. Definizione di potenza e relazione con il lavoro svolto in un intervallo di tempo. Teorema dell'energia cinetica. Lavoro e confronto tra forze conservative e forze non conservative. Definizione di energia potenziale. Esempi: energia potenziale gravitazionale ed energia potenziale elastica. Energia meccanica come somma di energia cinetica ed energia potenziale. Teorema di conservazione dell'energia meccanica nei sistemi ideali.
+• Quantità di moto: introduzione al concetto di quantità di moto e di impulso. Principio di conservazione della quantità di moto nei sistemi isolati.
+• Sistemi di corpi: definizione di centro di massa e descrizione del suo moto. Caratteristiche del corpo rigido. Momento torcente e condizioni per l'equilibrio rotazionale. Leve nel corpo umano.`
+      },
+      {
+        id: 3,
+        title: "Unità didattica 3. Meccanica dei fluidi",
+        cfu: "1.2 CFU (almeno 25% esercitazioni)",
+        content: `Descrivere e interpretare elementi di meccanica dei fluidi. Correlare i principi della fluidodinamica con i flussi, resistenze e pressioni fisiologiche nei sistemi biologici. Risolvere problemi ed esercizi numerici relativi alla meccanica dei fluidi:
+• Stati di aggregazione della materia: caratteristiche fondamentali dei fluidi rispetto ai solidi. Definizione di pressione e densità e loro ruolo nel comportamento statico e dinamico dei fluidi.
+• Leggi dell'idrostatica: legge di Stevino per la pressione nei liquidi in funzione della profondità; principio di Pascal per la trasmissione della pressione nei fluidi incomprimibili; principio di Archimede per la spinta che un fluido esercita su un corpo immerso. Analisi delle condizioni di galleggiamento. Strumenti e metodi per la misura della pressione (esperimento di Torricelli, manometro).
+• Fluidi in movimento (idrodinamica): concetti di flusso e portata, distinzione tra moto stazionario e turbolento, con attenzione particolare al moto laminare. Equazione di continuità e conservazione della massa nei fluidi ideali. Teorema di Bernoulli e applicazioni alla circolazione sanguigna (stenosi e aneurisma).
+• Fluidi reali e viscosità: analisi del moto laminare, profilo parabolico della velocità, concetto di gradiente di velocità. Legge di Poiseuille e resistenze idrauliche in serie e in parallelo.
+• Fenomeni di superficie: tensione superficiale e suoi effetti su piccole quantità di liquido. Fenomeni di capillarità e comportamento delle interfacce fluide, sia piane che curve. Pressione di curvatura e sua descrizione qualitativa mediante la legge di Laplace.`
+      },
+      {
+        id: 4,
+        title: "Unità didattica 4. Onde meccaniche",
+        cfu: "0.4 CFU (almeno 20% esercitazioni)",
+        content: `Descrivere ed interpretare elementi di onde meccaniche. Correlare i fenomeni ondulatori in ambito acustico. Risolvere problemi ed esercizi numerici relativi alle onde meccaniche:
+• Onde meccaniche: introduzione alla natura delle onde meccaniche come fenomeni di propagazione di energia e perturbazione attraverso un mezzo materiale. Concetto di oscillatore armonico come modello base di generazione di onde. Definizione di frequenza, periodo, pulsazione e lunghezza d'onda. Velocità di propagazione delle onde e relazione tra i parametri ondulatori. Equazione di propagazione per onde armoniche semplici. Esempi di onde monodimensionali: onde trasversali su una corda e onde longitudinali, come quelle sonore nei fluidi.
+• Principi di sovrapposizione e interferenza.
+• Energia trasportata dalle onde: concetto di energia associata a un'onda meccanica. Potenza trasportata da un'onda in un mezzo elastico. Intensità dell'onda come quantità fisica misurabile, legata all'energia trasportata per unità di area e di tempo. Legge dell'inverso del quadrato della distanza.
+• Onde acustiche: propagazione del suono nei diversi mezzi materiali, con particolare attenzione alla velocità del suono. Relazione tra intensità acustica e percezione sonora. Definizione di livello di intensità sonora in decibel.
+• Effetto Doppler: descrizione qualitativa.`
+      },
+      {
+        id: 5,
+        title: "Unità didattica 5. Termodinamica",
+        cfu: "1.0 CFU (almeno 30% esercitazioni)",
+        content: `Descrivere ed interpretare elementi di termodinamica. Risolvere problemi ed esercizi numerici relativi alla termodinamica:
+• Concetti fondamentali: definizione di sistema e ambiente. Variabili termodinamiche (pressione, volume, temperatura) e stato termodinamico. Funzioni di stato. Temperatura e sue scale di misura. Gas perfetti ed equazione di stato.
+• Calore e capacità termica: scambi di energia sotto forma di calore. Definizione di capacità termica e calore specifico, con riferimento ai gas ideali. Fenomeni di cambiamento di stato fisico (fusione, evaporazione, condensazione), calore latente. Calorimetria.
+• Meccanismi di trasmissione del calore: conduzione termica, convezione e irraggiamento.
+• Primo principio della termodinamica: definizione e significato fisico. Energia interna, calore e lavoro. Applicazione del primo principio sulle trasformazioni termodinamiche. Trasformazioni reversibili e irreversibili. Trasformazioni canoniche nei gas ideali: isoterma, isocora, isobara, adiabatica, con confronto qualitativo dei comportamenti.
+• Secondo principio della termodinamica: enunciati fondamentali e concetto di irreversibilità. Cicli termodinamici: definizione e funzionamento. Macchine termiche, rendimento, ciclo di Carnot. Entropia come funzione di stato, implicazioni macroscopiche e interpretazione statistica. Legame tra variazione dell'entropia e direzione naturale dei processi termodinamici.`
+      },
+      {
+        id: 6,
+        title: "Unità didattica 6. Elettricità e magnetismo",
+        cfu: "1.2 CFU (almeno 30% esercitazioni)",
+        content: `Descrivere e interpretare elementi di elettricità e magnetismo. Comprendere i fenomeni elettrici e magnetici. Risolvere problemi ed esercizi numerici relativi agli elementi di elettricità e magnetismo:
+• Carica elettrica e interazioni: proprietà fondamentali della carica elettrica, unità di misura, conservazione della carica. Interazione tra cariche puntiformi e legge di Coulomb. Definizione di campo elettrico e rappresentazione tramite linee di forza. Campo generato da una carica puntiforme o da una distribuzione di più cariche puntiformi. Moto di una carica in un campo elettrico uniforme.
+• Energia e potenziale elettrico: energia potenziale associata a una distribuzione di cariche. Definizione di potenziale elettrico e differenza di potenziale. Conservazione dell'energia per una carica in movimento in un campo elettrico.
+• Conduttori e dielettrici (isolanti): descrizione qualitativa dei fenomeni di induzione elettrostatica e di polarizzazione.
+• Corrente elettrica: corrente continua, intensità di corrente, generatore elettrico ideale e differenza di potenziale applicata. Conduzione nei conduttori ohmici. Leggi di Ohm, resistenza e resistività dei materiali. Potenza elettrica dissipata per effetto Joule. Combinazione di resistenze in serie e in parallelo.
+• Capacità e condensatori: concetto di capacità elettrica. Capacità del condensatore piano, effetto della presenza di un dielettrico. Energia immagazzinata in un condensatore carico. Collegamenti di condensatori in serie e in parallelo.
+• Campo magnetico: origine del campo magnetico dalle correnti elettriche (Esperimento di Oerstedt). Forza di Lorentz su una carica in moto e su un filo percorso da corrente. Moto circolare di una carica elettrica in un campo magnetico uniforme.
+• Induzione elettromagnetica: variazione del flusso magnetico e generazione di forza elettromotrice. Legge di Faraday-Neumann-Lenz. Correnti indotte e loro verso.`
+      },
+      {
+        id: 7,
+        title: "Unità didattica 7. Fisica delle radiazioni",
+        cfu: "0.6 CFU (almeno 20% esercitazioni)",
+        content: `Descrivere e interpretare la fisica delle radiazioni e comprenderne gli effetti. Risolvere problemi ed esercizi numerici relativi alla fisica delle radiazioni:
+• Radiazione elettromagnetica: natura ondulatoria delle onde elettromagnetiche come combinazione di campi elettrici e magnetici oscillanti perpendicolari tra loro; caratteristiche fondamentali (lunghezza d'onda, frequenza, velocità di propagazione, ampiezza e intensità dell'onda).
+• Spettro della radiazione elettromagnetica: suddivisione dello spettro in regioni (onde radio, microonde, infrarosso, luce visibile, ultravioletto, raggi X, raggi gamma), ordine crescente di frequenza e decrescente di lunghezza d'onda.
+• Quantizzazione dell'energia: concetto di fotone come quanto di energia associato alla radiazione; relazione tra energia del fotone e frequenza.
+• Assorbimento della radiazione elettromagnetica (legge di Lambert-Beer).
+• Radioattività e decadimenti radioattivi: definizione di nucleo instabile, concetto di isotopi radioattivi. Attività e legge del decadimento radioattivo, emivita. Tipi principali di decadimento (alfa, beta, gamma) e trasformazioni nucleari associate.
+• Radiazioni elettromagnetiche ionizzanti e non ionizzanti: distinzione basata sull'energia trasportata dalla radiazione rispetto all'energia di ionizzazione degli atomi. Esempi di radiazioni non ionizzanti (onde radio, microonde, infrarosso) e ionizzanti (raggi X, raggi gamma).
+• Ottica: leggi della riflessione e della rifrazione della luce, concetto di indice di rifrazione. Legge dei punti coniugati per le lenti convergenti sottili e formazione delle immagini.`
+      }
+    ]
+  },
+  chimica: {
+    title: "Chimica e Propedeutica Biochimica",
+    cfu: "6.0 CFU",
+    unita: [
+      {
+        id: 1,
+        title: "Unità didattica 1. La struttura dell'atomo, i legami chimici, stati di aggregazione della materia e termodinamica dei sistemi aperti",
+        cfu: "1.0 CFU",
+        content: `Descrivere e interpretare:
+• La costituzione della materia. Fondamenti della teoria atomica. Struttura dell'atomo: protoni, neutroni e elettroni. Numero atomico e numero di massa. Gli isotopi. Cenni sulle proprietà magnetiche del nucleo come base per lo strumento diagnostico della Risonanza Magnetica Nucleare.
+• I numeri quantici, gli orbitali, il principio di esclusione di Pauli. Regola di Hund. La configurazione elettronica con particolare riferimento agli elementi principalmente presenti negli organismi viventi.
+• Il sistema periodico degli elementi. Proprietà periodiche: configurazione elettronica esterna, volume atomico, potenziale di ionizzazione, affinità elettronica, elettronegatività. La regola dell'ottetto.
+• Molecole, ioni e ioni poliatomici. Massa molecolare. Definizione di mole e numero di Avogadro. Unità di massa atomica e massa molecolare.
+• Il legame chimico. Orbitale di legame. Legame covalente: omopolare, eteropolare, legame di coordinazione. Cenni sul legame metallico. Il legame ionico. Ibridazione degli orbitali: sp, sp², sp³. Orbitali molecolari sigma e pi-greco. Distanza e energia di legame. Angolo di legame e geometria molecolare. Esempi di molecole polari e apolari biologicamente rilevanti.
+• Interazioni deboli (legame idrogeno e forze di van der Waals) e interazioni idrofobiche.
+• Numero di ossidazione. Esempi di formule di struttura e nomenclatura di composti binari e ternari biologicamente rilevanti con atomi di carbonio, ossigeno, azoto, zolfo e fosforo (ossidi, idrossidi, perossidi, acidi, basi, e sali).
+• Cenni sullo stato solido: solidi ionici, molecolari, covalenti e metallici.
+• Lo stato aeriforme. Temperatura assoluta. Leggi di Boyle, Charles e Gay Lussac. Applicazione della legge dei gas alla respirazione. Equazione di stato dei gas perfetti. Cenni sulla teoria cinetica dei gas. La legge di Maxwell-Boltzmann.
+• Lo stato liquido: ebollizione, calore di evaporazione. Tensione superficiale. L'equilibrio gas-liquido: la pressione di vapore. Confronto di diagramma di fase di acqua e anidride carbonica. Rilevanza dei cambiamenti di fase di interesse biomedico: l'evaporazione del sudore e la termoregolazione.
+• Principi di termodinamica e bioenergetica. Definizioni delle funzioni di stato. Entalpia. Trasformazioni esotermiche ed endotermiche (cambiamenti di stato). Entropia. Energia libera di Gibbs. Trasformazioni esoergoniche ed endoergoniche. Variazione di energia libera come criterio di spontaneità ed equilibrio nei sistemi aperti.`
+      },
+      {
+        id: 2,
+        title: "Unità didattica 2. Miscele, soluzioni e le proprietà colligative delle soluzioni",
+        cfu: "1.0 CFU",
+        content: `Descrivere e interpretare:
+• Miscele omogenee ed eterogenee di interesse biologico: soluzioni, sospensioni, colloidi e aerosol.
+• Soluzioni gassose, liquide e solide.
+• L'acqua come solvente polare. Solubilità: soluti ionici e non ionici. Proprietà degli elettroliti. Gli elettroliti nei fluidi biologici. Solubilità dei gas nei liquidi: la legge di Henry.
+• Unità di misura della concentrazione delle soluzioni: percentuali peso/peso, peso/volume, volume/volume. Molarità, molalità, frazione molare. Cenni sulle soluzioni non ideali: il comportamento dei soluti nello spazio intracellulare e coefficiente di attività. Il concetto di equivalente in ambito biomedico.
+• La concentrazione nelle miscele di gas: la legge di Dalton. L'aria e la sua composizione, aria inspirata e aria espirata.
+• Definizione di proprietà colligative. Interazioni tra solvente e soluto. La legge di Raoult. Abbassamento della pressione di vapore. Innalzamento della temperatura di ebollizione. Abbassamento della temperatura di congelamento. Pressione osmotica e passaggio di soluti attraverso le membrane.
+• Soluzioni elettrolitiche e fattore correttivo di van't Hoff. Diffusione, osmosi, osmolarità e osmolalità. Confronto tra le proprietà osmotiche delle soluzioni.
+• Pressione osmotica dei liquidi intracellulari ed extracellulari. Soluzioni isotoniche, ipertoniche e ipotoniche. Soluzione fisiologica e glucosata. Esempi di implicazioni fisiopatologiche del disequilibrio osmotico (emolisi e edema).`
+      },
+      {
+        id: 3,
+        title: "Unità didattica 3. Le reazioni chimiche negli organismi viventi: caratteristiche generali, cinetica e equilibrio chimico",
+        cfu: "0.5 CFU",
+        content: `Descrivere e interpretare:
+• Definizioni delle reazioni chimiche. Conservazione di massa, energia, carica elettrica e bilanciamento delle reazioni chimiche.
+• Definizione di cinetica di reazione. Reazioni a più stadi. Fattori che influenzano la velocità di una reazione. Ordine di reazione e molecolarità. La legge di Arrhenius e la teoria degli urti efficaci. L'energia di attivazione. La teoria dello stato di transizione.
+• Definizione di catalizzatore e cenni sui catalizzatori biologici, gli enzimi.
+• L'equilibrio chimico. Reazioni reversibili ed irreversibili. Costante di equilibrio e legge d'azione di massa. Variazione di energia libera e equilibrio di reazione.
+• Differenza tra equilibrio chimico e stato stazionario. Principio dell'equilibrio mobile. Il quoziente di reazione. Effetto della temperatura sulla costante di equilibrio. Equilibri multipli. Esempi di equilibrio eterogeneo solido-liquido (precipitazione di urati). Prodotto di solubilità, effetto dello ione in comune. Esempi di rilevanza biomedica (calcoli renali).`
+      },
+      {
+        id: 4,
+        title: "Unità didattica 4. Acidi, basi, sali, pH, soluzioni tampone; reazioni di ossido-riduzione ed elettrochimica",
+        cfu: "1.0 CFU",
+        content: `Descrivere e interpretare:
+• La teoria di Arrhenius. La teoria di Bronsted e Lowry. Cenni sulla teoria di Lewis. La reazione di auto-protolisi dell'acqua. La Kw. Il concetto di pH e pOH. Costanti di dissociazione, Ka e Kb. Acidi e basi forti, acidi e basi deboli, pKa e pKb. Indicatori di pH. Il pH di una soluzione di acido/base forte o di acido/base debole. Acidi poliprotici e basi poliprotiche. Reazioni acido-base. I sali, comportamento acido o basico dei sali in acqua. Solubilità e pH, esempi di interesse biomedico: ossalato di calcio, fosfato di calcio e urato di sodio.
+• Soluzioni tampone, esempi di tamponi di acidi deboli e basi deboli. L'equazione di Henderson e Hasselbalch. Efficienza di un sistema tampone.
+• L'equilibrio acido-base nei fluidi biologici: il pH del sangue e i tamponi del sangue. Il tampone acido carbonico (CO2)/bicarbonato, il tampone diidrogeno fosfato/idrogenofosfato, le proteine come sistemi tampone. L'importanza e la funzione dei tamponi in ambito biomedico (acidosi e alcalosi).
+• Le reazioni di ossido-riduzione. Cella galvanica e definizione di anodo e catodo. Le semireazioni e i potenziali redox standard. L'equazione di Nernst. Relazione tra variazione di energia libera di Gibbs e differenza di potenziale. Reazioni spontanee e lavoro chimico. Esempi di reazioni di ossido-riduzione in ambito biologico. Ossigeno come accettore di elettroni: bilancio termodinamico della respirazione cellulare. Le reazioni di Fenton e Haber-Weiss come esempio di reazioni di ossido-riduzione non enzimatiche dell'ossigeno in presenza dello ione Ferro per la formazione del radicale idrossilico.`
+      },
+      {
+        id: 5,
+        title: "Unità didattica 5. Proprietà del carbonio e reattività dei composti organici, idrocarburi, alogenuri alchilici, idrocarburi aromatici e derivati",
+        cfu: "0.5 CFU",
+        content: `Descrivere e interpretare:
+• Proprietà e ibridazione del carbonio. Rappresentazione dei composti carboniosi. Idrocarburi saturi ed insaturi, ciclici ed eterociclici. Regole generali di nomenclatura IUPAC.
+• Stereochimica: diasteroisomeri, enantiomeri, epimeri e miscele racemiche. Cenni sulle regole di priorità e convenzione R/S. Potere ottico rotatorio specifico. Convenzione destrogira/levogira. Convenzione di Fischer.
+• Rottura omolitica del legame chimico e reazioni radicaliche.
+• Rottura eterolitica del legame chimico. Carbocationi e carboanioni e loro stabilità. Effetto induttivo: elettron donatore, elettron attrattore. Delocalizzazione degli elettroni. Nucleofili ed elettrofili biologicamente rilevanti. Reazioni di sostituzione nucleofila con meccanismo SN2 e SN1 e reazioni di eliminazione.
+• Alcani e cicloalcani: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biomedica. Tensione di legame nei cicloalcani. Reazioni: ossidazione.
+• Alcheni: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biomedica. Delocalizzazione elettronica e dieni coniugati. Reazioni: addizione elettrofila.
+• Idrocarburi aromatici: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biomedica. Il benzene e composti aromatici eterociclici (pirimidine) e policiclici (purine). Regola di Huckel. Cenni sulle reazioni dei composti derivati del benzene: sostituzione elettrofila aromatica. Effetto attivante e disattivante dei sostituenti. Tossicità dei composti aromatici.`
+      },
+      {
+        id: 6,
+        title: "Unità didattica 6. I gruppi funzionali e isomerie: alcoli, fenoli, eteri, tioli e tioeteri; aldeidi e chetoni; acidi carbossilici e derivati, ammine e ammidi",
+        cfu: "1.0 CFU",
+        content: `Descrivere e interpretare:
+• Alcoli e tioli: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biologica. Reazioni: disidratazione, ossidazione, sostituzione nucleofila. Etanolo. Fenolo e derivati: acidità del fenolo. Esempi di alcoli e tioli di rilevanza biologica. Eteri e tioeteri. Epossidi.
+• Ammine: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biomedica. Basicità e nucleofilicità. Reazioni: alchilazione, formazione di sali. Nitrosammine. Colina e altri esempi di ammine di rilevanza biologica.
+• Aldeidi e Chetoni: struttura, nomenclatura, proprietà chimico-fisiche e rilevanza biologica. Reazioni: ossidazione, riduzione, addizione nucleofila, condensazione aldolica. Emiacetali ed emichetali, acetali e chetali, immine o basi di Schiff. Proprietà dell'idrogeno in alfa al carbonile. Tautomeria cheto-enolica e sua importanza biologica (urato, citosina e fosfoenolpiruvato). Chinoni ed idrochinoni: ubichinone e suo ruolo come trasportatore di elettroni.
+• Acidi carbossilici e loro derivati di interesse biologico (anidridi, esteri e tioesteri, ammidi, acilfosfati): struttura, nomenclatura, proprietà chimico-fisiche, acidità. Reazioni con esempi biologici: salificazione, decarbossilazione, sostituzione nucleofila acilica; esterificazione di Fischer; idrolisi degli esteri e transesterificazione; condensazione di Claisen di esteri e tioesteri. Formazione dei lattoni. Decarbossilazione dei chetoacidi. Idrolisi delle ammidi.`
+      },
+      {
+        id: 7,
+        title: "Unità didattica 7. Amminoacidi e proteine, carboidrati, lipidi, nucleotidi, polinucleotidi e acidi nucleici",
+        cfu: "1.0 CFU",
+        content: `Descrivere e interpretare:
+• Amminoacidi: Struttura, nomenclatura e nomi abbreviati. Classificazione in base alla catena laterale e alle sue proprietà. Identificazione e caratteristiche delle catene laterali degli amminoacidi proteici. Stereochimica degli amminoacidi e rappresentazione secondo la convenzione di Fischer. Proprietà acido-base degli amminoacidi e punto isoelettrico. Amminoacidi essenziali e non essenziali.
+• Il legame peptidico e la sua formazione dalla reazione di un amminoacido esterificato con il gruppo amminico di un altro amminoacido. Caratteristiche del legame peptidico. Definizione dei livelli strutturali delle proteine: struttura primaria, secondaria, terziaria e quaternaria. Interazioni deboli e ponti disolfuro.
+• Carboidrati: struttura, nomenclatura e stereochimica dei carboidrati. Monosaccaridi: isomeri, epimeri, anomeri e tautomeri. Ciclizzazione dei monosaccaridi. Mutarotazione. Reazioni dei monosaccaridi: ossidazione, riduzione, reazione di Maillard e prodotti di Amadori, condensazione. Il legame glicosidico. Disaccaridi. Oligosaccaridi e loro derivati. Amminozuccheri. Polisaccaridi: omopolisaccaridi (amido, cellulosa, glicogeno) ed eteropolisaccaridi (glicosamminoglicani).
+• Acidi grassi saturi e insaturi: struttura, nomenclatura, proprietà fisiche e reazioni. I trigliceridi e le loro funzioni: oli e grassi. Lipidi complessi: glicerofosfolipidi, sfingolipidi, glicolipidi. Colesterolo e cenni sui suoi derivati di interesse biologico (ormoni steroidei, acidi biliari e vitamina D).
+• Basi azotate, nucleosidi e nucleotidi: struttura, nomenclatura. Importanza biologica dell'ATP. I dinucleotidi nelle reazioni di ossido-riduzione biologiche (NAD+/NADH, FAD/FADH2).
+• Il legame fosfodiestere e la struttura degli acidi nucleici: DNA e RNA.
+• Modificazioni non enzimatiche delle macromolecole biologiche. Deaminazione della citosina. Principali reazioni del radicale idrossilico con lipidi, proteine e DNA. Attività anti-ossidante non enzimatica dei tioli (glutatione) e delle molecole contenenti doppi legami coniugati (tocoferolo, carotenoidi).`
+      }
+    ]
+  }
+};

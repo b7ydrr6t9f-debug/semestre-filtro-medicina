@@ -33,8 +33,18 @@ async function initDb() {
     pin_hash TEXT NOT NULL,
     domanda_sicurezza TEXT NOT NULL,
     risposta_hash TEXT NOT NULL,
+    ruolo TEXT NOT NULL DEFAULT 'studente',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
+
+  // Compatibilità con database creati prima dell'introduzione dei ruoli:
+  // aggiunge la colonna solo se manca ancora.
+  const infoUsers = await db.execute("PRAGMA table_info(users)");
+  const haColonnaRuolo = infoUsers.rows.some(r => r.name === 'ruolo');
+  if (!haColonnaRuolo) {
+    await db.execute("ALTER TABLE users ADD COLUMN ruolo TEXT NOT NULL DEFAULT 'studente'");
+    console.log('[Database] Aggiunta colonna ruolo alla tabella users (database preesistente).');
+  }
 
   await db.execute(`CREATE TABLE IF NOT EXISTS sessions (
     token TEXT PRIMARY KEY,
@@ -80,16 +90,25 @@ function normEmail(email) {
   return String(email || '').trim().toLowerCase();
 }
 
-const SESSION_DURATA_MS = 30 * 24 * 60 * 60 * 1000; // 30 giorni
+// Il ruolo è deciso dalla lista ADMIN_EMAILS in Environment su Render (email
+// separate da virgola), non da un flag scrivibile via API: così promuovere o
+// revocare un amministratore si fa cambiando l'env var, senza endpoint dedicati
+// da proteggere ulteriormente.
+function ruoloPerEmail(email) {
+  const ammessi = (process.env.ADMIN_EMAILS || '').split(',').map(normEmail).filter(Boolean);
+  return ammessi.includes(normEmail(email)) ? 'admin' : 'studente';
+}
+
+const SESSION_DURATA_MS = 2 * 60 * 60 * 1000; // 2 ore
 
 async function creaSessione(userId) {
   const token = crypto.randomBytes(32).toString('hex');
-  const scadenza = new Date(Date.now() + SESSION_DURATA_MS).toISOString();
+  const expiresAt = new Date(Date.now() + SESSION_DURATA_MS).toISOString();
   await db.execute({
     sql: 'INSERT INTO sessions (token, user_id, expires_at) VALUES (?,?,?)',
-    args: [token, userId, scadenza]
+    args: [token, userId, expiresAt]
   });
-  return token;
+  return { token, expiresAt };
 }
 
 // Verifica il Bearer token e attacca req.userId. Tutte le rotte che
@@ -103,17 +122,30 @@ async function richiedeAutenticazione(req, res, next) {
   if (!token) return res.status(401).json({ errore: 'Sessione mancante, effettua di nuovo l\'accesso.' });
 
   try {
-    const result = await db.execute({ sql: 'SELECT user_id, expires_at FROM sessions WHERE token = ?', args: [token] });
+    const result = await db.execute({
+      sql: `SELECT sessions.user_id AS user_id, sessions.expires_at AS expires_at, users.ruolo AS ruolo
+            FROM sessions JOIN users ON users.id = sessions.user_id
+            WHERE sessions.token = ?`,
+      args: [token]
+    });
     const sessione = result.rows[0];
     if (!sessione || new Date(sessione.expires_at) < new Date()) {
       return res.status(401).json({ errore: 'Sessione scaduta, effettua di nuovo l\'accesso.' });
     }
     req.userId = Number(sessione.user_id);
+    req.userRuolo = sessione.ruolo || 'studente';
+    req.token = token;
     next();
   } catch (e) {
     console.error('[Auth] Errore verifica sessione:', e.message);
     res.status(500).json({ errore: 'Errore database.' });
   }
+}
+
+// Da usare dopo richiedeAutenticazione sulle rotte riservate a chi gestisce la piattaforma.
+function richiedeAdmin(req, res, next) {
+  if (req.userRuolo !== 'admin') return res.status(403).json({ errore: 'Accesso riservato agli amministratori.' });
+  next();
 }
 
 // ------------------------------------------------------------------
@@ -153,15 +185,16 @@ app.post('/api/auth/registrati', async (req, res) => {
 
     const pinHash = hashConSalt(pin);
     const rispostaHash = hashConSalt(rispostaSicurezza.toLowerCase());
+    const ruolo = ruoloPerEmail(email);
 
     const result = await db.execute({
-      sql: 'INSERT INTO users (email, pin_hash, domanda_sicurezza, risposta_hash) VALUES (?,?,?,?)',
-      args: [email, pinHash, domandaSicurezza, rispostaHash]
+      sql: 'INSERT INTO users (email, pin_hash, domanda_sicurezza, risposta_hash, ruolo) VALUES (?,?,?,?,?)',
+      args: [email, pinHash, domandaSicurezza, rispostaHash, ruolo]
     });
 
     const userId = Number(result.lastInsertRowid);
-    const token = await creaSessione(userId);
-    res.json({ success: true, token, user: { id: userId, email } });
+    const { token, expiresAt } = await creaSessione(userId);
+    res.json({ success: true, token, expiresAt, user: { id: userId, email, ruolo } });
   } catch (e) {
     console.error('[Auth] Errore registrazione:', e.message);
     res.status(500).json({ errore: 'Errore durante la creazione dell\'account.' });
@@ -181,8 +214,15 @@ app.post('/api/auth/accedi', async (req, res) => {
     const user = result.rows[0];
     if (!user || !verificaHash(pin, user.pin_hash)) return res.status(401).json({ errore: 'Email o PIN errati.' });
 
-    const token = await creaSessione(user.id);
-    res.json({ success: true, token, user: { id: Number(user.id), email: user.email } });
+    // Se ADMIN_EMAILS è cambiata da Render, allinea il ruolo salvato senza
+    // richiedere una nuova registrazione.
+    const ruolo = ruoloPerEmail(user.email);
+    if (ruolo !== user.ruolo) {
+      await db.execute({ sql: 'UPDATE users SET ruolo = ? WHERE id = ?', args: [ruolo, user.id] });
+    }
+
+    const { token, expiresAt } = await creaSessione(user.id);
+    res.json({ success: true, token, expiresAt, user: { id: Number(user.id), email: user.email, ruolo } });
   } catch (e) {
     console.error('[Auth] Errore login:', e.message);
     res.status(500).json({ errore: 'Errore database.' });
@@ -221,6 +261,20 @@ app.post('/api/auth/recupera-pin', async (req, res) => {
   } catch (e) {
     console.error('[Auth] Errore recupero PIN:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+  }
+});
+
+// Rinnova la sessione corrente (chiamato dal banner "sessione in scadenza").
+// Ruota il token invece di allungare la scadenza di quello vecchio: se il
+// vecchio token fosse stato intercettato, smette comunque di funzionare.
+app.post('/api/auth/rinnova', richiedeAutenticazione, async (req, res) => {
+  try {
+    await db.execute({ sql: 'DELETE FROM sessions WHERE token = ?', args: [req.token] });
+    const { token, expiresAt } = await creaSessione(req.userId);
+    res.json({ success: true, token, expiresAt });
+  } catch (e) {
+    console.error('[Auth] Errore rinnovo sessione:', e.message);
+    res.status(500).json({ errore: 'Errore durante il rinnovo della sessione.' });
   }
 });
 
@@ -304,6 +358,76 @@ app.get('/api/db-health', async (req, res) => {
     res.json({ modalita: usaTurso ? 'Turso (persistente)' : 'file locale (non persistente su Render senza Persistent Disk)', connesso: true });
   } catch (e) {
     res.json({ modalita: usaTurso ? 'Turso (persistente)' : 'file locale', connesso: false, errore: e.message });
+  }
+});
+
+// ------------------------------------------------------------------
+// Area gestione (riservata a chi ha ruolo 'admin'): elenco studenti,
+// statistiche aggregate, gestione account.
+// ------------------------------------------------------------------
+
+app.get('/api/admin/utenti', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  try {
+    const result = await db.execute(`
+      SELECT users.id AS id, users.email AS email, users.ruolo AS ruolo, users.created_at AS created_at,
+        (SELECT COUNT(*) FROM errori WHERE errori.user_id = users.id) AS numero_errori,
+        (SELECT COUNT(*) FROM valutazioni WHERE valutazioni.user_id = users.id) AS numero_valutazioni,
+        (SELECT MAX(data) FROM valutazioni WHERE valutazioni.user_id = users.id) AS ultima_valutazione
+      FROM users
+      ORDER BY users.created_at DESC
+    `);
+    res.json({
+      utenti: result.rows.map(u => ({
+        id: Number(u.id),
+        email: u.email,
+        ruolo: u.ruolo,
+        creatoIl: u.created_at,
+        numeroErrori: Number(u.numero_errori),
+        numeroValutazioni: Number(u.numero_valutazioni),
+        ultimaValutazione: u.ultima_valutazione || null
+      }))
+    });
+  } catch (e) {
+    console.error('[Admin] Errore lista utenti:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+app.get('/api/admin/statistiche', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  try {
+    const [utentiTot, valTot, mediaPunt, argomentiTop] = await Promise.all([
+      db.execute('SELECT COUNT(*) AS n FROM users'),
+      db.execute('SELECT COUNT(*) AS n FROM valutazioni'),
+      db.execute('SELECT AVG(CAST(punteggio AS REAL)) AS media FROM valutazioni'),
+      db.execute('SELECT materia AS materia, topic AS topic, COUNT(*) AS n FROM errori GROUP BY materia, topic ORDER BY n DESC LIMIT 10')
+    ]);
+    res.json({
+      utentiTotali: Number(utentiTot.rows[0].n),
+      valutazioniTotali: Number(valTot.rows[0].n),
+      mediaPunteggio: mediaPunt.rows[0].media != null ? Number(mediaPunt.rows[0].media).toFixed(2) : null,
+      argomentiPiuSbagliati: argomentiTop.rows.map(r => ({ materia: r.materia, topic: r.topic, conteggio: Number(r.n) }))
+    });
+  } catch (e) {
+    console.error('[Admin] Errore statistiche:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+// Elimina un account studente e tutti i suoi dati. Un admin non può
+// eliminare se stesso da qui, per evitare di restare fuori per errore.
+app.delete('/api/admin/utenti/:id', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  const targetId = parseInt(req.params.id);
+  if (targetId === req.userId) return res.status(400).json({ errore: 'Non puoi eliminare il tuo stesso account da qui.' });
+
+  try {
+    await db.execute({ sql: 'DELETE FROM errori WHERE user_id = ?', args: [targetId] });
+    await db.execute({ sql: 'DELETE FROM valutazioni WHERE user_id = ?', args: [targetId] });
+    await db.execute({ sql: 'DELETE FROM sessions WHERE user_id = ?', args: [targetId] });
+    const result = await db.execute({ sql: 'DELETE FROM users WHERE id = ?', args: [targetId] });
+    res.json({ success: true, eliminato: result.rowsAffected > 0 });
+  } catch (e) {
+    console.error('[Admin] Errore eliminazione utente:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'eliminazione dell\'utente.' });
   }
 });
 
