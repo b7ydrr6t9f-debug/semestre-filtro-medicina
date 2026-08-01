@@ -119,7 +119,7 @@ function renderTabellaUtenti(utenti) {
       <td class="py-2 pr-3 text-xs text-slate-600">${escapeHtml(u.ultimaValutazione) || '—'}</td>
       <td class="py-2 pr-3 text-xs text-slate-600 font-mono">${escapeHtml(u.creatoIl)}</td>
       <td class="py-2 text-right">
-        <button onclick="apriModaleSimulazioni(${u.id}, ${JSON.stringify(u.email)})" class="text-indigo-500 hover:text-indigo-700" title="Vedi ed elimina simulazioni">
+        <button type="button" class="btn-vedi-simulazioni text-indigo-500 hover:text-indigo-700" data-user-id="${u.id}" title="Vedi ed elimina simulazioni">
           <i data-lucide="list-checks" class="w-4 h-4"></i>
         </button>
       </td>
@@ -130,6 +130,15 @@ function renderTabellaUtenti(utenti) {
       </td>
     </tr>
   `).join('');
+
+  // addEventListener invece di onclick inline: l'email finisce in un
+  // attributo HTML già delimitato da doppi apici, e JSON.stringify(email)
+  // produrrebbe a sua volta doppi apici che spezzerebbero l'attributo.
+  tbody.querySelectorAll('.btn-vedi-simulazioni').forEach(btn => {
+    const utente = utenti.find(u => u.id === Number(btn.dataset.userId));
+    btn.addEventListener('click', () => apriModaleSimulazioni(utente.id, utente.email));
+  });
+
   lucide.createIcons();
 }
 
