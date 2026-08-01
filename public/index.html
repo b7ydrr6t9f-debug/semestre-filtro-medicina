@@ -106,13 +106,13 @@
           <p class="text-xs text-indigo-200">Piattaforma di Preparazione & Simulazione Esami</p>
         </div>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
         <a href="admin.html" id="link-area-gestione" class="hidden items-center gap-1.5 bg-yellow-400 hover:bg-yellow-300 text-indigo-950 px-3 py-1.5 rounded-lg text-xs font-bold transition">
           <i data-lucide="shield" class="w-4 h-4"></i> Area Gestione
         </a>
-        <div class="flex items-center space-x-2 bg-indigo-800 px-3 py-1.5 rounded-lg text-sm">
-          <i data-lucide="user-circle" class="w-4 h-4 text-emerald-400"></i>
-          <span class="font-mono text-indigo-100 text-xs sm:text-sm" id="header-user-email">-</span>
+        <div class="flex items-center space-x-2 bg-indigo-800 px-3 py-1.5 rounded-lg text-sm max-w-[65vw] sm:max-w-none">
+          <i data-lucide="user-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+          <span class="font-mono text-indigo-100 text-xs sm:text-sm truncate" id="header-user-email">-</span>
         </div>
         <button onclick="logout()" class="flex items-center gap-1.5 bg-indigo-800 hover:bg-rose-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition">
           <i data-lucide="log-out" class="w-4 h-4"></i> Esci
@@ -122,20 +122,20 @@
     
     <!-- Tab Navigazione -->
     <nav class="bg-indigo-950 text-slate-300 text-sm font-medium border-t border-indigo-800/50">
-      <div class="max-w-7xl mx-auto px-4 flex space-x-6 overflow-x-auto">
-        <button onclick="switchTab('syllabus')" id="tab-syllabus" class="py-3 px-2 flex items-center gap-2 tab-active hover:text-white transition">
+      <div class="max-w-7xl mx-auto px-4 flex gap-6 overflow-x-auto">
+        <button onclick="switchTab('syllabus')" id="tab-syllabus" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap tab-active hover:text-white transition">
           <i data-lucide="book-open" class="w-4 h-4"></i> Syllabus & Unità Didattiche
         </button>
-        <button onclick="switchTab('simulator')" id="tab-simulator" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+        <button onclick="switchTab('simulator')" id="tab-simulator" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
           <i data-lucide="cpu" class="w-4 h-4"></i> Esercitazioni
         </button>
-        <button onclick="switchTab('deposito')" id="tab-deposito" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+        <button onclick="switchTab('deposito')" id="tab-deposito" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
           <i data-lucide="archive" class="w-4 h-4"></i> Deposito Fine Settimana
         </button>
-        <button onclick="switchTab('lezioni')" id="tab-lezioni" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+        <button onclick="switchTab('lezioni')" id="tab-lezioni" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
           <i data-lucide="graduation-cap" class="w-4 h-4"></i> Lezioni di Recupero
         </button>
-        <button onclick="switchTab('valutazione')" id="tab-valutazione" class="py-3 px-2 flex items-center gap-2 hover:text-white transition">
+        <button onclick="switchTab('valutazione')" id="tab-valutazione" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
           <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> Valutazione & Excel
         </button>
       </div>
