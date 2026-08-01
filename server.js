@@ -292,7 +292,7 @@ app.get('/api/dati/:userId', richiedeAutenticazione, async (req, res) => {
 
     res.json({
       errori: erroriResult.rows.map(e => ({ id: Number(e.id), materia: e.materia, topic: e.topic, question: e.question, userAnswer: e.user_answer, correctAnswer: e.correct_answer, explanation: e.explanation, timestamp: e.timestamp })),
-      valutazioni: valutazioniResult.rows.map(v => ({ data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+      valutazioni: valutazioniResult.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
     });
   } catch (e) {
     console.error('[Dati] Errore caricamento:', e.message);
@@ -428,6 +428,35 @@ app.delete('/api/admin/utenti/:id', richiedeAutenticazione, richiedeAdmin, async
   } catch (e) {
     console.error('[Admin] Errore eliminazione utente:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'eliminazione dell\'utente.' });
+  }
+});
+
+// Elenco delle simulazioni di un singolo studente, per poterne cancellare
+// una fatta partire per sbaglio senza dover eliminare l'intero account.
+app.get('/api/admin/utenti/:id/valutazioni', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  const targetId = parseInt(req.params.id);
+  try {
+    const result = await db.execute({ sql: 'SELECT * FROM valutazioni WHERE user_id = ? ORDER BY id DESC', args: [targetId] });
+    res.json({
+      valutazioni: result.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+    });
+  } catch (e) {
+    console.error('[Admin] Errore lista simulazioni:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+// Elimina una singola simulazione (di un qualsiasi studente). A differenza
+// della cancellazione di un errore da parte dello studente, qui non serve
+// verificare il proprietario: chi ha ruolo admin può intervenire su
+// qualunque riga, è il caso d'uso di questa rotta.
+app.delete('/api/admin/valutazioni/:id', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  try {
+    const result = await db.execute({ sql: 'DELETE FROM valutazioni WHERE id = ?', args: [req.params.id] });
+    res.json({ success: true, eliminato: result.rowsAffected > 0 });
+  } catch (e) {
+    console.error('[Admin] Errore eliminazione valutazione:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'eliminazione della simulazione.' });
   }
 });
 

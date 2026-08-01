@@ -119,6 +119,11 @@ function renderTabellaUtenti(utenti) {
       <td class="py-2 pr-3 text-xs text-slate-600">${escapeHtml(u.ultimaValutazione) || '—'}</td>
       <td class="py-2 pr-3 text-xs text-slate-600 font-mono">${escapeHtml(u.creatoIl)}</td>
       <td class="py-2 text-right">
+        <button onclick="apriModaleSimulazioni(${u.id}, ${JSON.stringify(u.email)})" class="text-indigo-500 hover:text-indigo-700" title="Vedi ed elimina simulazioni">
+          <i data-lucide="list-checks" class="w-4 h-4"></i>
+        </button>
+      </td>
+      <td class="py-2 text-right">
         <button onclick="eliminaUtente(${u.id})" class="text-rose-500 hover:text-rose-700" title="Elimina account">
           <i data-lucide="trash-2" class="w-4 h-4"></i>
         </button>
@@ -126,6 +131,65 @@ function renderTabellaUtenti(utenti) {
     </tr>
   `).join('');
   lucide.createIcons();
+}
+
+// Mostra le simulazioni di un singolo studente, per poterne cancellare una
+// fatta partire per sbaglio senza toccare tutto l'account.
+let utenteCorrenteModale = null;
+
+async function apriModaleSimulazioni(userId, email) {
+  utenteCorrenteModale = userId;
+  document.getElementById('modale-simulazioni-email').textContent = email;
+  document.getElementById('modale-simulazioni').classList.remove('hidden');
+  await ricaricaSimulazioniModale();
+}
+
+function chiudiModaleSimulazioni() {
+  document.getElementById('modale-simulazioni').classList.add('hidden');
+  utenteCorrenteModale = null;
+}
+
+async function ricaricaSimulazioniModale() {
+  const lista = document.getElementById('modale-simulazioni-lista');
+  lista.innerHTML = '<p class="text-slate-400 text-sm italic">Caricamento...</p>';
+  try {
+    const res = await authFetch(`/api/admin/utenti/${utenteCorrenteModale}/valutazioni`);
+    const { valutazioni } = await res.json();
+    if (valutazioni.length === 0) {
+      lista.innerHTML = '<p class="text-slate-400 text-sm italic">Nessuna simulazione registrata per questo studente.</p>';
+      return;
+    }
+    lista.innerHTML = valutazioni.map(v => `
+      <div class="flex items-center justify-between gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg">
+        <div class="text-xs space-y-0.5">
+          <p class="font-mono text-slate-500">${escapeHtml(v.data)}</p>
+          <p class="font-semibold text-slate-800">${escapeHtml(v.tipoProva)} — ${escapeHtml(v.materiaUnita)}</p>
+          <p class="text-slate-600">Punteggio ${escapeHtml(v.punteggio)} · ${escapeHtml(v.rateo)} · ${escapeHtml(v.esito)}</p>
+        </div>
+        <button onclick="eliminaValutazioneAdmin(${v.id})" class="text-rose-500 hover:text-rose-700 shrink-0" title="Elimina questa simulazione">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>
+        </button>
+      </div>
+    `).join('');
+    lucide.createIcons();
+  } catch (e) {
+    lista.innerHTML = '<p class="text-rose-600 text-sm">Errore nel caricamento delle simulazioni.</p>';
+  }
+}
+
+// Elimina una singola simulazione fatta partire per sbaglio, senza toccare
+// account, errori depositati o le altre simulazioni dello studente.
+async function eliminaValutazioneAdmin(id) {
+  if (!confirm('Eliminare questa simulazione? Non influisce sull\'account né sugli altri dati dello studente.')) return;
+  try {
+    const res = await authFetch(`/api/admin/valutazioni/${id}`, { method: 'DELETE' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.errore || 'Eliminazione non riuscita.');
+    await ricaricaSimulazioniModale();
+    await caricaDashboard(); // aggiorna i conteggi nella tabella e le statistiche aggregate
+  } catch (e) {
+    alert('Errore durante l\'eliminazione: ' + e.message);
+  }
 }
 
 // Elimina un account studente e tutti i suoi dati (errori, valutazioni,
