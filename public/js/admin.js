@@ -76,6 +76,7 @@ async function caricaDashboard() {
   const { utenti } = await resUtenti.json();
   renderStatistiche(statistiche);
   renderTabellaUtenti(utenti);
+  await caricaSegnalazioni();
 }
 
 function renderStatistiche(stat) {
@@ -110,7 +111,10 @@ function renderTabellaUtenti(utenti) {
 
   tbody.innerHTML = utenti.map(u => `
     <tr class="border-b border-slate-100 hover:bg-slate-50">
-      <td class="py-2 pr-3 font-mono text-xs">${escapeHtml(u.email)}</td>
+      <td class="py-2 pr-3">
+        <div class="font-mono text-xs">${escapeHtml(u.email)}</div>
+        ${badgeInattivita(u.ultimoAccesso)}
+      </td>
       <td class="py-2 pr-3">
         <span class="text-xs px-2 py-0.5 rounded-full font-semibold ${u.ruolo === 'admin' ? 'bg-yellow-100 text-yellow-800' : 'bg-slate-100 text-slate-700'}">${escapeHtml(u.ruolo)}</span>
       </td>
@@ -140,6 +144,15 @@ function renderTabellaUtenti(utenti) {
   });
 
   lucide.createIcons();
+}
+
+// Badge "inattivo da N giorni" se l'ultimo accesso risale a più di 14 giorni
+// fa, o se non ha mai effettuato il login dopo la registrazione.
+function badgeInattivita(ultimoAccesso) {
+  if (!ultimoAccesso) return '<span class="text-xs text-slate-400 italic">mai acceduto</span>';
+  const giorni = Math.floor((Date.now() - new Date(ultimoAccesso.replace(' ', 'T') + 'Z')) / 86400000);
+  if (giorni < 14) return '';
+  return `<span class="text-xs text-rose-600 font-semibold">inattivo da ${giorni}g</span>`;
 }
 
 // Mostra le simulazioni di un singolo studente, per poterne cancellare una
@@ -216,5 +229,109 @@ async function eliminaUtente(id) {
     await caricaDashboard();
   } catch (e) {
     alert('Errore durante l\'eliminazione: ' + e.message);
+  }
+}
+
+// --- Esportazione Excel di tutti gli studenti ---
+
+function esportaTuttiStudenti() {
+  if (ultimoElencoUtenti.length === 0) {
+    alert('Nessuno studente da esportare.');
+    return;
+  }
+  const excelData = ultimoElencoUtenti.map(u => ({
+    "Email": u.email,
+    "Ruolo": u.ruolo,
+    "Errori Depositati": u.numeroErrori,
+    "Simulazioni Svolte": u.numeroValutazioni,
+    "Ultima Simulazione": u.ultimaValutazione || '',
+    "Ultimo Accesso": u.ultimoAccesso || 'mai',
+    "Registrato Il": u.creatoIl
+  }));
+  const worksheet = XLSX.utils.json_to_sheet(excelData);
+  worksheet['!cols'] = [{ wch: 28 }, { wch: 10 }, { wch: 16 }, { wch: 16 }, { wch: 20 }, { wch: 20 }, { wch: 20 }];
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Studenti");
+  XLSX.writeFile(workbook, `Studenti_Semestre_Filtro_${new Date().toISOString().slice(0, 10)}.xlsx`);
+}
+
+// --- Backup completo (JSON), scaricato tramite blob per non esporre il token nell'URL ---
+
+async function scaricaBackup() {
+  try {
+    const res = await authFetch('/api/admin/backup');
+    if (!res.ok) throw new Error('Generazione del backup non riuscita.');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `backup-semestre-filtro-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch (e) {
+    alert('Errore durante il download del backup: ' + e.message);
+  }
+}
+
+// --- Segnalazioni ("Contattaci") ---
+
+let ultimoElencoSegnalazioni = [];
+let filtroSegnalazioniCorrente = 'aperta';
+
+async function caricaSegnalazioni() {
+  try {
+    const res = await authFetch('/api/admin/segnalazioni');
+    const { segnalazioni } = await res.json();
+    ultimoElencoSegnalazioni = segnalazioni;
+    renderSegnalazioni();
+  } catch (e) {
+    document.getElementById('lista-segnalazioni').innerHTML = '<p class="text-rose-600 text-sm">Errore nel caricamento delle segnalazioni.</p>';
+  }
+}
+
+function filtraSegnalazioni(filtro) {
+  filtroSegnalazioniCorrente = filtro;
+  document.getElementById('filtro-seg-aperta').className = `px-3 py-1 rounded-full font-semibold ${filtro === 'aperta' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500'}`;
+  document.getElementById('filtro-seg-tutte').className = `px-3 py-1 rounded-full font-semibold ${filtro === 'tutte' ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500'}`;
+  renderSegnalazioni();
+}
+
+function renderSegnalazioni() {
+  const lista = document.getElementById('lista-segnalazioni');
+  const visibili = filtroSegnalazioniCorrente === 'tutte'
+    ? ultimoElencoSegnalazioni
+    : ultimoElencoSegnalazioni.filter(s => s.stato === 'aperta');
+
+  if (visibili.length === 0) {
+    lista.innerHTML = `<p class="text-slate-400 text-sm italic">${filtroSegnalazioniCorrente === 'aperta' ? 'Nessuna segnalazione aperta.' : 'Nessuna segnalazione.'}</p>`;
+    return;
+  }
+
+  lista.innerHTML = visibili.map(s => `
+    <div class="flex items-start justify-between gap-3 p-3 bg-slate-50 border border-slate-200 rounded-lg">
+      <div class="text-sm space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-semibold text-indigo-700">${escapeHtml(s.categoria)}</span>
+          <span class="text-xs text-slate-400 font-mono">${escapeHtml(s.email || '')}</span>
+        </div>
+        <p class="text-slate-800">${escapeHtml(s.messaggio)}</p>
+        <p class="text-xs text-slate-400 font-mono">${escapeHtml(s.createdAt)}</p>
+      </div>
+      <button onclick="cambiaStatoSegnalazione(${s.id}, '${s.stato === 'risolta' ? 'aperta' : 'risolta'}')" class="shrink-0 text-xs px-2.5 py-1 rounded-full font-bold transition ${s.stato === 'risolta' ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' : 'bg-amber-100 text-amber-800 hover:bg-amber-200'}">
+        ${s.stato === 'risolta' ? 'Risolta ✓' : 'Segna risolta'}
+      </button>
+    </div>
+  `).join('');
+}
+
+async function cambiaStatoSegnalazione(id, nuovoStato) {
+  try {
+    await authFetch(`/api/admin/segnalazioni/${id}`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ stato: nuovoStato })
+    });
+    await caricaSegnalazioni();
+  } catch (e) {
+    alert('Errore durante l\'aggiornamento: ' + e.message);
   }
 }

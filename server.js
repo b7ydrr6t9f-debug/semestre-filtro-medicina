@@ -34,16 +34,21 @@ async function initDb() {
     domanda_sicurezza TEXT NOT NULL,
     risposta_hash TEXT NOT NULL,
     ruolo TEXT NOT NULL DEFAULT 'studente',
+    last_login DATETIME,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
 
   // Compatibilità con database creati prima dell'introduzione dei ruoli:
   // aggiunge la colonna solo se manca ancora.
   const infoUsers = await db.execute("PRAGMA table_info(users)");
-  const haColonnaRuolo = infoUsers.rows.some(r => r.name === 'ruolo');
-  if (!haColonnaRuolo) {
+  const colonneUsers = infoUsers.rows.map(r => r.name);
+  if (!colonneUsers.includes('ruolo')) {
     await db.execute("ALTER TABLE users ADD COLUMN ruolo TEXT NOT NULL DEFAULT 'studente'");
     console.log('[Database] Aggiunta colonna ruolo alla tabella users (database preesistente).');
+  }
+  if (!colonneUsers.includes('last_login')) {
+    await db.execute("ALTER TABLE users ADD COLUMN last_login DATETIME");
+    console.log('[Database] Aggiunta colonna last_login alla tabella users (database preesistente).');
   }
 
   await db.execute(`CREATE TABLE IF NOT EXISTS sessions (
@@ -83,6 +88,16 @@ async function initDb() {
     await db.execute("ALTER TABLE valutazioni ADD COLUMN omesse INTEGER NOT NULL DEFAULT 0");
     console.log('[Database] Aggiunta colonna omesse alla tabella valutazioni (database preesistente).');
   }
+
+  await db.execute(`CREATE TABLE IF NOT EXISTS segnalazioni (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    email TEXT,
+    categoria TEXT NOT NULL,
+    messaggio TEXT NOT NULL,
+    stato TEXT NOT NULL DEFAULT 'aperta',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
 }
 initDb().catch(e => console.error('[Database] Errore inizializzazione:', e.message));
 
@@ -117,6 +132,68 @@ function ruoloPerEmail(email) {
 
 const SESSION_DURATA_MS = 2 * 60 * 60 * 1000; // 2 ore
 
+// ------------------------------------------------------------------
+// Invio email (opzionale, via Resend). Finché RESEND_API_KEY non è
+// impostata su Render, questa funzione non fa nulla e nessuna parte
+// dell'app dipende da essa: registrazione e segnalazioni continuano a
+// funzionare normalmente, semplicemente senza inviare email.
+// ------------------------------------------------------------------
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const EMAIL_MITTENTE = process.env.EMAIL_MITTENTE || 'onboarding@resend.dev';
+
+function inviaEmail(destinatario, oggetto, corpoHtml) {
+  if (!RESEND_API_KEY || !destinatario) return;
+
+  const postData = JSON.stringify({ from: EMAIL_MITTENTE, to: [destinatario], subject: oggetto, html: corpoHtml });
+  const options = {
+    hostname: 'api.resend.com',
+    path: '/emails',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+      'Content-Length': Buffer.byteLength(postData)
+    }
+  };
+
+  const richiesta = https.request(options, (res) => {
+    let data = '';
+    res.on('data', chunk => data += chunk);
+    res.on('end', () => {
+      if (res.statusCode >= 400) console.error('[Email] Invio fallito, status', res.statusCode, ':', data.slice(0, 300));
+    });
+  });
+  richiesta.on('error', (e) => console.error('[Email] Errore di rete verso Resend:', e.message));
+  richiesta.write(postData);
+  richiesta.end();
+}
+
+function inviaEmailBenvenuto(email) {
+  inviaEmail(email, 'Benvenuto su Semestre Filtro Medicina 2026', `
+    <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+      <h2 style="color:#312e81;">Benvenuto! 🎓</h2>
+      <p>Il tuo account per la piattaforma di preparazione al Semestre Filtro è attivo.</p>
+      <p>Puoi iniziare subito da <strong>Syllabus & Unità Didattiche</strong>, oppure ripassare con le <strong>Flashcard</strong> prima di passare alle esercitazioni a punteggio.</p>
+      <p style="color:#64748b; font-size:13px; margin-top:24px;">Se non ti sei registrato tu, ignora pure questa email.</p>
+    </div>
+  `);
+}
+
+// Notifica chi ha ruolo admin quando arriva una nuova segnalazione
+function inviaEmailNuovaSegnalazione(segnalazione) {
+  const destinatari = (process.env.ADMIN_EMAILS || '').split(',').map(normEmail).filter(Boolean);
+  destinatari.forEach(dest => {
+    inviaEmail(dest, `Nuova segnalazione: ${segnalazione.categoria}`, `
+      <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+        <h3 style="color:#312e81;">Nuova segnalazione ricevuta</h3>
+        <p><strong>Da:</strong> ${segnalazione.email}</p>
+        <p><strong>Categoria:</strong> ${segnalazione.categoria}</p>
+        <p style="white-space:pre-line; background:#f8fafc; padding:12px; border-radius:8px;">${segnalazione.messaggio}</p>
+      </div>
+    `);
+  });
+}
+
 async function creaSessione(userId) {
   const token = crypto.randomBytes(32).toString('hex');
   const expiresAt = new Date(Date.now() + SESSION_DURATA_MS).toISOString();
@@ -124,6 +201,7 @@ async function creaSessione(userId) {
     sql: 'INSERT INTO sessions (token, user_id, expires_at) VALUES (?,?,?)',
     args: [token, userId, expiresAt]
   });
+  await db.execute({ sql: 'UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?', args: [userId] });
   return { token, expiresAt };
 }
 
@@ -210,6 +288,7 @@ app.post('/api/auth/registrati', async (req, res) => {
 
     const userId = Number(result.lastInsertRowid);
     const { token, expiresAt } = await creaSessione(userId);
+    inviaEmailBenvenuto(email);
     res.json({ success: true, token, expiresAt, user: { id: userId, email, ruolo } });
   } catch (e) {
     console.error('[Auth] Errore registrazione:', e.message);
@@ -385,7 +464,7 @@ app.get('/api/db-health', async (req, res) => {
 app.get('/api/admin/utenti', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
   try {
     const result = await db.execute(`
-      SELECT users.id AS id, users.email AS email, users.ruolo AS ruolo, users.created_at AS created_at,
+      SELECT users.id AS id, users.email AS email, users.ruolo AS ruolo, users.created_at AS created_at, users.last_login AS last_login,
         (SELECT COUNT(*) FROM errori WHERE errori.user_id = users.id) AS numero_errori,
         (SELECT COUNT(*) FROM valutazioni WHERE valutazioni.user_id = users.id) AS numero_valutazioni,
         (SELECT MAX(data) FROM valutazioni WHERE valutazioni.user_id = users.id) AS ultima_valutazione
@@ -398,6 +477,7 @@ app.get('/api/admin/utenti', richiedeAutenticazione, richiedeAdmin, async (req, 
         email: u.email,
         ruolo: u.ruolo,
         creatoIl: u.created_at,
+        ultimoAccesso: u.last_login || null,
         numeroErrori: Number(u.numero_errori),
         numeroValutazioni: Number(u.numero_valutazioni),
         ultimaValutazione: u.ultima_valutazione || null
@@ -473,6 +553,93 @@ app.delete('/api/admin/valutazioni/:id', richiedeAutenticazione, richiedeAdmin, 
   } catch (e) {
     console.error('[Admin] Errore eliminazione valutazione:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'eliminazione della simulazione.' });
+  }
+});
+
+// ------------------------------------------------------------------
+// Segnalazioni ("Contattaci"): bug o suggerimenti mandati dagli studenti.
+// ------------------------------------------------------------------
+
+const CATEGORIE_SEGNALAZIONE = ['Bug / errore tecnico', 'Errore nei contenuti', 'Suggerimento', 'Altro'];
+
+app.post('/api/segnalazioni', richiedeAutenticazione, async (req, res) => {
+  const categoria = String(req.body.categoria || '').trim();
+  const messaggio = String(req.body.messaggio || '').trim();
+  if (!CATEGORIE_SEGNALAZIONE.includes(categoria)) return res.status(400).json({ errore: 'Categoria non valida.' });
+  if (!messaggio || messaggio.length > 2000) return res.status(400).json({ errore: 'Messaggio mancante o troppo lungo (max 2000 caratteri).' });
+
+  try {
+    const utente = await db.execute({ sql: 'SELECT email FROM users WHERE id = ?', args: [req.userId] });
+    const email = utente.rows[0] ? utente.rows[0].email : null;
+
+    await db.execute({
+      sql: 'INSERT INTO segnalazioni (user_id, email, categoria, messaggio) VALUES (?,?,?,?)',
+      args: [req.userId, email, categoria, messaggio]
+    });
+    inviaEmailNuovaSegnalazione({ email, categoria, messaggio });
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Segnalazioni] Errore salvataggio:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'invio della segnalazione.' });
+  }
+});
+
+// Storico delle proprie segnalazioni (per mostrare allo studente lo stato)
+app.get('/api/segnalazioni', richiedeAutenticazione, async (req, res) => {
+  try {
+    const result = await db.execute({ sql: 'SELECT * FROM segnalazioni WHERE user_id = ? ORDER BY id DESC', args: [req.userId] });
+    res.json({
+      segnalazioni: result.rows.map(s => ({ id: Number(s.id), categoria: s.categoria, messaggio: s.messaggio, stato: s.stato, createdAt: s.created_at }))
+    });
+  } catch (e) {
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+app.get('/api/admin/segnalazioni', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  try {
+    const result = await db.execute('SELECT * FROM segnalazioni ORDER BY id DESC');
+    res.json({
+      segnalazioni: result.rows.map(s => ({ id: Number(s.id), email: s.email, categoria: s.categoria, messaggio: s.messaggio, stato: s.stato, createdAt: s.created_at }))
+    });
+  } catch (e) {
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+app.patch('/api/admin/segnalazioni/:id', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  const stato = String(req.body.stato || '');
+  if (!['aperta', 'risolta'].includes(stato)) return res.status(400).json({ errore: 'Stato non valido.' });
+
+  try {
+    await db.execute({ sql: 'UPDATE segnalazioni SET stato = ? WHERE id = ?', args: [stato, req.params.id] });
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ errore: 'Errore durante l\'aggiornamento.' });
+  }
+});
+
+// Backup completo in JSON (tutto tranne le credenziali: hash del PIN e
+// della risposta di sicurezza non vengono mai esportati).
+app.get('/api/admin/backup', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
+  try {
+    const [utenti, errori, valutazioni, segnalazioni] = await Promise.all([
+      db.execute('SELECT id, email, ruolo, created_at, last_login FROM users ORDER BY id'),
+      db.execute('SELECT * FROM errori ORDER BY id'),
+      db.execute('SELECT * FROM valutazioni ORDER BY id'),
+      db.execute('SELECT * FROM segnalazioni ORDER BY id')
+    ]);
+    res.setHeader('Content-Disposition', `attachment; filename="backup-semestre-filtro-${new Date().toISOString().slice(0, 10)}.json"`);
+    res.json({
+      generatoIl: new Date().toISOString(),
+      utenti: utenti.rows,
+      errori: errori.rows,
+      valutazioni: valutazioni.rows,
+      segnalazioni: segnalazioni.rows
+    });
+  } catch (e) {
+    console.error('[Admin] Errore generazione backup:', e.message);
+    res.status(500).json({ errore: 'Errore durante la generazione del backup.' });
   }
 });
 

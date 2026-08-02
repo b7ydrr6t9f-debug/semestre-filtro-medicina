@@ -2,6 +2,7 @@
 
 // Renderizza tabella registro valutazioni Excel
 function renderValutazioniTable() {
+  renderStatsPersonali();
   const tbody = document.getElementById('valutazioni-tbody');
   tbody.innerHTML = '';
 
@@ -27,6 +28,69 @@ function renderValutazioniTable() {
       </tr>
     `;
   });
+}
+
+// Pannello statistiche personali: riepilogo + andamento punteggio nel tempo.
+// Nessuna libreria di grafici: un semplice SVG generato a mano è sufficiente
+// per una sparkline e non aggiunge dipendenze esterne.
+function renderStatsPersonali() {
+  const panel = document.getElementById('stats-personali');
+  if (!panel) return;
+
+  if (valutazioni.length === 0) {
+    panel.classList.add('hidden');
+    return;
+  }
+  panel.classList.remove('hidden');
+
+  const punteggi = valutazioni.map(v => parseFloat(v.punteggio)).filter(n => !isNaN(n));
+  const media = punteggi.reduce((a, b) => a + b, 0) / punteggi.length;
+  const superate = valutazioni.filter(v => v.esito === 'Superato').length;
+  const tassoSuperamento = Math.round((superate / valutazioni.length) * 100);
+
+  document.getElementById('stats-tot-simulazioni').textContent = valutazioni.length;
+  document.getElementById('stats-media-punteggio').textContent = media.toFixed(1);
+  document.getElementById('stats-tasso-superamento').textContent = `${tassoSuperamento}%`;
+
+  // Argomento più debole: quello con più errori accumulati nel deposito
+  const conteggi = {};
+  errori.forEach(e => {
+    const chiave = `${e.materia} — ${e.topic}`;
+    conteggi[chiave] = (conteggi[chiave] || 0) + 1;
+  });
+  const piuDebole = Object.entries(conteggi).sort((a, b) => b[1] - a[1])[0];
+  document.getElementById('stats-argomento-debole').textContent = piuDebole ? piuDebole[0] : 'Nessun errore registrato';
+
+  // Grafico andamento: ultime 15 simulazioni in ordine cronologico
+  // (l'array valutazioni arriva dal server ordinato dal più recente al più vecchio)
+  const ultime = [...valutazioni].slice(0, 15).reverse();
+  document.getElementById('stats-grafico').innerHTML = costruisciSparkline(ultime.map(v => parseFloat(v.punteggio) || 0));
+}
+
+function costruisciSparkline(valori) {
+  if (valori.length < 2) {
+    return '<p class="text-xs text-slate-400 italic">Servono almeno 2 simulazioni per mostrare l\'andamento.</p>';
+  }
+
+  const larghezza = 600, altezza = 120, padding = 12;
+  const min = Math.min(...valori), max = Math.max(...valori);
+  const range = (max - min) || 1;
+
+  const coordinate = valori.map((v, i) => {
+    const x = padding + (i / (valori.length - 1)) * (larghezza - padding * 2);
+    const y = altezza - padding - ((v - min) / range) * (altezza - padding * 2);
+    return { x, y, v };
+  });
+
+  const punti = coordinate.map(c => `${c.x.toFixed(1)},${c.y.toFixed(1)}`).join(' ');
+  const cerchi = coordinate.map(c => `<circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="3.5" fill="#4f46e5"><title>${c.v.toFixed(1)} punti</title></circle>`).join('');
+
+  return `
+    <svg viewBox="0 0 ${larghezza} ${altezza}" class="w-full h-28" preserveAspectRatio="none">
+      <polyline points="${punti}" fill="none" stroke="#4f46e5" stroke-width="2.5" />
+      ${cerchi}
+    </svg>
+  `;
 }
 
 // Esportazione in foglio Excel (.XLSX)

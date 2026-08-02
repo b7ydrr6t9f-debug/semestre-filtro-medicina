@@ -2,7 +2,7 @@
 
 // Switch tab
 function switchTab(tabName) {
-  ['syllabus', 'simulator', 'flashcard', 'deposito', 'lezioni', 'valutazione'].forEach(t => {
+  ['syllabus', 'simulator', 'flashcard', 'deposito', 'lezioni', 'valutazione', 'contatti'].forEach(t => {
     document.getElementById(`sec-${t}`).classList.add('hidden');
     document.getElementById(`tab-${t}`).classList.remove('tab-active');
   });
@@ -10,6 +10,27 @@ function switchTab(tabName) {
   document.getElementById(`tab-${tabName}`).classList.add('tab-active');
   if (tabName === 'deposito') renderDepositoRiepilogo();
   if (tabName === 'lezioni') renderLezioniSuggerite();
+  if (tabName === 'contatti') renderStoricoSegnalazioni();
+}
+
+// Countdown al prossimo appello nazionale del Semestre Filtro (date ufficiali
+// annunciate dal MUR: prima prova 10/12/2026, seconda prova 11/01/2027)
+function renderCountdownEsami() {
+  const barra = document.getElementById('countdown-esami');
+  if (!barra) return;
+
+  const oggi = new Date();
+  const appelli = [
+    { nome: 'Primo appello nazionale', data: new Date('2026-12-10T11:00:00') },
+    { nome: 'Secondo appello nazionale', data: new Date('2027-01-11T11:00:00') }
+  ];
+  const prossimo = appelli.find(a => a.data > oggi);
+  if (!prossimo) { barra.classList.add('hidden'); return; }
+
+  const giorni = Math.ceil((prossimo.data - oggi) / (1000 * 60 * 60 * 24));
+  const dataFormattata = prossimo.data.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+  barra.textContent = `⏳ ${prossimo.nome}: ${dataFormattata} — mancano ${giorni} ${giorni === 1 ? 'giorno' : 'giorni'}`;
+  barra.classList.remove('hidden');
 }
 
 // Carica materia nel tab syllabus

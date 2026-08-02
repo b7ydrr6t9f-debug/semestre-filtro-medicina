@@ -23,6 +23,7 @@ async function avviaApp(user) {
   renderValutazioniTable();
   renderDepositoRiepilogo();
   renderLezioniSuggerite();
+  renderCountdownEsami();
   pianificaAvvisoScadenza();
   lucide.createIcons();
 }
