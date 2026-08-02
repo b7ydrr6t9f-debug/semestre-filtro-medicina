@@ -173,7 +173,7 @@ async function ricaricaSimulazioniModale() {
         <div class="text-xs space-y-0.5">
           <p class="font-mono text-slate-500">${escapeHtml(v.data)}</p>
           <p class="font-semibold text-slate-800">${escapeHtml(v.tipoProva)} — ${escapeHtml(v.materiaUnita)}</p>
-          <p class="text-slate-600">Punteggio ${escapeHtml(v.punteggio)} · ${escapeHtml(v.rateo)} corrette · ${v.errate ?? 0} errate · ${v.omesse ?? 0} omesse · ${escapeHtml(v.esito)}</p>
+          <p class="text-slate-600">Punteggio ${escapeHtml(v.punteggio)} · ${parseInt(v.rateo, 10) || 0}/${v.errate ?? 0}/${v.omesse ?? 0} (corrette/errate/omesse) · ${escapeHtml(v.esito)}</p>
         </div>
         <button onclick="eliminaValutazioneAdmin(${v.id})" class="text-rose-500 hover:text-rose-700 shrink-0" title="Elimina questa simulazione">
           <i data-lucide="trash-2" class="w-4 h-4"></i>
