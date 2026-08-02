@@ -372,16 +372,16 @@ async function finalizeScore() {
   };
 
   try {
-    await Promise.all([
-      authFetch('/api/dati/errori', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: currentUser.id, nuoviErrori })
-      }),
-      authFetch('/api/dati/valutazione', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: currentUser.id, valutazione: nuovaValutazione })
-      })
-    ]);
+    const resValutazione = await authFetch('/api/dati/valutazione', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: currentUser.id, valutazione: nuovaValutazione })
+    });
+    const datiValutazione = await resValutazione.json();
+
+    await authFetch('/api/dati/errori', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: currentUser.id, nuoviErrori, valutazioneId: datiValutazione.valutazioneId })
+    });
     await ricaricaDatiServer();
   } catch (e) {
     alert("Punteggio calcolato, ma non è stato possibile salvarlo sul server: " + e.message);

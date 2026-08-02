@@ -63,8 +63,17 @@ async function initDb() {
     user_id INTEGER NOT NULL,
     materia TEXT, topic TEXT, question TEXT,
     user_answer TEXT, correct_answer TEXT, explanation TEXT,
-    timestamp TEXT
+    timestamp TEXT,
+    valutazione_id INTEGER
   )`);
+
+  // Compatibilità con database creati prima che ogni errore fosse collegato
+  // alla simulazione che lo ha generato (serve per poterli eliminare insieme).
+  const infoErrori = await db.execute("PRAGMA table_info(errori)");
+  if (!infoErrori.rows.map(r => r.name).includes('valutazione_id')) {
+    await db.execute("ALTER TABLE errori ADD COLUMN valutazione_id INTEGER");
+    console.log('[Database] Aggiunta colonna valutazione_id alla tabella errori (database preesistente).');
+  }
 
   await db.execute(`CREATE TABLE IF NOT EXISTS valutazioni (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -396,15 +405,15 @@ app.get('/api/dati/:userId', richiedeAutenticazione, async (req, res) => {
 });
 
 app.post('/api/dati/errori', richiedeAutenticazione, async (req, res) => {
-  const { userId, nuoviErrori } = req.body;
+  const { userId, nuoviErrori, valutazioneId } = req.body;
   if (userId !== req.userId) return res.status(403).json({ errore: 'Non autorizzato.' });
   if (!Array.isArray(nuoviErrori) || nuoviErrori.length === 0) return res.json({ success: true });
 
   try {
     for (const e of nuoviErrori) {
       await db.execute({
-        sql: 'INSERT INTO errori (user_id, materia, topic, question, user_answer, correct_answer, explanation, timestamp) VALUES (?,?,?,?,?,?,?,?)',
-        args: [userId, e.materia, e.topic, e.question, e.userAnswer, e.correctAnswer, e.explanation, e.timestamp]
+        sql: 'INSERT INTO errori (user_id, materia, topic, question, user_answer, correct_answer, explanation, timestamp, valutazione_id) VALUES (?,?,?,?,?,?,?,?,?)',
+        args: [userId, e.materia, e.topic, e.question, e.userAnswer, e.correctAnswer, e.explanation, e.timestamp, valutazioneId || null]
       });
     }
     res.json({ success: true });
@@ -435,11 +444,11 @@ app.post('/api/dati/valutazione', richiedeAutenticazione, async (req, res) => {
   if (!valutazione) return res.status(400).json({ errore: 'Dati mancanti.' });
 
   try {
-    await db.execute({
+    const result = await db.execute({
       sql: 'INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, errate, omesse, esito) VALUES (?,?,?,?,?,?,?,?,?,?)',
       args: [userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.errate || 0, valutazione.omesse || 0, valutazione.esito]
     });
-    res.json({ success: true });
+    res.json({ success: true, valutazioneId: Number(result.lastInsertRowid) });
   } catch (e) {
     console.error('[Dati] Errore salvataggio valutazione:', e.message);
     res.status(500).json({ errore: 'Errore salvataggio valutazione.' });
@@ -546,10 +555,13 @@ app.get('/api/admin/utenti/:id/valutazioni', richiedeAutenticazione, richiedeAdm
 // della cancellazione di un errore da parte dello studente, qui non serve
 // verificare il proprietario: chi ha ruolo admin può intervenire su
 // qualunque riga, è il caso d'uso di questa rotta.
+// Elimina anche gli errori depositati generati da quella specifica
+// esercitazione (collegati tramite valutazione_id), non l'intero deposito.
 app.delete('/api/admin/valutazioni/:id', richiedeAutenticazione, richiedeAdmin, async (req, res) => {
   try {
+    const erroriEliminati = await db.execute({ sql: 'DELETE FROM errori WHERE valutazione_id = ?', args: [req.params.id] });
     const result = await db.execute({ sql: 'DELETE FROM valutazioni WHERE id = ?', args: [req.params.id] });
-    res.json({ success: true, eliminato: result.rowsAffected > 0 });
+    res.json({ success: true, eliminato: result.rowsAffected > 0, erroriEliminati: erroriEliminati.rowsAffected });
   } catch (e) {
     console.error('[Admin] Errore eliminazione valutazione:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'eliminazione della simulazione.' });

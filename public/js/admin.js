@@ -202,7 +202,7 @@ async function ricaricaSimulazioniModale() {
 // Elimina una singola simulazione fatta partire per sbaglio, senza toccare
 // account, errori depositati o le altre simulazioni dello studente.
 async function eliminaValutazioneAdmin(id) {
-  if (!confirm('Eliminare questa simulazione? Non influisce sull\'account né sugli altri dati dello studente.')) return;
+  if (!confirm('Eliminare questa simulazione? Verranno eliminati anche gli errori depositati generati da questa esercitazione (non le altre simulazioni o errori dello studente).')) return;
   try {
     const res = await authFetch(`/api/admin/valutazioni/${id}`, { method: 'DELETE' });
     const data = await res.json();
