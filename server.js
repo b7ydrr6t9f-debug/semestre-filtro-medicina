@@ -65,8 +65,24 @@ async function initDb() {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     data TEXT, tipo_prova TEXT, materia_unita TEXT,
-    punteggio TEXT, tempo TEXT, rateo TEXT, esito TEXT
+    punteggio TEXT, tempo TEXT, rateo TEXT, esito TEXT,
+    errate INTEGER NOT NULL DEFAULT 0,
+    omesse INTEGER NOT NULL DEFAULT 0
   )`);
+
+  // Compatibilità con database creati prima che il conteggio di errate e
+  // omesse venisse salvato insieme alla valutazione (prima veniva calcolato
+  // e mostrato solo nel popup finale, poi scartato).
+  const infoValutazioni = await db.execute("PRAGMA table_info(valutazioni)");
+  const colonneValutazioni = infoValutazioni.rows.map(r => r.name);
+  if (!colonneValutazioni.includes('errate')) {
+    await db.execute("ALTER TABLE valutazioni ADD COLUMN errate INTEGER NOT NULL DEFAULT 0");
+    console.log('[Database] Aggiunta colonna errate alla tabella valutazioni (database preesistente).');
+  }
+  if (!colonneValutazioni.includes('omesse')) {
+    await db.execute("ALTER TABLE valutazioni ADD COLUMN omesse INTEGER NOT NULL DEFAULT 0");
+    console.log('[Database] Aggiunta colonna omesse alla tabella valutazioni (database preesistente).');
+  }
 }
 initDb().catch(e => console.error('[Database] Errore inizializzazione:', e.message));
 
@@ -292,7 +308,7 @@ app.get('/api/dati/:userId', richiedeAutenticazione, async (req, res) => {
 
     res.json({
       errori: erroriResult.rows.map(e => ({ id: Number(e.id), materia: e.materia, topic: e.topic, question: e.question, userAnswer: e.user_answer, correctAnswer: e.correct_answer, explanation: e.explanation, timestamp: e.timestamp })),
-      valutazioni: valutazioniResult.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+      valutazioni: valutazioniResult.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, errate: Number(v.errate || 0), omesse: Number(v.omesse || 0), esito: v.esito }))
     });
   } catch (e) {
     console.error('[Dati] Errore caricamento:', e.message);
@@ -341,8 +357,8 @@ app.post('/api/dati/valutazione', richiedeAutenticazione, async (req, res) => {
 
   try {
     await db.execute({
-      sql: 'INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, esito) VALUES (?,?,?,?,?,?,?,?)',
-      args: [userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.esito]
+      sql: 'INSERT INTO valutazioni (user_id, data, tipo_prova, materia_unita, punteggio, tempo, rateo, errate, omesse, esito) VALUES (?,?,?,?,?,?,?,?,?,?)',
+      args: [userId, valutazione.data, valutazione.tipoProva, valutazione.materiaUnita, valutazione.punteggio, valutazione.tempo, valutazione.rateo, valutazione.errate || 0, valutazione.omesse || 0, valutazione.esito]
     });
     res.json({ success: true });
   } catch (e) {
@@ -438,7 +454,7 @@ app.get('/api/admin/utenti/:id/valutazioni', richiedeAutenticazione, richiedeAdm
   try {
     const result = await db.execute({ sql: 'SELECT * FROM valutazioni WHERE user_id = ? ORDER BY id DESC', args: [targetId] });
     res.json({
-      valutazioni: result.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, esito: v.esito }))
+      valutazioni: result.rows.map(v => ({ id: Number(v.id), data: v.data, tipoProva: v.tipo_prova, materiaUnita: v.materia_unita, punteggio: v.punteggio, tempo: v.tempo, rateo: v.rateo, errate: Number(v.errate || 0), omesse: Number(v.omesse || 0), esito: v.esito }))
     });
   } catch (e) {
     console.error('[Admin] Errore lista simulazioni:', e.message);

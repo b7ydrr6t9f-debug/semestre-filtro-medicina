@@ -366,6 +366,8 @@ async function finalizeScore() {
     punteggio: punteggioTot.toFixed(1),
     tempo: tempoFormattato,
     rateo: rateo,
+    errate: errate,
+    omesse: omesse,
     esito: punteggioTot >= (totale * 0.6) ? "Superato" : "Non Superato"
   };
 

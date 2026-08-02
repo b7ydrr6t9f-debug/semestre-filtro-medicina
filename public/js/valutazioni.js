@@ -6,11 +6,12 @@ function renderValutazioniTable() {
   tbody.innerHTML = '';
 
   if (valutazioni.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400 italic">Nessuna simulazione ancora registrata. Effettua un test nel Generatore Quiz.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9" class="p-6 text-center text-slate-400 italic">Nessuna simulazione ancora registrata. Effettua un test nel Generatore Quiz.</td></tr>`;
     return;
   }
 
   valutazioni.forEach(v => {
+    const corrette = parseInt(v.rateo, 10) || 0; // v.rateo è nel formato "esatte/totale"
     const badgeClass = v.esito === "Superato" ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800";
     tbody.innerHTML += `
       <tr class="hover:bg-slate-50 transition">
@@ -19,7 +20,9 @@ function renderValutazioniTable() {
         <td class="p-3 text-slate-700">${v.materiaUnita}</td>
         <td class="p-3 text-center font-bold text-indigo-900">${v.punteggio}</td>
         <td class="p-3 text-center font-mono text-xs">${v.tempo}</td>
-        <td class="p-3 text-center font-semibold text-slate-800">${v.rateo}</td>
+        <td class="p-3 text-center font-semibold text-emerald-700">${corrette}</td>
+        <td class="p-3 text-center font-semibold text-rose-700">${v.errate ?? 0}</td>
+        <td class="p-3 text-center font-semibold text-slate-500">${v.omesse ?? 0}</td>
         <td class="p-3 text-center">
           <span class="text-xs px-2.5 py-1 rounded-full font-bold ${badgeClass}">${v.esito}</span>
         </td>
@@ -41,7 +44,10 @@ function exportToExcel() {
     "Materia / Unità Didattica": v.materiaUnita,
     "Punteggio Totale": v.punteggio,
     "Tempo Impiegato": v.tempo,
-    "Rateo Esatte": v.rateo,
+    "Risposte Corrette": parseInt(v.rateo, 10) || 0,
+    "Risposte Errate": v.errate ?? 0,
+    "Risposte Omesse": v.omesse ?? 0,
+    "Domande Totali": v.rateo ? v.rateo.split('/')[1] : '',
     "Esito Finale": v.esito
   }));
 
@@ -56,6 +62,9 @@ function exportToExcel() {
     { wch: 45 },
     { wch: 16 },
     { wch: 16 },
+    { wch: 14 },
+    { wch: 14 },
+    { wch: 14 },
     { wch: 14 },
     { wch: 15 }
   ];
