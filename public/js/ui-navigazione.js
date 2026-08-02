@@ -2,7 +2,7 @@
 
 // Switch tab
 function switchTab(tabName) {
-  ['syllabus', 'simulator', 'deposito', 'lezioni', 'valutazione'].forEach(t => {
+  ['syllabus', 'simulator', 'flashcard', 'deposito', 'lezioni', 'valutazione'].forEach(t => {
     document.getElementById(`sec-${t}`).classList.add('hidden');
     document.getElementById(`tab-${t}`).classList.remove('tab-active');
   });

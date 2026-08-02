@@ -19,6 +19,7 @@ async function avviaApp(user) {
 
   loadMateria('biologia');
   updateSimUnitaOptions();
+  updateFlashUnitaOptions();
   renderValutazioniTable();
   renderDepositoRiepilogo();
   renderLezioniSuggerite();
