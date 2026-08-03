@@ -123,14 +123,14 @@ async function generateQuiz() {
   const ripristina = impostaCaricamento([btnGen], btnGen, 'Generazione delle 31 domande in corso (può richiedere qualche secondo)...');
 
   try {
-    const domandeGiaUsate = leggiCronologiaGenerazione(chiaveCronologia);
+    const domandeGiaUsate = await leggiCronologiaGenerazione(chiaveCronologia);
     const parsedQuiz = await chiediJsonAlServer(buildEsercitazionePrompt(materiaObj, unitaObj, domandeGiaUsate));
     currentQuizData = {
       materia: materiaObj.title,
       unitaTitle: unitaObj.title,
       questions: parsedQuiz.questions
     };
-    salvaCronologiaGenerazione(chiaveCronologia, parsedQuiz.questions.map(q => q.question));
+    await salvaCronologiaGenerazione(chiaveCronologia, parsedQuiz.questions.map(q => q.question));
     renderQuizUI();
   } catch (err) {
     alert("Si è verificato un errore: " + err.message);

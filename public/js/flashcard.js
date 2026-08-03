@@ -78,13 +78,13 @@ async function generaFlashcardBase() {
   const ripristina = impostaCaricamento([btn], btn, 'Generazione flashcard in corso...');
 
   try {
-    const carteGiaUsate = leggiCronologiaGenerazione(chiaveCronologia);
+    const carteGiaUsate = await leggiCronologiaGenerazione(chiaveCronologia);
     const parsed = await chiediJsonAlServer(buildFlashcardPrompt(materiaObj, unitaSelezionate, carteGiaUsate));
     if (!Array.isArray(parsed.flashcard) || parsed.flashcard.length === 0) {
       throw new Error('Formato di risposta inatteso dal modello.');
     }
     const mazzo = parsed.flashcard.map(f => ({ front: f.front, back: f.back, unita: f.unita || '' }));
-    salvaCronologiaGenerazione(chiaveCronologia, mazzo.map(f => f.front));
+    await salvaCronologiaGenerazione(chiaveCronologia, mazzo.map(f => f.front));
     apriFlashcard(mazzo, `${materiaObj.title} — ${unitaSelezionate.map(u => u.title).join(', ')}`);
   } catch (err) {
     alert('Si è verificato un errore: ' + err.message);

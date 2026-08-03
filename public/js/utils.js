@@ -39,24 +39,29 @@ function normalizzaTopic(t) {
   return (t || 'Argomento generico').trim();
 }
 
-// Cronologia locale (per browser) di domande/flashcard già generate per una
-// data unità didattica: usata per dire esplicitamente a Gemini cosa evitare
-// di riproporre, invece di sperare che la sola variabilità del modello basti.
-const CRONOLOGIA_MAX_ELEMENTI = 60;
-
-function leggiCronologiaGenerazione(chiave) {
+// Cronologia (sul server, legata all'account) di domande/flashcard già
+// generate per una data unità didattica: usata per dire esplicitamente a
+// Gemini cosa evitare di riproporre. Salvata lato server, non nel browser,
+// così vale su tutti i dispositivi con cui accedi allo stesso account.
+async function leggiCronologiaGenerazione(chiave) {
   try {
-    return JSON.parse(localStorage.getItem(`cronologia_${chiave}`) || '[]');
+    const res = await authFetch(`/api/cronologia/${chiave}`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.elementi || [];
   } catch (e) {
-    return [];
+    return []; // se il caricamento fallisce, si genera comunque senza cronologia
   }
 }
 
-function salvaCronologiaGenerazione(chiave, nuoviElementi) {
-  const aggiornata = [...leggiCronologiaGenerazione(chiave), ...nuoviElementi].slice(-CRONOLOGIA_MAX_ELEMENTI);
+async function salvaCronologiaGenerazione(chiave, nuoviElementi) {
   try {
-    localStorage.setItem(`cronologia_${chiave}`, JSON.stringify(aggiornata));
+    await authFetch(`/api/cronologia/${chiave}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ elementi: nuoviElementi })
+    });
   } catch (e) {
-    // localStorage pieno o non disponibile: non deve mai bloccare l'app
+    // Il salvataggio della cronologia non deve mai bloccare l'esercitazione appena generata
   }
 }

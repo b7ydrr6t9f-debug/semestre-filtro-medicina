@@ -107,6 +107,18 @@ async function initDb() {
     stato TEXT NOT NULL DEFAULT 'aperta',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
+
+  // Cronologia di domande/flashcard già generate per un utente + unità
+  // didattica, usata per chiedere a Gemini di non riproporle. Legata
+  // all'account (non al browser), così vale su tutti i dispositivi.
+  await db.execute(`CREATE TABLE IF NOT EXISTS cronologia_domande (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    chiave TEXT NOT NULL,
+    testo TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await db.execute(`CREATE INDEX IF NOT EXISTS idx_cronologia_utente_chiave ON cronologia_domande (user_id, chiave)`);
 }
 initDb().catch(e => console.error('[Database] Errore inizializzazione:', e.message));
 
@@ -565,6 +577,57 @@ app.delete('/api/admin/valutazioni/:id', richiedeAutenticazione, richiedeAdmin, 
   } catch (e) {
     console.error('[Admin] Errore eliminazione valutazione:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'eliminazione della simulazione.' });
+  }
+});
+
+// ------------------------------------------------------------------
+// Cronologia domande/flashcard già generate (per evitare ripetizioni da
+// parte di Gemini): legata all'account, non al browser.
+// ------------------------------------------------------------------
+
+const CRONOLOGIA_MAX_ELEMENTI = 60;
+const CHIAVE_CRONOLOGIA_VALIDA = /^[a-z0-9_-]{1,100}$/i;
+
+app.get('/api/cronologia/:chiave', richiedeAutenticazione, async (req, res) => {
+  if (!CHIAVE_CRONOLOGIA_VALIDA.test(req.params.chiave)) return res.status(400).json({ errore: 'Chiave non valida.' });
+
+  try {
+    const result = await db.execute({
+      sql: 'SELECT testo FROM cronologia_domande WHERE user_id = ? AND chiave = ? ORDER BY id ASC',
+      args: [req.userId, req.params.chiave]
+    });
+    res.json({ elementi: result.rows.map(r => r.testo) });
+  } catch (e) {
+    console.error('[Cronologia] Errore lettura:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+app.post('/api/cronologia/:chiave', richiedeAutenticazione, async (req, res) => {
+  if (!CHIAVE_CRONOLOGIA_VALIDA.test(req.params.chiave)) return res.status(400).json({ errore: 'Chiave non valida.' });
+
+  const elementi = Array.isArray(req.body.elementi) ? req.body.elementi : [];
+  if (elementi.length === 0) return res.json({ success: true });
+
+  try {
+    for (const testo of elementi) {
+      await db.execute({
+        sql: 'INSERT INTO cronologia_domande (user_id, chiave, testo) VALUES (?,?,?)',
+        args: [req.userId, req.params.chiave, String(testo).slice(0, 500)]
+      });
+    }
+    // Mantiene solo gli ultimi CRONOLOGIA_MAX_ELEMENTI per questo utente+chiave,
+    // altrimenti la cronologia (e quindi il prompt) crescerebbe senza limite
+    await db.execute({
+      sql: `DELETE FROM cronologia_domande WHERE user_id = ? AND chiave = ? AND id NOT IN (
+        SELECT id FROM cronologia_domande WHERE user_id = ? AND chiave = ? ORDER BY id DESC LIMIT ?
+      )`,
+      args: [req.userId, req.params.chiave, req.userId, req.params.chiave, CRONOLOGIA_MAX_ELEMENTI]
+    });
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Cronologia] Errore salvataggio:', e.message);
+    res.status(500).json({ errore: 'Errore salvataggio cronologia.' });
   }
 });
 
