@@ -38,3 +38,25 @@ function pulisciJson(testo) {
 function normalizzaTopic(t) {
   return (t || 'Argomento generico').trim();
 }
+
+// Cronologia locale (per browser) di domande/flashcard già generate per una
+// data unità didattica: usata per dire esplicitamente a Gemini cosa evitare
+// di riproporre, invece di sperare che la sola variabilità del modello basti.
+const CRONOLOGIA_MAX_ELEMENTI = 60;
+
+function leggiCronologiaGenerazione(chiave) {
+  try {
+    return JSON.parse(localStorage.getItem(`cronologia_${chiave}`) || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function salvaCronologiaGenerazione(chiave, nuoviElementi) {
+  const aggiornata = [...leggiCronologiaGenerazione(chiave), ...nuoviElementi].slice(-CRONOLOGIA_MAX_ELEMENTI);
+  try {
+    localStorage.setItem(`cronologia_${chiave}`, JSON.stringify(aggiornata));
+  } catch (e) {
+    // localStorage pieno o non disponibile: non deve mai bloccare l'app
+  }
+}

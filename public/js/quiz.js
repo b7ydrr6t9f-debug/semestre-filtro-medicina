@@ -5,7 +5,12 @@
 // riconosce sinonimi/sigle ma non i refusi di battitura (vedi submitQuiz).
 
 // Costruisce il prompt per un'esercitazione su un'unita' didattica (31 domande: 21 MCQ + 10 completamento)
-function buildEsercitazionePrompt(materiaObj, unitaObj) {
+function buildEsercitazionePrompt(materiaObj, unitaObj, domandeGiaUsate = []) {
+  const sezioneCronologia = domandeGiaUsate.length === 0 ? '' : `
+Nelle esercitazioni precedenti su questa stessa unità didattica sono già state usate queste domande: NON riproporle, nemmeno con variazioni minime nella formulazione. Copri altri dettagli, altri sotto-argomenti o altre angolature del programma, così ogni esercitazione risulta diversa dalle precedenti:
+${domandeGiaUsate.map((d, i) => `${i + 1}. ${d}`).join('\n')}
+`;
+
   return `Sei un professore universitario d'esame per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
 Crea un'esercitazione di ESATTAMENTE 31 quesiti basati ESCLUSIVAMENTE sul seguente programma dell'Unità Didattica:
 
@@ -13,7 +18,7 @@ Materia: ${materiaObj.title}
 Unità Didattica: ${unitaObj.title}
 Programma Dettagliato:
 ${unitaObj.content}
-
+${sezioneCronologia}
 Di questi 31 quesiti:
 - 21 devono avere "type":"mcq", con "options" (5 opzioni A-E) e "correctIndex" (0-4) dell'opzione corretta.
 - 10 devono avere "type":"completamento": una frase con una lacuna concettuale, senza "options" né "correctIndex", ma con "correctAnswer" (la risposta attesa, breve, 1-5 parole).
@@ -112,17 +117,20 @@ async function generateQuiz() {
   const unitaId = parseInt(document.getElementById('sim-unita').value);
   const materiaObj = SYLLABUS_DATA[matKey];
   const unitaObj = materiaObj.unita.find(u => u.id === unitaId);
+  const chiaveCronologia = `esercitazione_${matKey}_${unitaId}`;
 
   const btnGen = document.getElementById('btn-generate');
   const ripristina = impostaCaricamento([btnGen], btnGen, 'Generazione delle 31 domande in corso (può richiedere qualche secondo)...');
 
   try {
-    const parsedQuiz = await chiediJsonAlServer(buildEsercitazionePrompt(materiaObj, unitaObj));
+    const domandeGiaUsate = leggiCronologiaGenerazione(chiaveCronologia);
+    const parsedQuiz = await chiediJsonAlServer(buildEsercitazionePrompt(materiaObj, unitaObj, domandeGiaUsate));
     currentQuizData = {
       materia: materiaObj.title,
       unitaTitle: unitaObj.title,
       questions: parsedQuiz.questions
     };
+    salvaCronologiaGenerazione(chiaveCronologia, parsedQuiz.questions.map(q => q.question));
     renderQuizUI();
   } catch (err) {
     alert("Si è verificato un errore: " + err.message);

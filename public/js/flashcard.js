@@ -37,15 +37,19 @@ function aggiornaContatoreUnita() {
 }
 
 // Costruisce il prompt per un mazzo di flashcard su piu' unita' insieme
-function buildFlashcardPrompt(materiaObj, unitaSelezionate) {
+function buildFlashcardPrompt(materiaObj, unitaSelezionate, carteGiaUsate = []) {
   const programmi = unitaSelezionate.map(u => `--- ${u.title} ---\n${u.content}`).join('\n\n');
   const nCarte = unitaSelezionate.length * 9;
+  const sezioneCronologia = carteGiaUsate.length === 0 ? '' : `
+Nei mazzi generati in precedenza su queste unità sono già state usate queste flashcard: NON riproporle, nemmeno con variazioni minime. Copri altri concetti o altre angolature del programma:
+${carteGiaUsate.map((f, i) => `${i + 1}. ${f}`).join('\n')}
+`;
 
   return `Sei un professore universitario per il Corso di Laurea in Medicina e Chirurgia (Semestre Filtro).
 Crea un mazzo di ESATTAMENTE ${nCarte} flashcard di studio (non domande a risposta multipla, servono per un primo ripasso) basate ESCLUSIVAMENTE sul seguente programma di ${materiaObj.title}, che copre insieme le unità didattiche indicate:
 
 ${programmi}
-
+${sezioneCronologia}
 Ogni flashcard deve avere:
 - "front": il fronte della carta — un termine, una domanda concettuale breve, o l'enunciato di una legge/definizione da ricordare (massimo 20 parole).
 - "back": il retro — la risposta o spiegazione concisa (massimo 40 parole), chiara e autosufficiente senza dover rileggere il programma.
@@ -68,16 +72,19 @@ async function generaFlashcardBase() {
 
   const materiaObj = SYLLABUS_DATA[matKey];
   const unitaSelezionate = materiaObj.unita.filter(u => idsSelezionati.includes(String(u.id)));
+  const chiaveCronologia = `flashcard_${matKey}_${[...idsSelezionati].sort().join('-')}`;
 
   const btn = document.getElementById('btn-genera-flashcard');
   const ripristina = impostaCaricamento([btn], btn, 'Generazione flashcard in corso...');
 
   try {
-    const parsed = await chiediJsonAlServer(buildFlashcardPrompt(materiaObj, unitaSelezionate));
+    const carteGiaUsate = leggiCronologiaGenerazione(chiaveCronologia);
+    const parsed = await chiediJsonAlServer(buildFlashcardPrompt(materiaObj, unitaSelezionate, carteGiaUsate));
     if (!Array.isArray(parsed.flashcard) || parsed.flashcard.length === 0) {
       throw new Error('Formato di risposta inatteso dal modello.');
     }
     const mazzo = parsed.flashcard.map(f => ({ front: f.front, back: f.back, unita: f.unita || '' }));
+    salvaCronologiaGenerazione(chiaveCronologia, mazzo.map(f => f.front));
     apriFlashcard(mazzo, `${materiaObj.title} — ${unitaSelezionate.map(u => u.title).join(', ')}`);
   } catch (err) {
     alert('Si è verificato un errore: ' + err.message);
