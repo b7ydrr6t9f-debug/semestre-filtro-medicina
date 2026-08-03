@@ -35,6 +35,7 @@ async function initDb() {
     risposta_hash TEXT NOT NULL,
     ruolo TEXT NOT NULL DEFAULT 'studente',
     last_login DATETIME,
+    email_verificata INTEGER NOT NULL DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
 
@@ -50,6 +51,22 @@ async function initDb() {
     await db.execute("ALTER TABLE users ADD COLUMN last_login DATETIME");
     console.log('[Database] Aggiunta colonna last_login alla tabella users (database preesistente).');
   }
+  if (!colonneUsers.includes('email_verificata')) {
+    await db.execute("ALTER TABLE users ADD COLUMN email_verificata INTEGER NOT NULL DEFAULT 0");
+    console.log('[Database] Aggiunta colonna email_verificata alla tabella users (database preesistente).');
+  }
+
+  // Token per verifica email e reset PIN via link: un unico posto per
+  // entrambi, distinti dal campo "tipo", monouso e con scadenza.
+  await db.execute(`CREATE TABLE IF NOT EXISTS token_azioni (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    token TEXT UNIQUE NOT NULL,
+    tipo TEXT NOT NULL,
+    expires_at DATETIME NOT NULL,
+    usato INTEGER NOT NULL DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
 
   await db.execute(`CREATE TABLE IF NOT EXISTS sessions (
     token TEXT PRIMARY KEY,
@@ -161,6 +178,11 @@ const SESSION_DURATA_MS = 2 * 60 * 60 * 1000; // 2 ore
 // ------------------------------------------------------------------
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const EMAIL_MITTENTE = process.env.EMAIL_MITTENTE || 'onboarding@resend.dev';
+// RENDER_EXTERNAL_URL è impostata automaticamente da Render su ogni Web
+// Service (es. https://tuo-progetto.onrender.com): i link nelle email
+// funzionano già "di fabbrica" su Render, senza configurazione aggiuntiva.
+// APP_URL resta disponibile per sovrascriverla (es. sviluppo locale, dominio custom).
+const APP_URL = (process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || '').replace(/\/$/, '');
 
 function inviaEmail(destinatario, oggetto, corpoHtml) {
   if (!RESEND_API_KEY || !destinatario) return;
@@ -189,13 +211,45 @@ function inviaEmail(destinatario, oggetto, corpoHtml) {
   richiesta.end();
 }
 
-function inviaEmailBenvenuto(email) {
+function bottoneEmail(link, testo) {
+  return `<p><a href="${link}" style="background:#4f46e5;color:white;padding:10px 20px;border-radius:8px;text-decoration:none;display:inline-block;">${testo}</a></p><p style="font-size:12px;color:#64748b;word-break:break-all;">Oppure copia questo link: ${link}</p>`;
+}
+
+function inviaEmailBenvenuto(email, tokenVerifica) {
+  const link = APP_URL && tokenVerifica ? `${APP_URL}/?verifica=${tokenVerifica}` : null;
   inviaEmail(email, 'Benvenuto su Semestre Filtro Medicina 2026', `
     <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
       <h2 style="color:#312e81;">Benvenuto! 🎓</h2>
       <p>Il tuo account per la piattaforma di preparazione al Semestre Filtro è attivo.</p>
       <p>Puoi iniziare subito da <strong>Syllabus & Unità Didattiche</strong>, oppure ripassare con le <strong>Flashcard</strong> prima di passare alle esercitazioni a punteggio.</p>
+      ${link ? `<hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0;"><p><strong>Conferma la tua email</strong> per essere sicuro di ricevere le notifiche importanti:</p>${bottoneEmail(link, 'Conferma email')}` : ''}
       <p style="color:#64748b; font-size:13px; margin-top:24px;">Se non ti sei registrato tu, ignora pure questa email.</p>
+    </div>
+  `);
+}
+
+function inviaEmailVerifica(email, token) {
+  if (!APP_URL) return; // senza URL pubblico non c'è un link utile da mandare
+  const link = `${APP_URL}/?verifica=${token}`;
+  inviaEmail(email, 'Conferma la tua email - Semestre Filtro Medicina', `
+    <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+      <h2 style="color:#312e81;">Conferma la tua email</h2>
+      <p>Clicca il pulsante qui sotto per confermare che questo indirizzo è tuo:</p>
+      ${bottoneEmail(link, 'Conferma email')}
+      <p style="color:#64748b; font-size:13px; margin-top:24px;">Il link scade tra 24 ore. Se non hai richiesto tu questa email, ignorala pure.</p>
+    </div>
+  `);
+}
+
+function inviaEmailResetPin(email, token) {
+  if (!APP_URL) return;
+  const link = `${APP_URL}/?reset-pin=${token}`;
+  inviaEmail(email, 'Reimposta il tuo PIN - Semestre Filtro Medicina', `
+    <div style="font-family: sans-serif; max-width: 480px; margin: 0 auto;">
+      <h2 style="color:#312e81;">Reimposta il tuo PIN</h2>
+      <p>Hai richiesto di reimpostare il PIN di accesso alla piattaforma. Clicca qui sotto per sceglierne uno nuovo:</p>
+      ${bottoneEmail(link, 'Reimposta PIN')}
+      <p style="color:#64748b; font-size:13px; margin-top:24px;">Il link è valido 30 minuti ed è utilizzabile una sola volta. Se non hai richiesto tu questa operazione, ignora l'email: il tuo PIN attuale resterà invariato.</p>
     </div>
   `);
 }
@@ -224,6 +278,18 @@ async function creaSessione(userId) {
   });
   await db.execute({ sql: 'UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?', args: [userId] });
   return { token, expiresAt };
+}
+
+// Token monouso per verifica email o reset PIN via link (tabella token_azioni,
+// distinta da "sessions": qui i token servono per una singola azione, non per autenticare richieste)
+async function creaTokenAzione(userId, tipo, durataMs) {
+  const token = crypto.randomBytes(24).toString('hex');
+  const expiresAt = new Date(Date.now() + durataMs).toISOString();
+  await db.execute({
+    sql: 'INSERT INTO token_azioni (user_id, token, tipo, expires_at) VALUES (?,?,?,?)',
+    args: [userId, token, tipo, expiresAt]
+  });
+  return token;
 }
 
 // Verifica il Bearer token e attacca req.userId. Tutte le rotte che
@@ -309,8 +375,9 @@ app.post('/api/auth/registrati', async (req, res) => {
 
     const userId = Number(result.lastInsertRowid);
     const { token, expiresAt } = await creaSessione(userId);
-    inviaEmailBenvenuto(email);
-    res.json({ success: true, token, expiresAt, user: { id: userId, email, ruolo } });
+    const tokenVerifica = await creaTokenAzione(userId, 'verifica', 24 * 60 * 60 * 1000);
+    inviaEmailBenvenuto(email, tokenVerifica);
+    res.json({ success: true, token, expiresAt, user: { id: userId, email, ruolo, emailVerificata: false } });
   } catch (e) {
     console.error('[Auth] Errore registrazione:', e.message);
     res.status(500).json({ errore: 'Errore durante la creazione dell\'account.' });
@@ -338,7 +405,7 @@ app.post('/api/auth/accedi', async (req, res) => {
     }
 
     const { token, expiresAt } = await creaSessione(user.id);
-    res.json({ success: true, token, expiresAt, user: { id: Number(user.id), email: user.email, ruolo } });
+    res.json({ success: true, token, expiresAt, user: { id: Number(user.id), email: user.email, ruolo, emailVerificata: !!user.email_verificata } });
   } catch (e) {
     console.error('[Auth] Errore login:', e.message);
     res.status(500).json({ errore: 'Errore database.' });
@@ -377,6 +444,88 @@ app.post('/api/auth/recupera-pin', async (req, res) => {
   } catch (e) {
     console.error('[Auth] Errore recupero PIN:', e.message);
     res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+  }
+});
+
+// Conferma l'email tramite il link ricevuto (nessuna autenticazione richiesta:
+// deve funzionare anche aprendo il link su un browser/dispositivo diverso da
+// quello con cui ci si è registrati).
+app.get('/api/auth/verifica-email', async (req, res) => {
+  const token = String(req.query.token || '');
+  try {
+    const result = await db.execute({ sql: "SELECT * FROM token_azioni WHERE token = ? AND tipo = 'verifica'", args: [token] });
+    const riga = result.rows[0];
+    if (!riga || riga.usato || new Date(riga.expires_at) < new Date()) {
+      return res.status(400).json({ errore: 'Link di verifica non valido o scaduto.' });
+    }
+    await db.execute({ sql: 'UPDATE users SET email_verificata = 1 WHERE id = ?', args: [riga.user_id] });
+    await db.execute({ sql: 'UPDATE token_azioni SET usato = 1 WHERE id = ?', args: [riga.id] });
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Auth] Errore verifica email:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+// Rimanda l'email di verifica (usato dal banner "verifica la tua email" nell'app)
+app.post('/api/auth/reinvia-verifica', richiedeAutenticazione, async (req, res) => {
+  try {
+    const result = await db.execute({ sql: 'SELECT email, email_verificata FROM users WHERE id = ?', args: [req.userId] });
+    const user = result.rows[0];
+    if (!user) return res.status(404).json({ errore: 'Utente non trovato.' });
+    if (user.email_verificata) return res.json({ success: true, giaVerificata: true });
+
+    const tokenVerifica = await creaTokenAzione(req.userId, 'verifica', 24 * 60 * 60 * 1000);
+    inviaEmailVerifica(user.email, tokenVerifica);
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ errore: 'Errore durante l\'invio dell\'email.' });
+  }
+});
+
+// Step 1 recupero PIN via email: genera e invia il link di reset. Risponde
+// sempre allo stesso modo, che l'email esista o meno, per non rivelare quali
+// indirizzi sono registrati sulla piattaforma.
+app.post('/api/auth/richiedi-reset-pin', async (req, res) => {
+  const email = normEmail(req.body.email);
+  if (!limitLogin(email || req.ip)) return res.status(429).json({ errore: 'Troppi tentativi. Riprova tra qualche minuto.' });
+
+  try {
+    const result = await db.execute({ sql: 'SELECT id, email FROM users WHERE email = ?', args: [email] });
+    const user = result.rows[0];
+    if (user) {
+      const token = await creaTokenAzione(user.id, 'reset_pin', 30 * 60 * 1000);
+      inviaEmailResetPin(user.email, token);
+    }
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Auth] Errore richiesta reset PIN:', e.message);
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+// Step 2 recupero PIN via email: verifica il token dal link e imposta il nuovo PIN
+app.post('/api/auth/reset-pin', async (req, res) => {
+  const token = String(req.body.token || '');
+  const nuovoPin = String(req.body.nuovoPin || '');
+  if (!/^\d{4,6}$/.test(nuovoPin)) return res.status(400).json({ errore: 'Il nuovo PIN deve avere tra 4 e 6 cifre numeriche.' });
+
+  try {
+    const result = await db.execute({ sql: "SELECT * FROM token_azioni WHERE token = ? AND tipo = 'reset_pin'", args: [token] });
+    const riga = result.rows[0];
+    if (!riga || riga.usato || new Date(riga.expires_at) < new Date()) {
+      return res.status(400).json({ errore: 'Link di recupero non valido o scaduto. Richiedine uno nuovo.' });
+    }
+
+    const nuovoPinHash = hashConSalt(nuovoPin);
+    await db.execute({ sql: 'UPDATE users SET pin_hash = ? WHERE id = ?', args: [nuovoPinHash, riga.user_id] });
+    await db.execute({ sql: 'UPDATE token_azioni SET usato = 1 WHERE id = ?', args: [riga.id] });
+    // Dopo un reset del PIN, invalida tutte le sessioni esistenti dell'account per sicurezza
+    await db.execute({ sql: 'DELETE FROM sessions WHERE user_id = ?', args: [riga.user_id] });
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Auth] Errore reset PIN:', e.message);
+    res.status(500).json({ errore: 'Errore durante il reset del PIN.' });
   }
 });
 

@@ -6,6 +6,7 @@ async function avviaApp(user) {
   localStorage.setItem('med_user', JSON.stringify(user));
   document.getElementById('header-user-email').textContent = user.email;
   document.getElementById('link-area-gestione').classList.toggle('hidden', user.ruolo !== 'admin');
+  document.getElementById('banner-verifica-email').classList.toggle('hidden', !!user.emailVerificata);
 
   try {
     await ricaricaDatiServer();
@@ -131,7 +132,102 @@ async function cercaDomandaSicurezza() {
   }
 }
 
-// Recupero PIN, step 2: verifica la risposta e imposta il nuovo PIN
+// Rimanda l'email di conferma (bottone nel banner "email non verificata")
+async function reinviaVerificaEmail() {
+  const btn = document.getElementById('btn-reinvia-verifica');
+  btn.disabled = true; btn.textContent = 'Invio...';
+  try {
+    const res = await authFetch('/api/auth/reinvia-verifica', { method: 'POST' });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.errore || 'Invio non riuscito.');
+    btn.textContent = 'Inviata ✓';
+    setTimeout(() => { btn.disabled = false; btn.textContent = 'Invia di nuovo'; }, 5000);
+  } catch (e) {
+    alert('Errore durante l\'invio: ' + e.message);
+    btn.disabled = false; btn.textContent = 'Invia di nuovo';
+  }
+}
+
+// Alternativa alla domanda di sicurezza: chiede un link di reset via email
+async function richiediResetPinEmail() {
+  const email = document.getElementById('recupera-email').value.trim();
+  if (!email) return mostraErroreAuth('Inserisci la tua email qui sopra, poi premi di nuovo questo pulsante.');
+
+  const btn = document.getElementById('btn-recupera-email');
+  btn.disabled = true;
+  try {
+    const res = await fetch('/api/auth/richiedi-reset-pin', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    await res.json();
+    // Risposta identica indipendentemente dall'esistenza dell'account: niente enumerazione utenti
+    mostraSuccessoAuth('Se l\'indirizzo è registrato, riceverai a breve un\'email con il link per reimpostare il PIN.');
+  } catch (e) {
+    mostraErroreAuth('Impossibile contattare il server.');
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// Token letto dall'URL quando si arriva tramite il link di reset ricevuto via email
+let tokenResetPinDaLink = null;
+
+function mostraFormResetPinEmail(token) {
+  tokenResetPinDaLink = token;
+  ['accedi', 'registrati', 'recupera'].forEach(t => document.getElementById(`auth-form-${t}`).classList.add('hidden'));
+  document.getElementById('auth-form-reset-pin-email').classList.remove('hidden');
+  document.querySelectorAll('[id^="authtab-"]').forEach(el => el.classList.add('hidden'));
+}
+
+async function confermaResetPinEmail() {
+  const nuovoPin = document.getElementById('reset-pin-email-nuovo').value.trim();
+  if (!/^\d{4,6}$/.test(nuovoPin)) return mostraErroreAuth('Il PIN deve avere tra 4 e 6 cifre numeriche.');
+
+  const btn = document.getElementById('btn-reset-pin-email');
+  btn.disabled = true; btn.textContent = 'Aggiornamento...';
+  try {
+    const res = await fetch('/api/auth/reset-pin', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: tokenResetPinDaLink, nuovoPin })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.errore);
+
+    document.getElementById('auth-form-reset-pin-email').classList.add('hidden');
+    document.querySelectorAll('[id^="authtab-"]').forEach(el => el.classList.remove('hidden'));
+    switchAuthTab('accedi');
+    mostraSuccessoAuth('PIN aggiornato! Ora puoi accedere con il nuovo PIN.');
+  } catch (e) {
+    mostraErroreAuth(e.message || 'Impossibile contattare il server.');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Imposta Nuovo PIN';
+  }
+}
+
+// Gestisce l'arrivo tramite il link di conferma email ("?verifica=TOKEN"),
+// che deve funzionare anche senza sessione attiva su questo dispositivo
+async function confermaVerificaEmailDaLink(token) {
+  try {
+    const res = await fetch(`/api/auth/verifica-email?token=${encodeURIComponent(token)}`);
+    const data = await res.json();
+    if (res.ok) {
+      // Se l'account risulta già salvato su questo dispositivo, aggiorna subito lo stato locale
+      const savedUser = JSON.parse(localStorage.getItem('med_user') || 'null');
+      if (savedUser) {
+        savedUser.emailVerificata = true;
+        localStorage.setItem('med_user', JSON.stringify(savedUser));
+      }
+      alert('Email confermata con successo!');
+    } else {
+      alert('Link di verifica non valido o scaduto: ' + (data.errore || ''));
+    }
+  } catch (e) {
+    alert('Impossibile contattare il server per confermare l\'email.');
+  }
+}
+
+// Recupero PIN (via domanda di sicurezza), step 2: verifica la risposta e imposta il nuovo PIN
 async function recuperaPin() {
   const email = document.getElementById('recupera-email').value.trim();
   const rispostaSicurezza = document.getElementById('recupera-risposta').value.trim();

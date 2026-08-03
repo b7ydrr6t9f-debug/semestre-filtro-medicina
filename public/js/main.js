@@ -8,9 +8,27 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Se c'è già un utente salvato riprende la sessione, altrimenti mostra il login
+// Se c'è già un utente salvato riprende la sessione, altrimenti mostra il login.
+// Gestisce anche i link ricevuti via email (conferma email / reset PIN).
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
+
+  const params = new URLSearchParams(window.location.search);
+  const tokenReset = params.get('reset-pin');
+  const tokenVerifica = params.get('verifica');
+
+  if (tokenReset) {
+    mostraFormResetPinEmail(tokenReset);
+    window.history.replaceState({}, '', window.location.pathname);
+    return;
+  }
+
+  if (tokenVerifica) {
+    confermaVerificaEmailDaLink(tokenVerifica);
+    window.history.replaceState({}, '', window.location.pathname);
+    // prosegue comunque con il normale avvio della sessione qui sotto
+  }
+
   const savedUser = JSON.parse(localStorage.getItem('med_user') || 'null');
   if (savedUser && savedUser.id && savedUser.email && savedUser.token) {
     avviaApp(savedUser);
