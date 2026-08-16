@@ -32,7 +32,7 @@ in un secondo momento.
 - [ ] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
 
 ### Fisica (7 unità)
-- [ ] Unità 1 — Introduzione ai metodi della fisica
+- [x] Unità 1 — Introduzione ai metodi della fisica
 - [ ] Unità 2 — Meccanica
 - [ ] Unità 3 — Meccanica dei fluidi
 - [ ] Unità 4 — Onde meccaniche
@@ -41,7 +41,7 @@ in un secondo momento.
 - [ ] Unità 7 — Fisica delle radiazioni
 
 ### Chimica (7 unità)
-- [ ] Unità 1 — Struttura dell'atomo, legami chimici, stati di aggregazione, termodinamica
+- [x] Unità 1 — Struttura dell'atomo, legami chimici, stati di aggregazione, termodinamica
 - [ ] Unità 2 — Miscele, soluzioni, proprietà colligative
 - [ ] Unità 3 — Reazioni chimiche: cinetica ed equilibrio
 - [ ] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
@@ -49,4 +49,10 @@ in un secondo momento.
 - [ ] Unità 6 — Gruppi funzionali e isomerie
 - [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 1/21 unità completate.**
+**Totale: 3/21 unità completate.** (Unità 1 coperta su tutte e tre le materie; si prosegue in profondità dall'Unità 2.)
+
+---
+Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero
+(le chat non condividono stato tra loro), ma questa frase dice a Claude di leggere questo
+file dal repo e ripartire dalla prossima unità non spuntata, senza bisogno di rispiegare
+il contesto da capo.
