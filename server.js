@@ -136,8 +136,80 @@ async function initDb() {
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
   await db.execute(`CREATE INDEX IF NOT EXISTS idx_cronologia_utente_chiave ON cronologia_domande (user_id, chiave)`);
+
+  // Pool di simulazioni pregenerate (31 domande ciascuna, aderenti solo al
+  // programma dell'unità didattica indicata) usate al posto della chiamata
+  // live a Gemini in fase di esercitazione. Popolata offline dallo script
+  // scripts/pregenera-simulazioni.js o autorata direttamente in JSON.
+  await db.execute(`CREATE TABLE IF NOT EXISTS simulazioni_pregenerate (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    materia TEXT NOT NULL,
+    unita_id INTEGER NOT NULL,
+    fonte TEXT NOT NULL DEFAULT 'manuale',
+    domande TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await db.execute(`CREATE INDEX IF NOT EXISTS idx_simpregen_materia_unita ON simulazioni_pregenerate (materia, unita_id)`);
+
+  // Tiene traccia di quali simulazioni pregenerate sono già state servite a
+  // ciascuno studente, per ruotare sul pool invece di ripetere sempre la
+  // prima disponibile finché il pool non è esaurito.
+  await db.execute(`CREATE TABLE IF NOT EXISTS simulazioni_servite (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    simulazione_id INTEGER NOT NULL,
+    served_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
+  await db.execute(`CREATE INDEX IF NOT EXISTS idx_simservite_utente ON simulazioni_servite (user_id, simulazione_id)`);
 }
-initDb().catch(e => console.error('[Database] Errore inizializzazione:', e.message));
+// Carica nel pool le simulazioni pregenerate presenti come file JSON in
+// data/simulazioni-pregenerate/ (una per file: {materia, unitaId, questions:
+// [31 domande]}). Idempotente: ogni file ha un "fonte" = nome del file, e
+// viene ricaricato solo se il suo contenuto è cambiato rispetto a quello già
+// salvato, così i redeploy su Render non duplicano righe né perdono lo
+// storico di simulazioni_servite quando il contenuto non cambia.
+const fs = require('fs');
+async function seedSimulazioniPregenerate() {
+  const cartella = path.join(__dirname, 'data', 'simulazioni-pregenerate');
+  if (!fs.existsSync(cartella)) return;
+
+  const file = fs.readdirSync(cartella).filter(f => f.endsWith('.json'));
+  let caricate = 0;
+  for (const nomeFile of file) {
+    try {
+      const contenuto = JSON.parse(fs.readFileSync(path.join(cartella, nomeFile), 'utf8'));
+      const { materia, unitaId, questions } = contenuto;
+      if (!materia || !unitaId || !Array.isArray(questions) || questions.length === 0) {
+        console.warn(`[Simulazioni pregenerate] File ${nomeFile} ignorato: formato non valido.`);
+        continue;
+      }
+      const domandeJson = JSON.stringify(questions);
+      const esistente = await db.execute({
+        sql: `SELECT id FROM simulazioni_pregenerate WHERE fonte = ?`,
+        args: [nomeFile]
+      });
+      if (esistente.rows.length > 0) {
+        await db.execute({
+          sql: `UPDATE simulazioni_pregenerate SET domande = ?, materia = ?, unita_id = ? WHERE fonte = ?`,
+          args: [domandeJson, materia, unitaId, nomeFile]
+        });
+      } else {
+        await db.execute({
+          sql: `INSERT INTO simulazioni_pregenerate (materia, unita_id, fonte, domande) VALUES (?, ?, ?, ?)`,
+          args: [materia, unitaId, nomeFile, domandeJson]
+        });
+        caricate++;
+      }
+    } catch (e) {
+      console.error(`[Simulazioni pregenerate] Errore caricando ${nomeFile}:`, e.message);
+    }
+  }
+  if (caricate > 0) console.log(`[Simulazioni pregenerate] Caricate ${caricate} nuove simulazioni dal pool.`);
+}
+
+initDb()
+  .then(seedSimulazioniPregenerate)
+  .catch(e => console.error('[Database] Errore inizializzazione:', e.message));
 
 // ------------------------------------------------------------------
 // Hashing (scrypt + salt, nessuna dipendenza esterna) e sessioni
@@ -936,6 +1008,50 @@ app.get('/api/health', (req, res) => {
     if (err) return res.json({ chiaveConfigurata: true, modello: GEMINI_MODEL, gemini: `ERRORE: ${err}` });
     res.json({ chiaveConfigurata: true, modello: GEMINI_MODEL, gemini: `OK, risposta: ${risposta.trim()}` });
   });
+});
+
+// Restituisce una simulazione pregenerata (31 domande, aderenti SOLO
+// all'unità richiesta) pescandola dal pool e ruotando fra quelle già viste
+// dallo studente. Se il pool per quell'unità è vuoto, segnala pool=false:
+// il client farà fallback sulla generazione live via Gemini.
+app.get('/api/simulazione-pregenerata/:materia/:unitaId', richiedeAutenticazione, async (req, res) => {
+  const materia = String(req.params.materia || '');
+  const unitaId = parseInt(req.params.unitaId, 10);
+  if (!materia || !unitaId) return res.status(400).json({ errore: 'Parametri mancanti.' });
+
+  try {
+    const disponibili = await db.execute({
+      sql: `SELECT sp.id, sp.domande FROM simulazioni_pregenerate sp
+            WHERE sp.materia = ? AND sp.unita_id = ?
+            AND sp.id NOT IN (SELECT simulazione_id FROM simulazioni_servite WHERE user_id = ?)
+            ORDER BY RANDOM() LIMIT 1`,
+      args: [materia, unitaId, req.userId]
+    });
+
+    let riga = disponibili.rows[0];
+
+    // Pool esaurito (tutte già viste da questo studente): ricomincia dal
+    // pool completo invece di forzare il fallback live, se il pool esiste.
+    if (!riga) {
+      const tutte = await db.execute({
+        sql: `SELECT id, domande FROM simulazioni_pregenerate WHERE materia = ? AND unita_id = ? ORDER BY RANDOM() LIMIT 1`,
+        args: [materia, unitaId]
+      });
+      riga = tutte.rows[0];
+    }
+
+    if (!riga) return res.json({ pool: false });
+
+    await db.execute({
+      sql: `INSERT INTO simulazioni_servite (user_id, simulazione_id) VALUES (?, ?)`,
+      args: [req.userId, riga.id]
+    });
+
+    res.json({ pool: true, questions: JSON.parse(riga.domande) });
+  } catch (e) {
+    console.error('[Simulazioni pregenerate] Errore:', e.message);
+    res.status(500).json({ errore: 'Errore nel recupero della simulazione pregenerata.' });
+  }
 });
 
 app.post('/api/generate-quiz', richiedeAutenticazione, (req, res) => {

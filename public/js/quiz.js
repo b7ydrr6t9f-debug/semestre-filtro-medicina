@@ -111,7 +111,20 @@ async function correggiCompletamentiConAI(elementi) {
   }
 }
 
-// Genera un'esercitazione (31 domande) sull'unita' didattica selezionata
+// Prova a pescare una simulazione dal pool pregenerato per l'unità
+// richiesta. Restituisce l'array di domande, o null se il pool per quella
+// unità è ancora vuoto (nessuna simulazione pregenerata caricata).
+async function chiediSimulazionePregenerata(matKey, unitaId) {
+  const res = await authFetch(`/api/simulazione-pregenerata/${matKey}/${unitaId}`);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.pool ? data.questions : null;
+}
+
+// Genera un'esercitazione (31 domande) sull'unita' didattica selezionata.
+// Preferisce sempre il pool pregenerato (domande verificate, aderenti solo
+// al programma dell'unità); ricorre alla generazione live via Gemini solo
+// se quell'unità non ha ancora simulazioni pregenerate caricate.
 async function generateQuiz() {
   const matKey = document.getElementById('sim-materia').value;
   const unitaId = parseInt(document.getElementById('sim-unita').value);
@@ -120,9 +133,23 @@ async function generateQuiz() {
   const chiaveCronologia = `esercitazione_${matKey}_${unitaId}`;
 
   const btnGen = document.getElementById('btn-generate');
-  const ripristina = impostaCaricamento([btnGen], btnGen, 'Generazione delle 31 domande in corso (può richiedere qualche secondo)...');
+  const ripristina = impostaCaricamento([btnGen], btnGen, 'Preparazione della simulazione in corso...');
 
   try {
+    const domandePregenerate = await chiediSimulazionePregenerata(matKey, unitaId);
+
+    if (domandePregenerate) {
+      currentQuizData = {
+        materia: materiaObj.title,
+        unitaTitle: unitaObj.title,
+        questions: domandePregenerate
+      };
+      renderQuizUI();
+      return;
+    }
+
+    // Fallback: nessuna simulazione pregenerata per questa unità, si genera
+    // live come prima.
     const domandeGiaUsate = await leggiCronologiaGenerazione(chiaveCronologia);
     const parsedQuiz = await chiediJsonAlServer(buildEsercitazionePrompt(materiaObj, unitaObj, domandeGiaUsate));
     currentQuizData = {
