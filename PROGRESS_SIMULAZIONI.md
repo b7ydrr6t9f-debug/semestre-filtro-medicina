@@ -26,7 +26,7 @@ in un secondo momento.
 - [x] Unità 1 — Le basi dell'organizzazione biologica e molecolare della vita
 - [x] Unità 2 — Trasmissione e controllo dell'informazione genetica ed epigenetica
 - [x] Unità 3 — Il flusso dell'informazione
-- [ ] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
+- [x] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
 - [ ] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
 - [ ] Unità 6 — La cellula e l'ambiente, segnalazione e trasduzione del segnale
 - [ ] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
@@ -35,7 +35,7 @@ in un secondo momento.
 - [x] Unità 1 — Introduzione ai metodi della fisica
 - [x] Unità 2 — Meccanica
 - [x] Unità 3 — Meccanica dei fluidi
-- [ ] Unità 4 — Onde meccaniche
+- [x] Unità 4 — Onde meccaniche
 - [ ] Unità 5 — Termodinamica
 - [ ] Unità 6 — Elettricità e magnetismo
 - [ ] Unità 7 — Fisica delle radiazioni
@@ -44,12 +44,12 @@ in un secondo momento.
 - [x] Unità 1 — Struttura dell'atomo, legami chimici, stati di aggregazione, termodinamica
 - [x] Unità 2 — Miscele, soluzioni, proprietà colligative
 - [x] Unità 3 — Reazioni chimiche: cinetica ed equilibrio
-- [ ] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
+- [x] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
 - [ ] Unità 5 — Carbonio, idrocarburi, aromatici
 - [ ] Unità 6 — Gruppi funzionali e isomerie
 - [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 9/21 unità completate.** (Unità 1, 2 e 3 coperte su tutte e tre le materie; si prosegue dall'Unità 4.)
+**Totale: 12/21 unità completate.** (Unità 1, 2, 3 e 4 coperte su tutte e tre le materie; si prosegue dall'Unità 5.)
 
 ---
 Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero
