@@ -24,7 +24,7 @@ in un secondo momento.
 
 ### Biologia (7 unità)
 - [x] Unità 1 — Le basi dell'organizzazione biologica e molecolare della vita
-- [ ] Unità 2 — Trasmissione e controllo dell'informazione genetica ed epigenetica
+- [x] Unità 2 — Trasmissione e controllo dell'informazione genetica ed epigenetica
 - [ ] Unità 3 — Il flusso dell'informazione
 - [ ] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
 - [ ] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
@@ -33,7 +33,7 @@ in un secondo momento.
 
 ### Fisica (7 unità)
 - [x] Unità 1 — Introduzione ai metodi della fisica
-- [ ] Unità 2 — Meccanica
+- [x] Unità 2 — Meccanica
 - [ ] Unità 3 — Meccanica dei fluidi
 - [ ] Unità 4 — Onde meccaniche
 - [ ] Unità 5 — Termodinamica
@@ -42,14 +42,14 @@ in un secondo momento.
 
 ### Chimica (7 unità)
 - [x] Unità 1 — Struttura dell'atomo, legami chimici, stati di aggregazione, termodinamica
-- [ ] Unità 2 — Miscele, soluzioni, proprietà colligative
+- [x] Unità 2 — Miscele, soluzioni, proprietà colligative
 - [ ] Unità 3 — Reazioni chimiche: cinetica ed equilibrio
 - [ ] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
 - [ ] Unità 5 — Carbonio, idrocarburi, aromatici
 - [ ] Unità 6 — Gruppi funzionali e isomerie
 - [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 3/21 unità completate.** (Unità 1 coperta su tutte e tre le materie; si prosegue in profondità dall'Unità 2.)
+**Totale: 6/21 unità completate.** (Unità 1 e 2 coperte su tutte e tre le materie; si prosegue dall'Unità 3.)
 
 ---
 Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero
