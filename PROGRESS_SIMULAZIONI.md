@@ -27,7 +27,7 @@ in un secondo momento.
 - [x] Unità 2 — Trasmissione e controllo dell'informazione genetica ed epigenetica
 - [x] Unità 3 — Il flusso dell'informazione
 - [x] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
-- [ ] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
+- [x] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
 - [ ] Unità 6 — La cellula e l'ambiente, segnalazione e trasduzione del segnale
 - [ ] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
 
@@ -36,7 +36,7 @@ in un secondo momento.
 - [x] Unità 2 — Meccanica
 - [x] Unità 3 — Meccanica dei fluidi
 - [x] Unità 4 — Onde meccaniche
-- [ ] Unità 5 — Termodinamica
+- [x] Unità 5 — Termodinamica
 - [ ] Unità 6 — Elettricità e magnetismo
 - [ ] Unità 7 — Fisica delle radiazioni
 
@@ -45,11 +45,11 @@ in un secondo momento.
 - [x] Unità 2 — Miscele, soluzioni, proprietà colligative
 - [x] Unità 3 — Reazioni chimiche: cinetica ed equilibrio
 - [x] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
-- [ ] Unità 5 — Carbonio, idrocarburi, aromatici
+- [x] Unità 5 — Carbonio, idrocarburi, aromatici
 - [ ] Unità 6 — Gruppi funzionali e isomerie
 - [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 12/21 unità completate.** (Unità 1, 2, 3 e 4 coperte su tutte e tre le materie; si prosegue dall'Unità 5.)
+**Totale: 15/21 unità completate.** (Unità 1-5 coperte su tutte e tre le materie; restano Unità 6 e 7 per ciascuna materia.)
 
 ---
 Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero

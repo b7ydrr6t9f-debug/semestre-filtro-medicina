@@ -121,19 +121,20 @@ async function chiediSimulazionePregenerata(matKey, unitaId) {
   return data.pool ? data.questions : null;
 }
 
-// Genera un'esercitazione (31 domande) sull'unita' didattica selezionata.
-// Preferisce sempre il pool pregenerato (domande verificate, aderenti solo
-// al programma dell'unità); ricorre alla generazione live via Gemini solo
-// se quell'unità non ha ancora simulazioni pregenerate caricate.
-async function generateQuiz() {
+// Avvia un'esercitazione (31 domande) sull'unita' didattica selezionata.
+// Attinge sempre prima al pool pregenerato (domande verificate, aderenti
+// solo al programma dell'unità, già pronte e disponibili istantaneamente);
+// ricorre alla generazione live via Gemini solo come fallback, se quell'unità
+// non ha ancora simulazioni pregenerate caricate.
+async function avviaEsercitazione() {
   const matKey = document.getElementById('sim-materia').value;
   const unitaId = parseInt(document.getElementById('sim-unita').value);
   const materiaObj = SYLLABUS_DATA[matKey];
   const unitaObj = materiaObj.unita.find(u => u.id === unitaId);
   const chiaveCronologia = `esercitazione_${matKey}_${unitaId}`;
 
-  const btnGen = document.getElementById('btn-generate');
-  const ripristina = impostaCaricamento([btnGen], btnGen, 'Preparazione della simulazione in corso...');
+  const btnGen = document.getElementById('btn-avvia-esercitazione');
+  const ripristina = impostaCaricamento([btnGen], btnGen, 'Avvio dell\'esercitazione in corso...');
 
   try {
     const domandePregenerate = await chiediSimulazionePregenerata(matKey, unitaId);
