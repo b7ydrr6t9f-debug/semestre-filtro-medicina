@@ -28,7 +28,7 @@ in un secondo momento.
 - [x] Unità 3 — Il flusso dell'informazione
 - [x] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
 - [x] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
-- [ ] Unità 6 — La cellula e l'ambiente, segnalazione e trasduzione del segnale
+- [x] Unità 6 — La cellula e l'ambiente, segnalazione e trasduzione del segnale
 - [ ] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
 
 ### Fisica (7 unità)
@@ -37,7 +37,7 @@ in un secondo momento.
 - [x] Unità 3 — Meccanica dei fluidi
 - [x] Unità 4 — Onde meccaniche
 - [x] Unità 5 — Termodinamica
-- [ ] Unità 6 — Elettricità e magnetismo
+- [x] Unità 6 — Elettricità e magnetismo
 - [ ] Unità 7 — Fisica delle radiazioni
 
 ### Chimica (7 unità)
@@ -46,10 +46,10 @@ in un secondo momento.
 - [x] Unità 3 — Reazioni chimiche: cinetica ed equilibrio
 - [x] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
 - [x] Unità 5 — Carbonio, idrocarburi, aromatici
-- [ ] Unità 6 — Gruppi funzionali e isomerie
+- [x] Unità 6 — Gruppi funzionali e isomerie
 - [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 15/21 unità completate.** (Unità 1-5 coperte su tutte e tre le materie; restano Unità 6 e 7 per ciascuna materia.)
+**Totale: 18/21 unità completate.** (Unità 1-6 coperte su tutte e tre le materie; resta solo l'Unità 7 per ciascuna materia.)
 
 ---
 Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero
