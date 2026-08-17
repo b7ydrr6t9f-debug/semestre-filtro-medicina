@@ -29,7 +29,7 @@ in un secondo momento.
 - [x] Unità 4 — Trasmissione e controllo dei caratteri selvatici e mutati
 - [x] Unità 5 — Le strutture cellulari: biogenesi, morfologia e funzioni
 - [x] Unità 6 — La cellula e l'ambiente, segnalazione e trasduzione del segnale
-- [ ] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
+- [x] Unità 7 — Controllo della proliferazione e sopravvivenza cellulare
 
 ### Fisica (7 unità)
 - [x] Unità 1 — Introduzione ai metodi della fisica
@@ -38,7 +38,7 @@ in un secondo momento.
 - [x] Unità 4 — Onde meccaniche
 - [x] Unità 5 — Termodinamica
 - [x] Unità 6 — Elettricità e magnetismo
-- [ ] Unità 7 — Fisica delle radiazioni
+- [x] Unità 7 — Fisica delle radiazioni
 
 ### Chimica (7 unità)
 - [x] Unità 1 — Struttura dell'atomo, legami chimici, stati di aggregazione, termodinamica
@@ -47,9 +47,13 @@ in un secondo momento.
 - [x] Unità 4 — Acidi, basi, sali, pH, tamponi, redox
 - [x] Unità 5 — Carbonio, idrocarburi, aromatici
 - [x] Unità 6 — Gruppi funzionali e isomerie
-- [ ] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
+- [x] Unità 7 — Amminoacidi, proteine, carboidrati, lipidi, acidi nucleici
 
-**Totale: 18/21 unità completate.** (Unità 1-6 coperte su tutte e tre le materie; resta solo l'Unità 7 per ciascuna materia.)
+**Totale: 21/21 unità completate. COPERTURA COMPLETA.**
+
+Tutte le unità di Biologia, Fisica e Chimica hanno ora un pool di simulazioni pregenerate, aderenti solo al programma dell'unità richiesta. Il fallback su Gemini live per le esercitazioni non entra più in gioco per nessuna unità (resta attivo solo per il 'Test di Recupero dagli Errori' nel deposito errori, che è una funzione distinta).
+
+Per ampliare il pool (più di una simulazione per unità, per ridurre le ripetizioni sul lungo periodo), si può aggiungere un secondo file per unità (es. `biologia-1b.json`) con lo stesso formato.
 
 ---
 Per riprendere: scrivi **CONTINUA SIMULAZIONI** in una nuova chat. Non è un pulsante vero
