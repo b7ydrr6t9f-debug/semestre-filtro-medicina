@@ -186,7 +186,7 @@ async function generaTestDeposito() {
   const nMcq = Math.ceil(nTotal * 0.6);
   const nCompletamento = nTotal - nMcq;
 
-  const btn = document.getElementById('btn-generate-deposito');
+  const btn = document.getElementById('btn-avvia-test-recupero');
   const ripristina = impostaCaricamento([btn], btn, 'Generazione test di recupero in corso...');
 
   try {
