@@ -93,6 +93,31 @@ function costruisciSparkline(valori) {
   `;
 }
 
+// Ordine ufficiale delle materie (DM 704/2026): usato per raggruppare
+// l'esportazione Excel anche se le simulazioni sono state svolte in
+// ordine sparso. Le voci con materia non riconosciuta (es. i test di
+// recupero del deposito errori, che non appartengono a un'unità specifica)
+// finiscono in coda.
+const ORDINE_MATERIE_EXPORT = ["Biologia", "Fisica", "Chimica e Propedeutica Biochimica"];
+
+function ordinaValutazioniPerMateriaEUnita(elenco) {
+  return [...elenco].sort((a, b) => {
+    const materiaA = (a.materiaUnita || '').split(' - ')[0];
+    const materiaB = (b.materiaUnita || '').split(' - ')[0];
+    const idxA = ORDINE_MATERIE_EXPORT.indexOf(materiaA);
+    const idxB = ORDINE_MATERIE_EXPORT.indexOf(materiaB);
+    const ordineMateriaA = idxA === -1 ? ORDINE_MATERIE_EXPORT.length : idxA;
+    const ordineMateriaB = idxB === -1 ? ORDINE_MATERIE_EXPORT.length : idxB;
+    if (ordineMateriaA !== ordineMateriaB) return ordineMateriaA - ordineMateriaB;
+
+    const unitaA = parseInt(((a.materiaUnita || '').match(/Unità didattica (\d+)/) || [])[1], 10);
+    const unitaB = parseInt(((b.materiaUnita || '').match(/Unità didattica (\d+)/) || [])[1], 10);
+    const numA = isNaN(unitaA) ? Infinity : unitaA;
+    const numB = isNaN(unitaB) ? Infinity : unitaB;
+    return numA - numB;
+  });
+}
+
 // Esportazione in foglio Excel (.XLSX)
 function exportToExcel() {
   if (valutazioni.length === 0) {
@@ -100,7 +125,9 @@ function exportToExcel() {
     return;
   }
 
-  const excelData = valutazioni.map(v => ({
+  const valutazioniOrdinate = ordinaValutazioniPerMateriaEUnita(valutazioni);
+
+  const excelData = valutazioniOrdinate.map(v => ({
     "Data e Ora": v.data,
     "Tipo Prova": v.tipoProva,
     "Materia / Unità Didattica": v.materiaUnita,
