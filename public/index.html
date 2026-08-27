@@ -25,7 +25,7 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans">
 
   <!-- Avviso sessione in scadenza: nascosto finché api.js non lo attiva -->
-  <div id="banner-sessione" class="hidden fixed top-0 inset-x-0 z-[200] bg-amber-500 text-amber-950 px-4 py-2.5 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold shadow">
+  <div id="banner-sessione" class="hidden bg-amber-500 text-amber-950 px-4 py-2.5 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold shadow">
     <span><i data-lucide="alarm-clock" class="w-4 h-4 inline -mt-0.5"></i> La sessione sta per scadere.</span>
     <button onclick="rinnovaSessione()" class="bg-amber-950 text-amber-50 px-3 py-1 rounded-md hover:bg-amber-900 transition">Aggiorna sessione</button>
     <button onclick="logout()" class="border border-amber-950 px-3 py-1 rounded-md hover:bg-amber-600 transition">Esci</button>
