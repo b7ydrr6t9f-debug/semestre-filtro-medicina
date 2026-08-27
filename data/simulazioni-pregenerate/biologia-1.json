@@ -2,36 +2,431 @@
   "materia": "biologia",
   "unitaId": 1,
   "questions": [
-    { "id": 1, "type": "mcq", "materia": "Biologia", "topic": "Teoria cellulare", "question": "Secondo la teoria cellulare, quale delle seguenti affermazioni è corretta?", "options": ["Tutti gli organismi viventi sono costituiti da una o più cellule", "Solo gli organismi pluricellulari sono formati da cellule", "Le cellule si generano per assemblaggio spontaneo di macromolecole", "I virus sono cellule prive di parete", "Le cellule procariotiche non derivano da altre cellule"], "correctIndex": 0, "explanation": "La teoria cellulare afferma che tutti gli organismi viventi sono composti da cellule e che ogni cellula deriva da una cellula preesistente." },
-    { "id": 2, "type": "mcq", "materia": "Biologia", "topic": "Proprietà della materia vivente", "question": "Quale di queste NON è una proprietà fondamentale della materia vivente?", "options": ["Capacità di riprodursi", "Omeostasi", "Metabolismo", "Assenza totale di organizzazione strutturale", "Capacità di rispondere a stimoli"], "correctIndex": 3, "explanation": "La materia vivente è invece caratterizzata da un elevato grado di organizzazione strutturale, a tutti i livelli." },
-    { "id": 3, "type": "mcq", "materia": "Biologia", "topic": "Struttura dei virus", "question": "Come si chiama l'involucro proteico che racchiude l'acido nucleico di un virus?", "options": ["Pericapside", "Capside", "Envelope lipidico", "Parete cellulare", "Membrana plasmatica"], "correctIndex": 1, "explanation": "Il capside è il rivestimento proteico che protegge il genoma virale; alcuni virus possiedono anche un ulteriore involucro membranoso esterno." },
-    { "id": 4, "type": "mcq", "materia": "Biologia", "topic": "Genoma virale", "question": "L'acido nucleico di un virus può essere:", "options": ["Solo DNA a doppio filamento", "Solo RNA a singolo filamento", "DNA o RNA, a singolo o doppio filamento a seconda della classe virale", "Sempre entrambi, DNA e RNA insieme", "Nessuno dei due, i virus non hanno acido nucleico"], "correctIndex": 2, "explanation": "Le diverse classi di virus animali si distinguono anche per il tipo di acido nucleico che possiedono: DNA o RNA, a filamento singolo o doppio." },
-    { "id": 5, "type": "mcq", "materia": "Biologia", "topic": "Ciclo litico", "question": "Nel ciclo litico di un virus batterico, cosa accade alla cellula ospite al termine del ciclo?", "options": ["Si integra stabilmente con il genoma virale", "Va incontro a lisi con rilascio dei nuovi virioni", "Diventa resistente a ulteriori infezioni", "Si divide per formare due cellule figlie infette", "Espelle il virus per esocitosi senza danno"], "correctIndex": 1, "explanation": "Nel ciclo litico il virus si replica attivamente fino a causare la rottura (lisi) della cellula ospite e il rilascio dei nuovi virioni." },
-    { "id": 6, "type": "mcq", "materia": "Biologia", "topic": "Ciclo lisogenico", "question": "Cosa caratterizza il ciclo lisogenico di un virus batterico?", "options": ["La distruzione immediata della cellula ospite", "L'integrazione del genoma virale (profago) nel cromosoma dell'ospite senza lisi immediata", "L'assenza totale di replicazione del genoma virale", "La formazione diretta di virioni maturi senza integrazione", "L'impossibilità di tornare successivamente al ciclo litico"], "correctIndex": 1, "explanation": "Nel ciclo lisogenico il DNA virale si integra nel cromosoma batterico come profago, replicandosi passivamente insieme ad esso, e può in seguito rientrare nel ciclo litico." },
-    { "id": 7, "type": "mcq", "materia": "Biologia", "topic": "Retrovirus", "question": "Quale enzima caratteristico permette ai retrovirus di convertire il proprio RNA in DNA all'interno della cellula ospite?", "options": ["DNA polimerasi", "RNA polimerasi II", "Trascrittasi inversa", "Elicasi", "Ligasi"], "correctIndex": 2, "explanation": "I retrovirus possiedono la trascrittasi inversa, che retrotrascrive il loro genoma a RNA in DNA, successivamente integrato nel genoma dell'ospite." },
-    { "id": 8, "type": "mcq", "materia": "Biologia", "topic": "Ingresso del virus nella cellula animale", "question": "Attraverso quali modalità principali un virus animale può entrare in una cellula ospite?", "options": ["Solo per fagocitosi attiva della cellula bersaglio", "Endocitosi mediata da recettore o fusione diretta dell'envelope con la membrana plasmatica", "Solo per diffusione passiva attraverso la parete cellulare", "Esclusivamente tramite pili sessuali", "Solo tramite trasformazione genetica"], "correctIndex": 1, "explanation": "I virus animali entrano tipicamente per endocitosi mediata da recettore oppure, se dotati di envelope, per fusione diretta con la membrana plasmatica." },
-    { "id": 9, "type": "mcq", "materia": "Biologia", "topic": "Cellula procariotica", "question": "Cosa distingue la parete cellulare dei batteri Gram positivi da quella dei Gram negativi?", "options": ["I Gram positivi hanno uno strato di peptidoglicano molto più spesso e privo di membrana esterna", "I Gram negativi non possiedono alcuna parete cellulare", "I Gram positivi hanno una membrana esterna ricca di lipopolisaccaridi", "Solo i Gram negativi possiedono peptidoglicano", "Non esiste alcuna differenza strutturale tra i due gruppi"], "correctIndex": 0, "explanation": "I batteri Gram positivi hanno una parete con spesso strato di peptidoglicano e nessuna membrana esterna, mentre i Gram negativi hanno uno strato sottile di peptidoglicano ricoperto da una membrana esterna con lipopolisaccaridi." },
-    { "id": 10, "type": "mcq", "materia": "Biologia", "topic": "Colorazione di Gram", "question": "Su cosa si basa il meccanismo della colorazione di Gram per distinguere i batteri?", "options": ["Sulla presenza o assenza di flagelli", "Sulla capacità della parete cellulare di trattenere o meno il complesso colorante cristal-violetto/iodio dopo il lavaggio con alcol", "Sulla velocità di replicazione del batterio", "Sulla presenza di capsula polisaccaridica", "Sul tipo di acido nucleico presente nel batterio"], "correctIndex": 1, "explanation": "La colorazione di Gram sfrutta la diversa struttura della parete: i Gram positivi trattengono il complesso colorante per lo spesso strato di peptidoglicano, i Gram negativi lo perdono con il lavaggio alcolico." },
-    { "id": 11, "type": "mcq", "materia": "Biologia", "topic": "Trasferimento genico orizzontale - trasformazione", "question": "Cosa si intende per trasformazione batterica?", "options": ["Il passaggio di DNA da un batterio all'altro tramite contatto diretto e pilo sessuale", "L'acquisizione da parte di un batterio di DNA libero presente nell'ambiente circostante", "Il trasferimento di geni mediato da un batteriofago", "La divisione binaria del batterio", "La sintesi di nuove proteine di membrana"], "correctIndex": 1, "explanation": "La trasformazione consiste nell'assunzione, da parte di un batterio competente, di DNA libero (esogeno) presente nell'ambiente." },
-    { "id": 12, "type": "mcq", "materia": "Biologia", "topic": "Trasferimento genico orizzontale - coniugazione", "question": "Quale struttura è tipicamente coinvolta nel trasferimento di DNA per coniugazione batterica?", "options": ["Il flagello", "Il pilo sessuale (pilo F)", "La capsula", "Il capside virale", "La membrana esterna dei Gram negativi"], "correctIndex": 1, "explanation": "Nella coniugazione un batterio donatore trasferisce DNA plasmidico a un ricevente attraverso il pilo sessuale, che mette in contatto diretto le due cellule." },
-    { "id": 13, "type": "mcq", "materia": "Biologia", "topic": "Trasferimento genico orizzontale - trasduzione", "question": "La trasduzione batterica è il trasferimento di materiale genetico mediato da:", "options": ["Un plasmide coniugativo", "Un batteriofago che, per errore, incorpora ed inietta DNA batterico in un'altra cellula", "L'assunzione diretta di DNA libero dall'ambiente", "La fusione di due protoplasti batterici", "Un pilo sessuale"], "correctIndex": 1, "explanation": "Nella trasduzione un batteriofago, durante l'assemblaggio, incorpora per errore frammenti di DNA batterico e li trasferisce a un'altra cellula batterica infettandola." },
-    { "id": 14, "type": "mcq", "materia": "Biologia", "topic": "Eubatteri e archeobatteri", "question": "Eubatteri e archeobatteri sono entrambi:", "options": ["Organismi eucarioti pluricellulari", "Procarioti, ma appartengono a due domini distinti con differenze biochimiche e genetiche", "La stessa cosa, solo con nomi diversi", "Virus a DNA", "Organelli delle cellule eucariotiche"], "correctIndex": 1, "explanation": "Eubatteri e archeobatteri sono entrambi procarioti privi di nucleo, ma costituiscono due domini filogeneticamente distinti, con differenze nella composizione della parete, delle membrane e di alcuni processi molecolari." },
-    { "id": 15, "type": "mcq", "materia": "Biologia", "topic": "Cellula eucariotica - sistema delle endomembrane", "question": "Il sistema delle endomembrane della cellula eucariotica comprende:", "options": ["Solo la membrana plasmatica", "Involucro nucleare, reticolo endoplasmatico, apparato di Golgi, lisosomi e vescicole di trasporto tra loro funzionalmente collegati", "Solo i mitocondri e i cloroplasti", "Esclusivamente il nucleolo", "Solo la parete cellulare"], "correctIndex": 1, "explanation": "Il sistema delle endomembrane comprende l'insieme di compartimenti membranosi interni (involucro nucleare, RE, Golgi, lisosomi, vescicole) che comunicano funzionalmente tra loro." },
-    { "id": 16, "type": "mcq", "materia": "Biologia", "topic": "Origine endosimbiotica dei mitocondri", "question": "Secondo la teoria dell'endosimbiosi, i mitocondri deriverebbero da:", "options": ["Un ripiegamento della membrana plasmatica avvenuto casualmente", "Batteri aerobi inglobati da una cellula ospite ancestrale ed evolutisi in organelli simbiotici", "Vescicole originate dall'apparato di Golgi", "Frammenti dell'involucro nucleare", "Particelle virali integrate nel genoma"], "correctIndex": 1, "explanation": "L'ipotesi endosimbiotica propone che i mitocondri derivino da batteri aerobi inglobati da una cellula ospite, con cui hanno instaurato un rapporto simbiotico stabile nel corso dell'evoluzione." },
-    { "id": 17, "type": "mcq", "materia": "Biologia", "topic": "Struttura del DNA", "question": "Secondo il modello di Watson e Crick, il DNA è costituito da:", "options": ["Un singolo filamento ripiegato a globulo", "Due filamenti antiparalleli avvolti a doppia elica, tenuti insieme da legami idrogeno tra basi complementari", "Tre filamenti avvolti a tripla elica", "Un filamento circolare privo di basi azotate", "Due filamenti paralleli uniti da legami peptidici"], "correctIndex": 1, "explanation": "Il modello di Watson e Crick descrive il DNA come una doppia elica di due filamenti antiparalleli, uniti da legami idrogeno tra basi azotate complementari (A-T, G-C)." },
-    { "id": 18, "type": "mcq", "materia": "Biologia", "topic": "RNA codificante e non codificante", "question": "Gli RNA non codificanti si distinguono dall'mRNA perché:", "options": ["Non vengono mai trascritti dal DNA", "Non vengono tradotti in proteine, ma svolgono funzioni strutturali o regolative", "Contengono sempre introni", "Sono presenti solo nei procarioti", "Corrispondono esclusivamente al tRNA"], "correctIndex": 1, "explanation": "Gli RNA non codificanti (come rRNA, tRNA, miRNA) non vengono tradotti in proteine, ma svolgono funzioni strutturali, catalitiche o di regolazione dell'espressione genica." },
-    { "id": 19, "type": "mcq", "materia": "Biologia", "topic": "Legame peptidico", "question": "Il legame peptidico che unisce due amminoacidi si forma tra:", "options": ["Il gruppo carbossilico di un amminoacido e il gruppo amminico del successivo, con perdita di una molecola d'acqua", "Due gruppi amminici, con formazione di un ponte disolfuro", "Due gruppi carbossilici, con rilascio di anidride carbonica", "La catena laterale di due amminoacidi qualsiasi", "Il gruppo fosfato e il gruppo ossidrilico di due zuccheri"], "correctIndex": 0, "explanation": "Il legame peptidico si forma per condensazione tra il gruppo carbossilico (-COOH) di un amminoacido e il gruppo amminico (-NH2) del successivo, con liberazione di una molecola d'acqua." },
-    { "id": 20, "type": "mcq", "materia": "Biologia", "topic": "Enzimi e classi principali", "question": "Quale delle seguenti coppie di enzimi ha funzioni tra loro opposte?", "options": ["Chinasi e fosfatasi", "Elicasi e ligasi", "Polimerasi e nucleasi", "Proteasi e peptidasi", "Isomerasi e mutasi"], "correctIndex": 0, "explanation": "Le chinasi aggiungono un gruppo fosfato (fosforilazione), mentre le fosfatasi lo rimuovono (defosforilazione): sono quindi enzimi ad azione opposta, spesso usati per regolare reversibilmente l'attività di altre proteine." },
-    { "id": 21, "type": "mcq", "materia": "Biologia", "topic": "Modificazioni post-traduzionali", "question": "L'aggiunta di catene di zuccheri a una proteina già sintetizzata è nota come:", "options": ["Fosforilazione", "Acetilazione", "Glicosilazione", "Ubiquitinazione", "Metilazione"], "correctIndex": 2, "explanation": "La glicosilazione è la modificazione post-traduzionale che consiste nell'aggiunta covalente di catene glucidiche a una proteina, spesso importante per il corretto ripiegamento e riconoscimento della molecola." },
-    { "id": 22, "type": "completamento", "materia": "Biologia", "topic": "Ciclo lisogenico", "question": "Nel ciclo ___ di un virus batterico, il genoma virale si integra come profago nel cromosoma dell'ospite senza causarne la lisi immediata.", "correctAnswer": "lisogenico", "explanation": "Il ciclo lisogenico prevede l'integrazione stabile del DNA virale nel cromosoma batterico." },
-    { "id": 23, "type": "completamento", "materia": "Biologia", "topic": "Struttura del virus", "question": "L'involucro proteico che racchiude e protegge l'acido nucleico di un virus si chiama ___.", "correctAnswer": "capside", "explanation": "Il capside è la struttura proteica che avvolge il genoma virale." },
-    { "id": 24, "type": "completamento", "materia": "Biologia", "topic": "Colorazione di Gram", "question": "La tecnica che distingue i batteri in base allo spessore del peptidoglicano della parete cellulare si chiama colorazione di ___.", "correctAnswer": "Gram", "explanation": "La colorazione di Gram permette di classificare i batteri in Gram positivi e Gram negativi." },
-    { "id": 25, "type": "completamento", "materia": "Biologia", "topic": "Trasferimento genico orizzontale", "question": "Il trasferimento di DNA libero dall'ambiente in un batterio competente si chiama ___.", "correctAnswer": "trasformazione", "explanation": "La trasformazione è uno dei tre meccanismi di trasferimento genico orizzontale nei batteri." },
-    { "id": 26, "type": "completamento", "materia": "Biologia", "topic": "Trasferimento genico orizzontale", "question": "Il trasferimento di materiale genetico batterico mediato per errore da un batteriofago si chiama ___.", "correctAnswer": "trasduzione", "explanation": "Nella trasduzione un fago incorpora per errore DNA batterico e lo trasferisce a un'altra cellula." },
-    { "id": 27, "type": "completamento", "materia": "Biologia", "topic": "Origine dei mitocondri", "question": "L'ipotesi secondo cui i mitocondri derivano da batteri aerobi inglobati da una cellula ospite ancestrale si chiama teoria ___.", "correctAnswer": "endosimbiotica", "explanation": "La teoria endosimbiotica spiega l'origine evolutiva di mitocondri (e cloroplasti nelle piante)." },
-    { "id": 28, "type": "completamento", "materia": "Biologia", "topic": "Acidi nucleici", "question": "Il monomero che costituisce DNA e RNA, formato da base azotata, zucchero e gruppo fosfato, si chiama ___.", "correctAnswer": "nucleotide", "explanation": "I nucleotidi sono le unità monomeriche degli acidi nucleici." },
-    { "id": 29, "type": "completamento", "materia": "Biologia", "topic": "Struttura delle proteine", "question": "Il legame covalente che unisce due amminoacidi consecutivi in una proteina si chiama legame ___.", "correctAnswer": "peptidico", "explanation": "Il legame peptidico si forma tra il gruppo carbossilico e il gruppo amminico di due amminoacidi." },
-    { "id": 30, "type": "completamento", "materia": "Biologia", "topic": "Metabolismo di base", "question": "La reazione che unisce due molecole con perdita di una molecola d'acqua si chiama reazione di ___.", "correctAnswer": "condensazione", "explanation": "La condensazione (o disidratazione) è la reazione con cui si formano legami come quello peptidico o glicosidico." },
-    { "id": 31, "type": "completamento", "materia": "Biologia", "topic": "Metabolismo di base", "question": "L'insieme delle reazioni metaboliche che scompongono molecole complesse liberando energia si chiama ___.", "correctAnswer": "catabolismo", "explanation": "Il catabolismo è la fase degradativa del metabolismo, opposta all'anabolismo (sintesi)." }
+    {
+      "id": 1,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Teoria cellulare",
+      "question": "Secondo la teoria cellulare, quale delle seguenti affermazioni è corretta?",
+      "options": [
+        "Tutti gli organismi viventi sono costituiti da una o più cellule",
+        "Le cellule procariotiche non derivano da altre cellule",
+        "Le cellule si generano per assemblaggio spontaneo di macromolecole",
+        "I virus sono cellule prive di parete",
+        "Solo gli organismi pluricellulari sono formati da cellule"
+      ],
+      "correctIndex": 0,
+      "explanation": "La teoria cellulare afferma che tutti gli organismi viventi sono composti da cellule e che ogni cellula deriva da una cellula preesistente."
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Proprietà della materia vivente",
+      "question": "Quale di queste NON è una proprietà fondamentale della materia vivente?",
+      "options": [
+        "Assenza totale di organizzazione strutturale",
+        "Omeostasi secondo la definizione classica",
+        "Metabolismo",
+        "Capacità di riprodursi",
+        "Capacità di rispondere a stimoli"
+      ],
+      "correctIndex": 0,
+      "explanation": "La materia vivente è invece caratterizzata da un elevato grado di organizzazione strutturale, a tutti i livelli."
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Struttura dei virus",
+      "question": "Come si chiama l'involucro proteico che racchiude l'acido nucleico di un virus?",
+      "options": [
+        "Envelope lipidico",
+        "Capside",
+        "Pericapside",
+        "Membrana plasmatica",
+        "Parete cellulare"
+      ],
+      "correctIndex": 1,
+      "explanation": "Il capside è il rivestimento proteico che protegge il genoma virale; alcuni virus possiedono anche un ulteriore involucro membranoso esterno."
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Genoma virale",
+      "question": "L'acido nucleico di un virus può essere:",
+      "options": [
+        "Solo DNA a doppio filamento come riportato nei testi di riferimento",
+        "Sempre entrambi, DNA e RNA insieme",
+        "DNA o RNA, a singolo o doppio filamento a seconda della classe virale",
+        "Nessuno dei due, i virus non hanno acido nucleico",
+        "Solo RNA a singolo filamento"
+      ],
+      "correctIndex": 2,
+      "explanation": "Le diverse classi di virus animali si distinguono anche per il tipo di acido nucleico che possiedono: DNA o RNA, a filamento singolo o doppio."
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Ciclo litico",
+      "question": "Nel ciclo litico di un virus batterico, cosa accade alla cellula ospite al termine del ciclo?",
+      "options": [
+        "Diventa resistente a ulteriori infezioni",
+        "Si integra stabilmente con il genoma virale",
+        "Espelle il virus per esocitosi senza danno",
+        "Va incontro a lisi con rilascio dei nuovi virioni",
+        "Si divide per formare due cellule figlie infette"
+      ],
+      "correctIndex": 3,
+      "explanation": "Nel ciclo litico il virus si replica attivamente fino a causare la rottura (lisi) della cellula ospite e il rilascio dei nuovi virioni."
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Ciclo lisogenico",
+      "question": "Cosa caratterizza il ciclo lisogenico di un virus batterico?",
+      "options": [
+        "L'assenza totale di replicazione del genoma virale",
+        "La formazione diretta di virioni maturi senza integrazione",
+        "L'impossibilità di tornare successivamente al ciclo litico",
+        "La distruzione immediata della cellula ospite nel modello di riferimento",
+        "L'integrazione del genoma virale (profago) nel cromosoma dell'ospite senza lisi immediata"
+      ],
+      "correctIndex": 4,
+      "explanation": "Nel ciclo lisogenico il DNA virale si integra nel cromosoma batterico come profago, replicandosi passivamente insieme ad esso, e può in seguito rientrare nel ciclo litico."
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Retrovirus",
+      "question": "Quale enzima caratteristico permette ai retrovirus di convertire il proprio RNA in DNA all'interno della cellula ospite?",
+      "options": [
+        "Elicasi",
+        "RNA polimerasi II",
+        "Ligasi",
+        "DNA polimerasi",
+        "Trascrittasi inversa"
+      ],
+      "correctIndex": 4,
+      "explanation": "I retrovirus possiedono la trascrittasi inversa, che retrotrascrive il loro genoma a RNA in DNA, successivamente integrato nel genoma dell'ospite."
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Ingresso del virus nella cellula animale",
+      "question": "Attraverso quali modalità principali un virus animale può entrare in una cellula ospite?",
+      "options": [
+        "Solo per diffusione passiva attraverso la parete cellulare",
+        "Esclusivamente tramite pili sessuali secondo la nomenclatura standard",
+        "Solo tramite trasformazione genetica",
+        "Solo per fagocitosi attiva della cellula bersaglio",
+        "Endocitosi mediata da recettore o fusione diretta dell'envelope con la membrana plasmatica"
+      ],
+      "correctIndex": 4,
+      "explanation": "I virus animali entrano tipicamente per endocitosi mediata da recettore oppure, se dotati di envelope, per fusione diretta con la membrana plasmatica."
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Cellula procariotica",
+      "question": "Cosa distingue la parete cellulare dei batteri Gram positivi da quella dei Gram negativi?",
+      "options": [
+        "I Gram negativi non possiedono alcuna parete cellulare",
+        "Non esiste alcuna differenza strutturale tra i due gruppi",
+        "I Gram positivi hanno uno strato di peptidoglicano molto più spesso e privo di membrana esterna",
+        "Solo i Gram negativi possiedono peptidoglicano nella descrizione tradizionale",
+        "I Gram positivi hanno una membrana esterna ricca di lipopolisaccaridi"
+      ],
+      "correctIndex": 2,
+      "explanation": "I batteri Gram positivi hanno una parete con spesso strato di peptidoglicano e nessuna membrana esterna, mentre i Gram negativi hanno uno strato sottile di peptidoglicano ricoperto da una membrana esterna con lipopolisaccaridi."
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Colorazione di Gram",
+      "question": "Su cosa si basa il meccanismo della colorazione di Gram per distinguere i batteri?",
+      "options": [
+        "Sulla capacità della parete cellulare di trattenere o meno il complesso colorante cristal-violetto/iodio dopo il lavaggio con alcol",
+        "Sul tipo di acido nucleico presente nel batterio",
+        "Sulla presenza o assenza di flagelli nella descrizione tradizionale",
+        "Sulla presenza di capsula polisaccaridica",
+        "Sulla velocità di replicazione del batterio"
+      ],
+      "correctIndex": 0,
+      "explanation": "La colorazione di Gram sfrutta la diversa struttura della parete: i Gram positivi trattengono il complesso colorante per lo spesso strato di peptidoglicano, i Gram negativi lo perdono con il lavaggio alcolico."
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Trasferimento genico orizzontale - trasformazione",
+      "question": "Cosa si intende per trasformazione batterica?",
+      "options": [
+        "Il passaggio di DNA da un batterio all'altro tramite contatto diretto e pilo sessuale",
+        "La divisione binaria del batterio come riportato nei testi di riferimento",
+        "L'acquisizione da parte di un batterio di DNA libero presente nell'ambiente circostante",
+        "La sintesi di nuove proteine di membrana",
+        "Il trasferimento di geni mediato da un batteriofago"
+      ],
+      "correctIndex": 2,
+      "explanation": "La trasformazione consiste nell'assunzione, da parte di un batterio competente, di DNA libero (esogeno) presente nell'ambiente."
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Trasferimento genico orizzontale - coniugazione",
+      "question": "Quale struttura è tipicamente coinvolta nel trasferimento di DNA per coniugazione batterica?",
+      "options": [
+        "La capsula",
+        "Il flagello",
+        "La membrana esterna dei Gram negativi",
+        "Il pilo sessuale (pilo F)",
+        "Il capside virale"
+      ],
+      "correctIndex": 3,
+      "explanation": "Nella coniugazione un batterio donatore trasferisce DNA plasmidico a un ricevente attraverso il pilo sessuale, che mette in contatto diretto le due cellule."
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Trasferimento genico orizzontale - trasduzione",
+      "question": "La trasduzione batterica è il trasferimento di materiale genetico mediato da:",
+      "options": [
+        "Un plasmide coniugativo",
+        "Un pilo sessuale nel modello di riferimento",
+        "L'assunzione diretta di DNA libero dall'ambiente",
+        "Un batteriofago che, per errore, incorpora ed inietta DNA batterico in un'altra cellula",
+        "La fusione di due protoplasti batterici"
+      ],
+      "correctIndex": 3,
+      "explanation": "Nella trasduzione un batteriofago, durante l'assemblaggio, incorpora per errore frammenti di DNA batterico e li trasferisce a un'altra cellula batterica infettandola."
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Eubatteri e archeobatteri",
+      "question": "Eubatteri e archeobatteri sono entrambi:",
+      "options": [
+        "Organelli delle cellule eucariotiche",
+        "Procarioti, ma appartengono a due domini distinti con differenze biochimiche e genetiche",
+        "La stessa cosa, solo con nomi diversi",
+        "Virus a DNA secondo la definizione classica",
+        "Organismi eucarioti pluricellulari"
+      ],
+      "correctIndex": 1,
+      "explanation": "Eubatteri e archeobatteri sono entrambi procarioti privi di nucleo, ma costituiscono due domini filogeneticamente distinti, con differenze nella composizione della parete, delle membrane e di alcuni processi molecolari."
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Cellula eucariotica - sistema delle endomembrane",
+      "question": "Il sistema delle endomembrane della cellula eucariotica comprende:",
+      "options": [
+        "Esclusivamente il nucleolo",
+        "Solo i mitocondri e i cloroplasti",
+        "Solo la parete cellulare nella descrizione tradizionale",
+        "Involucro nucleare, reticolo endoplasmatico, apparato di Golgi, lisosomi e vescicole di trasporto tra loro funzionalmente collegati",
+        "Solo la membrana plasmatica"
+      ],
+      "correctIndex": 3,
+      "explanation": "Il sistema delle endomembrane comprende l'insieme di compartimenti membranosi interni (involucro nucleare, RE, Golgi, lisosomi, vescicole) che comunicano funzionalmente tra loro."
+    },
+    {
+      "id": 16,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Origine endosimbiotica dei mitocondri",
+      "question": "Secondo la teoria dell'endosimbiosi, i mitocondri deriverebbero da:",
+      "options": [
+        "Particelle virali integrate nel genoma",
+        "Vescicole originate dall'apparato di Golgi",
+        "Un ripiegamento della membrana plasmatica avvenuto casualmente",
+        "Batteri aerobi inglobati da una cellula ospite ancestrale ed evolutisi in organelli simbiotici",
+        "Frammenti dell'involucro nucleare nella descrizione tradizionale"
+      ],
+      "correctIndex": 3,
+      "explanation": "L'ipotesi endosimbiotica propone che i mitocondri derivino da batteri aerobi inglobati da una cellula ospite, con cui hanno instaurato un rapporto simbiotico stabile nel corso dell'evoluzione."
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Struttura del DNA",
+      "question": "Secondo il modello di Watson e Crick, il DNA è costituito da:",
+      "options": [
+        "Un filamento circolare privo di basi azotate",
+        "Due filamenti antiparalleli avvolti a doppia elica, tenuti insieme da legami idrogeno tra basi complementari",
+        "Due filamenti paralleli uniti da legami peptidici",
+        "Tre filamenti avvolti a tripla elica come riportato nei testi di riferimento",
+        "Un singolo filamento ripiegato a globulo"
+      ],
+      "correctIndex": 1,
+      "explanation": "Il modello di Watson e Crick descrive il DNA come una doppia elica di due filamenti antiparalleli, uniti da legami idrogeno tra basi azotate complementari (A-T, G-C)."
+    },
+    {
+      "id": 18,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "RNA codificante e non codificante",
+      "question": "Gli RNA non codificanti si distinguono dall'mRNA perché:",
+      "options": [
+        "Non vengono tradotti in proteine, ma svolgono funzioni strutturali o regolative",
+        "Corrispondono esclusivamente al tRNA",
+        "Contengono sempre introni come riportato nei testi di riferimento",
+        "Non vengono mai trascritti dal DNA",
+        "Sono presenti solo nei procarioti"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gli RNA non codificanti (come rRNA, tRNA, miRNA) non vengono tradotti in proteine, ma svolgono funzioni strutturali, catalitiche o di regolazione dell'espressione genica."
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Legame peptidico",
+      "question": "Il legame peptidico che unisce due amminoacidi si forma tra:",
+      "options": [
+        "Il gruppo fosfato e il gruppo ossidrilico di due zuccheri",
+        "Il gruppo carbossilico di un amminoacido e il gruppo amminico del successivo, con perdita di una molecola d'acqua",
+        "Due gruppi carbossilici, con rilascio di anidride carbonica",
+        "Due gruppi amminici, con formazione di un ponte disolfuro",
+        "La catena laterale di due amminoacidi qualsiasi nella descrizione tradizionale"
+      ],
+      "correctIndex": 1,
+      "explanation": "Il legame peptidico si forma per condensazione tra il gruppo carbossilico (-COOH) di un amminoacido e il gruppo amminico (-NH2) del successivo, con liberazione di una molecola d'acqua."
+    },
+    {
+      "id": 20,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Enzimi e classi principali",
+      "question": "Quale delle seguenti coppie di enzimi ha funzioni tra loro opposte?",
+      "options": [
+        "Elicasi e ligasi",
+        "Chinasi e fosfatasi",
+        "Proteasi e peptidasi",
+        "Polimerasi e nucleasi",
+        "Isomerasi e mutasi"
+      ],
+      "correctIndex": 1,
+      "explanation": "Le chinasi aggiungono un gruppo fosfato (fosforilazione), mentre le fosfatasi lo rimuovono (defosforilazione): sono quindi enzimi ad azione opposta, spesso usati per regolare reversibilmente l'attività di altre proteine."
+    },
+    {
+      "id": 21,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Modificazioni post-traduzionali",
+      "question": "L'aggiunta di catene di zuccheri a una proteina già sintetizzata è nota come:",
+      "options": [
+        "Fosforilazione",
+        "Ubiquitinazione",
+        "Acetilazione",
+        "Metilazione",
+        "Glicosilazione"
+      ],
+      "correctIndex": 4,
+      "explanation": "La glicosilazione è la modificazione post-traduzionale che consiste nell'aggiunta covalente di catene glucidiche a una proteina, spesso importante per il corretto ripiegamento e riconoscimento della molecola."
+    },
+    {
+      "id": 22,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Ciclo lisogenico",
+      "question": "Nel ciclo ___ di un virus batterico, il genoma virale si integra come profago nel cromosoma dell'ospite senza causarne la lisi immediata.",
+      "correctAnswer": "lisogenico",
+      "explanation": "Il ciclo lisogenico prevede l'integrazione stabile del DNA virale nel cromosoma batterico."
+    },
+    {
+      "id": 23,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Struttura del virus",
+      "question": "L'involucro proteico che racchiude e protegge l'acido nucleico di un virus si chiama ___.",
+      "correctAnswer": "capside",
+      "explanation": "Il capside è la struttura proteica che avvolge il genoma virale."
+    },
+    {
+      "id": 24,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Colorazione di Gram",
+      "question": "La tecnica che distingue i batteri in base allo spessore del peptidoglicano della parete cellulare si chiama colorazione di ___.",
+      "correctAnswer": "Gram",
+      "explanation": "La colorazione di Gram permette di classificare i batteri in Gram positivi e Gram negativi."
+    },
+    {
+      "id": 25,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Trasferimento genico orizzontale",
+      "question": "Il trasferimento di DNA libero dall'ambiente in un batterio competente si chiama ___.",
+      "correctAnswer": "trasformazione",
+      "explanation": "La trasformazione è uno dei tre meccanismi di trasferimento genico orizzontale nei batteri."
+    },
+    {
+      "id": 26,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Trasferimento genico orizzontale",
+      "question": "Il trasferimento di materiale genetico batterico mediato per errore da un batteriofago si chiama ___.",
+      "correctAnswer": "trasduzione",
+      "explanation": "Nella trasduzione un fago incorpora per errore DNA batterico e lo trasferisce a un'altra cellula."
+    },
+    {
+      "id": 27,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Origine dei mitocondri",
+      "question": "L'ipotesi secondo cui i mitocondri derivano da batteri aerobi inglobati da una cellula ospite ancestrale si chiama teoria ___.",
+      "correctAnswer": "endosimbiotica",
+      "explanation": "La teoria endosimbiotica spiega l'origine evolutiva di mitocondri (e cloroplasti nelle piante)."
+    },
+    {
+      "id": 28,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Acidi nucleici",
+      "question": "Il monomero che costituisce DNA e RNA, formato da base azotata, zucchero e gruppo fosfato, si chiama ___.",
+      "correctAnswer": "nucleotide",
+      "explanation": "I nucleotidi sono le unità monomeriche degli acidi nucleici."
+    },
+    {
+      "id": 29,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Struttura delle proteine",
+      "question": "Il legame covalente che unisce due amminoacidi consecutivi in una proteina si chiama legame ___.",
+      "correctAnswer": "peptidico",
+      "explanation": "Il legame peptidico si forma tra il gruppo carbossilico e il gruppo amminico di due amminoacidi."
+    },
+    {
+      "id": 30,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Metabolismo di base",
+      "question": "La reazione che unisce due molecole con perdita di una molecola d'acqua si chiama reazione di ___.",
+      "correctAnswer": "condensazione",
+      "explanation": "La condensazione (o disidratazione) è la reazione con cui si formano legami come quello peptidico o glicosidico."
+    },
+    {
+      "id": 31,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Metabolismo di base",
+      "question": "L'insieme delle reazioni metaboliche che scompongono molecole complesse liberando energia si chiama ___.",
+      "correctAnswer": "catabolismo",
+      "explanation": "Il catabolismo è la fase degradativa del metabolismo, opposta all'anabolismo (sintesi)."
+    }
   ]
 }

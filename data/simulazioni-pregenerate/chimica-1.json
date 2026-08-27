@@ -2,36 +2,431 @@
   "materia": "chimica",
   "unitaId": 1,
   "questions": [
-    { "id": 1, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Struttura dell'atomo", "question": "Quale particella subatomica determina la carica positiva del nucleo?", "options": ["L'elettrone", "Il protone", "Il neutrone", "Il fotone", "Il positrone"], "correctIndex": 1, "explanation": "Il protone ha carica positiva ed è, insieme al neutrone (privo di carica), costituente del nucleo atomico." },
-    { "id": 2, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Numero atomico e numero di massa", "question": "Il numero atomico (Z) di un elemento corrisponde a:", "options": ["Il numero di neutroni nel nucleo", "Il numero di protoni nel nucleo", "La somma di protoni e neutroni", "Il numero di elettroni di valenza", "La massa totale dell'atomo in grammi"], "correctIndex": 1, "explanation": "Il numero atomico Z è il numero di protoni presenti nel nucleo e identifica univocamente l'elemento chimico." },
-    { "id": 3, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Isotopi", "question": "Due isotopi dello stesso elemento differiscono per:", "options": ["Il numero di protoni", "Il numero di elettroni di valenza", "Il numero di neutroni", "La carica nucleare complessiva", "Il numero atomico"], "correctIndex": 2, "explanation": "Gli isotopi hanno lo stesso numero di protoni (stesso elemento) ma un diverso numero di neutroni, quindi diversa massa atomica." },
-    { "id": 4, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Numeri quantici e principio di Pauli", "question": "Il principio di esclusione di Pauli afferma che:", "options": ["Due elettroni dello stesso atomo non possono avere gli stessi quattro numeri quantici", "Gli elettroni occupano sempre l'orbitale a energia più alta", "Un orbitale può contenere al massimo un elettrone", "Tutti gli elettroni di un atomo hanno la stessa energia", "Il numero di neutroni deve sempre uguagliare quello dei protoni"], "correctIndex": 0, "explanation": "Il principio di Pauli stabilisce che in uno stesso atomo non possono esistere due elettroni con la stessa combinazione dei quattro numeri quantici, quindi ogni orbitale ospita al massimo due elettroni con spin opposto." },
-    { "id": 5, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Regola di Hund", "question": "Secondo la regola di Hund, gli elettroni in orbitali degeneri (stessa energia):", "options": ["Si accoppiano subito a due a due nello stesso orbitale", "Occupano singolarmente il maggior numero di orbitali possibile prima di accoppiarsi", "Non possono occupare orbitali della stessa sottoshell", "Si dispongono sempre nell'orbitale più vicino al nucleo", "Restano nell'orbitale s finché non è completamente pieno"], "correctIndex": 1, "explanation": "La regola di Hund prevede che gli elettroni riempiano prima singolarmente tutti gli orbitali degeneri disponibili, con spin paralleli, prima di iniziare ad accoppiarsi." },
-    { "id": 6, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Sistema periodico e proprietà periodiche", "question": "Lungo un periodo del sistema periodico, procedendo da sinistra a destra, l'elettronegatività generalmente:", "options": ["Diminuisce", "Aumenta", "Resta costante", "Aumenta poi diminuisce bruscamente", "Non ha andamento periodico"], "correctIndex": 1, "explanation": "Lungo un periodo l'elettronegatività tende ad aumentare, a causa dell'aumento della carica nucleare effettiva a parità di livello energetico." },
-    { "id": 7, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Regola dell'ottetto", "question": "La regola dell'ottetto prevede che gli atomi tendano a raggiungere una configurazione stabile con:", "options": ["Due elettroni nel livello più esterno", "Otto elettroni nel livello più esterno (salvo eccezioni come l'idrogeno)", "Un numero di elettroni pari al numero atomico", "Il completo trasferimento di tutti gli elettroni di valenza", "Nessun elettrone spaiato in assoluto"], "correctIndex": 1, "explanation": "La regola dell'ottetto descrive la tendenza degli atomi a raggiungere otto elettroni nel guscio di valenza (due per l'idrogeno), configurazione tipica dei gas nobili." },
-    { "id": 8, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Mole e numero di Avogadro", "question": "Una mole di una qualsiasi sostanza contiene un numero di entità elementari pari a:", "options": ["6,022 × 10^20", "6,022 × 10^23", "3,14 × 10^23", "1,000 × 10^23", "9,109 × 10^23"], "correctIndex": 1, "explanation": "Il numero di Avogadro, pari a 6,022 × 10^23, definisce quante entità (atomi, molecole, ioni) sono contenute in una mole." },
-    { "id": 9, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Legame covalente", "question": "Un legame covalente omopolare si forma quando:", "options": ["Gli atomi coinvolti hanno elettronegatività molto diversa", "Gli atomi coinvolti hanno la stessa elettronegatività e condividono la coppia di elettroni in modo simmetrico", "Un atomo cede completamente un elettrone all'altro", "Si forma per attrazione elettrostatica tra ioni", "Si condivide solo un protone tra i due atomi"], "correctIndex": 1, "explanation": "Nel legame covalente omopolare (o puro) la coppia di elettroni condivisa è distribuita simmetricamente perché i due atomi hanno elettronegatività uguale o molto simile." },
-    { "id": 10, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Legame ionico", "question": "Il legame ionico si forma principalmente per:", "options": ["Condivisione paritaria di elettroni tra due atomi", "Trasferimento di uno o più elettroni da un atomo elettropositivo a uno elettronegativo, con formazione di ioni di carica opposta", "Sovrapposizione di orbitali d", "Interazione debole tra dipoli permanenti", "Condivisione di un solo protone tra due nuclei"], "correctIndex": 1, "explanation": "Nel legame ionico un atomo cede uno o più elettroni a un altro molto più elettronegativo, generando ioni di carica opposta che si attraggono elettrostaticamente." },
-    { "id": 11, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Ibridazione degli orbitali", "question": "Un atomo di carbonio con ibridazione sp³ ha una geometria molecolare di tipo:", "options": ["Lineare", "Trigonale planare", "Tetraedrica", "Ottaedrica", "Bipiramidale"], "correctIndex": 2, "explanation": "L'ibridazione sp³ genera quattro orbitali ibridi equivalenti disposti secondo una geometria tetraedrica, tipica ad esempio del carbonio negli alcani." },
-    { "id": 12, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Orbitali molecolari sigma e pi-greco", "question": "Un legame doppio carbonio-carbonio è costituito da:", "options": ["Due legami sigma", "Un legame sigma e un legame pi-greco", "Due legami pi-greco", "Un solo legame pi-greco senza legame sigma", "Un legame ionico e un legame covalente"], "correctIndex": 1, "explanation": "Un doppio legame è formato da un legame sigma (sovrapposizione frontale degli orbitali) e da un legame pi-greco (sovrapposizione laterale)." },
-    { "id": 13, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Interazioni deboli", "question": "Il legame idrogeno si forma tipicamente tra:", "options": ["Due atomi di carbonio adiacenti", "Un atomo di idrogeno legato a un elemento molto elettronegativo (come O o N) e un altro atomo elettronegativo vicino", "Due ioni della stessa carica", "Due elettroni dello stesso orbitale", "Un protone libero e un neutrone"], "correctIndex": 1, "explanation": "Il legame idrogeno è un'interazione debole che si instaura tra un atomo di H legato covalentemente a un elemento elettronegativo (O, N, F) e un altro atomo elettronegativo nelle vicinanze." },
-    { "id": 14, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Numero di ossidazione", "question": "Il numero di ossidazione di un elemento allo stato elementare (non combinato) è sempre:", "options": ["+1", "-1", "0", "Uguale al numero atomico", "Variabile a seconda della temperatura"], "correctIndex": 2, "explanation": "Per convenzione, il numero di ossidazione di un elemento allo stato libero (non legato ad altri elementi) è pari a zero." },
-    { "id": 15, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Stato solido", "question": "I solidi tenuti insieme da un reticolo di ioni positivi immersi in un mare di elettroni delocalizzati sono detti:", "options": ["Solidi ionici", "Solidi molecolari", "Solidi covalenti", "Solidi metallici", "Solidi amorfi puri"], "correctIndex": 3, "explanation": "Nei solidi metallici gli ioni positivi occupano un reticolo cristallino immerso in un \"mare\" di elettroni di valenza delocalizzati, responsabile della conducibilità elettrica e termica." },
-    { "id": 16, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Leggi dei gas", "question": "La legge di Boyle descrive la relazione, a temperatura costante, tra:", "options": ["Pressione e temperatura di un gas", "Volume e temperatura di un gas", "Pressione e volume di un gas, inversamente proporzionali", "Numero di moli e pressione di un gas", "Densità e massa molecolare di un gas"], "correctIndex": 2, "explanation": "La legge di Boyle afferma che, a temperatura costante, pressione e volume di un gas ideale sono inversamente proporzionali (PV = costante)." },
-    { "id": 17, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Leggi dei gas", "question": "La legge di Gay-Lussac mette in relazione, a volume costante:", "options": ["Pressione e temperatura assoluta di un gas, direttamente proporzionali", "Volume e pressione di un gas", "Numero di moli e volume", "Temperatura e densità", "Pressione e numero di Avogadro"], "correctIndex": 0, "explanation": "La legge di Gay-Lussac stabilisce che, a volume costante, la pressione di un gas è direttamente proporzionale alla sua temperatura assoluta." },
-    { "id": 18, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Equazione di stato dei gas perfetti", "question": "L'equazione di stato dei gas perfetti è correttamente espressa come:", "options": ["PV = nRT", "PT = nRV", "VT = nRP", "P + V = nRT", "PV = RT/n"], "correctIndex": 0, "explanation": "L'equazione di stato dei gas perfetti è PV = nRT, dove P è la pressione, V il volume, n il numero di moli, R la costante universale dei gas e T la temperatura assoluta." },
-    { "id": 19, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Termodinamica e bioenergetica", "question": "L'entalpia di un sistema è una funzione di stato che rappresenta principalmente:", "options": ["Il disordine molecolare del sistema", "Il contenuto termico del sistema a pressione costante", "La velocità di una reazione chimica", "La carica elettrica netta del sistema", "Il numero di moli di reagente"], "correctIndex": 1, "explanation": "L'entalpia è la funzione di stato che esprime il contenuto termico di un sistema a pressione costante, utile per descrivere reazioni esotermiche ed endotermiche." },
-    { "id": 20, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Energia libera di Gibbs", "question": "Una reazione con variazione di energia libera di Gibbs (ΔG) negativa è definita:", "options": ["Endoergonica e non spontanea", "Esoergonica e spontanea nelle condizioni date", "In equilibrio perfetto", "Impossibile dal punto di vista termodinamico", "Indipendente dalla temperatura"], "correctIndex": 1, "explanation": "Una reazione con ΔG negativo è esoergonica e procede spontaneamente nelle condizioni considerate; con ΔG positivo è invece endoergonica e non spontanea." },
-    { "id": 21, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Molecole, ioni e mole", "question": "Uno ione poliatomico, come lo ione solfato (SO4²⁻), è costituito da:", "options": ["Un singolo atomo con carica netta diversa da zero", "Un gruppo di atomi legati covalentemente che possiede nel complesso una carica netta", "Solo protoni liberi", "Una coppia di atomi identici neutri", "Un atomo isolato privo di elettroni"], "correctIndex": 1, "explanation": "Uno ione poliatomico è un insieme di atomi uniti da legami covalenti che, nel complesso, possiede una carica elettrica netta positiva o negativa." },
-    { "id": 22, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Numero atomico", "question": "Il numero di protoni presenti nel nucleo di un atomo si chiama numero ___.", "correctAnswer": "atomico", "explanation": "Il numero atomico (Z) identifica univocamente ciascun elemento chimico." },
-    { "id": 23, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Isotopi", "question": "Atomi dello stesso elemento con lo stesso numero di protoni ma diverso numero di neutroni si chiamano ___.", "correctAnswer": "isotopi", "explanation": "Gli isotopi hanno identiche proprietà chimiche ma massa atomica diversa." },
-    { "id": 24, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Principio di Pauli", "question": "Il principio secondo cui in uno stesso atomo non possono esistere due elettroni con gli stessi quattro numeri quantici si chiama principio di esclusione di ___.", "correctAnswer": "Pauli", "explanation": "È uno dei principi fondamentali che regolano la configurazione elettronica degli atomi." },
-    { "id": 25, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Regola di Hund", "question": "La regola secondo cui gli elettroni occupano singolarmente tutti gli orbitali degeneri disponibili prima di accoppiarsi si chiama regola di ___.", "correctAnswer": "Hund", "explanation": "Questa regola determina l'ordine di riempimento degli orbitali a parità di energia." },
-    { "id": 26, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Mole e numero di Avogadro", "question": "La quantità di sostanza che contiene un numero di Avogadro di particelle elementari si chiama ___.", "correctAnswer": "mole", "explanation": "La mole è l'unità di misura della quantità di sostanza nel Sistema Internazionale." },
-    { "id": 27, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Legame ionico", "question": "Il legame chimico che si forma per trasferimento completo di uno o più elettroni tra atomi con elettronegatività molto diversa si chiama legame ___.", "correctAnswer": "ionico", "explanation": "Si distingue dal legame covalente, in cui gli elettroni sono condivisi anziché trasferiti." },
-    { "id": 28, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Ibridazione", "question": "Il tipo di ibridazione del carbonio che genera quattro orbitali equivalenti con geometria tetraedrica è ___.", "correctAnswer": "sp3", "explanation": "L'ibridazione sp3 è tipica del carbonio negli alcani e in molte molecole organiche sature." },
-    { "id": 29, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Interazioni deboli", "question": "L'interazione debole tra un atomo di idrogeno legato a un elemento elettronegativo e un altro atomo elettronegativo vicino si chiama legame a ___.", "correctAnswer": "idrogeno", "explanation": "Il legame idrogeno è responsabile, ad esempio, delle particolari proprietà dell'acqua e della struttura secondaria del DNA." },
-    { "id": 30, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Entalpia", "question": "La funzione di stato che rappresenta il contenuto termico di un sistema a pressione costante si chiama ___.", "correctAnswer": "entalpia", "explanation": "L'entalpia permette di classificare le trasformazioni in esotermiche o endotermiche." },
-    { "id": 31, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Energia libera di Gibbs", "question": "La funzione di stato che combina entalpia ed entropia per stabilire la spontaneità di una reazione si chiama energia libera di ___.", "correctAnswer": "Gibbs", "explanation": "Una variazione negativa dell'energia libera di Gibbs (ΔG < 0) indica una reazione spontanea." }
+    {
+      "id": 1,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Struttura dell'atomo",
+      "question": "Quale particella subatomica determina la carica positiva del nucleo?",
+      "options": [
+        "L'elettrone",
+        "Il fotone",
+        "Il neutrone",
+        "Il protone",
+        "Il positrone"
+      ],
+      "correctIndex": 3,
+      "explanation": "Il protone ha carica positiva ed è, insieme al neutrone (privo di carica), costituente del nucleo atomico."
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Numero atomico e numero di massa",
+      "question": "Il numero atomico (Z) di un elemento corrisponde a:",
+      "options": [
+        "La somma di protoni e neutroni",
+        "Il numero di elettroni di valenza",
+        "Il numero di neutroni nel nucleo",
+        "Il numero di protoni nel nucleo",
+        "La massa totale dell'atomo in grammi"
+      ],
+      "correctIndex": 3,
+      "explanation": "Il numero atomico Z è il numero di protoni presenti nel nucleo e identifica univocamente l'elemento chimico."
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Isotopi",
+      "question": "Due isotopi dello stesso elemento differiscono per:",
+      "options": [
+        "Il numero di protoni",
+        "Il numero di neutroni",
+        "Il numero di elettroni di valenza",
+        "La carica nucleare complessiva",
+        "Il numero atomico"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gli isotopi hanno lo stesso numero di protoni (stesso elemento) ma un diverso numero di neutroni, quindi diversa massa atomica."
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Numeri quantici e principio di Pauli",
+      "question": "Il principio di esclusione di Pauli afferma che:",
+      "options": [
+        "Il numero di neutroni deve sempre uguagliare quello dei protoni",
+        "Tutti gli elettroni di un atomo hanno la stessa energia",
+        "Gli elettroni occupano sempre l'orbitale a energia più alta",
+        "Un orbitale può contenere al massimo un elettrone secondo la definizione classica",
+        "Due elettroni dello stesso atomo non possono avere gli stessi quattro numeri quantici"
+      ],
+      "correctIndex": 4,
+      "explanation": "Il principio di Pauli stabilisce che in uno stesso atomo non possono esistere due elettroni con la stessa combinazione dei quattro numeri quantici, quindi ogni orbitale ospita al massimo due elettroni con spin opposto."
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Regola di Hund",
+      "question": "Secondo la regola di Hund, gli elettroni in orbitali degeneri (stessa energia):",
+      "options": [
+        "Restano nell'orbitale s finché non è completamente pieno",
+        "Si accoppiano subito a due a due nello stesso orbitale",
+        "Si dispongono sempre nell'orbitale più vicino al nucleo",
+        "Occupano singolarmente il maggior numero di orbitali possibile prima di accoppiarsi",
+        "Non possono occupare orbitali della stessa sottoshell secondo la nomenclatura standard"
+      ],
+      "correctIndex": 3,
+      "explanation": "La regola di Hund prevede che gli elettroni riempiano prima singolarmente tutti gli orbitali degeneri disponibili, con spin paralleli, prima di iniziare ad accoppiarsi."
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Sistema periodico e proprietà periodiche",
+      "question": "Lungo un periodo del sistema periodico, procedendo da sinistra a destra, l'elettronegatività generalmente:",
+      "options": [
+        "Non ha andamento periodico",
+        "Aumenta poi diminuisce bruscamente",
+        "Resta costante",
+        "Diminuisce",
+        "Aumenta"
+      ],
+      "correctIndex": 4,
+      "explanation": "Lungo un periodo l'elettronegatività tende ad aumentare, a causa dell'aumento della carica nucleare effettiva a parità di livello energetico."
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Regola dell'ottetto",
+      "question": "La regola dell'ottetto prevede che gli atomi tendano a raggiungere una configurazione stabile con:",
+      "options": [
+        "Otto elettroni nel livello più esterno (salvo eccezioni come l'idrogeno)",
+        "Un numero di elettroni pari al numero atomico",
+        "Il completo trasferimento di tutti gli elettroni di valenza",
+        "Due elettroni nel livello più esterno",
+        "Nessun elettrone spaiato in assoluto nella descrizione tradizionale"
+      ],
+      "correctIndex": 0,
+      "explanation": "La regola dell'ottetto descrive la tendenza degli atomi a raggiungere otto elettroni nel guscio di valenza (due per l'idrogeno), configurazione tipica dei gas nobili."
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Mole e numero di Avogadro",
+      "question": "Una mole di una qualsiasi sostanza contiene un numero di entità elementari pari a:",
+      "options": [
+        "1,000 × 10^23",
+        "9,109 × 10^23",
+        "6,022 × 10^20",
+        "6,022 × 10^23",
+        "3,14 × 10^23"
+      ],
+      "correctIndex": 3,
+      "explanation": "Il numero di Avogadro, pari a 6,022 × 10^23, definisce quante entità (atomi, molecole, ioni) sono contenute in una mole."
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Legame covalente",
+      "question": "Un legame covalente omopolare si forma quando:",
+      "options": [
+        "Gli atomi coinvolti hanno elettronegatività molto diversa",
+        "Un atomo cede completamente un elettrone all'altro",
+        "Gli atomi coinvolti hanno la stessa elettronegatività e condividono la coppia di elettroni in modo simmetrico",
+        "Si forma per attrazione elettrostatica tra ioni",
+        "Si condivide solo un protone tra i due atomi secondo la nomenclatura standard"
+      ],
+      "correctIndex": 2,
+      "explanation": "Nel legame covalente omopolare (o puro) la coppia di elettroni condivisa è distribuita simmetricamente perché i due atomi hanno elettronegatività uguale o molto simile."
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Legame ionico",
+      "question": "Il legame ionico si forma principalmente per:",
+      "options": [
+        "Trasferimento di uno o più elettroni da un atomo elettropositivo a uno elettronegativo, con formazione di ioni di carica opposta",
+        "Interazione debole tra dipoli permanenti",
+        "Sovrapposizione di orbitali d secondo la nomenclatura standard",
+        "Condivisione paritaria di elettroni tra due atomi",
+        "Condivisione di un solo protone tra due nuclei"
+      ],
+      "correctIndex": 0,
+      "explanation": "Nel legame ionico un atomo cede uno o più elettroni a un altro molto più elettronegativo, generando ioni di carica opposta che si attraggono elettrostaticamente."
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Ibridazione degli orbitali",
+      "question": "Un atomo di carbonio con ibridazione sp³ ha una geometria molecolare di tipo:",
+      "options": [
+        "Lineare",
+        "Trigonale planare",
+        "Bipiramidale",
+        "Ottaedrica",
+        "Tetraedrica"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'ibridazione sp³ genera quattro orbitali ibridi equivalenti disposti secondo una geometria tetraedrica, tipica ad esempio del carbonio negli alcani."
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Orbitali molecolari sigma e pi-greco",
+      "question": "Un legame doppio carbonio-carbonio è costituito da:",
+      "options": [
+        "Un legame ionico e un legame covalente",
+        "Due legami pi-greco",
+        "Un solo legame pi-greco senza legame sigma",
+        "Un legame sigma e un legame pi-greco",
+        "Due legami sigma"
+      ],
+      "correctIndex": 3,
+      "explanation": "Un doppio legame è formato da un legame sigma (sovrapposizione frontale degli orbitali) e da un legame pi-greco (sovrapposizione laterale)."
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Interazioni deboli",
+      "question": "Il legame idrogeno si forma tipicamente tra:",
+      "options": [
+        "Un atomo di idrogeno legato a un elemento molto elettronegativo (come O o N) e un altro atomo elettronegativo vicino",
+        "Due atomi di carbonio adiacenti",
+        "Due ioni della stessa carica nel modello di riferimento",
+        "Un protone libero e un neutrone",
+        "Due elettroni dello stesso orbitale"
+      ],
+      "correctIndex": 0,
+      "explanation": "Il legame idrogeno è un'interazione debole che si instaura tra un atomo di H legato covalentemente a un elemento elettronegativo (O, N, F) e un altro atomo elettronegativo nelle vicinanze."
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Numero di ossidazione",
+      "question": "Il numero di ossidazione di un elemento allo stato elementare (non combinato) è sempre:",
+      "options": [
+        "Uguale al numero atomico",
+        "Variabile a seconda della temperatura",
+        "+1",
+        "0",
+        "-1"
+      ],
+      "correctIndex": 3,
+      "explanation": "Per convenzione, il numero di ossidazione di un elemento allo stato libero (non legato ad altri elementi) è pari a zero."
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Stato solido",
+      "question": "I solidi tenuti insieme da un reticolo di ioni positivi immersi in un mare di elettroni delocalizzati sono detti:",
+      "options": [
+        "Solidi molecolari",
+        "Solidi amorfi puri",
+        "Solidi covalenti",
+        "Solidi ionici",
+        "Solidi metallici"
+      ],
+      "correctIndex": 4,
+      "explanation": "Nei solidi metallici gli ioni positivi occupano un reticolo cristallino immerso in un \"mare\" di elettroni di valenza delocalizzati, responsabile della conducibilità elettrica e termica."
+    },
+    {
+      "id": 16,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Leggi dei gas",
+      "question": "La legge di Boyle descrive la relazione, a temperatura costante, tra:",
+      "options": [
+        "Pressione e volume di un gas, inversamente proporzionali",
+        "Numero di moli e pressione di un gas",
+        "Volume e temperatura di un gas secondo la nomenclatura standard",
+        "Densità e massa molecolare di un gas",
+        "Pressione e temperatura di un gas"
+      ],
+      "correctIndex": 0,
+      "explanation": "La legge di Boyle afferma che, a temperatura costante, pressione e volume di un gas ideale sono inversamente proporzionali (PV = costante)."
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Leggi dei gas",
+      "question": "La legge di Gay-Lussac mette in relazione, a volume costante:",
+      "options": [
+        "Pressione e numero di Avogadro",
+        "Volume e pressione di un gas",
+        "Numero di moli e volume",
+        "Temperatura e densità secondo la definizione classica",
+        "Pressione e temperatura assoluta di un gas, direttamente proporzionali"
+      ],
+      "correctIndex": 4,
+      "explanation": "La legge di Gay-Lussac stabilisce che, a volume costante, la pressione di un gas è direttamente proporzionale alla sua temperatura assoluta."
+    },
+    {
+      "id": 18,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Equazione di stato dei gas perfetti",
+      "question": "L'equazione di stato dei gas perfetti è correttamente espressa come:",
+      "options": [
+        "VT = nRP",
+        "PT = nRV",
+        "P + V = nRT",
+        "PV = RT/n",
+        "PV = nRT"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'equazione di stato dei gas perfetti è PV = nRT, dove P è la pressione, V il volume, n il numero di moli, R la costante universale dei gas e T la temperatura assoluta."
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Termodinamica e bioenergetica",
+      "question": "L'entalpia di un sistema è una funzione di stato che rappresenta principalmente:",
+      "options": [
+        "Il contenuto termico del sistema a pressione costante",
+        "Il disordine molecolare del sistema",
+        "La carica elettrica netta del sistema",
+        "La velocità di una reazione chimica",
+        "Il numero di moli di reagente"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'entalpia è la funzione di stato che esprime il contenuto termico di un sistema a pressione costante, utile per descrivere reazioni esotermiche ed endotermiche."
+    },
+    {
+      "id": 20,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Energia libera di Gibbs",
+      "question": "Una reazione con variazione di energia libera di Gibbs (ΔG) negativa è definita:",
+      "options": [
+        "In equilibrio perfetto",
+        "Esoergonica e spontanea nelle condizioni date",
+        "Impossibile dal punto di vista termodinamico",
+        "Indipendente dalla temperatura",
+        "Endoergonica e non spontanea"
+      ],
+      "correctIndex": 1,
+      "explanation": "Una reazione con ΔG negativo è esoergonica e procede spontaneamente nelle condizioni considerate; con ΔG positivo è invece endoergonica e non spontanea."
+    },
+    {
+      "id": 21,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Molecole, ioni e mole",
+      "question": "Uno ione poliatomico, come lo ione solfato (SO4²⁻), è costituito da:",
+      "options": [
+        "Un gruppo di atomi legati covalentemente che possiede nel complesso una carica netta",
+        "Una coppia di atomi identici neutri",
+        "Un atomo isolato privo di elettroni",
+        "Un singolo atomo con carica netta diversa da zero",
+        "Solo protoni liberi secondo la definizione classica"
+      ],
+      "correctIndex": 0,
+      "explanation": "Uno ione poliatomico è un insieme di atomi uniti da legami covalenti che, nel complesso, possiede una carica elettrica netta positiva o negativa."
+    },
+    {
+      "id": 22,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Numero atomico",
+      "question": "Il numero di protoni presenti nel nucleo di un atomo si chiama numero ___.",
+      "correctAnswer": "atomico",
+      "explanation": "Il numero atomico (Z) identifica univocamente ciascun elemento chimico."
+    },
+    {
+      "id": 23,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Isotopi",
+      "question": "Atomi dello stesso elemento con lo stesso numero di protoni ma diverso numero di neutroni si chiamano ___.",
+      "correctAnswer": "isotopi",
+      "explanation": "Gli isotopi hanno identiche proprietà chimiche ma massa atomica diversa."
+    },
+    {
+      "id": 24,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Principio di Pauli",
+      "question": "Il principio secondo cui in uno stesso atomo non possono esistere due elettroni con gli stessi quattro numeri quantici si chiama principio di esclusione di ___.",
+      "correctAnswer": "Pauli",
+      "explanation": "È uno dei principi fondamentali che regolano la configurazione elettronica degli atomi."
+    },
+    {
+      "id": 25,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Regola di Hund",
+      "question": "La regola secondo cui gli elettroni occupano singolarmente tutti gli orbitali degeneri disponibili prima di accoppiarsi si chiama regola di ___.",
+      "correctAnswer": "Hund",
+      "explanation": "Questa regola determina l'ordine di riempimento degli orbitali a parità di energia."
+    },
+    {
+      "id": 26,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Mole e numero di Avogadro",
+      "question": "La quantità di sostanza che contiene un numero di Avogadro di particelle elementari si chiama ___.",
+      "correctAnswer": "mole",
+      "explanation": "La mole è l'unità di misura della quantità di sostanza nel Sistema Internazionale."
+    },
+    {
+      "id": 27,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Legame ionico",
+      "question": "Il legame chimico che si forma per trasferimento completo di uno o più elettroni tra atomi con elettronegatività molto diversa si chiama legame ___.",
+      "correctAnswer": "ionico",
+      "explanation": "Si distingue dal legame covalente, in cui gli elettroni sono condivisi anziché trasferiti."
+    },
+    {
+      "id": 28,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Ibridazione",
+      "question": "Il tipo di ibridazione del carbonio che genera quattro orbitali equivalenti con geometria tetraedrica è ___.",
+      "correctAnswer": "sp3",
+      "explanation": "L'ibridazione sp3 è tipica del carbonio negli alcani e in molte molecole organiche sature."
+    },
+    {
+      "id": 29,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Interazioni deboli",
+      "question": "L'interazione debole tra un atomo di idrogeno legato a un elemento elettronegativo e un altro atomo elettronegativo vicino si chiama legame a ___.",
+      "correctAnswer": "idrogeno",
+      "explanation": "Il legame idrogeno è responsabile, ad esempio, delle particolari proprietà dell'acqua e della struttura secondaria del DNA."
+    },
+    {
+      "id": 30,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Entalpia",
+      "question": "La funzione di stato che rappresenta il contenuto termico di un sistema a pressione costante si chiama ___.",
+      "correctAnswer": "entalpia",
+      "explanation": "L'entalpia permette di classificare le trasformazioni in esotermiche o endotermiche."
+    },
+    {
+      "id": 31,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Energia libera di Gibbs",
+      "question": "La funzione di stato che combina entalpia ed entropia per stabilire la spontaneità di una reazione si chiama energia libera di ___.",
+      "correctAnswer": "Gibbs",
+      "explanation": "Una variazione negativa dell'energia libera di Gibbs (ΔG < 0) indica una reazione spontanea."
+    }
   ]
 }

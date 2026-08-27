@@ -2,36 +2,431 @@
   "materia": "fisica",
   "unitaId": 4,
   "questions": [
-    { "id": 1, "type": "mcq", "materia": "Fisica", "topic": "Natura delle onde meccaniche", "question": "Un'onda meccanica è un fenomeno di propagazione di:", "options": ["Materia attraverso lo spazio vuoto", "Energia e perturbazione attraverso un mezzo materiale, senza trasporto netto di materia", "Solo cariche elettriche", "Massa senza alcuna energia associata", "Informazione priva di qualunque supporto fisico"], "correctIndex": 1, "explanation": "Un'onda meccanica trasporta energia e perturbazione attraverso un mezzo materiale, mentre le singole particelle del mezzo oscillano attorno alla loro posizione di equilibrio senza spostamento netto." },
-    { "id": 2, "type": "mcq", "materia": "Fisica", "topic": "Oscillatore armonico", "question": "L'oscillatore armonico rappresenta il modello base per descrivere:", "options": ["Il moto rettilineo uniforme", "La generazione di onde attraverso un moto periodico di andirivieni attorno a una posizione di equilibrio", "Il moto circolare non uniforme", "L'assenza totale di moto", "Solo fenomeni elettrici, non meccanici"], "correctIndex": 1, "explanation": "L'oscillatore armonico, con il suo moto periodico attorno a una posizione di equilibrio, costituisce il modello fisico di base per descrivere la generazione delle onde meccaniche." },
-    { "id": 3, "type": "mcq", "materia": "Fisica", "topic": "Frequenza e periodo", "question": "Frequenza e periodo di un'onda sono legati dalla relazione:", "options": ["Sono direttamente proporzionali tra loro", "Sono l'uno il reciproco dell'altro (f = 1/T)", "Sono sempre uguali numericamente", "Non hanno alcuna relazione matematica definita", "Il periodo è sempre maggiore della frequenza in ogni unità di misura"], "correctIndex": 1, "explanation": "La frequenza f è il reciproco del periodo T (f = 1/T): la frequenza indica il numero di oscillazioni al secondo, il periodo il tempo di una singola oscillazione." },
-    { "id": 4, "type": "mcq", "materia": "Fisica", "topic": "Lunghezza d'onda", "question": "La lunghezza d'onda è definita come:", "options": ["Il tempo impiegato da un'onda per compiere un'oscillazione completa", "La distanza tra due punti consecutivi dell'onda che oscillano in fase (ad esempio due creste successive)", "L'ampiezza massima raggiunta dall'onda", "La velocità di propagazione dell'onda nel mezzo", "Il numero di oscillazioni al secondo"], "correctIndex": 1, "explanation": "La lunghezza d'onda è la distanza spaziale tra due punti consecutivi dell'onda che si trovano nella stessa fase di oscillazione." },
-    { "id": 5, "type": "mcq", "materia": "Fisica", "topic": "Velocità di propagazione dell'onda", "question": "La velocità di propagazione di un'onda è legata a lunghezza d'onda e frequenza dalla relazione:", "options": ["v = λ · f", "v = λ / f", "v = f / λ", "v = λ + f", "v = λ² · f"], "correctIndex": 0, "explanation": "La velocità di propagazione di un'onda è pari al prodotto tra la sua lunghezza d'onda e la sua frequenza (v = λ·f)." },
-    { "id": 6, "type": "mcq", "materia": "Fisica", "topic": "Onde trasversali e longitudinali", "question": "Nelle onde longitudinali, come le onde sonore, la perturbazione del mezzo avviene:", "options": ["Perpendicolarmente alla direzione di propagazione dell'onda", "Nella stessa direzione di propagazione dell'onda", "In una direzione casuale, non correlata alla propagazione", "Solo in mezzi solidi, mai nei fluidi", "In assenza di qualunque spostamento delle particelle del mezzo"], "correctIndex": 1, "explanation": "Nelle onde longitudinali, come le onde sonore nei fluidi, le particelle del mezzo oscillano nella stessa direzione in cui si propaga l'onda, generando zone di compressione e rarefazione." },
-    { "id": 7, "type": "mcq", "materia": "Fisica", "topic": "Onde trasversali su una corda", "question": "In un'onda trasversale che si propaga lungo una corda, le particelle della corda oscillano:", "options": ["Nella stessa direzione di propagazione dell'onda", "Perpendicolarmente alla direzione di propagazione dell'onda", "In modo casuale senza direzione preferenziale", "Solo se la corda è priva di tensione", "Con velocità sempre uguale alla velocità di propagazione dell'onda"], "correctIndex": 1, "explanation": "Nelle onde trasversali, come quelle su una corda, le particelle del mezzo oscillano perpendicolarmente alla direzione di propagazione dell'onda." },
-    { "id": 8, "type": "mcq", "materia": "Fisica", "topic": "Principio di sovrapposizione", "question": "Il principio di sovrapposizione delle onde afferma che:", "options": ["Due onde che si incontrano nello stesso punto si annullano sempre completamente", "L'ampiezza risultante nel punto di sovrapposizione di due o più onde è la somma algebrica delle ampiezze delle singole onde", "Le onde non possono mai sovrapporsi tra loro", "Solo onde della stessa frequenza possono sovrapporsi", "La sovrapposizione modifica permanentemente la natura fisica delle onde coinvolte"], "correctIndex": 1, "explanation": "Il principio di sovrapposizione stabilisce che, quando due o più onde si sovrappongono, l'ampiezza risultante in ogni punto è la somma algebrica delle ampiezze delle singole onde." },
-    { "id": 9, "type": "mcq", "materia": "Fisica", "topic": "Interferenza", "question": "Si parla di interferenza costruttiva quando due onde che si sovrappongono:", "options": ["Sono in fase e le loro ampiezze si sommano, generando un'onda risultante di ampiezza maggiore", "Sono in opposizione di fase e si annullano reciprocamente", "Hanno frequenze completamente diverse tra loro", "Non interagiscono affatto tra loro", "Provocano sempre la distruzione fisica del mezzo di propagazione"], "correctIndex": 0, "explanation": "Nell'interferenza costruttiva, le onde sono in fase e le loro ampiezze si sommano, producendo un'onda risultante di ampiezza maggiore rispetto alle singole onde." },
-    { "id": 10, "type": "mcq", "materia": "Fisica", "topic": "Energia trasportata dalle onde", "question": "L'energia trasportata da un'onda meccanica è generalmente proporzionale a:", "options": ["Il quadrato dell'ampiezza dell'onda", "L'inverso dell'ampiezza dell'onda", "Solo la lunghezza d'onda, indipendentemente dall'ampiezza", "Il periodo dell'onda elevato al cubo", "Nessuna delle grandezze caratteristiche dell'onda"], "correctIndex": 0, "explanation": "L'energia trasportata da un'onda è generalmente proporzionale al quadrato della sua ampiezza: onde di ampiezza maggiore trasportano più energia." },
-    { "id": 11, "type": "mcq", "materia": "Fisica", "topic": "Potenza trasportata da un'onda", "question": "La potenza trasportata da un'onda in un mezzo elastico rappresenta:", "options": ["L'energia totale trasportata dall'onda, indipendentemente dal tempo", "L'energia trasportata dall'onda per unità di tempo", "La velocità di propagazione dell'onda nel mezzo", "L'ampiezza massima raggiunta dall'onda", "La distanza percorsa dall'onda in un periodo"], "correctIndex": 1, "explanation": "La potenza è definita come l'energia trasportata dall'onda per unità di tempo." },
-    { "id": 12, "type": "mcq", "materia": "Fisica", "topic": "Intensità dell'onda", "question": "L'intensità di un'onda è definita come:", "options": ["L'energia trasportata dall'onda per unità di area e di tempo", "La sola energia totale trasportata, senza riferimento ad area o tempo", "La frequenza dell'onda espressa in hertz", "La lunghezza d'onda misurata in metri", "Il periodo dell'onda misurato in secondi"], "correctIndex": 0, "explanation": "L'intensità di un'onda è la potenza trasportata per unità di area della superficie attraversata, quindi energia per unità di area e di tempo." },
-    { "id": 13, "type": "mcq", "materia": "Fisica", "topic": "Legge dell'inverso del quadrato della distanza", "question": "Secondo la legge dell'inverso del quadrato della distanza, l'intensità di un'onda che si propaga da una sorgente puntiforme:", "options": ["Rimane costante indipendentemente dalla distanza dalla sorgente", "Diminuisce proporzionalmente al quadrato della distanza dalla sorgente", "Aumenta proporzionalmente alla distanza dalla sorgente", "È indipendente dall'energia emessa dalla sorgente", "Dipende solo dalla frequenza, non dalla distanza"], "correctIndex": 1, "explanation": "Per una sorgente puntiforme che emette energia in modo isotropo, l'intensità dell'onda diminuisce con l'inverso del quadrato della distanza dalla sorgente." },
-    { "id": 14, "type": "mcq", "materia": "Fisica", "topic": "Propagazione del suono nei mezzi", "question": "La velocità di propagazione del suono è generalmente:", "options": ["Maggiore nei solidi rispetto ai fluidi, a causa della maggiore rigidità del mezzo", "Sempre uguale indipendentemente dal mezzo di propagazione", "Maggiore nel vuoto rispetto a qualsiasi mezzo materiale", "Indipendente dalle proprietà elastiche del mezzo", "Sempre più bassa nei solidi rispetto ai gas"], "correctIndex": 0, "explanation": "La velocità del suono dipende dalle proprietà elastiche e dalla densità del mezzo: generalmente è maggiore nei solidi, intermedia nei liquidi e minore nei gas, a causa della diversa rigidità del mezzo." },
-    { "id": 15, "type": "mcq", "materia": "Fisica", "topic": "Livello di intensità sonora", "question": "Il livello di intensità sonora, espresso in decibel, è definito come:", "options": ["Una misura lineare diretta dell'intensità del suono, in watt", "Una scala logaritmica basata sul rapporto tra l'intensità sonora considerata e un'intensità di riferimento", "Una misura diretta della frequenza del suono", "Una misura del periodo dell'onda sonora", "Una grandezza priva di qualunque relazione con l'intensità del suono"], "correctIndex": 1, "explanation": "Il livello di intensità sonora in decibel è definito su scala logaritmica come il rapporto (in logaritmo) tra l'intensità considerata e un'intensità di riferimento standard." },
-    { "id": 16, "type": "mcq", "materia": "Fisica", "topic": "Effetto Doppler", "question": "L'effetto Doppler descrive qualitativamente il fenomeno per cui:", "options": ["La frequenza percepita di un'onda cambia quando sorgente e osservatore sono in moto relativo tra loro", "La frequenza di un'onda è sempre indipendente dal moto relativo tra sorgente e osservatore", "Solo le onde luminose sono soggette a questo fenomeno", "L'ampiezza dell'onda aumenta indefinitamente con la distanza", "Il fenomeno riguarda esclusivamente onde stazionarie in un mezzo fermo"], "correctIndex": 0, "explanation": "L'effetto Doppler descrive il cambiamento della frequenza percepita di un'onda quando esiste un moto relativo tra la sorgente dell'onda e l'osservatore." },
-    { "id": 17, "type": "mcq", "materia": "Fisica", "topic": "Pulsazione dell'onda", "question": "La pulsazione (o frequenza angolare) di un'onda è legata al periodo dalla relazione:", "options": ["ω = 2π/T", "ω = T/2π", "ω = T²", "ω = 2π · T", "ω = π/T²"], "correctIndex": 0, "explanation": "La pulsazione ω è definita come ω = 2π/T, dove T è il periodo dell'onda, ed è utilizzata nella descrizione matematica delle onde armoniche." },
-    { "id": 18, "type": "mcq", "materia": "Fisica", "topic": "Ampiezza ed energia dell'onda", "question": "Raddoppiando l'ampiezza di un'onda meccanica, a parità di altre condizioni, l'energia trasportata dall'onda:", "options": ["Rimane invariata", "Raddoppia soltanto", "Quadruplica, poiché l'energia è proporzionale al quadrato dell'ampiezza", "Si dimezza", "Diventa nulla"], "correctIndex": 2, "explanation": "Poiché l'energia trasportata da un'onda è proporzionale al quadrato dell'ampiezza, raddoppiando l'ampiezza l'energia trasportata quadruplica." },
-    { "id": 19, "type": "mcq", "materia": "Fisica", "topic": "Onde sonore come onde longitudinali", "question": "Le onde sonore che si propagano nei fluidi (aria, liquidi) sono classificate come onde:", "options": ["Trasversali pure", "Longitudinali, con zone alternate di compressione e rarefazione", "Elettromagnetiche", "Stazionarie per definizione", "Prive di qualsiasi natura ondulatoria"], "correctIndex": 1, "explanation": "Le onde sonore nei fluidi sono onde longitudinali, in cui la perturbazione (variazione di pressione) si propaga nella stessa direzione dell'onda, creando zone di compressione e rarefazione." },
-    { "id": 20, "type": "mcq", "materia": "Fisica", "topic": "Percezione sonora e intensità acustica", "question": "La relazione tra intensità acustica e percezione sonora è tale che:", "options": ["La percezione sonora è indipendente dall'intensità fisica dell'onda", "A intensità acustiche maggiori corrisponde generalmente una percezione di suono più forte, secondo una relazione non lineare", "La percezione sonora aumenta linearmente con l'intensità in watt", "Un'intensità nulla corrisponde sempre a percezione massima", "Solo la frequenza determina la percezione dell'intensità sonora"], "correctIndex": 1, "explanation": "La percezione soggettiva dell'intensità sonora (sonorità) non è lineare rispetto all'intensità fisica, motivo per cui si utilizza una scala logaritmica (decibel) per descriverla." },
-    { "id": 21, "type": "mcq", "materia": "Fisica", "topic": "Definizione di onda meccanica", "question": "Un'onda meccanica, a differenza di un'onda elettromagnetica, richiede necessariamente:", "options": ["L'assenza totale di qualunque mezzo materiale", "Un mezzo materiale attraverso cui propagarsi", "Una sorgente elettrica oscillante", "La presenza del vuoto assoluto", "Una frequenza sempre superiore a quella della luce"], "correctIndex": 1, "explanation": "A differenza delle onde elettromagnetiche, che si propagano anche nel vuoto, le onde meccaniche necessitano di un mezzo materiale (solido, liquido o gassoso) per propagarsi." },
-    { "id": 22, "type": "completamento", "materia": "Fisica", "topic": "Frequenza", "question": "Il numero di oscillazioni complete compiute nell'unità di tempo da un'onda si chiama ___.", "correctAnswer": "frequenza", "explanation": "Si misura in hertz (Hz), pari a oscillazioni al secondo." },
-    { "id": 23, "type": "completamento", "materia": "Fisica", "topic": "Periodo", "question": "Il tempo necessario perché un'onda compia un'oscillazione completa si chiama ___.", "correctAnswer": "periodo", "explanation": "È il reciproco della frequenza (T = 1/f)." },
-    { "id": 24, "type": "completamento", "materia": "Fisica", "topic": "Lunghezza d'onda", "question": "La distanza tra due punti consecutivi di un'onda che oscillano in fase si chiama ___ d'onda.", "correctAnswer": "lunghezza", "explanation": "È legata alla velocità di propagazione e alla frequenza dell'onda dalla relazione v = λ·f." },
-    { "id": 25, "type": "completamento", "materia": "Fisica", "topic": "Onde longitudinali", "question": "Le onde in cui la perturbazione avviene nella stessa direzione di propagazione, come le onde sonore, si chiamano onde ___.", "correctAnswer": "longitudinali", "explanation": "Generano zone alternate di compressione e rarefazione nel mezzo di propagazione." },
-    { "id": 26, "type": "completamento", "materia": "Fisica", "topic": "Onde trasversali", "question": "Le onde in cui la perturbazione avviene perpendicolarmente alla direzione di propagazione, come su una corda, si chiamano onde ___.", "correctAnswer": "trasversali", "explanation": "Le particelle del mezzo oscillano perpendicolarmente alla direzione di propagazione dell'onda." },
-    { "id": 27, "type": "completamento", "materia": "Fisica", "topic": "Principio di sovrapposizione", "question": "Il fenomeno per cui due o più onde che si sovrappongono nello stesso punto si sommano algebricamente si chiama principio di ___.", "correctAnswer": "sovrapposizione", "explanation": "È alla base dei fenomeni di interferenza costruttiva e distruttiva." },
-    { "id": 28, "type": "completamento", "materia": "Fisica", "topic": "Intensità dell'onda", "question": "La grandezza fisica che esprime l'energia trasportata da un'onda per unità di area e di tempo si chiama ___ dell'onda.", "correctAnswer": "intensità", "explanation": "Diminuisce con il quadrato della distanza dalla sorgente puntiforme." },
-    { "id": 29, "type": "completamento", "materia": "Fisica", "topic": "Livello di intensità sonora", "question": "Il livello di intensità sonora percepito dall'orecchio umano si misura in ___.", "correctAnswer": "decibel", "explanation": "È una grandezza definita su scala logaritmica." },
-    { "id": 30, "type": "completamento", "materia": "Fisica", "topic": "Effetto Doppler", "question": "Il fenomeno per cui la frequenza percepita di un'onda cambia quando sorgente e osservatore sono in moto relativo si chiama effetto ___.", "correctAnswer": "Doppler", "explanation": "È osservabile, ad esempio, nel cambiamento del tono di una sirena in avvicinamento o allontanamento." },
-    { "id": 31, "type": "completamento", "materia": "Fisica", "topic": "Velocità di propagazione", "question": "La velocità di propagazione di un'onda è pari al prodotto tra la lunghezza d'onda e la ___.", "correctAnswer": "frequenza", "explanation": "La relazione v = λ·f lega le tre grandezze fondamentali del moto ondulatorio." }
+    {
+      "id": 1,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Natura delle onde meccaniche",
+      "question": "Un'onda meccanica è un fenomeno di propagazione di:",
+      "options": [
+        "Materia attraverso lo spazio vuoto",
+        "Massa senza alcuna energia associata",
+        "Solo cariche elettriche come riportato nei testi di riferimento",
+        "Energia e perturbazione attraverso un mezzo materiale, senza trasporto netto di materia",
+        "Informazione priva di qualunque supporto fisico"
+      ],
+      "correctIndex": 3,
+      "explanation": "Un'onda meccanica trasporta energia e perturbazione attraverso un mezzo materiale, mentre le singole particelle del mezzo oscillano attorno alla loro posizione di equilibrio senza spostamento netto."
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Oscillatore armonico",
+      "question": "L'oscillatore armonico rappresenta il modello base per descrivere:",
+      "options": [
+        "Il moto circolare non uniforme",
+        "Solo fenomeni elettrici, non meccanici",
+        "Il moto rettilineo uniforme",
+        "La generazione di onde attraverso un moto periodico di andirivieni attorno a una posizione di equilibrio",
+        "L'assenza totale di moto secondo la nomenclatura standard"
+      ],
+      "correctIndex": 3,
+      "explanation": "L'oscillatore armonico, con il suo moto periodico attorno a una posizione di equilibrio, costituisce il modello fisico di base per descrivere la generazione delle onde meccaniche."
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Frequenza e periodo",
+      "question": "Frequenza e periodo di un'onda sono legati dalla relazione:",
+      "options": [
+        "Il periodo è sempre maggiore della frequenza in ogni unità di misura",
+        "Sono direttamente proporzionali tra loro",
+        "Non hanno alcuna relazione matematica definita",
+        "Sono sempre uguali numericamente",
+        "Sono l'uno il reciproco dell'altro (f = 1/T)"
+      ],
+      "correctIndex": 4,
+      "explanation": "La frequenza f è il reciproco del periodo T (f = 1/T): la frequenza indica il numero di oscillazioni al secondo, il periodo il tempo di una singola oscillazione."
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Lunghezza d'onda",
+      "question": "La lunghezza d'onda è definita come:",
+      "options": [
+        "Il numero di oscillazioni al secondo secondo la definizione classica",
+        "La distanza tra due punti consecutivi dell'onda che oscillano in fase (ad esempio due creste successive)",
+        "La velocità di propagazione dell'onda nel mezzo",
+        "L'ampiezza massima raggiunta dall'onda",
+        "Il tempo impiegato da un'onda per compiere un'oscillazione completa"
+      ],
+      "correctIndex": 1,
+      "explanation": "La lunghezza d'onda è la distanza spaziale tra due punti consecutivi dell'onda che si trovano nella stessa fase di oscillazione."
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Velocità di propagazione dell'onda",
+      "question": "La velocità di propagazione di un'onda è legata a lunghezza d'onda e frequenza dalla relazione:",
+      "options": [
+        "v = λ² · f",
+        "v = λ + f",
+        "v = λ · f",
+        "v = λ / f",
+        "v = f / λ"
+      ],
+      "correctIndex": 2,
+      "explanation": "La velocità di propagazione di un'onda è pari al prodotto tra la sua lunghezza d'onda e la sua frequenza (v = λ·f)."
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Onde trasversali e longitudinali",
+      "question": "Nelle onde longitudinali, come le onde sonore, la perturbazione del mezzo avviene:",
+      "options": [
+        "In una direzione casuale, non correlata alla propagazione",
+        "Perpendicolarmente alla direzione di propagazione dell'onda",
+        "Nella stessa direzione di propagazione dell'onda",
+        "In assenza di qualunque spostamento delle particelle del mezzo",
+        "Solo in mezzi solidi, mai nei fluidi"
+      ],
+      "correctIndex": 2,
+      "explanation": "Nelle onde longitudinali, come le onde sonore nei fluidi, le particelle del mezzo oscillano nella stessa direzione in cui si propaga l'onda, generando zone di compressione e rarefazione."
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Onde trasversali su una corda",
+      "question": "In un'onda trasversale che si propaga lungo una corda, le particelle della corda oscillano:",
+      "options": [
+        "Con velocità sempre uguale alla velocità di propagazione dell'onda",
+        "Solo se la corda è priva di tensione",
+        "Nella stessa direzione di propagazione dell'onda",
+        "In modo casuale senza direzione preferenziale",
+        "Perpendicolarmente alla direzione di propagazione dell'onda"
+      ],
+      "correctIndex": 4,
+      "explanation": "Nelle onde trasversali, come quelle su una corda, le particelle del mezzo oscillano perpendicolarmente alla direzione di propagazione dell'onda."
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Principio di sovrapposizione",
+      "question": "Il principio di sovrapposizione delle onde afferma che:",
+      "options": [
+        "La sovrapposizione modifica permanentemente la natura fisica delle onde coinvolte",
+        "Le onde non possono mai sovrapporsi tra loro come riportato nei testi di riferimento",
+        "L'ampiezza risultante nel punto di sovrapposizione di due o più onde è la somma algebrica delle ampiezze delle singole onde",
+        "Due onde che si incontrano nello stesso punto si annullano sempre completamente",
+        "Solo onde della stessa frequenza possono sovrapporsi"
+      ],
+      "correctIndex": 2,
+      "explanation": "Il principio di sovrapposizione stabilisce che, quando due o più onde si sovrappongono, l'ampiezza risultante in ogni punto è la somma algebrica delle ampiezze delle singole onde."
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Interferenza",
+      "question": "Si parla di interferenza costruttiva quando due onde che si sovrappongono:",
+      "options": [
+        "Sono in fase e le loro ampiezze si sommano, generando un'onda risultante di ampiezza maggiore",
+        "Sono in opposizione di fase e si annullano reciprocamente",
+        "Non interagiscono affatto tra loro come riportato nei testi di riferimento",
+        "Provocano sempre la distruzione fisica del mezzo di propagazione",
+        "Hanno frequenze completamente diverse tra loro"
+      ],
+      "correctIndex": 0,
+      "explanation": "Nell'interferenza costruttiva, le onde sono in fase e le loro ampiezze si sommano, producendo un'onda risultante di ampiezza maggiore rispetto alle singole onde."
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Energia trasportata dalle onde",
+      "question": "L'energia trasportata da un'onda meccanica è generalmente proporzionale a:",
+      "options": [
+        "L'inverso dell'ampiezza dell'onda",
+        "Il quadrato dell'ampiezza dell'onda",
+        "Il periodo dell'onda elevato al cubo",
+        "Solo la lunghezza d'onda, indipendentemente dall'ampiezza",
+        "Nessuna delle grandezze caratteristiche dell'onda"
+      ],
+      "correctIndex": 1,
+      "explanation": "L'energia trasportata da un'onda è generalmente proporzionale al quadrato della sua ampiezza: onde di ampiezza maggiore trasportano più energia."
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Potenza trasportata da un'onda",
+      "question": "La potenza trasportata da un'onda in un mezzo elastico rappresenta:",
+      "options": [
+        "L'energia totale trasportata dall'onda, indipendentemente dal tempo",
+        "La velocità di propagazione dell'onda nel mezzo",
+        "L'ampiezza massima raggiunta dall'onda",
+        "La distanza percorsa dall'onda in un periodo",
+        "L'energia trasportata dall'onda per unità di tempo"
+      ],
+      "correctIndex": 4,
+      "explanation": "La potenza è definita come l'energia trasportata dall'onda per unità di tempo."
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Intensità dell'onda",
+      "question": "L'intensità di un'onda è definita come:",
+      "options": [
+        "L'energia trasportata dall'onda per unità di area e di tempo",
+        "La frequenza dell'onda espressa in hertz",
+        "La sola energia totale trasportata, senza riferimento ad area o tempo",
+        "Il periodo dell'onda misurato in secondi",
+        "La lunghezza d'onda misurata in metri"
+      ],
+      "correctIndex": 0,
+      "explanation": "L'intensità di un'onda è la potenza trasportata per unità di area della superficie attraversata, quindi energia per unità di area e di tempo."
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Legge dell'inverso del quadrato della distanza",
+      "question": "Secondo la legge dell'inverso del quadrato della distanza, l'intensità di un'onda che si propaga da una sorgente puntiforme:",
+      "options": [
+        "Rimane costante indipendentemente dalla distanza dalla sorgente",
+        "Diminuisce proporzionalmente al quadrato della distanza dalla sorgente",
+        "Dipende solo dalla frequenza, non dalla distanza",
+        "È indipendente dall'energia emessa dalla sorgente",
+        "Aumenta proporzionalmente alla distanza dalla sorgente"
+      ],
+      "correctIndex": 1,
+      "explanation": "Per una sorgente puntiforme che emette energia in modo isotropo, l'intensità dell'onda diminuisce con l'inverso del quadrato della distanza dalla sorgente."
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Propagazione del suono nei mezzi",
+      "question": "La velocità di propagazione del suono è generalmente:",
+      "options": [
+        "Indipendente dalle proprietà elastiche del mezzo",
+        "Sempre uguale indipendentemente dal mezzo di propagazione",
+        "Maggiore nel vuoto rispetto a qualsiasi mezzo materiale",
+        "Sempre più bassa nei solidi rispetto ai gas come riportato nei testi di riferimento",
+        "Maggiore nei solidi rispetto ai fluidi, a causa della maggiore rigidità del mezzo"
+      ],
+      "correctIndex": 4,
+      "explanation": "La velocità del suono dipende dalle proprietà elastiche e dalla densità del mezzo: generalmente è maggiore nei solidi, intermedia nei liquidi e minore nei gas, a causa della diversa rigidità del mezzo."
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Livello di intensità sonora",
+      "question": "Il livello di intensità sonora, espresso in decibel, è definito come:",
+      "options": [
+        "Una misura diretta della frequenza del suono",
+        "Una scala logaritmica basata sul rapporto tra l'intensità sonora considerata e un'intensità di riferimento",
+        "Una grandezza priva di qualunque relazione con l'intensità del suono",
+        "Una misura lineare diretta dell'intensità del suono, in watt",
+        "Una misura del periodo dell'onda sonora nella descrizione tradizionale"
+      ],
+      "correctIndex": 1,
+      "explanation": "Il livello di intensità sonora in decibel è definito su scala logaritmica come il rapporto (in logaritmo) tra l'intensità considerata e un'intensità di riferimento standard."
+    },
+    {
+      "id": 16,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Effetto Doppler",
+      "question": "L'effetto Doppler descrive qualitativamente il fenomeno per cui:",
+      "options": [
+        "Il fenomeno riguarda esclusivamente onde stazionarie in un mezzo fermo",
+        "L'ampiezza dell'onda aumenta indefinitamente con la distanza",
+        "Solo le onde luminose sono soggette a questo fenomeno nella descrizione tradizionale",
+        "La frequenza di un'onda è sempre indipendente dal moto relativo tra sorgente e osservatore",
+        "La frequenza percepita di un'onda cambia quando sorgente e osservatore sono in moto relativo tra loro"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'effetto Doppler descrive il cambiamento della frequenza percepita di un'onda quando esiste un moto relativo tra la sorgente dell'onda e l'osservatore."
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Pulsazione dell'onda",
+      "question": "La pulsazione (o frequenza angolare) di un'onda è legata al periodo dalla relazione:",
+      "options": [
+        "ω = 2π/T",
+        "ω = π/T²",
+        "ω = T²",
+        "ω = 2π · T",
+        "ω = T/2π"
+      ],
+      "correctIndex": 0,
+      "explanation": "La pulsazione ω è definita come ω = 2π/T, dove T è il periodo dell'onda, ed è utilizzata nella descrizione matematica delle onde armoniche."
+    },
+    {
+      "id": 18,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Ampiezza ed energia dell'onda",
+      "question": "Raddoppiando l'ampiezza di un'onda meccanica, a parità di altre condizioni, l'energia trasportata dall'onda:",
+      "options": [
+        "Si dimezza secondo la nomenclatura standard",
+        "Diventa nulla",
+        "Raddoppia soltanto",
+        "Rimane invariata",
+        "Quadruplica, poiché l'energia è proporzionale al quadrato dell'ampiezza"
+      ],
+      "correctIndex": 4,
+      "explanation": "Poiché l'energia trasportata da un'onda è proporzionale al quadrato dell'ampiezza, raddoppiando l'ampiezza l'energia trasportata quadruplica."
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Onde sonore come onde longitudinali",
+      "question": "Le onde sonore che si propagano nei fluidi (aria, liquidi) sono classificate come onde:",
+      "options": [
+        "Trasversali pure come riportato nei testi di riferimento",
+        "Prive di qualsiasi natura ondulatoria",
+        "Stazionarie per definizione",
+        "Longitudinali, con zone alternate di compressione e rarefazione",
+        "Elettromagnetiche"
+      ],
+      "correctIndex": 3,
+      "explanation": "Le onde sonore nei fluidi sono onde longitudinali, in cui la perturbazione (variazione di pressione) si propaga nella stessa direzione dell'onda, creando zone di compressione e rarefazione."
+    },
+    {
+      "id": 20,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Percezione sonora e intensità acustica",
+      "question": "La relazione tra intensità acustica e percezione sonora è tale che:",
+      "options": [
+        "La percezione sonora è indipendente dall'intensità fisica dell'onda",
+        "La percezione sonora aumenta linearmente con l'intensità in watt",
+        "A intensità acustiche maggiori corrisponde generalmente una percezione di suono più forte, secondo una relazione non lineare",
+        "Un'intensità nulla corrisponde sempre a percezione massima come riportato nei testi di riferimento",
+        "Solo la frequenza determina la percezione dell'intensità sonora"
+      ],
+      "correctIndex": 2,
+      "explanation": "La percezione soggettiva dell'intensità sonora (sonorità) non è lineare rispetto all'intensità fisica, motivo per cui si utilizza una scala logaritmica (decibel) per descriverla."
+    },
+    {
+      "id": 21,
+      "type": "mcq",
+      "materia": "Fisica",
+      "topic": "Definizione di onda meccanica",
+      "question": "Un'onda meccanica, a differenza di un'onda elettromagnetica, richiede necessariamente:",
+      "options": [
+        "Una frequenza sempre superiore a quella della luce",
+        "Una sorgente elettrica oscillante",
+        "La presenza del vuoto assoluto",
+        "Un mezzo materiale attraverso cui propagarsi",
+        "L'assenza totale di qualunque mezzo materiale"
+      ],
+      "correctIndex": 3,
+      "explanation": "A differenza delle onde elettromagnetiche, che si propagano anche nel vuoto, le onde meccaniche necessitano di un mezzo materiale (solido, liquido o gassoso) per propagarsi."
+    },
+    {
+      "id": 22,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Frequenza",
+      "question": "Il numero di oscillazioni complete compiute nell'unità di tempo da un'onda si chiama ___.",
+      "correctAnswer": "frequenza",
+      "explanation": "Si misura in hertz (Hz), pari a oscillazioni al secondo."
+    },
+    {
+      "id": 23,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Periodo",
+      "question": "Il tempo necessario perché un'onda compia un'oscillazione completa si chiama ___.",
+      "correctAnswer": "periodo",
+      "explanation": "È il reciproco della frequenza (T = 1/f)."
+    },
+    {
+      "id": 24,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Lunghezza d'onda",
+      "question": "La distanza tra due punti consecutivi di un'onda che oscillano in fase si chiama ___ d'onda.",
+      "correctAnswer": "lunghezza",
+      "explanation": "È legata alla velocità di propagazione e alla frequenza dell'onda dalla relazione v = λ·f."
+    },
+    {
+      "id": 25,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Onde longitudinali",
+      "question": "Le onde in cui la perturbazione avviene nella stessa direzione di propagazione, come le onde sonore, si chiamano onde ___.",
+      "correctAnswer": "longitudinali",
+      "explanation": "Generano zone alternate di compressione e rarefazione nel mezzo di propagazione."
+    },
+    {
+      "id": 26,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Onde trasversali",
+      "question": "Le onde in cui la perturbazione avviene perpendicolarmente alla direzione di propagazione, come su una corda, si chiamano onde ___.",
+      "correctAnswer": "trasversali",
+      "explanation": "Le particelle del mezzo oscillano perpendicolarmente alla direzione di propagazione dell'onda."
+    },
+    {
+      "id": 27,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Principio di sovrapposizione",
+      "question": "Il fenomeno per cui due o più onde che si sovrappongono nello stesso punto si sommano algebricamente si chiama principio di ___.",
+      "correctAnswer": "sovrapposizione",
+      "explanation": "È alla base dei fenomeni di interferenza costruttiva e distruttiva."
+    },
+    {
+      "id": 28,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Intensità dell'onda",
+      "question": "La grandezza fisica che esprime l'energia trasportata da un'onda per unità di area e di tempo si chiama ___ dell'onda.",
+      "correctAnswer": "intensità",
+      "explanation": "Diminuisce con il quadrato della distanza dalla sorgente puntiforme."
+    },
+    {
+      "id": 29,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Livello di intensità sonora",
+      "question": "Il livello di intensità sonora percepito dall'orecchio umano si misura in ___.",
+      "correctAnswer": "decibel",
+      "explanation": "È una grandezza definita su scala logaritmica."
+    },
+    {
+      "id": 30,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Effetto Doppler",
+      "question": "Il fenomeno per cui la frequenza percepita di un'onda cambia quando sorgente e osservatore sono in moto relativo si chiama effetto ___.",
+      "correctAnswer": "Doppler",
+      "explanation": "È osservabile, ad esempio, nel cambiamento del tono di una sirena in avvicinamento o allontanamento."
+    },
+    {
+      "id": 31,
+      "type": "completamento",
+      "materia": "Fisica",
+      "topic": "Velocità di propagazione",
+      "question": "La velocità di propagazione di un'onda è pari al prodotto tra la lunghezza d'onda e la ___.",
+      "correctAnswer": "frequenza",
+      "explanation": "La relazione v = λ·f lega le tre grandezze fondamentali del moto ondulatorio."
+    }
   ]
 }

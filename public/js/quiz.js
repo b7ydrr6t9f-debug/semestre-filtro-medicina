@@ -1,8 +1,7 @@
 // Generatore di esercitazioni: costruzione dei prompt per Gemini, rendering
 // del quiz e salvataggio del punteggio. Le MCQ si correggono da sole
 // (indice esatto); i completamenti si correggono con corrispondenza esatta
-// locale e, per le risposte non identiche, con una verifica AI dedicata che
-// riconosce sinonimi/sigle ma non i refusi di battitura (vedi submitQuiz).
+// locale (nessuna verifica AI: vedi rispostaEsatta/submitQuiz).
 
 // Costruisce il prompt per un'esercitazione su un'unita' didattica (31 domande: 21 MCQ + 10 completamento)
 function buildEsercitazionePrompt(materiaObj, unitaObj, domandeGiaUsate = []) {
@@ -56,8 +55,8 @@ Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di ma
 }
 
 // Chiama il backend con un prompt generico che deve rispondere in JSON,
-// restituisce l'oggetto parsato o lancia un errore chiaro. Usata sia per
-// generare i quiz sia per far verificare all'AI le risposte a completamento.
+// restituisce l'oggetto parsato o lancia un errore chiaro. Usata per generare
+// i quiz dal vivo (fallback quando un'unità non ha un pool pregenerato).
 async function chiediJsonAlServer(promptText) {
   const res = await authFetch('/api/generate-quiz', {
     method: 'POST',
@@ -70,44 +69,6 @@ async function chiediJsonAlServer(promptText) {
     return pulisciJson(data.result);
   } catch (e) {
     throw new Error("Errore durante la formattazione dei dati ricevuti dal modello.");
-  }
-}
-
-// Costruisce il prompt per far valutare all'AI le risposte a completamento
-// che non corrispondono esattamente a quella attesa: distingue le
-// riformulazioni concettualmente corrette (sinonimi, sigle, termini
-// equivalenti) dai veri errori — refusi di battitura compresi, che devono
-// SEMPRE risultare sbagliati anche se molto simili alla risposta attesa.
-function buildCorrezioneCompletamentoPrompt(elementi) {
-  const elenco = elementi.map((el, i) =>
-    `${i + 1}. Domanda: "${el.domanda}"\n   Risposta attesa: "${el.rispostaAttesa}"\n   Risposta data dallo studente: "${el.rispostaUtente}"`
-  ).join('\n\n');
-
-  return `Sei un professore universitario che corregge domande a completamento per un esame di Medicina e Chirurgia (Semestre Filtro).
-
-Per ciascuna delle seguenti risposte, stabilisci se lo studente ha risposto in modo concettualmente corretto, anche usando parole diverse da quelle attese: sinonimi, termine tecnico equivalente, sigla al posto del nome esteso (o viceversa), riformulazione con lo stesso identico significato.
-
-Regola fondamentale, da rispettare sempre: un errore di ortografia o di battitura, o una risposta incompleta/troncata rispetto a quella attesa, NON deve MAI essere considerato corretto, anche se graficamente molto simile alla risposta attesa. Sono corrette solo le risposte scritte in modo corretto e concettualmente equivalenti; qualunque refuso rende la risposta errata.
-
-${elenco}
-
-Rispondi TASSATIVAMENTE ed ESCLUSIVAMENTE con un oggetto JSON valido privo di markdown o formattazione extra, con questa struttura esatta e un elemento per ciascuna delle ${elementi.length} risposte sopra, nello stesso ordine:
-{ "risultati": [ { "n": 1, "corretto": true }, { "n": 2, "corretto": false } ] }`;
-}
-
-// Chiede all'AI di valutare un elenco di risposte a completamento; in caso di
-// errore di rete o di risposta malformata NON concede il beneficio del
-// dubbio, le lascia segnate come errate invece di rischiare falsi positivi.
-async function correggiCompletamentiConAI(elementi) {
-  if (elementi.length === 0) return [];
-  try {
-    const parsed = await chiediJsonAlServer(buildCorrezioneCompletamentoPrompt(elementi));
-    if (!Array.isArray(parsed.risultati) || parsed.risultati.length !== elementi.length) {
-      throw new Error('Formato di risposta inatteso dal modello.');
-    }
-    return parsed.risultati.map(r => r.corretto === true);
-  } catch (e) {
-    return elementi.map(() => false);
   }
 }
 
@@ -215,10 +176,6 @@ function renderQuizUI() {
   qContainer.classList.remove('hidden');
   qContainer.innerHTML = '';
 
-  const reviewContainer = document.getElementById('review-container');
-  reviewContainer.classList.add('hidden');
-  reviewContainer.innerHTML = '';
-
   const btnSubmit = document.getElementById('btn-submit-quiz');
   btnSubmit.classList.remove('hidden');
   btnSubmit.disabled = false;
@@ -302,9 +259,9 @@ function normalizzaTesto(s) {
 // Confronta la risposta data con quella attesa dopo la normalizzazione
 // (case, accenti, punteggiatura): devono corrispondere esattamente.
 // Un refuso di battitura deve risultare sbagliato, per questo qui non c'è
-// nessuna tolleranza (né su sottostringhe né su distanza tra caratteri);
-// le riformulazioni concettualmente valide vengono verificate dall'AI in
-// submitQuiz, non qui.
+// nessuna tolleranza (né su sottostringhe né su distanza tra caratteri).
+// Questa è l'unica correzione applicata ai completamenti: niente più
+// verifica AI di sinonimi/riformulazioni.
 function rispostaEsatta(rispostaUtente, rispostaAttesa) {
   return normalizzaTesto(rispostaUtente) === normalizzaTesto(rispostaAttesa);
 }
@@ -322,13 +279,11 @@ function annullaRisposte() {
   });
 }
 
-// Corregge tutto in automatico: le MCQ e i completamenti esatti localmente,
-// poi manda all'AI solo i completamenti non identici alla risposta attesa
-// (per riconoscere sinonimi/sigle senza tollerare refusi di battitura).
+// Corregge tutto in automatico, in locale: MCQ e completamenti confrontati
+// esattamente con la risposta attesa. Nessuna verifica AI di sinonimi o
+// riformulazioni: la corrispondenza deve essere testuale (dopo normalizzazione).
 async function submitQuiz() {
   clearInterval(timerInterval);
-
-  const daVerificareConAI = []; // { idx, domanda, rispostaUtente, rispostaAttesa }
 
   currentQuizData.questions.forEach((q, idx) => {
     if (q.type === 'completamento') {
@@ -340,8 +295,7 @@ async function submitQuiz() {
       } else if (rispostaEsatta(userVal, q.correctAnswer)) {
         q._esito = 'esatta';
       } else {
-        q._esito = 'errata'; // provvisorio: potrebbe essere un sinonimo, verificato sotto
-        daVerificareConAI.push({ idx, domanda: q.question, rispostaUtente: userVal, rispostaAttesa: q.correctAnswer });
+        q._esito = 'errata';
       }
     } else {
       const selected = document.querySelector(`input[name="question_${idx}"]:checked`);
@@ -354,19 +308,6 @@ async function submitQuiz() {
       }
     }
   });
-
-  if (daVerificareConAI.length > 0) {
-    const btnSubmit = document.getElementById('btn-submit-quiz');
-    const ripristina = impostaCaricamento([btnSubmit], btnSubmit, `Verifica AI di ${daVerificareConAI.length} rispost${daVerificareConAI.length === 1 ? 'a' : 'e'} non identiche...`);
-    try {
-      const esiti = await correggiCompletamentiConAI(daVerificareConAI);
-      esiti.forEach((corretta, i) => {
-        if (corretta) currentQuizData.questions[daVerificareConAI[i].idx]._esito = 'esatta';
-      });
-    } finally {
-      ripristina();
-    }
-  }
 
   await finalizeScore();
 }
@@ -447,8 +388,6 @@ async function finalizeScore() {
 
   document.getElementById('quiz-area').classList.add('hidden');
   document.getElementById('questions-container').innerHTML = '';
-  document.getElementById('review-container').innerHTML = '';
-  document.getElementById('review-container').classList.add('hidden');
 
   switchTab('valutazione');
 }

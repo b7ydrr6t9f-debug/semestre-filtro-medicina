@@ -2,36 +2,431 @@
   "materia": "biologia",
   "unitaId": 4,
   "questions": [
-    { "id": 1, "type": "mcq", "materia": "Biologia", "topic": "Variazioni del genoma", "question": "Una mutazione puntiforme per sostituzione di un singolo nucleotide con un altro può causare:", "options": ["Sempre e solo l'inattivazione completa del gene", "Nessun effetto in ogni caso, indipendentemente dalla posizione", "Un cambiamento dell'amminoacido codificato (missenso), l'introduzione di un codone di stop (nonsenso) o nessun cambiamento (silente)", "Solo la duplicazione dell'intero cromosoma", "L'inserzione di un intero nuovo gene nel genoma"], "correctIndex": 2, "explanation": "A seconda della posizione e del codone risultante, una sostituzione puntiforme può essere silente, missenso (cambia l'amminoacido) o nonsenso (introduce un codone di stop prematuro)." },
-    { "id": 2, "type": "mcq", "materia": "Biologia", "topic": "Mutazioni per inserzione o delezione", "question": "L'inserzione o delezione di un numero di nucleotidi non multiplo di tre all'interno di una sequenza codificante provoca tipicamente:", "options": ["Nessun effetto sulla proteina prodotta", "Uno spostamento della cornice di lettura (mutazione frameshift), alterando tutta la sequenza amminoacidica a valle", "Solo la duplicazione dell'intero gene", "L'immediata riparazione automatica del danno senza conseguenze", "Un aumento della velocità di trascrizione"], "correctIndex": 1, "explanation": "Se il numero di nucleotidi inseriti o deleti non è multiplo di tre, la cornice di lettura si sposta (frameshift), alterando drasticamente la sequenza amminoacidica a valle del punto di mutazione." },
-    { "id": 3, "type": "mcq", "materia": "Biologia", "topic": "Espansione di sequenze ripetute", "question": "Il fenomeno dell'espansione di sequenze ripetute nel genoma consiste in:", "options": ["La riduzione progressiva del numero di ripetizioni di una sequenza a ogni generazione", "L'aumento del numero di copie di una breve sequenza ripetuta, che può superare una soglia patologica", "La totale scomparsa delle sequenze ripetute dal genoma", "Un fenomeno che riguarda esclusivamente le sequenze codificanti proteine strutturali", "Un processo che avviene solo nei mitocondri"], "correctIndex": 1, "explanation": "L'espansione di sequenze ripetute consiste nell'aumento del numero di copie di brevi sequenze ripetute in tandem, che se supera una certa soglia può associarsi a patologie ereditarie." },
-    { "id": 4, "type": "mcq", "materia": "Biologia", "topic": "Riparazione del danno al DNA", "question": "I meccanismi di riparazione del DNA su singolo filamento intervengono generalmente per:", "options": ["Distruggere completamente il cromosoma danneggiato", "Rimuovere e sostituire la porzione danneggiata utilizzando il filamento complementare intatto come stampo", "Bloccare permanentemente la replicazione dell'intero genoma", "Convertire il DNA danneggiato in RNA", "Duplicare l'intero cromosoma come meccanismo di riparazione"], "correctIndex": 1, "explanation": "Nella riparazione del danno su singolo filamento, la porzione danneggiata viene rimossa e risintetizzata usando come stampo il filamento complementare non danneggiato." },
-    { "id": 5, "type": "mcq", "materia": "Biologia", "topic": "Omozigosi ed eterozigosi", "question": "Un individuo che possiede due alleli identici per un dato gene si definisce:", "options": ["Eterozigote", "Omozigote", "Emizigote", "Poliploide", "Aneuploide"], "correctIndex": 1, "explanation": "L'omozigote possiede due copie identiche dell'allele per quel locus genico, a differenza dell'eterozigote che ne possiede due diverse." },
-    { "id": 6, "type": "mcq", "materia": "Biologia", "topic": "Dominanza e recessività", "question": "Un allele si definisce recessivo quando:", "options": ["Il suo effetto fenotipico si manifesta anche in eterozigosi", "Il suo effetto fenotipico si manifesta solo in condizione di omozigosi, essendo mascherato dall'allele dominante in eterozigosi", "È sempre l'allele più comune nella popolazione", "Non ha mai alcun effetto sul fenotipo", "È presente solo nei cromosomi sessuali"], "correctIndex": 1, "explanation": "Un allele recessivo manifesta il proprio effetto fenotipico solo quando presente in omozigosi, poiché in eterozigosi viene mascherato dall'allele dominante." },
-    { "id": 7, "type": "mcq", "materia": "Biologia", "topic": "Genotipo e fenotipo", "question": "La differenza tra genotipo e fenotipo consiste nel fatto che:", "options": ["Il genotipo è la costituzione genetica di un individuo, il fenotipo è l'insieme delle caratteristiche osservabili risultanti dall'interazione tra genotipo e ambiente", "Genotipo e fenotipo sono sinonimi", "Il fenotipo determina sempre univocamente il genotipo", "Il genotipo si riferisce solo ai caratteri poligenici", "Il fenotipo è visibile solo al microscopio elettronico"], "correctIndex": 0, "explanation": "Il genotipo è il corredo allelico di un individuo per un dato carattere, mentre il fenotipo è la manifestazione osservabile risultante dall'interazione tra genotipo e ambiente." },
-    { "id": 8, "type": "mcq", "materia": "Biologia", "topic": "Leggi di Mendel - segregazione", "question": "La legge della segregazione di Mendel afferma che:", "options": ["I due alleli di un gene si separano durante la formazione dei gameti, ciascuno finendo in un gamete diverso", "I due alleli restano sempre uniti nello stesso gamete", "Solo l'allele dominante viene trasmesso ai gameti", "La segregazione avviene solo nei caratteri poligenici", "Gli alleli si mescolano fisicamente formando un fenotipo intermedio in ogni caso"], "correctIndex": 0, "explanation": "La legge della segregazione stabilisce che i due alleli di un gene, presenti in un individuo diploide, si separano durante la meiosi, così che ciascun gamete riceve un solo allele per gene." },
-    { "id": 9, "type": "mcq", "materia": "Biologia", "topic": "Leggi di Mendel - assortimento indipendente", "question": "La legge dell'assortimento indipendente si applica a:", "options": ["Geni situati sullo stesso cromosoma e strettamente associati", "Geni situati su cromosomi diversi (o molto distanti sullo stesso cromosoma), che si distribuiscono nei gameti in modo indipendente l'uno dall'altro", "Un singolo gene con un solo allele", "Solo ai caratteri legati al cromosoma X", "Esclusivamente ai caratteri quantitativi"], "correctIndex": 1, "explanation": "L'assortimento indipendente riguarda geni situati su cromosomi diversi (o sufficientemente distanti), i cui alleli si distribuiscono nei gameti in modo indipendente durante la meiosi." },
-    { "id": 10, "type": "mcq", "materia": "Biologia", "topic": "Dominanza incompleta", "question": "Nella dominanza incompleta, l'eterozigote mostra:", "options": ["Un fenotipo identico a quello di uno dei due omozigoti", "Un fenotipo intermedio tra quello dei due omozigoti parentali", "Entrambi i fenotipi parentali contemporaneamente ed espressi in pieno", "L'assenza totale di fenotipo", "Sempre il fenotipo dell'allele recessivo"], "correctIndex": 1, "explanation": "Nella dominanza incompleta, l'eterozigote presenta un fenotipo intermedio tra quello dei due omozigoti, poiché nessuno dei due alleli maschera completamente l'altro." },
-    { "id": 11, "type": "mcq", "materia": "Biologia", "topic": "Codominanza", "question": "Nella codominanza, l'eterozigote mostra:", "options": ["Un fenotipo intermedio tra i due alleli", "L'espressione simultanea e piena di entrambi gli alleli", "Solo il fenotipo dell'allele più comune nella popolazione", "L'assenza di qualsiasi fenotipo osservabile", "Sempre il fenotipo dell'allele recessivo"], "correctIndex": 1, "explanation": "Nella codominanza entrambi gli alleli si esprimono pienamente e simultaneamente nell'eterozigote, senza fondersi in un fenotipo intermedio (come nel sistema AB dei gruppi sanguigni)." },
-    { "id": 12, "type": "mcq", "materia": "Biologia", "topic": "Alleli multipli - sistema ABO", "question": "Il sistema ABO dei gruppi sanguigni è un classico esempio di:", "options": ["Un gene con un solo allele possibile nella popolazione", "Poliallelia, con più di due alleli possibili per lo stesso locus nella popolazione", "Ereditarietà legata esclusivamente al cromosoma Y", "Un carattere non ereditabile", "Epistasi tra due geni completamente indipendenti"], "correctIndex": 1, "explanation": "Il sistema ABO è determinato da tre alleli (IA, IB, i) per lo stesso locus, un esempio classico di poliallelia, con IA e IB codominanti tra loro e dominanti su i." },
-    { "id": 13, "type": "mcq", "materia": "Biologia", "topic": "Pleiotropia", "question": "Con il termine pleiotropia si indica:", "options": ["L'effetto di più geni su un singolo carattere", "L'effetto di un singolo gene su più caratteri fenotipici apparentemente non correlati", "L'assenza di qualsiasi effetto fenotipico di un gene", "La presenza di più alleli per lo stesso gene", "Un tipo particolare di mutazione cromosomica"], "correctIndex": 1, "explanation": "La pleiotropia descrive il fenomeno per cui un singolo gene influenza contemporaneamente più caratteri fenotipici distinti." },
-    { "id": 14, "type": "mcq", "materia": "Biologia", "topic": "Epistasi", "question": "L'epistasi si verifica quando:", "options": ["Due alleli dello stesso gene si esprimono contemporaneamente", "L'espressione di un gene maschera o modifica l'effetto fenotipico di un altro gene non allelico", "Un gene non ha mai alcun effetto sul fenotipo", "Tutti i geni coinvolti sono localizzati sullo stesso cromosoma", "Si osserva solo nei caratteri legati al sesso"], "correctIndex": 1, "explanation": "Nell'epistasi, l'allele di un gene (epistatico) maschera o modifica l'espressione fenotipica di un altro gene non allelico (ipostatico), generando rapporti mendeliani atipici." },
-    { "id": 15, "type": "mcq", "materia": "Biologia", "topic": "Associazione genica", "question": "Due geni si dicono in associazione (linkage) completa quando:", "options": ["Sono localizzati su cromosomi diversi e si trasmettono in modo indipendente", "Sono così vicini sullo stesso cromosoma da essere ereditati sempre insieme, senza ricombinazione", "Non sono mai trasmessi alla progenie", "Codificano sempre per la stessa proteina", "Sono presenti solo nei gameti femminili"], "correctIndex": 1, "explanation": "Nell'associazione completa, due geni sono così vicini sullo stesso cromosoma che la ricombinazione tra loro è praticamente assente, e vengono ereditati sempre insieme." },
-    { "id": 16, "type": "mcq", "materia": "Biologia", "topic": "Penetranza", "question": "La penetranza di un genotipo esprime:", "options": ["La percentuale di individui con un dato genotipo che manifesta effettivamente il fenotipo atteso", "L'intensità con cui un fenotipo si manifesta in un singolo individuo", "Il numero totale di alleli presenti nella popolazione", "La velocità con cui un gene viene trascritto", "La distanza fisica tra due geni sullo stesso cromosoma"], "correctIndex": 0, "explanation": "La penetranza è la proporzione di individui, con un dato genotipo, che effettivamente manifesta il fenotipo corrispondente." },
-    { "id": 17, "type": "mcq", "materia": "Biologia", "topic": "Espressività", "question": "L'espressività di un carattere si riferisce a:", "options": ["Il grado o l'intensità con cui un dato fenotipo si manifesta in individui con lo stesso genotipo", "La percentuale di individui che manifestano il fenotipo", "Il numero di geni coinvolti nel carattere", "Solo la presenza o assenza del carattere, senza gradazioni", "La localizzazione cromosomica del gene responsabile"], "correctIndex": 0, "explanation": "L'espressività descrive la variabilità nel grado o nell'intensità con cui uno stesso genotipo si manifesta fenotipicamente in individui diversi." },
-    { "id": 18, "type": "mcq", "materia": "Biologia", "topic": "Caratteri poligenici ed eredità quantitativa", "question": "I caratteri poligenici, alla base dell'eredità quantitativa, sono determinati da:", "options": ["Un singolo gene con effetto dominante assoluto", "L'azione combinata di più geni, ciascuno con un piccolo effetto additivo sul fenotipo", "L'assenza totale di componente genetica", "Solo fattori ambientali, senza alcuna base genetica", "Un singolo allele recessivo"], "correctIndex": 1, "explanation": "I caratteri poligenici, come altezza o colore della pelle, sono determinati dall'azione combinata di più geni con effetti additivi, generando una distribuzione fenotipica continua." },
-    { "id": 19, "type": "mcq", "materia": "Biologia", "topic": "Imprinting genomico", "question": "L'imprinting genomico è un fenomeno epigenetico per cui:", "options": ["Entrambe le copie parentali di un gene si esprimono sempre allo stesso livello", "L'espressione di un gene dipende dal genitore (materno o paterno) da cui è stato ereditato", "Il gene viene sempre silenziato in modo permanente e irreversibile in tutte le generazioni", "Riguarda esclusivamente i geni mitocondriali", "Si verifica solo nei cromosomi sessuali"], "correctIndex": 1, "explanation": "Nell'imprinting genomico, alcuni geni vengono espressi in modo differenziale a seconda che siano ereditati per via materna o paterna, tramite marcature epigenetiche stabilite durante la gametogenesi." },
-    { "id": 20, "type": "mcq", "materia": "Biologia", "topic": "Cariotipo e trisomia 21", "question": "La trisomia del cromosoma 21, causa della sindrome di Down, è un esempio di:", "options": ["Traslocazione bilanciata senza effetti fenotipici", "Aneuploidia, cioè un'alterazione del numero normale di copie di un cromosoma", "Delezione di un intero cromosoma", "Poliploidia dell'intero corredo cromosomico", "Inversione cromosomica priva di conseguenze"], "correctIndex": 1, "explanation": "La trisomia 21 è una forma di aneuploidia, in cui è presente una copia extra del cromosoma 21 rispetto al normale assetto diploide." },
-    { "id": 21, "type": "mcq", "materia": "Biologia", "topic": "Ereditarietà legata al cromosoma X", "question": "Nell'ereditarietà recessiva legata al cromosoma X, i maschi manifestano più frequentemente il carattere rispetto alle femmine perché:", "options": ["I maschi possiedono un solo cromosoma X, quindi anche un solo allele recessivo è sufficiente a manifestare il fenotipo", "Le femmine non possiedono mai il cromosoma X", "I maschi possiedono sempre due copie del cromosoma X", "L'ereditarietà legata all'X non riguarda mai i maschi", "Il cromosoma Y contiene sempre l'allele dominante compensatorio"], "correctIndex": 0, "explanation": "I maschi, avendo un solo cromosoma X (emizigoti), manifestano il fenotipo recessivo anche con un solo allele mutato, mentre le femmine necessitano di due copie dell'allele recessivo (una su ciascun X)." },
-    { "id": 22, "type": "completamento", "materia": "Biologia", "topic": "Mutazioni frameshift", "question": "L'inserzione o delezione di un numero di nucleotidi non multiplo di tre, che sposta la cornice di lettura del gene, si chiama mutazione ___.", "correctAnswer": "frameshift", "explanation": "Questo tipo di mutazione altera drasticamente la sequenza amminoacidica a valle del punto in cui avviene." },
-    { "id": 23, "type": "completamento", "materia": "Biologia", "topic": "Omozigosi", "question": "Un individuo che possiede due alleli identici per un dato gene si dice ___ per quel gene.", "correctAnswer": "omozigote", "explanation": "Si contrappone all'eterozigote, che possiede due alleli diversi." },
-    { "id": 24, "type": "completamento", "materia": "Biologia", "topic": "Fenotipo", "question": "L'insieme delle caratteristiche osservabili di un organismo, risultante dall'interazione tra genotipo e ambiente, si chiama ___.", "correctAnswer": "fenotipo", "explanation": "Si distingue dal genotipo, che è la costituzione genetica dell'individuo." },
-    { "id": 25, "type": "completamento", "materia": "Biologia", "topic": "Legge della segregazione", "question": "La legge di Mendel secondo cui i due alleli di un gene si separano durante la formazione dei gameti si chiama legge della ___.", "correctAnswer": "segregazione", "explanation": "È la prima legge di Mendel, alla base della trasmissione dei caratteri singoli." },
-    { "id": 26, "type": "completamento", "materia": "Biologia", "topic": "Pleiotropia", "question": "Il fenomeno per cui un singolo gene influenza più caratteri fenotipici apparentemente non correlati si chiama ___.", "correctAnswer": "pleiotropia", "explanation": "È un fenomeno frequente in molte malattie genetiche con manifestazioni multiple." },
-    { "id": 27, "type": "completamento", "materia": "Biologia", "topic": "Epistasi", "question": "Il fenomeno per cui l'espressione di un gene maschera o modifica l'effetto fenotipico di un altro gene non allelico si chiama ___.", "correctAnswer": "epistasi", "explanation": "Genera rapporti mendeliani atipici rispetto alle proporzioni classiche 9:3:3:1." },
-    { "id": 28, "type": "completamento", "materia": "Biologia", "topic": "Penetranza", "question": "La percentuale di individui con un dato genotipo che manifesta effettivamente il fenotipo atteso si chiama ___.", "correctAnswer": "penetranza", "explanation": "Una penetranza incompleta significa che non tutti gli individui con quel genotipo mostrano il fenotipo corrispondente." },
-    { "id": 29, "type": "completamento", "materia": "Biologia", "topic": "Imprinting genomico", "question": "Il fenomeno epigenetico per cui l'espressione di un gene dipende dal genitore da cui è stato ereditato si chiama ___ genomico.", "correctAnswer": "imprinting", "explanation": "È stabilito tramite marcature epigenetiche durante la gametogenesi." },
-    { "id": 30, "type": "completamento", "materia": "Biologia", "topic": "Trisomia 21", "question": "La condizione di aneuploidia caratterizzata dalla presenza di una copia extra del cromosoma 21 prende il nome di sindrome di ___.", "correctAnswer": "Down", "explanation": "È l'esempio più noto di trisomia autosomica nell'uomo." },
-    { "id": 31, "type": "completamento", "materia": "Biologia", "topic": "Dominanza e recessività", "question": "Un allele il cui effetto fenotipico si manifesta anche in singola copia (eterozigosi) si dice ___.", "correctAnswer": "dominante", "explanation": "Si contrappone all'allele recessivo, che si manifesta solo in omozigosi." }
+    {
+      "id": 1,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Variazioni del genoma",
+      "question": "Una mutazione puntiforme per sostituzione di un singolo nucleotide con un altro può causare:",
+      "options": [
+        "Sempre e solo l'inattivazione completa del gene",
+        "Nessun effetto in ogni caso, indipendentemente dalla posizione",
+        "L'inserzione di un intero nuovo gene nel genoma",
+        "Solo la duplicazione dell'intero cromosoma nel modello di riferimento",
+        "Un cambiamento dell'amminoacido codificato (missenso), l'introduzione di un codone di stop (nonsenso) o nessun cambiamento (silente)"
+      ],
+      "correctIndex": 4,
+      "explanation": "A seconda della posizione e del codone risultante, una sostituzione puntiforme può essere silente, missenso (cambia l'amminoacido) o nonsenso (introduce un codone di stop prematuro)."
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Mutazioni per inserzione o delezione",
+      "question": "L'inserzione o delezione di un numero di nucleotidi non multiplo di tre all'interno di una sequenza codificante provoca tipicamente:",
+      "options": [
+        "Nessun effetto sulla proteina prodotta",
+        "Uno spostamento della cornice di lettura (mutazione frameshift), alterando tutta la sequenza amminoacidica a valle",
+        "Un aumento della velocità di trascrizione",
+        "L'immediata riparazione automatica del danno senza conseguenze",
+        "Solo la duplicazione dell'intero gene secondo la nomenclatura standard"
+      ],
+      "correctIndex": 1,
+      "explanation": "Se il numero di nucleotidi inseriti o deleti non è multiplo di tre, la cornice di lettura si sposta (frameshift), alterando drasticamente la sequenza amminoacidica a valle del punto di mutazione."
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Espansione di sequenze ripetute",
+      "question": "Il fenomeno dell'espansione di sequenze ripetute nel genoma consiste in:",
+      "options": [
+        "La totale scomparsa delle sequenze ripetute dal genoma",
+        "Un fenomeno che riguarda esclusivamente le sequenze codificanti proteine strutturali",
+        "L'aumento del numero di copie di una breve sequenza ripetuta",
+        "Un processo che avviene solo nei mitocondri",
+        "La riduzione progressiva del numero di ripetizioni di una sequenza a ogni generazione"
+      ],
+      "correctIndex": 2,
+      "explanation": "L'espansione di sequenze ripetute consiste nell'aumento del numero di copie di brevi sequenze ripetute in tandem, che se supera una certa soglia può associarsi a patologie ereditarie."
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Riparazione del danno al DNA",
+      "question": "I meccanismi di riparazione del DNA su singolo filamento intervengono generalmente per:",
+      "options": [
+        "Rimuovere e sostituire la porzione danneggiata utilizzando il filamento complementare intatto come stampo",
+        "Bloccare permanentemente la replicazione dell'intero genoma",
+        "Convertire il DNA danneggiato in RNA secondo la nomenclatura standard",
+        "Distruggere completamente il cromosoma danneggiato",
+        "Duplicare l'intero cromosoma come meccanismo di riparazione"
+      ],
+      "correctIndex": 0,
+      "explanation": "Nella riparazione del danno su singolo filamento, la porzione danneggiata viene rimossa e risintetizzata usando come stampo il filamento complementare non danneggiato."
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Omozigosi ed eterozigosi",
+      "question": "Un individuo che possiede due alleli identici per un dato gene si definisce:",
+      "options": [
+        "Eterozigote",
+        "Poliploide",
+        "Aneuploide",
+        "Emizigote",
+        "Omozigote"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'omozigote possiede due copie identiche dell'allele per quel locus genico, a differenza dell'eterozigote che ne possiede due diverse."
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Dominanza e recessività",
+      "question": "Un allele si definisce recessivo quando:",
+      "options": [
+        "Il suo effetto fenotipico si manifesta anche in eterozigosi",
+        "Il suo effetto fenotipico si manifesta solo in condizione di omozigosi, essendo mascherato dall'allele dominante in eterozigosi",
+        "È sempre l'allele più comune nella popolazione",
+        "Non ha mai alcun effetto sul fenotipo nella descrizione tradizionale",
+        "È presente solo nei cromosomi sessuali"
+      ],
+      "correctIndex": 1,
+      "explanation": "Un allele recessivo manifesta il proprio effetto fenotipico solo quando presente in omozigosi, poiché in eterozigosi viene mascherato dall'allele dominante."
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Genotipo e fenotipo",
+      "question": "La differenza tra genotipo e fenotipo consiste nel fatto che:",
+      "options": [
+        "Il genotipo è la costituzione genetica di un individuo, il fenotipo è l'insieme delle caratteristiche osservabili risultanti dall'interazione tra genotipo e ambiente",
+        "Il fenotipo determina sempre univocamente il genotipo",
+        "Il genotipo si riferisce solo ai caratteri poligenici",
+        "Il fenotipo è visibile solo al microscopio elettronico",
+        "Genotipo e fenotipo sono sinonimi secondo la definizione classica"
+      ],
+      "correctIndex": 0,
+      "explanation": "Il genotipo è il corredo allelico di un individuo per un dato carattere, mentre il fenotipo è la manifestazione osservabile risultante dall'interazione tra genotipo e ambiente."
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Leggi di Mendel - segregazione",
+      "question": "La legge della segregazione di Mendel afferma che:",
+      "options": [
+        "La segregazione avviene solo nei caratteri poligenici",
+        "I due alleli restano sempre uniti nello stesso gamete",
+        "Solo l'allele dominante viene trasmesso ai gameti nel modello di riferimento",
+        "Gli alleli si mescolano fisicamente formando un fenotipo intermedio in ogni caso",
+        "I due alleli di un gene si separano durante la formazione dei gameti, ciascuno finendo in un gamete diverso"
+      ],
+      "correctIndex": 4,
+      "explanation": "La legge della segregazione stabilisce che i due alleli di un gene, presenti in un individuo diploide, si separano durante la meiosi, così che ciascun gamete riceve un solo allele per gene."
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Leggi di Mendel - assortimento indipendente",
+      "question": "La legge dell'assortimento indipendente si applica a:",
+      "options": [
+        "Geni situati sullo stesso cromosoma e strettamente associati",
+        "Solo ai caratteri legati al cromosoma X",
+        "Esclusivamente ai caratteri quantitativi",
+        "Un singolo gene con un solo allele",
+        "Geni situati su cromosomi diversi (o molto distanti sullo stesso cromosoma)"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'assortimento indipendente riguarda geni situati su cromosomi diversi (o sufficientemente distanti), i cui alleli si distribuiscono nei gameti in modo indipendente durante la meiosi."
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Dominanza incompleta",
+      "question": "Nella dominanza incompleta, l'eterozigote mostra:",
+      "options": [
+        "Sempre il fenotipo dell'allele recessivo",
+        "Entrambi i fenotipi parentali contemporaneamente ed espressi in pieno",
+        "Un fenotipo intermedio tra quello dei due omozigoti parentali",
+        "L'assenza totale di fenotipo",
+        "Un fenotipo identico a quello di uno dei due omozigoti"
+      ],
+      "correctIndex": 2,
+      "explanation": "Nella dominanza incompleta, l'eterozigote presenta un fenotipo intermedio tra quello dei due omozigoti, poiché nessuno dei due alleli maschera completamente l'altro."
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Codominanza",
+      "question": "Nella codominanza, l'eterozigote mostra:",
+      "options": [
+        "Solo il fenotipo dell'allele più comune nella popolazione",
+        "L'espressione simultanea e piena di entrambi gli alleli",
+        "L'assenza di qualsiasi fenotipo osservabile",
+        "Un fenotipo intermedio tra i due alleli",
+        "Sempre il fenotipo dell'allele recessivo"
+      ],
+      "correctIndex": 1,
+      "explanation": "Nella codominanza entrambi gli alleli si esprimono pienamente e simultaneamente nell'eterozigote, senza fondersi in un fenotipo intermedio (come nel sistema AB dei gruppi sanguigni)."
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Alleli multipli - sistema ABO",
+      "question": "Il sistema ABO dei gruppi sanguigni è un classico esempio di:",
+      "options": [
+        "Un carattere non ereditabile nella descrizione tradizionale",
+        "Epistasi tra due geni completamente indipendenti",
+        "Un gene con un solo allele possibile nella popolazione",
+        "Poliallelia, con più di due alleli possibili per lo stesso locus nella popolazione",
+        "Ereditarietà legata esclusivamente al cromosoma Y"
+      ],
+      "correctIndex": 3,
+      "explanation": "Il sistema ABO è determinato da tre alleli (IA, IB, i) per lo stesso locus, un esempio classico di poliallelia, con IA e IB codominanti tra loro e dominanti su i."
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Pleiotropia",
+      "question": "Con il termine pleiotropia si indica:",
+      "options": [
+        "La presenza di più alleli per lo stesso gene secondo la nomenclatura standard",
+        "L'effetto di più geni su un singolo carattere",
+        "L'effetto di un singolo gene su più caratteri fenotipici apparentemente non correlati",
+        "L'assenza di qualsiasi effetto fenotipico di un gene",
+        "Un tipo particolare di mutazione cromosomica"
+      ],
+      "correctIndex": 2,
+      "explanation": "La pleiotropia descrive il fenomeno per cui un singolo gene influenza contemporaneamente più caratteri fenotipici distinti."
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Epistasi",
+      "question": "L'epistasi si verifica quando:",
+      "options": [
+        "Un gene non ha mai alcun effetto sul fenotipo secondo la nomenclatura standard",
+        "Due alleli dello stesso gene si esprimono contemporaneamente",
+        "Tutti i geni coinvolti sono localizzati sullo stesso cromosoma",
+        "L'espressione di un gene maschera o modifica l'effetto fenotipico di un altro gene non allelico",
+        "Si osserva solo nei caratteri legati al sesso"
+      ],
+      "correctIndex": 3,
+      "explanation": "Nell'epistasi, l'allele di un gene (epistatico) maschera o modifica l'espressione fenotipica di un altro gene non allelico (ipostatico), generando rapporti mendeliani atipici."
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Associazione genica",
+      "question": "Due geni si dicono in associazione (linkage) completa quando:",
+      "options": [
+        "Sono presenti solo nei gameti femminili",
+        "Sono localizzati su cromosomi diversi e si trasmettono in modo indipendente",
+        "Codificano sempre per la stessa proteina",
+        "Sono così vicini sullo stesso cromosoma da essere ereditati sempre insieme, senza ricombinazione",
+        "Non sono mai trasmessi alla progenie secondo la definizione classica"
+      ],
+      "correctIndex": 3,
+      "explanation": "Nell'associazione completa, due geni sono così vicini sullo stesso cromosoma che la ricombinazione tra loro è praticamente assente, e vengono ereditati sempre insieme."
+    },
+    {
+      "id": 16,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Penetranza",
+      "question": "La penetranza di un genotipo esprime:",
+      "options": [
+        "La velocità con cui un gene viene trascritto come riportato nei testi di riferimento",
+        "Il numero totale di alleli presenti nella popolazione",
+        "L'intensità con cui un fenotipo si manifesta in un singolo individuo",
+        "La percentuale di individui con un dato genotipo che manifesta effettivamente il fenotipo atteso",
+        "La distanza fisica tra due geni sullo stesso cromosoma"
+      ],
+      "correctIndex": 3,
+      "explanation": "La penetranza è la proporzione di individui, con un dato genotipo, che effettivamente manifesta il fenotipo corrispondente."
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Espressività",
+      "question": "L'espressività di un carattere si riferisce a:",
+      "options": [
+        "Solo la presenza o assenza del carattere, senza gradazioni",
+        "Il numero di geni coinvolti nel carattere come riportato nei testi di riferimento",
+        "Il grado o l'intensità con cui un dato fenotipo si manifesta in individui con lo stesso genotipo",
+        "La localizzazione cromosomica del gene responsabile",
+        "La percentuale di individui che manifestano il fenotipo"
+      ],
+      "correctIndex": 2,
+      "explanation": "L'espressività descrive la variabilità nel grado o nell'intensità con cui uno stesso genotipo si manifesta fenotipicamente in individui diversi."
+    },
+    {
+      "id": 18,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Caratteri poligenici ed eredità quantitativa",
+      "question": "I caratteri poligenici, alla base dell'eredità quantitativa, sono determinati da:",
+      "options": [
+        "Un singolo allele recessivo secondo la nomenclatura standard",
+        "L'assenza totale di componente genetica",
+        "L'azione combinata di più geni, ciascuno con un piccolo effetto additivo sul fenotipo",
+        "Solo fattori ambientali, senza alcuna base genetica",
+        "Un singolo gene con effetto dominante assoluto"
+      ],
+      "correctIndex": 2,
+      "explanation": "I caratteri poligenici, come altezza o colore della pelle, sono determinati dall'azione combinata di più geni con effetti additivi, generando una distribuzione fenotipica continua."
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Imprinting genomico",
+      "question": "L'imprinting genomico è un fenomeno epigenetico per cui:",
+      "options": [
+        "Riguarda esclusivamente i geni mitocondriali",
+        "Si verifica solo nei cromosomi sessuali nel modello di riferimento",
+        "Entrambe le copie parentali di un gene si esprimono sempre allo stesso livello",
+        "Il gene viene sempre silenziato in modo permanente e irreversibile in tutte le generazioni",
+        "L'espressione di un gene dipende dal genitore (materno o paterno) da cui è stato ereditato"
+      ],
+      "correctIndex": 4,
+      "explanation": "Nell'imprinting genomico, alcuni geni vengono espressi in modo differenziale a seconda che siano ereditati per via materna o paterna, tramite marcature epigenetiche stabilite durante la gametogenesi."
+    },
+    {
+      "id": 20,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Cariotipo e trisomia 21",
+      "question": "La trisomia del cromosoma 21, causa della sindrome di Down, è un esempio di:",
+      "options": [
+        "Poliploidia dell'intero corredo cromosomico",
+        "Aneuploidia, cioè un'alterazione del numero normale di copie di un cromosoma",
+        "Delezione di un intero cromosoma nella descrizione tradizionale",
+        "Inversione cromosomica priva di conseguenze",
+        "Traslocazione bilanciata senza effetti fenotipici"
+      ],
+      "correctIndex": 1,
+      "explanation": "La trisomia 21 è una forma di aneuploidia, in cui è presente una copia extra del cromosoma 21 rispetto al normale assetto diploide."
+    },
+    {
+      "id": 21,
+      "type": "mcq",
+      "materia": "Biologia",
+      "topic": "Ereditarietà legata al cromosoma X",
+      "question": "Nell'ereditarietà recessiva legata al cromosoma X, i maschi manifestano più frequentemente il carattere rispetto alle femmine perché:",
+      "options": [
+        "L'ereditarietà legata all'X non riguarda mai i maschi",
+        "Il cromosoma Y contiene sempre l'allele dominante compensatorio",
+        "I maschi possiedono un solo cromosoma X, quindi anche un solo allele recessivo è sufficiente a manifestare il fenotipo",
+        "I maschi possiedono sempre due copie del cromosoma X",
+        "Le femmine non possiedono mai il cromosoma X nella descrizione tradizionale"
+      ],
+      "correctIndex": 2,
+      "explanation": "I maschi, avendo un solo cromosoma X (emizigoti), manifestano il fenotipo recessivo anche con un solo allele mutato, mentre le femmine necessitano di due copie dell'allele recessivo (una su ciascun X)."
+    },
+    {
+      "id": 22,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Mutazioni frameshift",
+      "question": "L'inserzione o delezione di un numero di nucleotidi non multiplo di tre, che sposta la cornice di lettura del gene, si chiama mutazione ___.",
+      "correctAnswer": "frameshift",
+      "explanation": "Questo tipo di mutazione altera drasticamente la sequenza amminoacidica a valle del punto in cui avviene."
+    },
+    {
+      "id": 23,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Omozigosi",
+      "question": "Un individuo che possiede due alleli identici per un dato gene si dice ___ per quel gene.",
+      "correctAnswer": "omozigote",
+      "explanation": "Si contrappone all'eterozigote, che possiede due alleli diversi."
+    },
+    {
+      "id": 24,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Fenotipo",
+      "question": "L'insieme delle caratteristiche osservabili di un organismo, risultante dall'interazione tra genotipo e ambiente, si chiama ___.",
+      "correctAnswer": "fenotipo",
+      "explanation": "Si distingue dal genotipo, che è la costituzione genetica dell'individuo."
+    },
+    {
+      "id": 25,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Legge della segregazione",
+      "question": "La legge di Mendel secondo cui i due alleli di un gene si separano durante la formazione dei gameti si chiama legge della ___.",
+      "correctAnswer": "segregazione",
+      "explanation": "È la prima legge di Mendel, alla base della trasmissione dei caratteri singoli."
+    },
+    {
+      "id": 26,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Pleiotropia",
+      "question": "Il fenomeno per cui un singolo gene influenza più caratteri fenotipici apparentemente non correlati si chiama ___.",
+      "correctAnswer": "pleiotropia",
+      "explanation": "È un fenomeno frequente in molte malattie genetiche con manifestazioni multiple."
+    },
+    {
+      "id": 27,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Epistasi",
+      "question": "Il fenomeno per cui l'espressione di un gene maschera o modifica l'effetto fenotipico di un altro gene non allelico si chiama ___.",
+      "correctAnswer": "epistasi",
+      "explanation": "Genera rapporti mendeliani atipici rispetto alle proporzioni classiche 9:3:3:1."
+    },
+    {
+      "id": 28,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Penetranza",
+      "question": "La percentuale di individui con un dato genotipo che manifesta effettivamente il fenotipo atteso si chiama ___.",
+      "correctAnswer": "penetranza",
+      "explanation": "Una penetranza incompleta significa che non tutti gli individui con quel genotipo mostrano il fenotipo corrispondente."
+    },
+    {
+      "id": 29,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Imprinting genomico",
+      "question": "Il fenomeno epigenetico per cui l'espressione di un gene dipende dal genitore da cui è stato ereditato si chiama ___ genomico.",
+      "correctAnswer": "imprinting",
+      "explanation": "È stabilito tramite marcature epigenetiche durante la gametogenesi."
+    },
+    {
+      "id": 30,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Trisomia 21",
+      "question": "La condizione di aneuploidia caratterizzata dalla presenza di una copia extra del cromosoma 21 prende il nome di sindrome di ___.",
+      "correctAnswer": "Down",
+      "explanation": "È l'esempio più noto di trisomia autosomica nell'uomo."
+    },
+    {
+      "id": 31,
+      "type": "completamento",
+      "materia": "Biologia",
+      "topic": "Dominanza e recessività",
+      "question": "Un allele il cui effetto fenotipico si manifesta anche in singola copia (eterozigosi) si dice ___.",
+      "correctAnswer": "dominante",
+      "explanation": "Si contrappone all'allele recessivo, che si manifesta solo in omozigosi."
+    }
   ]
 }

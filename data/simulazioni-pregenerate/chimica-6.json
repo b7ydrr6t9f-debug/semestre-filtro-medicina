@@ -2,36 +2,431 @@
   "materia": "chimica",
   "unitaId": 6,
   "questions": [
-    { "id": 1, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Classificazione degli alcoli", "question": "Un alcool è classificato come primario, secondario o terziario in base a:", "options": ["Al numero di atomi di carbonio legati direttamente al carbonio recante il gruppo ossidrile", "Al numero totale di atomi di ossigeno nella molecola", "Alla lunghezza totale della catena carboniosa", "Al numero di doppi legami presenti nella molecola", "Alla temperatura di ebollizione della sostanza"], "correctIndex": 0, "explanation": "Un alcool si dice primario, secondario o terziario a seconda che il carbonio legato al gruppo -OH sia a sua volta legato rispettivamente a uno, due o tre altri atomi di carbonio." },
-    { "id": 2, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Reazione di disidratazione degli alcoli", "question": "La reazione di disidratazione di un alcool porta tipicamente alla formazione di:", "options": ["Un alchene, con perdita di una molecola d'acqua", "Un acido carbossilico", "Un'ammide", "Un etere ciclico in ogni caso", "Un'ammina"], "correctIndex": 0, "explanation": "La disidratazione di un alcool, generalmente catalizzata da acido, porta alla formazione di un alchene con eliminazione di una molecola d'acqua." },
-    { "id": 3, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Acidità del fenolo", "question": "Il fenolo è più acido di un alcool alifatico perché:", "options": ["Il suo anione fenato è stabilizzato per risonanza con l'anello aromatico", "Non possiede alcun gruppo ossidrile", "È una molecola completamente apolare", "Il suo anione è instabile e altamente reattivo", "Non può mai dissociarsi in acqua"], "correctIndex": 0, "explanation": "La maggiore acidità del fenolo rispetto agli alcoli alifatici è dovuta alla stabilizzazione per risonanza della carica negativa dell'anione fenato con il sistema aromatico dell'anello." },
-    { "id": 4, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Struttura degli eteri", "question": "Un etere è caratterizzato dalla presenza di:", "options": ["Un atomo di ossigeno legato a due gruppi carboniosi (R-O-R')", "Un gruppo carbonilico C=O", "Un gruppo carbossilico -COOH", "Un atomo di azoto legato a tre gruppi carboniosi", "Un gruppo ossidrile legato direttamente a un anello aromatico"], "correctIndex": 0, "explanation": "Gli eteri sono caratterizzati da un atomo di ossigeno legato covalentemente a due gruppi carboniosi (R-O-R'), a differenza degli alcoli che presentano un gruppo -OH." },
-    { "id": 5, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Basicità e nucleofilicità delle ammine", "question": "Le ammine sono generalmente basi e nucleofili perché:", "options": ["Possiedono un doppietto elettronico libero sull'atomo di azoto, disponibile per legare un protone o attaccare un centro elettrofilo", "Non possiedono alcun doppietto elettronico libero", "Sono sempre cariche negativamente in soluzione acquosa", "Reagiscono solo con altre basi, mai con acidi", "Sono prive di qualsiasi reattività chimica"], "correctIndex": 0, "explanation": "Il doppietto elettronico libero sull'azoto delle ammine conferisce loro carattere basico (capacità di legare un protone) e nucleofilo (capacità di attaccare un centro elettrofilo)." },
-    { "id": 6, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Nitrosammine", "question": "Le nitrosammine sono composti di rilevanza biomedica principalmente perché:", "options": ["Sono completamente inerti dal punto di vista biologico", "Molte di esse hanno mostrato potenziale attività cancerogena", "Sono utilizzate esclusivamente come solventi industriali innocui", "Non vengono mai metabolizzate dall'organismo", "Sono prive di qualunque gruppo funzionale reattivo"], "correctIndex": 1, "explanation": "Le nitrosammine, formate dalla reazione tra ammine secondarie e agenti nitrosanti, sono composti di interesse biomedico per il loro potenziale cancerogeno documentato in diversi studi." },
-    { "id": 7, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Aldeidi e chetoni", "question": "La differenza strutturale principale tra un'aldeide e un chetone è che:", "options": ["Nell'aldeide il gruppo carbonilico è legato ad almeno un atomo di idrogeno, nel chetone è legato a due gruppi carboniosi", "Il chetone possiede sempre un anello aromatico, l'aldeide mai", "L'aldeide non possiede alcun gruppo carbonilico", "Il chetone è sempre più acido dell'aldeide corrispondente", "Non esiste alcuna differenza strutturale tra i due gruppi funzionali"], "correctIndex": 0, "explanation": "Nell'aldeide il carbonio carbonilico è legato ad almeno un atomo di idrogeno (oltre a un gruppo R), mentre nel chetone il carbonio carbonilico è legato a due gruppi carboniosi." },
-    { "id": 8, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Addizione nucleofila su aldeidi e chetoni", "question": "Aldeidi e chetoni reagiscono tipicamente con i nucleofili tramite:", "options": ["Reazioni di sostituzione elettrofila aromatica", "Reazioni di addizione nucleofila al carbonio elettrofilo del gruppo carbonilico", "Reazioni di eliminazione unicamente", "Reazioni redox senza alcun meccanismo nucleofilo", "Reazioni acido-base senza formazione di nuovi legami covalenti"], "correctIndex": 1, "explanation": "Il carbonio del gruppo carbonilico, parzialmente elettrofilo per la polarizzazione del legame C=O, è il bersaglio tipico dei nucleofili nelle reazioni di addizione nucleofila." },
-    { "id": 9, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Emiacetali e acetali", "question": "Un emiacetale si forma dall'addizione di:", "options": ["Un'ammina a un acido carbossilico", "Una molecola di alcool a un'aldeide o a un chetone", "Due molecole di acido carbossilico tra loro", "Un alogenuro alchilico a un'ammina", "Due molecole di alcool a un alchene"], "correctIndex": 1, "explanation": "Un emiacetale si forma dall'addizione nucleofila di una molecola di alcool al gruppo carbonilico di un'aldeide (o chetone, formando un emichetale), con formazione di un carbonio legato sia a un -OH sia a un -OR." },
-    { "id": 10, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Basi di Schiff", "question": "Una base di Schiff (immina) si forma dalla condensazione tra:", "options": ["Un acido carbossilico e un alcool", "Un'ammina primaria e un'aldeide o un chetone, con formazione di un doppio legame carbonio-azoto", "Due molecole di aldeide tra loro", "Un'ammide e un'ammina", "Un etere e un'aldeide"], "correctIndex": 1, "explanation": "Le basi di Schiff si formano dalla condensazione di un'ammina primaria con un'aldeide o un chetone, con formazione di un doppio legame C=N e rilascio di una molecola d'acqua." },
-    { "id": 11, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Tautomeria cheto-enolica", "question": "La tautomeria cheto-enolica descrive l'equilibrio tra:", "options": ["Due composti con formula molecolare diversa", "La forma chetonica e la forma enolica di un composto, che differiscono per la posizione di un atomo di idrogeno e di un doppio legame", "Due stereoisomeri identici tra loro", "Un'aldeide e un acido carbossilico", "Due composti aromatici differenti"], "correctIndex": 1, "explanation": "La tautomeria cheto-enolica è un equilibrio dinamico tra la forma chetonica (gruppo C=O) e quella enolica (gruppo C=C-OH) di uno stesso composto, rilevante ad esempio nella chimica dell'acido urico e del fosfoenolpiruvato." },
-    { "id": 12, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Ubichinone", "question": "L'ubichinone svolge un ruolo biologico fondamentale come:", "options": ["Trasportatore di elettroni nella catena respiratoria mitocondriale, alternando forma chinonica e idrochinonica", "Enzima digestivo di natura proteica", "Componente strutturale del DNA", "Ormone steroideo", "Coenzima per la sintesi di acidi nucleici"], "correctIndex": 0, "explanation": "L'ubichinone (coenzima Q) funge da trasportatore mobile di elettroni nella catena respiratoria mitocondriale, alternando tra la forma ossidata (chinone) e ridotta (idrochinone)." },
-    { "id": 13, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Acidità degli acidi carbossilici", "question": "Gli acidi carbossilici sono generalmente più acidi degli alcoli corrispondenti perché:", "options": ["Il loro anione carbossilato è stabilizzato per risonanza, con la carica negativa delocalizzata su due atomi di ossigeno equivalenti", "Non possiedono alcun idrogeno acido", "Il loro anione è privo di qualsiasi delocalizzazione elettronica", "Sono sempre molecole completamente apolari", "Reagiscono solo con basi deboli"], "correctIndex": 0, "explanation": "L'anione carbossilato, derivato dalla dissociazione di un acido carbossilico, è stabilizzato per risonanza con la carica negativa delocalizzata equamente su due atomi di ossigeno, conferendo maggiore acidità rispetto agli alcoli." },
-    { "id": 14, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Esterificazione di Fischer", "question": "L'esterificazione di Fischer è la reazione, catalizzata da acido, tra:", "options": ["Un acido carbossilico e un alcool, con formazione di un estere e acqua", "Due molecole di alcool tra loro", "Un'ammina e un acido carbossilico", "Un'aldeide e un chetone", "Due molecole di acido carbossilico tra loro"], "correctIndex": 0, "explanation": "L'esterificazione di Fischer è la reazione reversibile, catalizzata da acido, tra un acido carbossilico e un alcool, che porta alla formazione di un estere con rilascio di una molecola d'acqua." },
-    { "id": 15, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Idrolisi degli esteri", "question": "L'idrolisi di un estere porta alla formazione di:", "options": ["Un acido carbossilico e un alcool", "Un'ammide e un'ammina", "Due molecole di aldeide", "Un etere e un chetone", "Un alchene e acqua"], "correctIndex": 0, "explanation": "L'idrolisi di un estere, in presenza di acqua (catalizzata da acido o base), scinde il legame estereo rigenerando l'acido carbossilico e l'alcool di partenza." },
-    { "id": 16, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Condensazione di Claisen", "question": "La condensazione di Claisen è una reazione tra due molecole di estere che porta alla formazione di:", "options": ["Un beta-chetoestere, tramite attacco nucleofilo dell'enolato di un estere su un altro", "Un acido carbossilico semplice", "Un'ammide ciclica", "Un etere semplice", "Un alchene per eliminazione"], "correctIndex": 0, "explanation": "Nella condensazione di Claisen, l'enolato generato da un estere attacca in modo nucleofilo il gruppo carbonilico di un secondo estere, formando un beta-chetoestere." },
-    { "id": 17, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Idrolisi delle ammidi", "question": "L'idrolisi di un'ammide porta alla formazione di:", "options": ["Un acido carbossilico e un'ammina (o ammoniaca)", "Un estere e un alcool", "Due molecole di ammina", "Un'aldeide e un chetone", "Un etere ciclico"], "correctIndex": 0, "explanation": "L'idrolisi di un'ammide, generalmente in condizioni acide o basiche più drastiche rispetto agli esteri, scinde il legame ammidico rigenerando l'acido carbossilico (o suo sale) e l'ammina o l'ammoniaca di partenza." },
-    { "id": 18, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Decarbossilazione dei chetoacidi", "question": "La decarbossilazione di un chetoacido consiste in:", "options": ["La perdita di una molecola di anidride carbonica dalla molecola", "L'aggiunta di un gruppo carbossilico alla molecola", "La formazione di un nuovo legame peptidico", "L'ossidazione completa del gruppo carbonilico", "La riduzione del gruppo carbossilico ad alcool"], "correctIndex": 0, "explanation": "La decarbossilazione è la reazione in cui un chetoacido perde una molecola di CO2, un processo rilevante in numerose vie metaboliche, come il ciclo di Krebs." },
-    { "id": 19, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Reattività delle anidridi", "question": "Le anidridi degli acidi carbossilici sono caratterizzate da:", "options": ["Una reattività verso i nucleofili generalmente maggiore rispetto agli esteri", "Una totale inerzia chimica verso qualunque nucleofilo", "L'assenza di qualunque gruppo carbonilico", "Una reattività identica a quella degli alcani", "L'incapacità di reagire con l'acqua"], "correctIndex": 0, "explanation": "Le anidridi sono generalmente più reattive degli esteri verso l'attacco nucleofilo, poiché il gruppo carbossilato è un miglior gruppo uscente rispetto all'alcossido." },
-    { "id": 20, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Acilfosfati di rilevanza biologica", "question": "Gli acilfosfati, come l'1,3-bisfosfoglicerato, sono di rilevanza biologica perché:", "options": ["Sono composti ad alta energia di idrolisi, coinvolti nel trasferimento di gruppi fosfato in reazioni metaboliche", "Sono privi di qualsiasi funzione nel metabolismo cellulare", "Sono composti stabili e inerti dal punto di vista energetico", "Non partecipano mai alla sintesi di ATP", "Sono presenti solo negli organismi vegetali"], "correctIndex": 0, "explanation": "Gli acilfosfati sono composti ad alta energia di idrolisi, il cui legame anidridico misto tra gruppo acilico e fosfato è coinvolto in importanti reazioni di trasferimento energetico nel metabolismo cellulare, come nella glicolisi." },
-    { "id": 21, "type": "mcq", "materia": "Chimica e Prop. Biochimica", "topic": "Formazione dei lattoni", "question": "Un lattone è un composto che si forma quando:", "options": ["Un gruppo ossidrile e un gruppo carbossilico presenti nella stessa molecola reagiscono intramolecolarmente formando un estere ciclico", "Due molecole distinte di acido carbossilico reagiscono tra loro", "Un'ammina reagisce con un alcool", "Un alchene si idrata in ambiente acido", "Un'aldeide si ossida ad acido carbossilico"], "correctIndex": 0, "explanation": "Un lattone è un estere ciclico che si forma quando il gruppo ossidrile e il gruppo carbossilico presenti nella stessa molecola reagiscono intramolecolarmente." },
-    { "id": 22, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Reazione di disidratazione degli alcoli", "question": "La reazione che rimuove una molecola d'acqua da un alcool, generando un alchene, si chiama reazione di ___.", "correctAnswer": "disidratazione", "explanation": "È generalmente catalizzata da un acido forte." },
-    { "id": 23, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Acidità del fenolo", "question": "Il fenolo è più acido di un alcool alifatico perché il suo anione fenato è stabilizzato per ___ con l'anello aromatico.", "correctAnswer": "risonanza", "explanation": "La delocalizzazione della carica negativa sull'anello aromatico stabilizza l'anione fenato." },
-    { "id": 24, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Emiacetali", "question": "Il prodotto dell'addizione di una molecola di alcool a un'aldeide, con formazione di un carbonio legato sia a -OH sia a -OR, si chiama ___.", "correctAnswer": "emiacetale", "explanation": "Un'ulteriore reazione con un secondo alcool porta alla formazione dell'acetale." },
-    { "id": 25, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Basi di Schiff", "question": "Il prodotto della condensazione tra un'ammina primaria e un'aldeide o un chetone, con formazione di un doppio legame C=N, si chiama base di ___.", "correctAnswer": "Schiff", "explanation": "È rilevante ad esempio nella chimica della visione e nel metabolismo di alcuni amminoacidi." },
-    { "id": 26, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Tautomeria cheto-enolica", "question": "L'equilibrio tra la forma chetonica e quella enolica di un composto carbonilico si chiama tautomeria ___.", "correctAnswer": "cheto-enolica", "explanation": "È rilevante ad esempio nella chimica dell'acido urico e del fosfoenolpiruvato." },
-    { "id": 27, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Ubichinone", "question": "Il composto che funge da trasportatore di elettroni nella catena respiratoria mitocondriale, alternando forma chinonica e idrochinonica, si chiama ___.", "correctAnswer": "ubichinone", "explanation": "È noto anche come coenzima Q." },
-    { "id": 28, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Esterificazione di Fischer", "question": "La reazione tra un acido carbossilico e un alcool, catalizzata da acido, che forma un estere, si chiama esterificazione di ___.", "correctAnswer": "Fischer", "explanation": "È una reazione di equilibrio reversibile." },
-    { "id": 29, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Condensazione di Claisen", "question": "La reazione di condensazione tra due molecole di estere, che porta alla formazione di un beta-chetoestere, si chiama condensazione di ___.", "correctAnswer": "Claisen", "explanation": "Coinvolge la formazione di un enolato come intermedio nucleofilo." },
-    { "id": 30, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Decarbossilazione dei chetoacidi", "question": "La perdita di anidride carbonica da un chetoacido si chiama ___.", "correctAnswer": "decarbossilazione", "explanation": "È un passaggio chiave in numerose vie metaboliche, come il ciclo di Krebs." },
-    { "id": 31, "type": "completamento", "materia": "Chimica e Prop. Biochimica", "topic": "Formazione dei lattoni", "question": "Un estere ciclico, formato dalla reazione intramolecolare tra un gruppo ossidrile e un gruppo carbossilico della stessa molecola, si chiama ___.", "correctAnswer": "lattone", "explanation": "Si forma tipicamente da idrossiacidi con geometria favorevole alla ciclizzazione." }
+    {
+      "id": 1,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Classificazione degli alcoli",
+      "question": "Un alcool è classificato come primario, secondario o terziario in base a:",
+      "options": [
+        "Al numero totale di atomi di ossigeno nella molecola",
+        "Alla temperatura di ebollizione della sostanza",
+        "Al numero di atomi di carbonio legati direttamente al carbonio recante il gruppo ossidrile",
+        "Al numero di doppi legami presenti nella molecola",
+        "Alla lunghezza totale della catena carboniosa nel modello di riferimento"
+      ],
+      "correctIndex": 2,
+      "explanation": "Un alcool si dice primario, secondario o terziario a seconda che il carbonio legato al gruppo -OH sia a sua volta legato rispettivamente a uno, due o tre altri atomi di carbonio."
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Reazione di disidratazione degli alcoli",
+      "question": "La reazione di disidratazione di un alcool porta tipicamente alla formazione di:",
+      "options": [
+        "Un acido carbossilico",
+        "Un'ammina",
+        "Un alchene, con perdita di una molecola d'acqua",
+        "Un etere ciclico in ogni caso",
+        "Un'ammide nella descrizione tradizionale"
+      ],
+      "correctIndex": 2,
+      "explanation": "La disidratazione di un alcool, generalmente catalizzata da acido, porta alla formazione di un alchene con eliminazione di una molecola d'acqua."
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Acidità del fenolo",
+      "question": "Il fenolo è più acido di un alcool alifatico perché:",
+      "options": [
+        "Non può mai dissociarsi in acqua secondo la nomenclatura standard",
+        "Non possiede alcun gruppo ossidrile",
+        "È una molecola completamente apolare",
+        "Il suo anione è instabile e altamente reattivo",
+        "Il suo anione fenato è stabilizzato per risonanza con l'anello aromatico"
+      ],
+      "correctIndex": 4,
+      "explanation": "La maggiore acidità del fenolo rispetto agli alcoli alifatici è dovuta alla stabilizzazione per risonanza della carica negativa dell'anione fenato con il sistema aromatico dell'anello."
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Struttura degli eteri",
+      "question": "Un etere è caratterizzato dalla presenza di:",
+      "options": [
+        "Un gruppo carbonilico C=O",
+        "Un gruppo ossidrile legato direttamente a un anello aromatico",
+        "Un gruppo carbossilico -COOH",
+        "Un atomo di azoto legato a tre gruppi carboniosi",
+        "Un atomo di ossigeno legato a due gruppi carboniosi (R-O-R')"
+      ],
+      "correctIndex": 4,
+      "explanation": "Gli eteri sono caratterizzati da un atomo di ossigeno legato covalentemente a due gruppi carboniosi (R-O-R'), a differenza degli alcoli che presentano un gruppo -OH."
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Basicità e nucleofilicità delle ammine",
+      "question": "Le ammine sono generalmente basi e nucleofili perché:",
+      "options": [
+        "Sono sempre cariche negativamente in soluzione acquosa",
+        "Possiedono un doppietto elettronico libero sull'atomo di azoto, disponibile per legare un protone o attaccare un centro elettrofilo",
+        "Reagiscono solo con altre basi, mai con acidi",
+        "Sono prive di qualsiasi reattività chimica nel modello di riferimento",
+        "Non possiedono alcun doppietto elettronico libero"
+      ],
+      "correctIndex": 1,
+      "explanation": "Il doppietto elettronico libero sull'azoto delle ammine conferisce loro carattere basico (capacità di legare un protone) e nucleofilo (capacità di attaccare un centro elettrofilo)."
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Nitrosammine",
+      "question": "Le nitrosammine sono composti di rilevanza biomedica principalmente perché:",
+      "options": [
+        "Sono utilizzate esclusivamente come solventi industriali innocui",
+        "Molte di esse hanno mostrato potenziale attività cancerogena",
+        "Non vengono mai metabolizzate dall'organismo",
+        "Sono completamente inerti dal punto di vista biologico",
+        "Sono prive di qualunque gruppo funzionale reattivo"
+      ],
+      "correctIndex": 1,
+      "explanation": "Le nitrosammine, formate dalla reazione tra ammine secondarie e agenti nitrosanti, sono composti di interesse biomedico per il loro potenziale cancerogeno documentato in diversi studi."
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Aldeidi e chetoni",
+      "question": "La differenza strutturale principale tra un'aldeide e un chetone è che:",
+      "options": [
+        "Nell'aldeide il gruppo carbonilico è legato ad almeno un atomo di idrogeno, nel chetone è legato a due gruppi carboniosi",
+        "Il chetone possiede sempre un anello aromatico, l'aldeide mai",
+        "Il chetone è sempre più acido dell'aldeide corrispondente",
+        "Non esiste alcuna differenza strutturale tra i due gruppi funzionali",
+        "L'aldeide non possiede alcun gruppo carbonilico nel modello di riferimento"
+      ],
+      "correctIndex": 0,
+      "explanation": "Nell'aldeide il carbonio carbonilico è legato ad almeno un atomo di idrogeno (oltre a un gruppo R), mentre nel chetone il carbonio carbonilico è legato a due gruppi carboniosi."
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Addizione nucleofila su aldeidi e chetoni",
+      "question": "Aldeidi e chetoni reagiscono tipicamente con i nucleofili tramite:",
+      "options": [
+        "Reazioni di addizione nucleofila al carbonio elettrofilo del gruppo carbonilico",
+        "Reazioni di eliminazione unicamente secondo la definizione classica",
+        "Reazioni di sostituzione elettrofila aromatica",
+        "Reazioni acido-base senza formazione di nuovi legami covalenti",
+        "Reazioni redox senza alcun meccanismo nucleofilo"
+      ],
+      "correctIndex": 0,
+      "explanation": "Il carbonio del gruppo carbonilico, parzialmente elettrofilo per la polarizzazione del legame C=O, è il bersaglio tipico dei nucleofili nelle reazioni di addizione nucleofila."
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Emiacetali e acetali",
+      "question": "Un emiacetale si forma dall'addizione di:",
+      "options": [
+        "Una molecola di alcool a un'aldeide o a un chetone",
+        "Due molecole di acido carbossilico tra loro",
+        "Un'ammina a un acido carbossilico",
+        "Due molecole di alcool a un alchene",
+        "Un alogenuro alchilico a un'ammina"
+      ],
+      "correctIndex": 0,
+      "explanation": "Un emiacetale si forma dall'addizione nucleofila di una molecola di alcool al gruppo carbonilico di un'aldeide (o chetone, formando un emichetale), con formazione di un carbonio legato sia a un -OH sia a un -OR."
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Basi di Schiff",
+      "question": "Una base di Schiff (immina) si forma dalla condensazione tra:",
+      "options": [
+        "Un'ammina primaria e un'aldeide o un chetone, con formazione di un doppio legame carbonio-azoto",
+        "Due molecole di aldeide tra loro",
+        "Un acido carbossilico e un alcool",
+        "Un'ammide e un'ammina",
+        "Un etere e un'aldeide secondo la nomenclatura standard"
+      ],
+      "correctIndex": 0,
+      "explanation": "Le basi di Schiff si formano dalla condensazione di un'ammina primaria con un'aldeide o un chetone, con formazione di un doppio legame C=N e rilascio di una molecola d'acqua."
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Tautomeria cheto-enolica",
+      "question": "La tautomeria cheto-enolica descrive l'equilibrio tra:",
+      "options": [
+        "La forma chetonica e la forma enolica di un composto",
+        "Due stereoisomeri identici tra loro",
+        "Due composti aromatici differenti",
+        "Due composti con formula molecolare diversa",
+        "Un'aldeide e un acido carbossilico"
+      ],
+      "correctIndex": 0,
+      "explanation": "La tautomeria cheto-enolica è un equilibrio dinamico tra la forma chetonica (gruppo C=O) e quella enolica (gruppo C=C-OH) di uno stesso composto, rilevante ad esempio nella chimica dell'acido urico e del fosfoenolpiruvato."
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Ubichinone",
+      "question": "L'ubichinone svolge un ruolo biologico fondamentale come:",
+      "options": [
+        "Enzima digestivo di natura proteica",
+        "Coenzima per la sintesi di acidi nucleici",
+        "Ormone steroideo nella descrizione tradizionale",
+        "Trasportatore di elettroni nella catena respiratoria mitocondriale, alternando forma chinonica e idrochinonica",
+        "Componente strutturale del DNA"
+      ],
+      "correctIndex": 3,
+      "explanation": "L'ubichinone (coenzima Q) funge da trasportatore mobile di elettroni nella catena respiratoria mitocondriale, alternando tra la forma ossidata (chinone) e ridotta (idrochinone)."
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Acidità degli acidi carbossilici",
+      "question": "Gli acidi carbossilici sono generalmente più acidi degli alcoli corrispondenti perché:",
+      "options": [
+        "Il loro anione è privo di qualsiasi delocalizzazione elettronica",
+        "Non possiedono alcun idrogeno acido",
+        "Sono sempre molecole completamente apolari",
+        "Il loro anione carbossilato è stabilizzato per risonanza, con la carica negativa delocalizzata su due atomi di ossigeno equivalenti",
+        "Reagiscono solo con basi deboli nella descrizione tradizionale"
+      ],
+      "correctIndex": 3,
+      "explanation": "L'anione carbossilato, derivato dalla dissociazione di un acido carbossilico, è stabilizzato per risonanza con la carica negativa delocalizzata equamente su due atomi di ossigeno, conferendo maggiore acidità rispetto agli alcoli."
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Esterificazione di Fischer",
+      "question": "L'esterificazione di Fischer è la reazione, catalizzata da acido, tra:",
+      "options": [
+        "Due molecole di acido carbossilico tra loro",
+        "Un acido carbossilico e un alcool, con formazione di un estere e acqua",
+        "Un'aldeide e un chetone come riportato nei testi di riferimento",
+        "Un'ammina e un acido carbossilico",
+        "Due molecole di alcool tra loro"
+      ],
+      "correctIndex": 1,
+      "explanation": "L'esterificazione di Fischer è la reazione reversibile, catalizzata da acido, tra un acido carbossilico e un alcool, che porta alla formazione di un estere con rilascio di una molecola d'acqua."
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Idrolisi degli esteri",
+      "question": "L'idrolisi di un estere porta alla formazione di:",
+      "options": [
+        "Un etere e un chetone",
+        "Un acido carbossilico e un alcool",
+        "Un'ammide e un'ammina",
+        "Un alchene e acqua",
+        "Due molecole di aldeide"
+      ],
+      "correctIndex": 1,
+      "explanation": "L'idrolisi di un estere, in presenza di acqua (catalizzata da acido o base), scinde il legame estereo rigenerando l'acido carbossilico e l'alcool di partenza."
+    },
+    {
+      "id": 16,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Condensazione di Claisen",
+      "question": "La condensazione di Claisen è una reazione tra due molecole di estere che porta alla formazione di:",
+      "options": [
+        "Un'ammide ciclica nel modello di riferimento",
+        "Un alchene per eliminazione",
+        "Un etere semplice",
+        "Un acido carbossilico semplice",
+        "Un beta-chetoestere, tramite attacco nucleofilo dell'enolato di un estere su un altro"
+      ],
+      "correctIndex": 4,
+      "explanation": "Nella condensazione di Claisen, l'enolato generato da un estere attacca in modo nucleofilo il gruppo carbonilico di un secondo estere, formando un beta-chetoestere."
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Idrolisi delle ammidi",
+      "question": "L'idrolisi di un'ammide porta alla formazione di:",
+      "options": [
+        "Un etere ciclico secondo la definizione classica",
+        "Un'aldeide e un chetone",
+        "Due molecole di ammina",
+        "Un estere e un alcool",
+        "Un acido carbossilico e un'ammina (o ammoniaca)"
+      ],
+      "correctIndex": 4,
+      "explanation": "L'idrolisi di un'ammide, generalmente in condizioni acide o basiche più drastiche rispetto agli esteri, scinde il legame ammidico rigenerando l'acido carbossilico (o suo sale) e l'ammina o l'ammoniaca di partenza."
+    },
+    {
+      "id": 18,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Decarbossilazione dei chetoacidi",
+      "question": "La decarbossilazione di un chetoacido consiste in:",
+      "options": [
+        "La perdita di una molecola di anidride carbonica dalla molecola",
+        "L'ossidazione completa del gruppo carbonilico",
+        "L'aggiunta di un gruppo carbossilico alla molecola",
+        "La formazione di un nuovo legame peptidico",
+        "La riduzione del gruppo carbossilico ad alcool"
+      ],
+      "correctIndex": 0,
+      "explanation": "La decarbossilazione è la reazione in cui un chetoacido perde una molecola di CO2, un processo rilevante in numerose vie metaboliche, come il ciclo di Krebs."
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Reattività delle anidridi",
+      "question": "Le anidridi degli acidi carbossilici sono caratterizzate da:",
+      "options": [
+        "L'incapacità di reagire con l'acqua secondo la definizione classica",
+        "L'assenza di qualunque gruppo carbonilico",
+        "Una totale inerzia chimica verso qualunque nucleofilo",
+        "Una reattività identica a quella degli alcani",
+        "Una reattività verso i nucleofili generalmente maggiore rispetto agli esteri"
+      ],
+      "correctIndex": 4,
+      "explanation": "Le anidridi sono generalmente più reattive degli esteri verso l'attacco nucleofilo, poiché il gruppo carbossilato è un miglior gruppo uscente rispetto all'alcossido."
+    },
+    {
+      "id": 20,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Acilfosfati di rilevanza biologica",
+      "question": "Gli acilfosfati, come l'1,3-bisfosfoglicerato, sono di rilevanza biologica perché:",
+      "options": [
+        "Sono composti stabili e inerti dal punto di vista energetico",
+        "Non partecipano mai alla sintesi di ATP secondo la nomenclatura standard",
+        "Sono privi di qualsiasi funzione nel metabolismo cellulare",
+        "Sono composti ad alta energia di idrolisi, coinvolti nel trasferimento di gruppi fosfato in reazioni metaboliche",
+        "Sono presenti solo negli organismi vegetali"
+      ],
+      "correctIndex": 3,
+      "explanation": "Gli acilfosfati sono composti ad alta energia di idrolisi, il cui legame anidridico misto tra gruppo acilico e fosfato è coinvolto in importanti reazioni di trasferimento energetico nel metabolismo cellulare, come nella glicolisi."
+    },
+    {
+      "id": 21,
+      "type": "mcq",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Formazione dei lattoni",
+      "question": "Un lattone è un composto che si forma quando:",
+      "options": [
+        "Un'aldeide si ossida ad acido carbossilico",
+        "Due molecole distinte di acido carbossilico reagiscono tra loro",
+        "Un gruppo ossidrile e un gruppo carbossilico presenti nella stessa molecola reagiscono intramolecolarmente formando un estere ciclico",
+        "Un alchene si idrata in ambiente acido",
+        "Un'ammina reagisce con un alcool nella descrizione tradizionale"
+      ],
+      "correctIndex": 2,
+      "explanation": "Un lattone è un estere ciclico che si forma quando il gruppo ossidrile e il gruppo carbossilico presenti nella stessa molecola reagiscono intramolecolarmente."
+    },
+    {
+      "id": 22,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Reazione di disidratazione degli alcoli",
+      "question": "La reazione che rimuove una molecola d'acqua da un alcool, generando un alchene, si chiama reazione di ___.",
+      "correctAnswer": "disidratazione",
+      "explanation": "È generalmente catalizzata da un acido forte."
+    },
+    {
+      "id": 23,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Acidità del fenolo",
+      "question": "Il fenolo è più acido di un alcool alifatico perché il suo anione fenato è stabilizzato per ___ con l'anello aromatico.",
+      "correctAnswer": "risonanza",
+      "explanation": "La delocalizzazione della carica negativa sull'anello aromatico stabilizza l'anione fenato."
+    },
+    {
+      "id": 24,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Emiacetali",
+      "question": "Il prodotto dell'addizione di una molecola di alcool a un'aldeide, con formazione di un carbonio legato sia a -OH sia a -OR, si chiama ___.",
+      "correctAnswer": "emiacetale",
+      "explanation": "Un'ulteriore reazione con un secondo alcool porta alla formazione dell'acetale."
+    },
+    {
+      "id": 25,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Basi di Schiff",
+      "question": "Il prodotto della condensazione tra un'ammina primaria e un'aldeide o un chetone, con formazione di un doppio legame C=N, si chiama base di ___.",
+      "correctAnswer": "Schiff",
+      "explanation": "È rilevante ad esempio nella chimica della visione e nel metabolismo di alcuni amminoacidi."
+    },
+    {
+      "id": 26,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Tautomeria cheto-enolica",
+      "question": "L'equilibrio tra la forma chetonica e quella enolica di un composto carbonilico si chiama tautomeria ___.",
+      "correctAnswer": "cheto-enolica",
+      "explanation": "È rilevante ad esempio nella chimica dell'acido urico e del fosfoenolpiruvato."
+    },
+    {
+      "id": 27,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Ubichinone",
+      "question": "Il composto che funge da trasportatore di elettroni nella catena respiratoria mitocondriale, alternando forma chinonica e idrochinonica, si chiama ___.",
+      "correctAnswer": "ubichinone",
+      "explanation": "È noto anche come coenzima Q."
+    },
+    {
+      "id": 28,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Esterificazione di Fischer",
+      "question": "La reazione tra un acido carbossilico e un alcool, catalizzata da acido, che forma un estere, si chiama esterificazione di ___.",
+      "correctAnswer": "Fischer",
+      "explanation": "È una reazione di equilibrio reversibile."
+    },
+    {
+      "id": 29,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Condensazione di Claisen",
+      "question": "La reazione di condensazione tra due molecole di estere, che porta alla formazione di un beta-chetoestere, si chiama condensazione di ___.",
+      "correctAnswer": "Claisen",
+      "explanation": "Coinvolge la formazione di un enolato come intermedio nucleofilo."
+    },
+    {
+      "id": 30,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Decarbossilazione dei chetoacidi",
+      "question": "La perdita di anidride carbonica da un chetoacido si chiama ___.",
+      "correctAnswer": "decarbossilazione",
+      "explanation": "È un passaggio chiave in numerose vie metaboliche, come il ciclo di Krebs."
+    },
+    {
+      "id": 31,
+      "type": "completamento",
+      "materia": "Chimica e Prop. Biochimica",
+      "topic": "Formazione dei lattoni",
+      "question": "Un estere ciclico, formato dalla reazione intramolecolare tra un gruppo ossidrile e un gruppo carbossilico della stessa molecola, si chiama ___.",
+      "correctAnswer": "lattone",
+      "explanation": "Si forma tipicamente da idrossiacidi con geometria favorevole alla ciclizzazione."
+    }
   ]
 }
