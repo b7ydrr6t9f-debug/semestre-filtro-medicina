@@ -254,6 +254,11 @@ function renderQuizUI() {
           ${badge}
         </div>
         ${bodyHtml}
+        <div class="flex justify-end">
+          <button type="button" onclick="annullaRispostaDomanda(${idx}, '${q.type}')" class="text-xs text-slate-500 hover:text-rose-600 font-medium flex items-center gap-1 transition">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> Annulla risposta
+          </button>
+        </div>
       </div>
     `;
   });
@@ -271,6 +276,17 @@ function renderQuizUI() {
 
   lucide.createIcons();
   window.scrollTo({ top: document.getElementById('quiz-area').offsetTop - 80, behavior: 'smooth' });
+}
+
+// Annulla la risposta data a una singola domanda (deseleziona il radio
+// per le risposte multiple, svuota il campo per il completamento)
+function annullaRispostaDomanda(idx, tipo) {
+  if (tipo === 'completamento') {
+    const input = document.getElementById(`completion_${idx}`);
+    if (input) input.value = '';
+  } else {
+    document.querySelectorAll(`input[name="question_${idx}"]`).forEach(r => { r.checked = false; });
+  }
 }
 
 // Normalizza un testo per il confronto: minuscolo, senza accenti né punteggiatura
