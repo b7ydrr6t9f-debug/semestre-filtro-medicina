@@ -9,13 +9,13 @@
       "topic": "Ibridazione del carbonio",
       "question": "Un atomo di carbonio impegnato in quattro legami singoli, come negli alcani, presenta ibridazione:",
       "options": [
-        "sp3d",
-        "sp3",
-        "sp",
         "sp2",
-        "d2sp3"
+        "sp3d",
+        "d2sp3",
+        "sp",
+        "sp3"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "Il carbonio con quattro legami sigma singoli presenta ibridazione sp3, con geometria tetraedrica."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Idrocarburi saturi e insaturi",
       "question": "Gli idrocarburi insaturi si distinguono da quelli saturi per la presenza di:",
       "options": [
-        "Un anello aromatico obbligatorio",
-        "L'assenza totale di atomi di idrogeno",
-        "Solo legami singoli carbonio-carbonio",
         "Almeno un doppio o triplo legame carbonio-carbonio",
+        "Solo legami singoli carbonio-carbonio",
+        "L'assenza totale di atomi di idrogeno",
+        "Un anello aromatico obbligatorio",
         "Solo atomi di carbonio ibridati sp3"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Gli idrocarburi insaturi contengono almeno un doppio (alcheni) o triplo (alchini) legame carbonio-carbonio, a differenza degli idrocarburi saturi (alcani) che presentano solo legami singoli."
     },
     {
@@ -41,11 +41,11 @@
       "topic": "Enantiomeri",
       "question": "Due molecole che sono immagini speculari non sovrapponibili l'una dell'altra si chiamano:",
       "options": [
-        "Diastereoisomeri",
-        "Enantiomeri",
         "Conformeri",
+        "Enantiomeri",
+        "Tautomeri",
         "Isomeri costituzionali",
-        "Tautomeri"
+        "Diastereoisomeri"
       ],
       "correctIndex": 1,
       "explanation": "Gli enantiomeri sono coppie di stereoisomeri che sono immagini speculari non sovrapponibili, tipicamente dovute alla presenza di un centro stereogenico (carbonio chirale)."
@@ -57,13 +57,13 @@
       "topic": "Diastereoisomeri",
       "question": "I diastereoisomeri, a differenza degli enantiomeri, sono stereoisomeri che:",
       "options": [
+        "Hanno esattamente le stesse proprietà fisiche e chimiche",
+        "Sono sempre otticamente inattivi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Non sono immagini speculari l'uno dell'altro e possiedono proprietà fisiche generalmente diverse",
         "Non possiedono alcun centro stereogenico",
-        "Sono sempre otticamente inattivi nel modello di riferimento",
-        "Hanno esattamente le stesse proprietà fisiche e chimiche",
         "Sono sempre immagini speculari perfette l'uno dell'altro"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "I diastereoisomeri sono stereoisomeri che non sono immagini speculari l'uno dell'altro, e a differenza degli enantiomeri possiedono generalmente proprietà fisiche diverse (punto di fusione, solubilità, ecc.)."
     },
     {
@@ -74,12 +74,12 @@
       "question": "La convenzione R/S viene utilizzata per:",
       "options": [
         "Calcolare il punto di ebollizione di un composto organico",
-        "Determinare il pH di una soluzione nella descrizione tradizionale",
-        "Stabilire il numero di ossidazione di un elemento",
         "Determinare la solubilità di un composto in acqua",
-        "Assegnare in modo univoco la configurazione assoluta di un centro stereogenico, in base alle regole di priorità dei sostituenti"
+        "Determinare il pH di una soluzione, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Assegnare in modo univoco la configurazione assoluta di un centro stereogenico, in base alle regole di priorità dei sostituenti",
+        "Stabilire il numero di ossidazione di un elemento"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La convenzione R/S assegna la configurazione assoluta di un centro stereogenico in base a regole di priorità (regole di Cahn-Ingold-Prelog) applicate ai sostituenti legati al carbonio chirale."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Potere ottico rotatorio",
       "question": "Il potere ottico rotatorio specifico di una sostanza chirale misura:",
       "options": [
-        "La sua capacità di ruotare il piano della luce polarizzata",
-        "La sua massa molecolare secondo la nomenclatura standard",
-        "La sua solubilità in acqua",
         "La sua temperatura di ebollizione",
+        "La sua solubilità in acqua",
+        "La sua capacità di ruotare il piano della luce polarizzata",
+        "La sua massa molecolare, interpretazione ormai datata",
         "Il suo numero di ossidazione"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Il potere ottico rotatorio specifico misura l'entità con cui una sostanza chirale ruota il piano di polarizzazione della luce polarizzata che l'attraversa."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Rottura omolitica del legame chimico",
       "question": "Nella rottura omolitica di un legame covalente:",
       "options": [
-        "Il legame si rompe simmetricamente, con ciascun atomo che trattiene un elettrone, generando due radicali",
         "Si formano sempre due specie cariche",
+        "Non si formano mai specie reattive, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Il legame non si rompe mai in condizioni normali",
         "Entrambi gli elettroni del legame vanno a un solo atomo, generando ioni",
-        "Non si formano mai specie reattive nella descrizione tradizionale",
-        "Il legame non si rompe mai in condizioni normali"
+        "Il legame si rompe simmetricamente, con ciascun atomo che trattiene un elettrone, generando due radicali"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Nella rottura omolitica il legame si rompe simmetricamente, con ciascun atomo coinvolto che trattiene uno dei due elettroni condivisi, generando due specie radicaliche con un elettrone spaiato."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Rottura eterolitica e carbocationi",
       "question": "Nella rottura eterolitica di un legame carbonio-eteroatomo, con formazione di un carbocatione, entrambi gli elettroni del legame vanno:",
       "options": [
-        "All'eteroatomo, lasciando il carbonio con carica positiva e sestetto elettronico incompleto",
-        "Sempre a un atomo di idrogeno vicino come riportato nei testi di riferimento",
-        "All'atomo di carbonio, che diventa carico negativamente",
         "A entrambi gli atomi in parti uguali",
-        "Nessuno dei due atomi trattiene gli elettroni"
+        "All'eteroatomo, lasciando il carbonio con carica positiva e sestetto elettronico incompleto",
+        "Sempre a un atomo di idrogeno vicino, posizione che i dati recenti non confermano",
+        "Nessuno dei due atomi trattiene gli elettroni",
+        "All'atomo di carbonio, che diventa carico negativamente"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Nella rottura eterolitica con formazione di un carbocatione, entrambi gli elettroni del legame vanno all'eteroatomo uscente, lasciando il carbonio con una carica positiva e un sestetto elettronico incompleto."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Effetto induttivo",
       "question": "Un gruppo elettron-attrattore, tramite effetto induttivo, tende a:",
       "options": [
-        "Ridurre la densità elettronica sul carbonio a cui è legato, attirando elettroni attraverso i legami sigma",
         "Stabilizzare esclusivamente i carboanioni, mai i carbocationi",
-        "Non avere alcun effetto sulla distribuzione elettronica della molecola",
+        "Agire solo a distanza infinita dal centro di reazione, posizione che i dati recenti non confermano",
+        "Ridurre la densità elettronica sul carbonio a cui è legato, attirando elettroni attraverso i legami sigma",
         "Aumentare la densità elettronica sul carbonio a cui è legato",
-        "Agire solo a distanza infinita dal centro di reazione secondo la nomenclatura standard"
+        "Non avere alcun effetto sulla distribuzione elettronica della molecola"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Un gruppo elettron-attrattore, tramite effetto induttivo, riduce la densità elettronica sugli atomi vicini attirando elettroni attraverso i legami sigma, con effetti sulla stabilità di intermedi carichi come carbocationi e carboanioni."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Nucleofili ed elettrofili",
       "question": "Un nucleofilo è una specie chimica caratterizzata da:",
       "options": [
-        "Carica sempre negativa e mai neutra secondo la nomenclatura standard",
-        "Capacità esclusiva di reagire solo con altri nucleofili",
-        "Carenza di elettroni, capace di accettare una coppia elettronica",
+        "Ricchezza di elettroni, capace di donare una coppia elettronica a un centro elettrofilo",
         "Assenza totale di reattività chimica",
-        "Ricchezza di elettroni, capace di donare una coppia elettronica a un centro elettrofilo"
+        "Capacità esclusiva di reagire solo con altri nucleofili",
+        "Carica sempre negativa e mai neutra, posizione che i dati recenti non confermano",
+        "Carenza di elettroni, capace di accettare una coppia elettronica"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Un nucleofilo è una specie ricca di elettroni (spesso con doppietti liberi o cariche negative) capace di donare una coppia elettronica a un centro elettrofilo, formando un nuovo legame."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Meccanismo SN2",
       "question": "Il meccanismo di sostituzione nucleofila SN2 è caratterizzato da:",
       "options": [
-        "Un unico stadio concertato, in cui il nucleofilo attacca contemporaneamente all'uscita del gruppo uscente, con inversione di configurazione",
-        "La formazione di un prodotto racemo in ogni caso",
-        "Due stadi distinti, con formazione di un carbocatione intermedio",
         "Una cinetica indipendente dalla concentrazione del nucleofilo",
-        "L'assenza totale di un nucleofilo nella descrizione tradizionale"
+        "Un unico stadio concertato, in cui il nucleofilo attacca contemporaneamente all'uscita del gruppo uscente, con inversione di configurazione",
+        "Due stadi distinti, con formazione di un carbocatione intermedio",
+        "L'assenza totale di un nucleofilo, elemento sempre presente e determinante nella cinetica di questo meccanismo, ipotesi smentita",
+        "La formazione di un prodotto racemo in ogni caso"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Il meccanismo SN2 avviene in un unico stadio concertato, in cui l'attacco del nucleofilo e l'allontanamento del gruppo uscente sono simultanei, con conseguente inversione di configurazione al centro di reazione."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Meccanismo SN1",
       "question": "Il meccanismo di sostituzione nucleofila SN1 procede attraverso:",
       "options": [
-        "L'assenza totale di un gruppo uscente secondo la definizione classica",
-        "L'inversione obbligatoria della configurazione stereochimica",
         "Una cinetica dipendente solo dalla concentrazione del nucleofilo",
+        "Un unico stadio concertato senza intermedi",
         "Due stadi distinti, con formazione iniziale di un carbocatione intermedio, seguito dall'attacco del nucleofilo",
-        "Un unico stadio concertato senza intermedi"
+        "L'inversione obbligatoria della configurazione stereochimica",
+        "L'assenza totale di un gruppo uscente, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Il meccanismo SN1 avviene in due stadi: prima si forma un carbocatione intermedio per allontanamento del gruppo uscente, poi il nucleofilo attacca il carbocatione, spesso con formazione di miscele racemiche."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Cicloalcani e tensione di anello",
       "question": "La tensione di anello nei cicloalcani, particolarmente marcata nel ciclopropano, è dovuta a:",
       "options": [
+        "L'assenza totale di legami carbonio-carbonio",
+        "L'ibridazione sp del carbonio anulare, posizione che i dati recenti non confermano",
         "La presenza obbligatoria di un doppio legame",
-        "L'ibridazione sp del carbonio anulare nel modello di riferimento",
-        "La deviazione degli angoli di legame reali rispetto all'angolo tetraedrico ideale di 109,5°",
         "Un eccesso di atomi di idrogeno nella molecola",
-        "L'assenza totale di legami carbonio-carbonio"
+        "La deviazione degli angoli di legame reali rispetto all'angolo tetraedrico ideale di 109,5°"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "Nei cicloalcani piccoli, come il ciclopropano, gli angoli di legame reali si discostano significativamente dall'angolo tetraedrico ideale di 109,5°, generando tensione angolare (tensione di anello)."
     },
     {
@@ -217,11 +217,11 @@
       "topic": "Reazioni di addizione elettrofila sugli alcheni",
       "question": "Gli alcheni reagiscono tipicamente tramite reazioni di:",
       "options": [
-        "Ossidoriduzione priva di alcun meccanismo elettrofilo",
+        "Sostituzione nucleofila, interpretazione ormai datata",
         "Addizione elettrofila al doppio legame carbonio-carbonio",
-        "Sostituzione elettrofila aromatica",
-        "Sostituzione nucleofila nel modello di riferimento",
-        "Eliminazione unicamente"
+        "Ossidoriduzione priva di alcun meccanismo elettrofilo",
+        "Eliminazione unicamente",
+        "Sostituzione elettrofila aromatica"
       ],
       "correctIndex": 1,
       "explanation": "Gli alcheni, grazie alla densità elettronica del doppio legame, reagiscono tipicamente con elettrofili tramite reazioni di addizione elettrofila, che rompono il legame pi-greco."
@@ -233,13 +233,13 @@
       "topic": "Dieni coniugati",
       "question": "Nei dieni coniugati, la delocalizzazione elettronica tra i due doppi legami adiacenti comporta:",
       "options": [
-        "La trasformazione automatica in un anello aromatico",
-        "L'assenza totale di reattività chimica nella descrizione tradizionale",
-        "Una maggiore stabilità rispetto ai dieni non coniugati, grazie alla sovrapposizione degli orbitali p",
         "Una minore stabilità rispetto ai dieni isolati",
-        "La perdita completa del carattere insaturo della molecola"
+        "Una maggiore stabilità rispetto ai dieni non coniugati, grazie alla sovrapposizione degli orbitali p",
+        "La perdita completa del carattere insaturo della molecola",
+        "L'assenza totale di reattività chimica, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "La trasformazione automatica in un anello aromatico"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Nei dieni coniugati, la sovrapposizione degli orbitali p adiacenti permette una delocalizzazione elettronica che conferisce maggiore stabilità rispetto ai dieni isolati non coniugati."
     },
     {
@@ -249,10 +249,10 @@
       "topic": "Idrocarburi aromatici e benzene",
       "question": "Il benzene è un idrocarburo aromatico caratterizzato da:",
       "options": [
-        "Una struttura tridimensionale non planare secondo la definizione classica",
         "L'assenza totale di elettroni delocalizzati",
-        "Un solo doppio legame carbonio-carbonio localizzato",
+        "Una struttura tridimensionale non planare, posizione che i dati recenti non confermano",
         "Legami carbonio-carbonio di lunghezza molto diversa tra loro",
+        "Un solo doppio legame carbonio-carbonio localizzato",
         "Sei elettroni pi-greco delocalizzati su un anello planare a sei atomi di carbonio"
       ],
       "correctIndex": 4,
@@ -265,11 +265,11 @@
       "topic": "Regola di Huckel",
       "question": "La regola di Huckel per l'aromaticità stabilisce che un sistema ciclico planare è aromatico se possiede:",
       "options": [
-        "Solo legami singoli, senza alcuna insaturazione",
-        "Un numero dispari di atomi di carbonio nell'anello, indipendentemente dagli elettroni",
         "Un numero di elettroni pi-greco pari a 4n",
+        "Solo legami singoli, senza alcuna insaturazione",
+        "Nessun elettrone pi-greco delocalizzato",
         "Un numero di elettroni pi-greco pari a 4n+2, con n intero non negativo",
-        "Nessun elettrone pi-greco delocalizzato"
+        "Un numero dispari di atomi di carbonio nell'anello, indipendentemente dagli elettroni"
       ],
       "correctIndex": 3,
       "explanation": "Secondo la regola di Huckel, un sistema ciclico planare e completamente coniugato è aromatico se possiede un numero di elettroni pi-greco pari a 4n+2, dove n è un intero non negativo (come i sei elettroni pi-greco del benzene, con n=1)."
@@ -281,13 +281,13 @@
       "topic": "Sostituzione elettrofila aromatica",
       "question": "La sostituzione elettrofila aromatica è la reazione tipica del benzene e dei suoi derivati, in cui:",
       "options": [
-        "Non si forma mai un intermedio carico positivamente",
-        "L'intero anello aromatico viene distrutto in modo permanente",
         "Il benzene si comporta come un nucleofilo verso un altro anello aromatico",
-        "Avviene sempre senza alcun catalizzatore nel modello di riferimento",
-        "Un elettrofilo sostituisce un atomo di idrogeno legato all'anello aromatico, mantenendo l'aromaticità del sistema"
+        "Un elettrofilo sostituisce un atomo di idrogeno legato all'anello aromatico, mantenendo l'aromaticità del sistema",
+        "Avviene sempre senza alcun catalizzatore, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Non si forma mai un intermedio carico positivamente",
+        "L'intero anello aromatico viene distrutto in modo permanente"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "Nella sostituzione elettrofila aromatica, un elettrofilo attacca l'anello aromatico sostituendo un atomo di idrogeno, con formazione di un intermedio carico (ione arenio) e successivo ripristino dell'aromaticità del sistema."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Effetto attivante e disattivante dei sostituenti aromatici",
       "question": "Un sostituente elettron-donatore già presente sull'anello benzenico, come un gruppo -OH, generalmente:",
       "options": [
-        "Non ha alcun effetto sulla reattività dell'anello nel modello di riferimento",
-        "Attiva l'anello, aumentandone la reattività verso ulteriori sostituzioni elettrofile aromatiche",
         "Disattiva l'anello rendendolo meno reattivo verso ulteriori sostituzioni elettrofile",
         "Impedisce completamente qualsiasi ulteriore reazione",
-        "Trasforma sempre l'anello in un sistema non aromatico"
+        "Attiva l'anello, aumentandone la reattività verso ulteriori sostituzioni elettrofile aromatiche",
+        "Trasforma sempre l'anello in un sistema non aromatico",
+        "Non ha alcun effetto sulla reattività dell'anello, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Un sostituente elettron-donatore, come il gruppo -OH, aumenta la densità elettronica dell'anello aromatico, attivandolo e rendendolo più reattivo verso ulteriori sostituzioni elettrofile aromatiche."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Nomenclatura IUPAC",
       "question": "Le regole generali di nomenclatura IUPAC per i composti organici si basano principalmente su:",
       "options": [
-        "L'uso esclusivo di nomi tradizionali senza alcuna standardizzazione",
-        "La sola colorazione del composto nella descrizione tradizionale",
-        "Nomi arbitrari senza alcuna regola sistematica",
         "Il solo peso molecolare del composto",
-        "L'identificazione della catena carboniosa principale e la numerazione sistematica dei sostituenti e dei gruppi funzionali"
+        "L'identificazione della catena carboniosa principale e la numerazione sistematica dei sostituenti e dei gruppi funzionali",
+        "Nomi arbitrari senza alcuna regola sistematica",
+        "L'uso esclusivo di nomi tradizionali senza alcuna standardizzazione",
+        "La sola colorazione del composto, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La nomenclatura IUPAC si basa sull'identificazione della catena carboniosa principale (la più lunga contenente il gruppo funzionale principale) e sulla numerazione sistematica dei sostituenti, per garantire un nome univoco e riproducibile."
     },
     {
@@ -329,11 +329,11 @@
       "topic": "Tossicità dei composti aromatici",
       "question": "Molti composti aromatici, come alcuni idrocarburi policiclici, sono considerati di rilevanza biomedica principalmente perché:",
       "options": [
-        "Sono sempre completamente inerti e privi di qualsiasi effetto biologico",
-        "Non sono mai presenti nell'ambiente nella descrizione tradizionale",
+        "Sono utilizzati esclusivamente come conservanti alimentari innocui",
+        "Non sono mai presenti nell'ambiente, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Possono avere effetti tossici o cancerogeni legati alla loro reattività chimica e capacità di interagire con il DNA",
         "Non vengono mai metabolizzati dall'organismo",
-        "Sono utilizzati esclusivamente come conservanti alimentari innocui"
+        "Sono sempre completamente inerti e privi di qualsiasi effetto biologico"
       ],
       "correctIndex": 2,
       "explanation": "Alcuni composti aromatici, in particolare gli idrocarburi policiclici aromatici, possono essere metabolizzati in intermedi reattivi capaci di interagire con il DNA, con potenziali effetti tossici o cancerogeni."

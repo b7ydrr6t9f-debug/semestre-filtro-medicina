@@ -9,13 +9,13 @@
       "topic": "Sistema e ambiente",
       "question": "In termodinamica, il \"sistema\" è definito come:",
       "options": [
+        "L'insieme di tutte le leggi della fisica",
         "Solo la parte solida di un fenomeno fisico",
+        "Sempre l'intero universo, posizione che i dati recenti non confermano",
         "La porzione di universo oggetto di studio, distinta dall'ambiente circostante",
-        "Sempre l'intero universo come riportato nei testi di riferimento",
-        "Una grandezza priva di significato fisico",
-        "L'insieme di tutte le leggi della fisica"
+        "Una grandezza priva di significato fisico"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Il sistema termodinamico è la porzione di universo scelta per lo studio, separata concettualmente dall'ambiente circostante con cui può scambiare energia e/o materia."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Funzioni di stato",
       "question": "Una funzione di stato, come l'energia interna, è caratterizzata dal fatto che:",
       "options": [
-        "Dipende esclusivamente dal tempo trascorso nella descrizione tradizionale",
-        "È sempre uguale a zero in ogni trasformazione",
         "Il suo valore dipende dal percorso seguito per raggiungere un determinato stato",
+        "Il suo valore dipende solo dallo stato attuale del sistema, non dal percorso seguito per raggiungerlo",
+        "È sempre uguale a zero in ogni trasformazione",
         "Non può mai essere definita per un gas ideale",
-        "Il suo valore dipende solo dallo stato attuale del sistema, non dal percorso seguito per raggiungerlo"
+        "Dipende esclusivamente dal tempo trascorso, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "Una funzione di stato dipende esclusivamente dallo stato termodinamico attuale del sistema (definito da variabili come pressione, volume e temperatura), non dal percorso seguito per raggiungerlo."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Equazione di stato dei gas perfetti",
       "question": "L'equazione di stato dei gas perfetti mette in relazione:",
       "options": [
-        "Esclusivamente la pressione e il numero di moli",
-        "Solo la temperatura e il volume",
-        "Il calore specifico e la capacità termica",
         "Pressione, volume, numero di moli e temperatura assoluta del gas",
-        "L'entropia e l'energia interna nel modello di riferimento"
+        "Il calore specifico e la capacità termica",
+        "L'entropia e l'energia interna, interpretazione ormai datata",
+        "Esclusivamente la pressione e il numero di moli",
+        "Solo la temperatura e il volume"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "L'equazione di stato dei gas perfetti (PV = nRT) collega pressione, volume, numero di moli e temperatura assoluta del gas."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Capacità termica e calore specifico",
       "question": "Il calore specifico di una sostanza è definito come:",
       "options": [
-        "Il volume occupato dalla sostanza a una data temperatura",
-        "La quantità di calore necessaria per innalzare di un grado la temperatura dell'intero campione, indipendentemente dalla massa",
-        "L'energia totale contenuta nella sostanza secondo la nomenclatura standard",
         "La pressione esercitata dalla sostanza allo stato gassoso",
-        "La quantità di calore necessaria per innalzare di un grado la temperatura dell'unità di massa della sostanza"
+        "Il volume occupato dalla sostanza a una data temperatura",
+        "La quantità di calore necessaria per innalzare di un grado la temperatura dell'unità di massa della sostanza",
+        "L'energia totale contenuta nella sostanza, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "La quantità di calore necessaria per innalzare di un grado la temperatura dell'intero campione, indipendentemente dalla massa"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Il calore specifico è la quantità di calore necessaria per innalzare di un grado la temperatura dell'unità di massa di una sostanza, mentre la capacità termica si riferisce all'intero campione."
     },
     {
@@ -73,13 +73,13 @@
       "topic": "Calore latente",
       "question": "Il calore latente è la quantità di calore scambiata durante:",
       "options": [
-        "Un aumento di temperatura a stato fisico invariato",
+        "Un cambiamento di stato fisico a temperatura costante, senza variazione di temperatura",
         "Una reazione chimica generica",
-        "Un moto rettilineo uniforme nel modello di riferimento",
         "Una trasformazione isobara di un gas ideale senza cambiamento di fase",
-        "Un cambiamento di stato fisico a temperatura costante, senza variazione di temperatura"
+        "Un moto rettilineo uniforme, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Un aumento di temperatura a stato fisico invariato"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Il calore latente è l'energia scambiata durante un cambiamento di stato fisico (fusione, evaporazione, ecc.), che avviene a temperatura costante."
     },
     {
@@ -90,12 +90,12 @@
       "question": "La conduzione termica è il meccanismo di trasmissione del calore che avviene:",
       "options": [
         "Solo tramite il movimento macroscopico di un fluido",
-        "Solo nei gas, mai nei solidi nel modello di riferimento",
-        "Solo attraverso onde elettromagnetiche nel vuoto",
+        "Esclusivamente in assenza di qualsiasi differenza di temperatura",
         "Tramite urti tra particelle adiacenti, senza spostamento macroscopico di materia",
-        "Esclusivamente in assenza di qualsiasi differenza di temperatura"
+        "Solo attraverso onde elettromagnetiche nel vuoto",
+        "Solo nei gas, mai nei solidi, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "La conduzione termica avviene tramite trasferimento di energia cinetica tra particelle adiacenti in urto reciproco, senza spostamento macroscopico di materia, ed è particolarmente efficiente nei solidi."
     },
     {
@@ -106,10 +106,10 @@
       "question": "La convezione termica è caratterizzata da:",
       "options": [
         "Il trasferimento di calore tramite il movimento macroscopico di un fluido",
-        "Un fenomeno che avviene esclusivamente nel vuoto",
-        "Un fenomeno indipendente dalla presenza di un fluido",
         "La sola propagazione tramite onde elettromagnetiche",
-        "L'assenza totale di movimento di materia secondo la nomenclatura standard"
+        "Un fenomeno che avviene esclusivamente nel vuoto",
+        "L'assenza totale di movimento di materia, interpretazione ormai datata",
+        "Un fenomeno indipendente dalla presenza di un fluido"
       ],
       "correctIndex": 0,
       "explanation": "La convezione consiste nel trasferimento di calore associato al movimento macroscopico di un fluido, come nei moti convettivi dell'aria o dell'acqua."
@@ -121,13 +121,13 @@
       "topic": "Irraggiamento",
       "question": "L'irraggiamento è il meccanismo di trasmissione del calore che:",
       "options": [
-        "Avviene solo per contatto diretto tra due corpi",
-        "È possibile solo a temperature prossime allo zero assoluto",
+        "Non trasporta mai energia, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Avviene tramite emissione di onde elettromagnetiche, e può quindi propagarsi anche nel vuoto",
         "Richiede necessariamente un mezzo materiale per propagarsi",
-        "Non trasporta mai energia secondo la nomenclatura standard"
+        "Avviene solo per contatto diretto tra due corpi",
+        "È possibile solo a temperature prossime allo zero assoluto"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "L'irraggiamento avviene tramite emissione e assorbimento di onde elettromagnetiche, e a differenza di conduzione e convezione può propagarsi anche nel vuoto, come nel caso della radiazione solare."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Primo principio della termodinamica",
       "question": "Il primo principio della termodinamica afferma che la variazione di energia interna di un sistema è pari a:",
       "options": [
-        "Solo il lavoro compiuto dal sistema, indipendentemente dal calore",
-        "Il calore scambiato meno il lavoro compiuto dal sistema sull'ambiente",
-        "Sempre zero in ogni trasformazione",
+        "Solo il calore scambiato, indipendentemente dal lavoro",
         "Il prodotto tra calore e lavoro secondo la nomenclatura standard",
-        "Solo il calore scambiato, indipendentemente dal lavoro"
+        "Sempre zero in ogni trasformazione",
+        "Il calore scambiato meno il lavoro compiuto dal sistema sull'ambiente",
+        "Solo il lavoro compiuto dal sistema, indipendentemente dal calore"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Il primo principio della termodinamica (ΔU = Q - W) afferma che la variazione di energia interna del sistema è pari al calore scambiato meno il lavoro compiuto dal sistema sull'ambiente, esprimendo la conservazione dell'energia."
     },
     {
@@ -154,10 +154,10 @@
       "question": "In una trasformazione isoterma di un gas ideale, la grandezza che rimane costante è:",
       "options": [
         "La pressione",
-        "Il numero di moli",
         "Il calore scambiato",
+        "Il volume",
         "La temperatura",
-        "Il volume"
+        "Il numero di moli"
       ],
       "correctIndex": 3,
       "explanation": "In una trasformazione isoterma la temperatura del gas rimane costante durante tutto il processo."
@@ -169,13 +169,13 @@
       "topic": "Trasformazione isocora",
       "question": "In una trasformazione isocora di un gas, la grandezza che rimane costante è:",
       "options": [
-        "L'energia interna",
-        "Il volume",
         "L'entropia",
         "La pressione",
+        "Il volume",
+        "L'energia interna",
         "La temperatura"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "In una trasformazione isocora (o isovolumica) il volume del gas rimane costante durante l'intera trasformazione."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Trasformazione isobara",
       "question": "In una trasformazione isobara di un gas, la grandezza che rimane costante è:",
       "options": [
-        "La pressione",
         "Il volume",
-        "Il calore latente",
         "La temperatura",
-        "Il numero di moli"
+        "La pressione",
+        "Il numero di moli",
+        "Il calore latente"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "In una trasformazione isobara la pressione del gas rimane costante durante l'intero processo."
     },
     {
@@ -202,12 +202,12 @@
       "question": "Una trasformazione adiabatica è caratterizzata da:",
       "options": [
         "Temperatura costante durante tutto il processo",
-        "Assenza totale di scambio di calore con l'ambiente",
         "Scambio di calore massimo con l'ambiente",
         "Volume costante durante tutto il processo",
-        "Pressione costante durante tutto il processo"
+        "Pressione costante durante tutto il processo",
+        "Assenza totale di scambio di calore con l'ambiente"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "In una trasformazione adiabatica non avviene alcuno scambio di calore tra il sistema e l'ambiente circostante (Q = 0)."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Trasformazioni reversibili e irreversibili",
       "question": "Una trasformazione termodinamica reversibile è caratterizzata dal fatto che:",
       "options": [
-        "Avviene sempre istantaneamente come riportato nei testi di riferimento",
+        "Genera sempre un aumento netto di entropia dell'universo",
+        "È possibile solo in assenza di gas",
         "Può essere invertita riportando sia il sistema che l'ambiente al loro stato iniziale, senza lasciare alcuna traccia",
         "Non può mai essere invertita in alcun modo",
-        "Genera sempre un aumento netto di entropia dell'universo",
-        "È possibile solo in assenza di gas"
+        "Avviene sempre istantaneamente, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Una trasformazione reversibile è idealmente tale da poter essere invertita, riportando sia il sistema che l'ambiente esattamente al loro stato iniziale, senza variazioni nette."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Secondo principio della termodinamica",
       "question": "Il secondo principio della termodinamica afferma, tra le altre cose, che:",
       "options": [
-        "È impossibile realizzare una trasformazione il cui unico risultato sia il trasferimento spontaneo di calore da un corpo più freddo a uno più caldo",
-        "L'energia si può creare dal nulla in condizioni particolari",
         "Il calore fluisce sempre spontaneamente da un corpo più freddo a uno più caldo",
-        "Tutte le trasformazioni termodinamiche sono reversibili secondo la definizione classica",
-        "L'entropia dell'universo diminuisce sempre nei processi spontanei"
+        "L'entropia dell'universo diminuisce sempre nei processi spontanei",
+        "L'energia si può creare dal nulla in condizioni particolari",
+        "È impossibile realizzare una trasformazione il cui unico risultato sia il trasferimento spontaneo di calore da un corpo più freddo a uno più caldo",
+        "Tutte le trasformazioni termodinamiche sono reversibili, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Uno degli enunciati del secondo principio (Clausius) afferma che è impossibile che il calore fluisca spontaneamente da un corpo più freddo a uno più caldo senza altri effetti compensativi."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Macchine termiche e rendimento",
       "question": "Il rendimento di una macchina termica è definito come:",
       "options": [
+        "Sempre pari a 1 per qualsiasi macchina reale, posizione che i dati recenti non confermano",
         "Il rapporto tra il lavoro utile prodotto e il calore assorbito dalla sorgente calda",
-        "Il prodotto tra calore assorbito e calore ceduto",
         "Indipendente dalla quantità di calore scambiata",
-        "Sempre pari a 1 per qualsiasi macchina reale secondo la definizione classica",
-        "Il rapporto tra il calore ceduto alla sorgente fredda e il lavoro prodotto"
+        "Il rapporto tra il calore ceduto alla sorgente fredda e il lavoro prodotto",
+        "Il prodotto tra calore assorbito e calore ceduto"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Il rendimento di una macchina termica è il rapporto tra il lavoro utile ottenuto e il calore assorbito dalla sorgente calda durante il ciclo."
     },
     {
@@ -266,12 +266,12 @@
       "question": "Il ciclo di Carnot rappresenta:",
       "options": [
         "Un ciclo termodinamico reale con rendimento sempre pari al 100%",
-        "Un ciclo possibile solo per trasformazioni isobare secondo la definizione classica",
-        "Un ciclo che avviene senza alcuno scambio di lavoro con l'ambiente",
+        "Un ciclo termodinamico ideale reversibile che fornisce il rendimento massimo teoricamente ottenibile tra due date temperature",
         "Un processo che viola il primo principio della termodinamica",
-        "Un ciclo termodinamico ideale reversibile che fornisce il rendimento massimo teoricamente ottenibile tra due date temperature"
+        "Un ciclo possibile solo per trasformazioni isobare, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Un ciclo che avviene senza alcuno scambio di lavoro con l'ambiente"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "Il ciclo di Carnot è un ciclo termodinamico ideale e reversibile, costituito da due trasformazioni isoterme e due adiabatiche, che fornisce il rendimento massimo teoricamente possibile tra due temperature date."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Entropia",
       "question": "L'entropia, come funzione di stato, è generalmente interpretata come una misura di:",
       "options": [
-        "Il volume occupato dal sistema",
         "La sola energia cinetica media delle particelle",
-        "Il disordine microscopico di un sistema",
+        "Il volume occupato dal sistema",
         "La massa totale del sistema",
+        "Il disordine microscopico di un sistema",
         "La temperatura assoluta del sistema"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "L'entropia è una funzione di stato che, dal punto di vista statistico, misura il grado di disordine microscopico di un sistema."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Variazione di entropia e processi spontanei",
       "question": "Nei processi spontanei irreversibili in un sistema isolato, l'entropia totale del sistema:",
       "options": [
-        "Rimane sempre esattamente costante",
         "Aumenta o, al più, rimane costante nel caso ideale reversibile",
-        "Diventa sempre negativa",
-        "Diminuisce sempre come riportato nei testi di riferimento",
-        "Non ha alcuna relazione con la spontaneità del processo"
+        "Diminuisce sempre, posizione che i dati recenti non confermano",
+        "Non ha alcuna relazione con la spontaneità del processo",
+        "Rimane sempre esattamente costante",
+        "Diventa sempre negativa"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Secondo il secondo principio della termodinamica, in un sistema isolato l'entropia totale non può diminuire: aumenta nei processi irreversibili spontanei e rimane costante solo nel caso ideale di trasformazioni reversibili."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Scale di temperatura",
       "question": "La scala di temperatura assoluta, utilizzata nelle equazioni di stato dei gas, è espressa in:",
       "options": [
-        "Gradi Celsius",
-        "Watt",
         "Kelvin",
-        "Gradi Réaumur",
-        "Gradi Fahrenheit"
+        "Gradi Celsius",
+        "Gradi Fahrenheit",
+        "Watt",
+        "Gradi Réaumur"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "La scala Kelvin è la scala di temperatura assoluta, con lo zero posto allo zero assoluto, ed è quella utilizzata nelle equazioni di stato dei gas perfetti."
     },
     {
@@ -330,12 +330,12 @@
       "question": "La calorimetria si occupa principalmente di:",
       "options": [
         "Calcolare la carica elettrica di un sistema",
+        "Determinare la lunghezza d'onda della luce visibile",
         "Misurare gli scambi di calore tra corpi a diversa temperatura",
         "Misurare la velocità di un corpo in movimento",
-        "Determinare la lunghezza d'onda della luce visibile",
         "Misurare la pressione atmosferica"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "La calorimetria è la branca della termodinamica sperimentale che si occupa di misurare gli scambi di calore tra corpi a diversa temperatura, ad esempio tramite l'uso del calorimetro."
     },
     {

@@ -9,13 +9,13 @@
       "topic": "Bilanciamento delle reazioni chimiche",
       "question": "Bilanciare una reazione chimica significa principalmente:",
       "options": [
-        "Aumentare la temperatura fino a completare la reazione",
         "Assicurarsi che il numero di atomi di ciascun elemento sia uguale tra reagenti e prodotti",
-        "Calcolare la costante di equilibrio",
         "Aggiungere un catalizzatore alla miscela di reazione",
-        "Determinare l'ordine di reazione secondo la nomenclatura standard"
+        "Determinare l'ordine di reazione, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Aumentare la temperatura fino a completare la reazione",
+        "Calcolare la costante di equilibrio"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Il bilanciamento di una reazione chimica garantisce il rispetto della legge di conservazione della massa, assicurando che il numero di atomi di ciascun elemento sia uguale tra reagenti e prodotti."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Cinetica di reazione",
       "question": "La velocità di una reazione chimica è definita come:",
       "options": [
+        "Il tempo totale necessario perché la reazione raggiunga l'equilibrio",
+        "La quantità totale di prodotto formato indipendentemente dal tempo",
         "La temperatura a cui avviene la reazione",
         "Il numero di molecole di catalizzatore utilizzate",
-        "La variazione di concentrazione di un reagente o prodotto nell'unità di tempo",
-        "Il tempo totale necessario perché la reazione raggiunga l'equilibrio",
-        "La quantità totale di prodotto formato indipendentemente dal tempo"
+        "La variazione di concentrazione di un reagente o prodotto nell'unità di tempo"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "La velocità di reazione esprime quanto rapidamente varia la concentrazione di reagenti o prodotti nel tempo."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Ordine di reazione",
       "question": "L'ordine di una reazione rispetto a un dato reagente è determinato da:",
       "options": [
-        "L'esponente a cui è elevata la concentrazione di quel reagente nella legge cinetica sperimentale",
         "Il numero totale di prodotti formati",
         "La temperatura assoluta della reazione",
+        "L'esponente a cui è elevata la concentrazione di quel reagente nella legge cinetica sperimentale",
         "Il coefficiente stechiometrico di quel reagente nell'equazione bilanciata",
-        "La massa molare del reagente nel modello di riferimento"
+        "La massa molare del reagente, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "L'ordine di reazione rispetto a un reagente è l'esponente a cui compare la sua concentrazione nella legge cinetica determinata sperimentalmente, e non coincide necessariamente con il coefficiente stechiometrico."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Molecolarità",
       "question": "La molecolarità di una reazione elementare indica:",
       "options": [
-        "Il numero di stadi dell'intero meccanismo di reazione",
-        "La costante di equilibrio della reazione come riportato nei testi di riferimento",
+        "Il numero di specie chimiche che partecipano collisionalmente in quello specifico stadio di reazione",
         "L'ordine globale della reazione complessiva",
         "La massa molecolare del prodotto principale",
-        "Il numero di specie chimiche che partecipano collisionalmente in quello specifico stadio di reazione"
+        "Il numero di stadi dell'intero meccanismo di reazione",
+        "La costante di equilibrio della reazione, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "La molecolarità si riferisce al numero di molecole o ioni che partecipano come reagenti in un singolo stadio elementare di reazione."
     },
     {
@@ -73,11 +73,11 @@
       "topic": "Legge di Arrhenius",
       "question": "La legge di Arrhenius descrive la dipendenza della costante di velocità di una reazione da:",
       "options": [
-        "Il colore della miscela di reazione",
+        "La pressione atmosferica esterna nel modello di riferimento",
         "La sola concentrazione dei reagenti",
         "La temperatura e l'energia di attivazione della reazione",
-        "La pressione atmosferica esterna nel modello di riferimento",
-        "Il volume del recipiente di reazione"
+        "Il volume del recipiente di reazione",
+        "Il colore della miscela di reazione"
       ],
       "correctIndex": 2,
       "explanation": "La legge di Arrhenius mostra come la costante di velocità aumenti esponenzialmente al crescere della temperatura e al diminuire dell'energia di attivazione."
@@ -90,12 +90,12 @@
       "question": "Secondo la teoria degli urti, affinché una reazione chimica avvenga tra due molecole è necessario che:",
       "options": [
         "Non avvenga alcun contatto tra le molecole",
-        "Le molecole abbiano la stessa massa molecolare",
-        "Le molecole restino sempre immobili come riportato nei testi di riferimento",
+        "L'energia dell'urto sia sempre inferiore all'energia di attivazione",
         "Le molecole si urtino con orientazione ed energia sufficienti a superare la barriera di attivazione",
-        "L'energia dell'urto sia sempre inferiore all'energia di attivazione"
+        "Le molecole restino sempre immobili, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Le molecole abbiano la stessa massa molecolare"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "La teoria degli urti afferma che una reazione avviene solo se le molecole reagenti si scontrano con orientazione geometrica corretta e con energia sufficiente a superare la barriera di attivazione."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Energia di attivazione",
       "question": "L'energia di attivazione di una reazione rappresenta:",
       "options": [
-        "L'energia richiesta solo per reazioni endotermiche",
+        "L'energia dei soli prodotti di reazione, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "La differenza di energia tra due stati di equilibrio",
         "L'energia totale rilasciata durante la reazione",
         "L'energia minima che le molecole reagenti devono possedere per dare luogo a una collisione efficace",
-        "La differenza di energia tra due stati di equilibrio",
-        "L'energia dei soli prodotti di reazione nel modello di riferimento"
+        "L'energia richiesta solo per reazioni endotermiche"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "L'energia di attivazione è la barriera energetica minima che i reagenti devono superare affinché la collisione porti effettivamente alla formazione dei prodotti."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Teoria dello stato di transizione",
       "question": "Secondo la teoria dello stato di transizione, durante una reazione chimica si forma:",
       "options": [
-        "Un prodotto finale immediatamente stabile",
         "Una nuova molecola di solvente",
+        "Un intermedio stabile e isolabile chimicamente",
+        "Un prodotto finale immediatamente stabile",
         "Un complesso attivato transiente, ad alta energia, situato al massimo del profilo energetico della reazione",
-        "Un catalizzatore permanente nel modello di riferimento",
-        "Un intermedio stabile e isolabile chimicamente"
+        "Un catalizzatore permanente, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "La teoria dello stato di transizione postula la formazione di un complesso attivato instabile, corrispondente al massimo di energia lungo il percorso di reazione, che poi evolve verso i prodotti."
     },
     {
@@ -137,11 +137,11 @@
       "topic": "Catalizzatori",
       "question": "Un catalizzatore accelera una reazione chimica principalmente perché:",
       "options": [
-        "Viene consumato progressivamente nella reazione",
         "Sposta la posizione dell'equilibrio verso i prodotti",
-        "Fornisce un percorso di reazione alternativo con energia di attivazione più bassa",
         "Aumenta la concentrazione dei prodotti finali",
-        "Aumenta la temperatura del sistema secondo la nomenclatura standard"
+        "Fornisce un percorso di reazione alternativo con energia di attivazione più bassa",
+        "Viene consumato progressivamente nella reazione",
+        "Aumenta la temperatura del sistema, posizione che i dati recenti non confermano"
       ],
       "correctIndex": 2,
       "explanation": "Un catalizzatore accelera la reazione fornendo un meccanismo alternativo con energia di attivazione inferiore, senza essere consumato nel processo complessivo e senza alterare la posizione dell'equilibrio."
@@ -153,13 +153,13 @@
       "topic": "Enzimi come catalizzatori biologici",
       "question": "Gli enzimi, in quanto catalizzatori biologici, agiscono principalmente:",
       "options": [
-        "Sostituendo permanentemente i reagenti nella descrizione tradizionale",
-        "Abbassando l'energia di attivazione della reazione, aumentandone la velocità senza alterare l'equilibrio finale",
-        "Aumentando sempre la temperatura della soluzione",
         "Impedendo del tutto la formazione dei prodotti",
-        "Modificando la costante di equilibrio della reazione che catalizzano"
+        "Modificando la costante di equilibrio della reazione che catalizzano",
+        "Abbassando l'energia di attivazione della reazione, aumentandone la velocità senza alterare l'equilibrio finale",
+        "Sostituendo permanentemente i reagenti, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Aumentando sempre la temperatura della soluzione"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Come tutti i catalizzatori, gli enzimi abbassano l'energia di attivazione accelerando la reazione, senza modificare la costante di equilibrio né la termodinamica complessiva del processo."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Equilibrio chimico",
       "question": "Una reazione chimica si dice all'equilibrio quando:",
       "options": [
-        "Il catalizzatore ha smesso di funzionare secondo la nomenclatura standard",
         "Le velocità delle reazioni diretta e inversa sono uguali, per cui le concentrazioni nette rimangono costanti",
-        "Tutti i reagenti si sono trasformati completamente in prodotti",
+        "Il catalizzatore ha smesso di funzionare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Reagenti e prodotti hanno smesso completamente di reagire",
         "La temperatura del sistema è pari a zero",
-        "Reagenti e prodotti hanno smesso completamente di reagire"
+        "Tutti i reagenti si sono trasformati completamente in prodotti"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "All'equilibrio chimico dinamico, le velocità della reazione diretta e di quella inversa si eguagliano, per cui le concentrazioni macroscopiche di reagenti e prodotti restano costanti nel tempo."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Costante di equilibrio e legge d'azione di massa",
       "question": "La costante di equilibrio di una reazione, secondo la legge d'azione di massa, è espressa come:",
       "options": [
-        "Il prodotto delle sole concentrazioni dei reagenti",
-        "La somma delle concentrazioni di tutti i reagenti secondo la definizione classica",
         "La differenza tra le concentrazioni iniziali e finali dei reagenti",
-        "Il rapporto tra energia di attivazione diretta e inversa",
-        "Il rapporto tra le concentrazioni dei prodotti e dei reagenti all'equilibrio, ciascuna elevata al proprio coefficiente stechiometrico"
+        "Il rapporto tra le concentrazioni dei prodotti e dei reagenti all'equilibrio, ciascuna elevata al proprio coefficiente stechiometrico",
+        "Il prodotto delle sole concentrazioni dei reagenti",
+        "La somma delle concentrazioni di tutti i reagenti, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Il rapporto tra energia di attivazione diretta e inversa"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La legge d'azione di massa definisce la costante di equilibrio K come il rapporto tra il prodotto delle concentrazioni dei prodotti e quello dei reagenti, ciascuna elevata al proprio coefficiente stechiometrico."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Energia libera ed equilibrio",
       "question": "Quando un sistema chimico raggiunge l'equilibrio, la variazione di energia libera di Gibbs (ΔG) della reazione è:",
       "options": [
-        "Sempre fortemente negativa",
         "Uguale a zero",
-        "Sempre pari all'energia di attivazione",
+        "Indipendente dalla costante di equilibrio",
         "Sempre fortemente positiva",
-        "Indipendente dalla costante di equilibrio"
+        "Sempre pari all'energia di attivazione",
+        "Sempre fortemente negativa"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "All'equilibrio chimico, la variazione di energia libera di Gibbs della reazione è pari a zero, poiché il sistema non ha più una tendenza netta a procedere in una direzione piuttosto che nell'altra."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Equilibrio chimico e stato stazionario",
       "question": "A differenza dell'equilibrio chimico vero e proprio, uno stato stazionario è caratterizzato da:",
       "options": [
-        "Un sistema completamente isolato dall'ambiente",
-        "La totale scomparsa dei reagenti nel modello di riferimento",
+        "Velocità di reazione diretta e inversa sempre uguali senza alcun apporto esterno",
         "L'assenza totale di reazioni chimiche",
         "Concentrazioni costanti nel tempo mantenute grazie a un flusso continuo di materia o energia nel sistema aperto",
-        "Velocità di reazione diretta e inversa sempre uguali senza alcun apporto esterno"
+        "Un sistema completamente isolato dall'ambiente",
+        "La totale scomparsa dei reagenti, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Uno stato stazionario, tipico dei sistemi biologici aperti, mantiene concentrazioni costanti grazie a un flusso continuo di materia ed energia, a differenza dell'equilibrio chimico che si instaura in un sistema chiuso senza scambi netti."
     },
     {
@@ -235,11 +235,11 @@
       "options": [
         "La costante di equilibrio cambia sempre con l'aggiunta di un catalizzatore",
         "Il sistema all'equilibrio non risponde mai a variazioni di concentrazione",
-        "Un sistema all'equilibrio, se perturbato, si sposta in modo da contrastare parzialmente la perturbazione subita",
-        "L'equilibrio chimico non può mai essere perturbato secondo la definizione classica",
-        "Ogni perturbazione sposta sempre l'equilibrio verso i reagenti"
+        "L'equilibrio chimico non può mai essere perturbato, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Ogni perturbazione sposta sempre l'equilibrio verso i reagenti",
+        "Un sistema all'equilibrio, se perturbato, si sposta in modo da contrastare parzialmente la perturbazione subita"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "Secondo questo principio, se un sistema all'equilibrio subisce una perturbazione (variazione di concentrazione, pressione o temperatura), esso si sposta in modo da attenuarne parzialmente l'effetto."
     },
     {
@@ -249,11 +249,11 @@
       "topic": "Quoziente di reazione",
       "question": "Il quoziente di reazione Q, confrontato con la costante di equilibrio K, permette di stabilire:",
       "options": [
-        "La molecolarità della reazione come riportato nei testi di riferimento",
+        "La molecolarità della reazione, posizione che i dati recenti non confermano",
         "In quale direzione la reazione deve procedere per raggiungere l'equilibrio",
+        "Il numero di stadi del meccanismo di reazione",
         "L'energia di attivazione della reazione",
-        "Solo la velocità della reazione",
-        "Il numero di stadi del meccanismo di reazione"
+        "Solo la velocità della reazione"
       ],
       "correctIndex": 1,
       "explanation": "Confrontando Q con K si può determinare se la reazione deve procedere verso i prodotti (Q<K), verso i reagenti (Q>K), o se è già all'equilibrio (Q=K)."
@@ -265,13 +265,13 @@
       "topic": "Effetto della temperatura sulla costante di equilibrio",
       "question": "Per una reazione esotermica, un aumento della temperatura generalmente causa:",
       "options": [
-        "Nessun effetto sulla costante di equilibrio",
         "Un aumento indefinito della velocità di reazione senza effetto sull'equilibrio",
         "Un aumento della costante di equilibrio, favorendo i prodotti",
-        "L'annullamento completo della reazione",
-        "Una diminuzione della costante di equilibrio, favorendo i reagenti"
+        "Una diminuzione della costante di equilibrio, favorendo i reagenti",
+        "Nessun effetto sulla costante di equilibrio",
+        "L'annullamento completo della reazione"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Per una reazione esotermica, secondo il principio dell'equilibrio mobile, un aumento di temperatura sposta l'equilibrio verso i reagenti, diminuendo la costante di equilibrio."
     },
     {
@@ -281,9 +281,9 @@
       "topic": "Equilibrio eterogeneo e prodotto di solubilità",
       "question": "Il prodotto di solubilità (Kps) di un sale poco solubile descrive l'equilibrio tra:",
       "options": [
-        "Un acido e la sua base coniugata nel modello di riferimento",
-        "Due specie gassose in equilibrio dinamico",
         "Un catalizzatore e il suo substrato",
+        "Un acido e la sua base coniugata, visione ormai superata",
+        "Due specie gassose in equilibrio dinamico",
         "Il sale solido e i suoi ioni disciolti in soluzione satura",
         "Due isomeri della stessa molecola"
       ],
@@ -298,12 +298,12 @@
       "question": "L'effetto dello ione in comune si manifesta quando:",
       "options": [
         "L'aggiunta di acqua pura riduce la solubilità del sale",
+        "Solo la temperatura può influenzare la solubilità, posizione che i dati recenti non confermano",
         "L'aggiunta di uno ione estraneo aumenta sempre la solubilità del sale",
         "Non si osserva alcun effetto sull'equilibrio di solubilità",
-        "L'aggiunta di uno ione già presente nell'equilibrio di solubilità ne riduce la solubilità del sale",
-        "Solo la temperatura può influenzare la solubilità nel modello di riferimento"
+        "L'aggiunta di uno ione già presente nell'equilibrio di solubilità ne riduce la solubilità del sale"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Secondo il principio dell'equilibrio mobile, l'aggiunta di uno ione già presente nell'equilibrio di solubilità sposta l'equilibrio verso la precipitazione, riducendo la solubilità del sale."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Reazioni a più stadi",
       "question": "In una reazione che procede attraverso più stadi elementari, la velocità complessiva della reazione è generalmente determinata da:",
       "options": [
-        "La somma delle velocità di tutti gli stadi",
-        "Lo stadio più lento del meccanismo (stadio determinante la velocità)",
-        "La media aritmetica delle velocità di tutti gli stadi",
+        "Lo stadio con la minore energia di attivazione",
         "Sempre il primo stadio, indipendentemente dalla sua velocità",
-        "Lo stadio con la minore energia di attivazione"
+        "La media aritmetica delle velocità di tutti gli stadi",
+        "La somma delle velocità di tutti gli stadi",
+        "Lo stadio più lento del meccanismo (stadio determinante la velocità)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "In un meccanismo a più stadi, la velocità complessiva della reazione è limitata dallo stadio più lento, detto stadio determinante la velocità."
     },
     {
@@ -329,10 +329,10 @@
       "topic": "Fattori che influenzano la velocità di reazione",
       "question": "Quale tra i seguenti NON è generalmente un fattore che influenza la velocità di una reazione chimica?",
       "options": [
-        "La concentrazione dei reagenti",
-        "Il colore del recipiente di reazione",
         "La temperatura del sistema",
+        "Il colore del recipiente di reazione",
         "La superficie di contatto tra i reagenti, nel caso di reazioni eterogenee",
+        "La concentrazione dei reagenti",
         "La presenza di un catalizzatore"
       ],
       "correctIndex": 1,

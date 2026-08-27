@@ -9,13 +9,13 @@
       "topic": "Natura ondulatoria della radiazione elettromagnetica",
       "question": "Un'onda elettromagnetica è costituita da:",
       "options": [
-        "Un campo gravitazionale oscillante secondo la definizione classica",
-        "Una perturbazione che richiede necessariamente un mezzo materiale per propagarsi",
+        "Un campo gravitazionale oscillante, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Un campo elettrico e un campo magnetico oscillanti, perpendicolari tra loro e alla direzione di propagazione",
         "Solo particelle materiali in movimento",
+        "Una perturbazione che richiede necessariamente un mezzo materiale per propagarsi",
         "Un campo elettrico oscillante privo di alcun campo magnetico associato"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Un'onda elettromagnetica è costituita da un campo elettrico e un campo magnetico oscillanti, tra loro perpendicolari e perpendicolari anche alla direzione di propagazione dell'onda, capace di propagarsi anche nel vuoto."
     },
     {
@@ -26,12 +26,12 @@
       "question": "Tutte le onde elettromagnetiche, nel vuoto, si propagano con:",
       "options": [
         "Velocità che dipende esclusivamente dalla loro ampiezza",
+        "Velocità nulla, posizione che i dati recenti non confermano",
+        "Velocità infinita",
         "Velocità diverse a seconda della loro frequenza",
-        "Velocità nulla secondo la definizione classica",
-        "La stessa velocità, pari alla velocità della luce nel vuoto",
-        "Velocità infinita"
+        "La stessa velocità, pari alla velocità della luce nel vuoto"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Nel vuoto, tutte le onde elettromagnetiche, indipendentemente dalla loro frequenza o lunghezza d'onda, si propagano con la stessa velocità, pari alla velocità della luce c."
     },
     {
@@ -41,11 +41,11 @@
       "topic": "Spettro elettromagnetico",
       "question": "Nello spettro elettromagnetico, procedendo dalle onde radio ai raggi gamma, la frequenza:",
       "options": [
-        "Aumenta insieme alla lunghezza d'onda",
+        "Rimane costante per tutte le regioni dello spettro",
         "Diminuisce progressivamente mentre la lunghezza d'onda aumenta",
         "Aumenta progressivamente mentre la lunghezza d'onda diminuisce",
-        "Rimane costante per tutte le regioni dello spettro",
-        "Non ha alcuna relazione con la lunghezza d'onda"
+        "Non ha alcuna relazione con la lunghezza d'onda",
+        "Aumenta insieme alla lunghezza d'onda"
       ],
       "correctIndex": 2,
       "explanation": "Procedendo dalle onde radio verso i raggi gamma, la frequenza delle onde elettromagnetiche aumenta progressivamente, mentre la lunghezza d'onda diminuisce, essendo le due grandezze inversamente proporzionali a parità di velocità di propagazione."
@@ -57,13 +57,13 @@
       "topic": "Fotone e quantizzazione dell'energia",
       "question": "Il fotone è definito come:",
       "options": [
-        "Una particella dotata di massa a riposo non nulla",
-        "Una particella priva di qualsiasi energia",
-        "Un elettrone in stato eccitato nel modello di riferimento",
         "Il quanto di energia associato alla radiazione elettromagnetica",
-        "Un'onda meccanica longitudinale"
+        "Un'onda meccanica longitudinale",
+        "Una particella dotata di massa a riposo non nulla",
+        "Un elettrone in stato eccitato, interpretazione ormai datata",
+        "Una particella priva di qualsiasi energia"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Il fotone rappresenta il quanto elementare di energia associato alla radiazione elettromagnetica, alla base della descrizione quantistica della luce."
     },
     {
@@ -73,11 +73,11 @@
       "topic": "Relazione tra energia del fotone e frequenza",
       "question": "L'energia di un fotone è legata alla frequenza della radiazione dalla relazione:",
       "options": [
-        "E = h + f",
         "E è indipendente dalla frequenza della radiazione",
-        "E = h · f, dove h è la costante di Planck",
         "E è inversamente proporzionale alla frequenza",
-        "E = f / h"
+        "E = h · f, dove h è la costante di Planck",
+        "E = f / h",
+        "E = h + f"
       ],
       "correctIndex": 2,
       "explanation": "L'energia di un fotone è direttamente proporzionale alla frequenza della radiazione secondo la relazione E = h·f, dove h è la costante di Planck."
@@ -90,9 +90,9 @@
       "question": "La legge di Lambert-Beer descrive la relazione tra:",
       "options": [
         "La lunghezza focale di una lente convergente",
-        "L'indice di rifrazione di un mezzo trasparente",
-        "Il periodo di un'onda elettromagnetica nel modello di riferimento",
         "La velocità di decadimento radioattivo di un isotopo",
+        "L'indice di rifrazione di un mezzo trasparente",
+        "Il periodo di un'onda elettromagnetica, grandezza che non compare in questa legge, riguardante invece l'assorbimento della radiazione, ipotesi priva di fondamento",
         "L'assorbimento della radiazione elettromagnetica da parte di una soluzione, la concentrazione della sostanza assorbente e lo spessore attraversato"
       ],
       "correctIndex": 4,
@@ -105,13 +105,13 @@
       "topic": "Nuclei instabili e isotopi radioattivi",
       "question": "Un isotopo radioattivo è caratterizzato da un nucleo:",
       "options": [
-        "Privo di protoni nel modello di riferimento",
-        "Perfettamente stabile e privo di qualsiasi tendenza al decadimento",
-        "Sempre identico in tutti gli isotopi dello stesso elemento",
         "Instabile, che tende a decadere spontaneamente emettendo radiazione per raggiungere una configurazione più stabile",
-        "Privo di neutroni"
+        "Privo di protoni, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Sempre identico in tutti gli isotopi dello stesso elemento",
+        "Privo di neutroni",
+        "Perfettamente stabile e privo di qualsiasi tendenza al decadimento"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Un isotopo radioattivo possiede un nucleo instabile, che tende a decadere spontaneamente emettendo radiazione (particelle o fotoni) per raggiungere una configurazione nucleare più stabile."
     },
     {
@@ -121,11 +121,11 @@
       "topic": "Attività e legge del decadimento radioattivo",
       "question": "L'attività di un campione radioattivo, secondo la legge del decadimento, diminuisce nel tempo in modo:",
       "options": [
-        "Costante, senza mai diminuire",
         "Lineare",
+        "Parabolico crescente",
         "Esponenziale",
         "Periodico con oscillazioni regolari",
-        "Parabolico crescente"
+        "Costante, senza mai diminuire"
       ],
       "correctIndex": 2,
       "explanation": "La legge del decadimento radioattivo prevede una diminuzione esponenziale dell'attività (e del numero di nuclei non decaduti) nel tempo."
@@ -137,11 +137,11 @@
       "topic": "Emivita",
       "question": "L'emivita di un isotopo radioattivo è definita come:",
       "options": [
-        "Il tempo necessario perché tutti i nuclei del campione decadano completamente",
+        "Il tempo di dimezzamento dell'energia cinetica delle particelle emesse",
         "Un valore identico per tutti gli isotopi radioattivi",
         "Il tempo necessario perché la quantità di isotopo radioattivo si riduca alla metà del valore iniziale",
-        "Il tempo di dimezzamento dell'energia cinetica delle particelle emesse",
-        "Una grandezza priva di significato fisico nella descrizione tradizionale"
+        "Il tempo necessario perché tutti i nuclei del campione decadano completamente",
+        "Una grandezza priva di significato fisico, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
       "correctIndex": 2,
       "explanation": "L'emivita (o tempo di dimezzamento) è il tempo necessario perché la quantità di un isotopo radioattivo si riduca esattamente alla metà del valore iniziale."
@@ -153,13 +153,13 @@
       "topic": "Decadimento alfa",
       "question": "Nel decadimento alfa, il nucleo instabile emette:",
       "options": [
-        "Un elettrone ad alta energia",
-        "Un neutrino privo di massa e carica",
         "Un fotone ad alta energia senza variazione della massa nucleare",
         "Una particella composta da due protoni e due neutroni (nucleo di elio)",
-        "Un positrone nella descrizione tradizionale"
+        "Un elettrone ad alta energia",
+        "Un neutrino privo di massa e carica",
+        "Un positrone, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "Nel decadimento alfa, il nucleo emette una particella alfa, costituita da due protoni e due neutroni (equivalente a un nucleo di elio), con conseguente riduzione del numero atomico e di massa."
     },
     {
@@ -170,12 +170,12 @@
       "question": "Nel decadimento beta-meno, all'interno del nucleo avviene la trasformazione di:",
       "options": [
         "Due protoni in due neutroni simultaneamente",
-        "Un neutrone in un protone, con emissione di un elettrone (e di un antineutrino)",
-        "Un neutrone in un fotone gamma secondo la definizione classica",
         "Un protone in un neutrone, con emissione di un positrone",
-        "Un fotone in una coppia elettrone-positrone"
+        "Un neutrone in un fotone gamma, posizione che i dati recenti non confermano",
+        "Un fotone in una coppia elettrone-positrone",
+        "Un neutrone in un protone, con emissione di un elettrone (e di un antineutrino)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "Nel decadimento beta-meno, un neutrone del nucleo si trasforma in un protone, con emissione di un elettrone (particella beta) e di un antineutrino, aumentando il numero atomico di un'unità."
     },
     {
@@ -185,11 +185,11 @@
       "topic": "Decadimento gamma",
       "question": "Il decadimento gamma è caratterizzato da:",
       "options": [
-        "L'aumento della massa del nucleo",
+        "L'emissione di particelle alfa, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "La variazione del numero atomico del nucleo",
-        "L'emissione di particelle alfa come riportato nei testi di riferimento",
+        "La trasformazione di un protone in un neutrone",
         "L'emissione di fotoni ad alta energia da un nucleo eccitato, senza variazione del numero atomico o di massa",
-        "La trasformazione di un protone in un neutrone"
+        "L'aumento della massa del nucleo"
       ],
       "correctIndex": 3,
       "explanation": "Nel decadimento gamma, un nucleo in uno stato eccitato emette fotoni ad alta energia (raggi gamma) per raggiungere uno stato di energia inferiore, senza variazione del numero atomico o di massa."
@@ -201,13 +201,13 @@
       "topic": "Radiazioni ionizzanti e non ionizzanti",
       "question": "Una radiazione elettromagnetica si definisce ionizzante quando:",
       "options": [
-        "Trasporta energia inferiore all'energia di ionizzazione degli atomi",
         "Non ha mai alcuna interazione con la materia",
+        "Ha sempre lunghezza d'onda maggiore della luce visibile",
+        "Non trasporta alcuna energia, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Trasporta un'energia sufficiente a rimuovere elettroni dagli atomi con cui interagisce",
-        "Non trasporta alcuna energia nella descrizione tradizionale",
-        "Ha sempre lunghezza d'onda maggiore della luce visibile"
+        "Trasporta energia inferiore all'energia di ionizzazione degli atomi"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "Una radiazione è definita ionizzante quando la sua energia è sufficiente a strappare elettroni dagli atomi con cui interagisce, generando ioni; le radiazioni con energia insufficiente sono dette non ionizzanti."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Esempi di radiazioni non ionizzanti",
       "question": "Quale delle seguenti radiazioni è classificata come non ionizzante?",
       "options": [
-        "I raggi gamma",
-        "La radiazione ultravioletta ad alta energia",
-        "I raggi cosmici ad altissima energia",
         "Le microonde",
+        "I raggi gamma",
+        "I raggi cosmici ad altissima energia",
+        "La radiazione ultravioletta ad alta energia",
         "I raggi X"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Le microonde, così come le onde radio e l'infrarosso, sono considerate radiazioni non ionizzanti, poiché la loro energia è generalmente insufficiente a rimuovere elettroni dagli atomi."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Esempi di radiazioni ionizzanti",
       "question": "Quale delle seguenti radiazioni è generalmente classificata come ionizzante?",
       "options": [
-        "L'infrarosso",
-        "Le microonde",
         "La luce visibile a bassa intensità",
         "Le onde radio",
-        "I raggi X"
+        "I raggi X",
+        "Le microonde",
+        "L'infrarosso"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "I raggi X, insieme ai raggi gamma, sono radiazioni elettromagnetiche ad alta energia, generalmente classificate come ionizzanti."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Legge della riflessione",
       "question": "La legge della riflessione della luce afferma che:",
       "options": [
+        "La riflessione avviene solo su superfici trasparenti, posizione che i dati recenti non confermano",
         "L'angolo di incidenza è sempre diverso dall'angolo di riflessione",
-        "La riflessione avviene solo su superfici trasparenti nella descrizione tradizionale",
-        "L'angolo di incidenza è uguale all'angolo di riflessione, misurati rispetto alla normale alla superficie",
+        "La luce riflessa cambia sempre colore rispetto a quella incidente",
         "L'angolo di riflessione dipende dalla lunghezza d'onda della luce",
-        "La luce riflessa cambia sempre colore rispetto a quella incidente"
+        "L'angolo di incidenza è uguale all'angolo di riflessione, misurati rispetto alla normale alla superficie"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "La legge della riflessione afferma che l'angolo di incidenza è uguale all'angolo di riflessione, entrambi misurati rispetto alla normale alla superficie riflettente."
     },
     {
@@ -266,12 +266,12 @@
       "question": "La rifrazione della luce si verifica quando:",
       "options": [
         "Un raggio luminoso viene completamente assorbito dal mezzo",
+        "Il raggio luminoso viene riflesso completamente indietro",
         "La luce si propaga sempre in linea retta senza mai deviare",
-        "Non avviene alcun cambiamento di velocità della luce nella descrizione tradizionale",
-        "Un raggio luminoso passa da un mezzo a un altro con diverso indice di rifrazione, cambiando direzione di propagazione",
-        "Il raggio luminoso viene riflesso completamente indietro"
+        "Non avviene alcun cambiamento di velocità della luce, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Un raggio luminoso passa da un mezzo a un altro con diverso indice di rifrazione, cambiando direzione di propagazione"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "La rifrazione avviene quando un raggio luminoso attraversa l'interfaccia tra due mezzi con diverso indice di rifrazione, causando un cambiamento nella velocità di propagazione e nella direzione del raggio."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Indice di rifrazione",
       "question": "L'indice di rifrazione di un mezzo è definito come:",
       "options": [
+        "L'angolo di incidenza della luce sulla superficie del mezzo",
+        "La densità del mezzo attraversato dalla luce",
         "Il rapporto tra la lunghezza d'onda e la frequenza della luce",
         "Il rapporto tra la velocità della luce nel vuoto e la velocità della luce in quel mezzo",
-        "Il colore della luce che attraversa il mezzo secondo la nomenclatura standard",
-        "L'angolo di incidenza della luce sulla superficie del mezzo",
-        "La densità del mezzo attraversato dalla luce"
+        "Il colore della luce che attraversa il mezzo, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "L'indice di rifrazione di un mezzo è definito come il rapporto tra la velocità della luce nel vuoto e la velocità della luce all'interno di quel mezzo."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Lenti convergenti e punti coniugati",
       "question": "Per una lente convergente sottile, la legge dei punti coniugati mette in relazione:",
       "options": [
-        "La lunghezza d'onda della luce incidente con il colore della lente",
-        "Il diametro della lente con la sua distanza focale come riportato nei testi di riferimento",
-        "L'indice di rifrazione del vetro della lente con il suo peso",
         "Solo l'altezza dell'oggetto, indipendentemente dalla lente",
-        "La distanza dell'oggetto, la distanza dell'immagine e la distanza focale della lente"
+        "Il diametro della lente con la sua distanza focale come riportato nei testi di riferimento",
+        "La lunghezza d'onda della luce incidente con il colore della lente",
+        "La distanza dell'oggetto, la distanza dell'immagine e la distanza focale della lente",
+        "L'indice di rifrazione del vetro della lente con il suo peso"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La legge dei punti coniugati per le lenti sottili mette in relazione la distanza dell'oggetto dalla lente, la distanza dell'immagine formata e la distanza focale della lente stessa."
     },
     {
@@ -314,12 +314,12 @@
       "question": "Una lente convergente, quando l'oggetto si trova oltre la distanza focale, forma generalmente un'immagine:",
       "options": [
         "Solo se l'oggetto è posto esattamente nel fuoco della lente",
-        "Reale, che può essere proiettata su uno schermo",
         "Sempre virtuale e ingrandita, indipendentemente dalla posizione dell'oggetto",
+        "Reale, che può essere proiettata su uno schermo",
         "Sempre identica in dimensioni all'oggetto originale",
         "Priva di qualunque proprietà ottica definibile"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Quando un oggetto si trova a una distanza maggiore della distanza focale da una lente convergente, questa forma generalmente un'immagine reale, che può essere proiettata su uno schermo."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Ampiezza e intensità dell'onda elettromagnetica",
       "question": "L'intensità di un'onda elettromagnetica è generalmente proporzionale a:",
       "options": [
-        "Il quadrato dell'ampiezza dell'onda",
         "La radice quadrata della frequenza",
-        "Solo alla lunghezza d'onda, indipendentemente dall'ampiezza",
         "Una costante indipendente da qualsiasi caratteristica dell'onda",
-        "L'inverso dell'ampiezza dell'onda"
+        "Il quadrato dell'ampiezza dell'onda",
+        "L'inverso dell'ampiezza dell'onda",
+        "Solo alla lunghezza d'onda, indipendentemente dall'ampiezza"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Come per le onde meccaniche, l'intensità di un'onda elettromagnetica è generalmente proporzionale al quadrato della sua ampiezza."
     },
     {

@@ -9,13 +9,13 @@
       "topic": "Notazione scientifica",
       "question": "Il numero 0,00045 espresso in notazione scientifica è:",
       "options": [
-        "4,5 × 10^-3",
-        "0,45 × 10^-3",
         "4,5 × 10^-4",
-        "4,5 × 10^4",
-        "45 × 10^-3"
+        "0,45 × 10^-3",
+        "45 × 10^-3",
+        "4,5 × 10^-3",
+        "4,5 × 10^4"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "0,00045 si scrive spostando la virgola di 4 posizioni: 4,5 × 10^-4."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Sistema Internazionale",
       "question": "Nel Sistema Internazionale, l'unità di misura fondamentale della massa è:",
       "options": [
+        "Il newton",
         "Il chilogrammo",
         "Il grammo",
         "La libbra",
-        "Il newton",
         "La mole"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Nel SI l'unità fondamentale di massa è il chilogrammo (kg), non il grammo."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Ordine di grandezza",
       "question": "Stimare l'ordine di grandezza di un numero significa:",
       "options": [
-        "Sommarlo ad altri numeri simili",
-        "Calcolarne la radice quadrata",
-        "Approssimarlo alla potenza di 10 più vicina",
         "Convertirlo in un'altra unità di misura",
-        "Calcolarne il valore esatto con tutte le cifre decimali"
+        "Calcolarne la radice quadrata",
+        "Calcolarne il valore esatto con tutte le cifre decimali",
+        "Sommarlo ad altri numeri simili",
+        "Approssimarlo alla potenza di 10 più vicina"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "L'ordine di grandezza è la potenza di 10 più vicina al valore del numero, utile per stime rapide."
     },
     {
@@ -58,12 +58,12 @@
       "question": "Quale delle seguenti è una grandezza intensiva?",
       "options": [
         "Il peso",
-        "La quantità di sostanza",
         "Il volume",
         "La massa",
-        "La temperatura"
+        "La temperatura",
+        "La quantità di sostanza"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Le grandezze intensive, come la temperatura, non dipendono dalla quantità di materia considerata; quelle estensive (massa, volume) sì."
     },
     {
@@ -74,12 +74,12 @@
       "question": "Una grandezza scalare è completamente definita da:",
       "options": [
         "Un numero, una direzione e un verso",
-        "Un modulo e un angolo rispetto a un asse",
         "Un numero e un'unità di misura",
-        "Solo una direzione",
-        "Due componenti cartesiane"
+        "Un modulo e un angolo rispetto a un asse",
+        "Due componenti cartesiane",
+        "Solo una direzione"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Le grandezze scalari sono definite da un valore numerico e un'unità di misura; quelle vettoriali richiedono anche direzione e verso."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Funzioni trigonometriche elementari",
       "question": "In un triangolo rettangolo, il seno di un angolo è definito come il rapporto tra:",
       "options": [
-        "Cateto opposto e ipotenusa",
-        "I due cateti tra loro",
-        "Ipotenusa e cateto opposto",
+        "Cateto opposto e cateto adiacente",
         "Cateto adiacente e ipotenusa",
-        "Cateto opposto e cateto adiacente"
+        "Ipotenusa e cateto opposto",
+        "I due cateti tra loro",
+        "Cateto opposto e ipotenusa"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Il seno di un angolo è il rapporto tra il cateto opposto all'angolo e l'ipotenusa."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Vettori: definizione",
       "question": "Un vettore nel piano è univocamente definito da:",
       "options": [
+        "Solo il suo modulo",
         "Modulo, direzione e verso (oppure le sue componenti cartesiane)",
         "Un singolo numero con segno",
-        "Solo la sua direzione",
-        "Solo il suo modulo",
-        "Solo il verso secondo la nomenclatura standard"
+        "Solo il verso, posizione che i dati recenti non confermano",
+        "Solo la sua direzione"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Un vettore è definito completamente da modulo, direzione e verso, equivalentemente dalle sue componenti lungo gli assi."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Somma di vettori",
       "question": "Geometricamente, la somma di due vettori si può ottenere con il metodo:",
       "options": [
-        "Della proiezione su un solo asse",
-        "Punta-coda (o del parallelogramma)",
-        "Della sola somma dei moduli",
         "Del prodotto scalare",
-        "Della sottrazione dei moduli"
+        "Della sola somma dei moduli",
+        "Della proiezione su un solo asse",
+        "Della sottrazione dei moduli",
+        "Punta-coda (o del parallelogramma)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "La somma vettoriale si esegue graficamente disponendo i vettori punta-coda, oppure con la regola del parallelogramma."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Prodotto scalare",
       "question": "Il prodotto scalare tra due vettori restituisce:",
       "options": [
-        "Un numero (scalare)",
         "Un vettore con la stessa direzione di entrambi",
         "Un angolo espresso in radianti",
         "Sempre zero",
-        "Un vettore perpendicolare a entrambi"
+        "Un vettore perpendicolare a entrambi",
+        "Un numero (scalare)"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Il prodotto scalare tra due vettori è un numero, pari al prodotto dei moduli per il coseno dell'angolo compreso."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Prodotto vettoriale",
       "question": "Il prodotto vettoriale tra due vettori genera un vettore:",
       "options": [
-        "Coincidente con uno dei due vettori originali",
-        "Nullo per definizione secondo la nomenclatura standard",
-        "Parallelo a entrambi i vettori di partenza",
+        "Perpendicolare al piano individuato dai due vettori di partenza",
         "Di modulo sempre uguale alla somma dei moduli",
-        "Perpendicolare al piano individuato dai due vettori di partenza"
+        "Coincidente con uno dei due vettori originali",
+        "Nullo per definizione, posizione che i dati recenti non confermano",
+        "Parallelo a entrambi i vettori di partenza"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Il prodotto vettoriale produce un vettore perpendicolare al piano formato dai due vettori di partenza, con verso dato dalla regola della mano destra."
     },
     {
@@ -169,10 +169,10 @@
       "topic": "Modulo di un vettore",
       "question": "Dato un vettore con componenti cartesiane (3, 4), il suo modulo è:",
       "options": [
-        "7",
         "1",
         "25",
         "12",
+        "7",
         "5"
       ],
       "correctIndex": 4,
@@ -185,13 +185,13 @@
       "topic": "Prodotto scalare tra vettori perpendicolari",
       "question": "Il prodotto scalare tra due vettori perpendicolari tra loro vale:",
       "options": [
-        "La somma dei loro moduli",
+        "Zero",
+        "Un valore sempre negativo",
         "Il prodotto dei loro moduli",
         "Non è mai definito",
-        "Un valore sempre negativo",
-        "Zero"
+        "La somma dei loro moduli"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Poiché il prodotto scalare è proporzionale al coseno dell'angolo compreso, e cos(90°) = 0, il prodotto scalare tra vettori perpendicolari è nullo."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Prodotto vettoriale tra vettori paralleli",
       "question": "Il prodotto vettoriale tra due vettori paralleli (stessa direzione) vale:",
       "options": [
+        "Il vettore nullo",
+        "Il prodotto dei moduli",
         "La somma dei due vettori",
         "Un vettore di modulo massimo",
-        "Il prodotto dei moduli",
-        "Il vettore nullo",
         "Non è calcolabile"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Poiché il prodotto vettoriale dipende dal seno dell'angolo compreso, e sen(0°) = 0, tra vettori paralleli il prodotto vettoriale è il vettore nullo."
     },
     {
@@ -218,12 +218,12 @@
       "question": "Il numero 3.200.000 espresso in notazione scientifica è:",
       "options": [
         "0,32 × 10^7",
-        "3,2 × 10^-6",
-        "3,2 × 10^5",
+        "3,2 × 10^6",
         "32 × 10^5",
-        "3,2 × 10^6"
+        "3,2 × 10^-6",
+        "3,2 × 10^5"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "3.200.000 = 3,2 × 10^6, spostando la virgola di 6 posizioni verso sinistra."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Sistema Internazionale",
       "question": "Quale delle seguenti è l'unità di misura del tempo nel Sistema Internazionale?",
       "options": [
-        "Il giorno solare",
-        "Il minuto",
         "L'anno",
         "L'ora",
-        "Il secondo"
+        "Il giorno solare",
+        "Il secondo",
+        "Il minuto"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "L'unità fondamentale di tempo nel SI è il secondo (s)."
     },
     {
@@ -250,9 +250,9 @@
       "question": "La densità di una sostanza è una grandezza:",
       "options": [
         "Priva di unità di misura",
-        "Né estensiva né intensiva",
         "Estensiva, perché dipende dalla massa totale",
-        "Vettoriale nella descrizione tradizionale",
+        "Vettoriale, posizione che i dati recenti non confermano",
+        "Né estensiva né intensiva",
         "Intensiva, perché non dipende dalla quantità di materia"
       ],
       "correctIndex": 4,
@@ -265,13 +265,13 @@
       "topic": "Grandezze estensive e intensive",
       "question": "Quale tra queste è invece una grandezza estensiva?",
       "options": [
-        "La concentrazione",
-        "La pressione",
         "Il volume",
+        "La concentrazione",
         "La densità",
+        "La pressione",
         "La temperatura"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "Il volume è estensivo: dipende dalla quantità di materia presente nel sistema."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Componenti cartesiane di un vettore",
       "question": "Le componenti cartesiane di un vettore rappresentano:",
       "options": [
-        "Un numero puro senza unità di misura",
+        "Solo il suo modulo",
+        "Le sue proiezioni lungo gli assi di riferimento",
         "La somma dei vettori applicati nello stesso punto",
         "Solo l'angolo che forma con l'asse x",
-        "Le sue proiezioni lungo gli assi di riferimento",
-        "Solo il suo modulo"
+        "Un numero puro senza unità di misura"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "Le componenti cartesiane sono le proiezioni del vettore lungo gli assi del sistema di riferimento scelto."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Funzioni trigonometriche elementari",
       "question": "In un triangolo rettangolo, il coseno di un angolo è definito come il rapporto tra:",
       "options": [
-        "Cateto opposto e cateto adiacente",
-        "Cateto opposto e ipotenusa",
         "Ipotenusa e cateto adiacente",
+        "Cateto opposto e cateto adiacente",
         "Cateto adiacente e ipotenusa",
-        "I due cateti tra loro"
+        "I due cateti tra loro",
+        "Cateto opposto e ipotenusa"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Il coseno di un angolo è il rapporto tra il cateto adiacente all'angolo e l'ipotenusa."
     },
     {
@@ -313,10 +313,10 @@
       "topic": "Conversione di unità di misura",
       "question": "Quanti metri corrispondono a 250 centimetri?",
       "options": [
-        "0,25 m",
         "25 m",
-        "2500 m",
+        "0,25 m",
         "250 m",
+        "2500 m",
         "2,5 m"
       ],
       "correctIndex": 4,
@@ -329,13 +329,13 @@
       "topic": "Grandezze scalari e vettoriali",
       "question": "Quale delle seguenti grandezze fisiche è vettoriale e non scalare?",
       "options": [
-        "La temperatura",
         "L'energia",
+        "La velocità",
+        "La temperatura",
         "La massa",
-        "Il tempo",
-        "La velocità"
+        "Il tempo"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La velocità è una grandezza vettoriale, poiché richiede modulo, direzione e verso; massa, tempo, temperatura ed energia sono scalari."
     },
     {

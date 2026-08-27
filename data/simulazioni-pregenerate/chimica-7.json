@@ -9,13 +9,13 @@
       "topic": "Struttura degli amminoacidi",
       "question": "Un amminoacido standard è caratterizzato dalla presenza, sullo stesso carbonio alfa, di:",
       "options": [
-        "Solo due gruppi amminici nel modello di riferimento",
+        "Un anello aromatico obbligatorio in ogni amminoacido",
         "Un gruppo fosfato e un gruppo ossidrile",
-        "Un gruppo amminico, un gruppo carbossilico, un atomo di idrogeno e una catena laterale (gruppo R)",
         "Solo due gruppi carbossilici",
-        "Un anello aromatico obbligatorio in ogni amminoacido"
+        "Solo due gruppi amminici, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Un gruppo amminico, un gruppo carbossilico, un atomo di idrogeno e una catena laterale (gruppo R)"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "Un amminoacido standard presenta, legati allo stesso carbonio alfa, un gruppo amminico (-NH2), un gruppo carbossilico (-COOH), un atomo di idrogeno e una catena laterale variabile (gruppo R) che ne determina le proprietà specifiche."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Classificazione degli amminoacidi",
       "question": "Gli amminoacidi vengono classificati principalmente in base a:",
       "options": [
-        "La loro massa molecolare assoluta unicamente secondo la nomenclatura standard",
         "Le proprietà chimico-fisiche della loro catena laterale, come polarità, carica e aromaticità",
         "Il numero di atomi di carbonio nel gruppo carbossilico",
         "Il numero di legami peptidici che possono formare",
+        "La loro massa molecolare assoluta unicamente, posizione che i dati recenti non confermano",
         "Il colore della soluzione in cui sono disciolti"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Gli amminoacidi vengono classificati principalmente in base alle proprietà chimico-fisiche della catena laterale (R), che può essere apolare, polare non carica, acida, basica o aromatica."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Punto isoelettrico",
       "question": "Il punto isoelettrico di un amminoacido è il valore di pH al quale:",
       "options": [
-        "L'amminoacido diventa insolubile in ogni caso",
-        "L'amminoacido possiede carica netta nulla, esistendo prevalentemente come ione dipolare (zwitterione)",
-        "L'amminoacido si degrada completamente come riportato nei testi di riferimento",
         "L'amminoacido possiede la massima carica positiva possibile",
-        "L'amminoacido perde tutti i suoi gruppi funzionali"
+        "L'amminoacido perde tutti i suoi gruppi funzionali",
+        "L'amminoacido diventa insolubile in ogni caso",
+        "L'amminoacido si degrada completamente, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "L'amminoacido possiede carica netta nulla, esistendo prevalentemente come ione dipolare (zwitterione)"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "Il punto isoelettrico è il valore di pH al quale un amminoacido presenta carica netta nulla, esistendo prevalentemente nella forma di ione dipolare (zwitterione), con gruppo amminico protonato e gruppo carbossilico dissociato."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Amminoacidi essenziali",
       "question": "Gli amminoacidi essenziali sono definiti tali perché:",
       "options": [
-        "Non partecipano mai alla sintesi proteica",
-        "Sono privi di catena laterale come riportato nei testi di riferimento",
-        "L'organismo umano non è in grado di sintetizzarli autonomamente in quantità sufficiente e devono essere assunti con la dieta",
+        "Sono gli unici amminoacidi presenti nelle proteine umane",
+        "Sono privi di catena laterale, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Vengono sintetizzati esclusivamente dall'organismo, senza necessità di assunzione alimentare",
-        "Sono gli unici amminoacidi presenti nelle proteine umane"
+        "L'organismo umano non è in grado di sintetizzarli autonomamente in quantità sufficiente e devono essere assunti con la dieta",
+        "Non partecipano mai alla sintesi proteica"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "Gli amminoacidi essenziali sono quelli che l'organismo umano non riesce a sintetizzare autonomamente in quantità sufficiente, per cui devono essere necessariamente introdotti con la dieta."
     },
     {
@@ -74,12 +74,12 @@
       "question": "Il legame peptidico si forma dalla reazione tra:",
       "options": [
         "La catena laterale di due amminoacidi qualsiasi",
-        "Un gruppo fosfato e uno zucchero secondo la nomenclatura standard",
         "Il gruppo carbossilico di un amminoacido e il gruppo amminico di un altro, con perdita di una molecola d'acqua",
+        "Un gruppo fosfato e uno zucchero, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Due gruppi carbossilici di amminoacidi diversi",
         "Due gruppi amminici di amminoacidi diversi"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Il legame peptidico si forma per condensazione tra il gruppo carbossilico di un amminoacido e il gruppo amminico di un altro amminoacido, con rilascio di una molecola d'acqua."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Struttura primaria delle proteine",
       "question": "La struttura primaria di una proteina è definita da:",
       "options": [
-        "Il ripiegamento tridimensionale complessivo della catena polipeptidica",
-        "L'associazione di più subunità proteiche distinte",
+        "I soli ponti disolfuro presenti nella proteina",
         "La sequenza lineare degli amminoacidi lungo la catena polipeptidica",
         "La formazione di alfa eliche e beta foglietti",
-        "I soli ponti disolfuro presenti nella proteina"
+        "L'associazione di più subunità proteiche distinte",
+        "Il ripiegamento tridimensionale complessivo della catena polipeptidica"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "La struttura primaria di una proteina è definita dalla sequenza lineare degli amminoacidi che la compongono, determinata dalla sequenza codificante del gene corrispondente."
     },
     {
@@ -105,10 +105,10 @@
       "topic": "Struttura secondaria delle proteine",
       "question": "La struttura secondaria di una proteina, come l'alfa elica e il beta foglietto, è stabilizzata principalmente da:",
       "options": [
-        "Ponti disolfuro esclusivamente come riportato nei testi di riferimento",
-        "Legami peptidici covalenti aggiuntivi tra amminoacidi non adiacenti",
-        "Legami covalenti tra le catene laterali degli amminoacidi",
         "Interazioni ioniche tra catene laterali cariche",
+        "Legami covalenti tra le catene laterali degli amminoacidi",
+        "Legami peptidici covalenti aggiuntivi tra amminoacidi non adiacenti",
+        "Ponti disolfuro esclusivamente, posizione che i dati recenti non confermano",
         "Legami idrogeno tra i gruppi carbonilici e amminici dello scheletro peptidico"
       ],
       "correctIndex": 4,
@@ -121,13 +121,13 @@
       "topic": "Struttura terziaria delle proteine",
       "question": "La struttura terziaria di una proteina rappresenta:",
       "options": [
-        "Un livello strutturale presente solo nelle proteine di membrana",
-        "Il ripiegamento tridimensionale complessivo di una singola catena polipeptidica, stabilizzato da interazioni deboli e ponti disolfuro",
-        "La sola sequenza lineare degli amminoacidi secondo la definizione classica",
+        "La sola sequenza lineare degli amminoacidi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "La sola formazione di alfa eliche, senza altri elementi strutturali",
-        "L'associazione di più catene polipeptidiche distinte in un complesso funzionale"
+        "L'associazione di più catene polipeptidiche distinte in un complesso funzionale",
+        "Il ripiegamento tridimensionale complessivo di una singola catena polipeptidica, stabilizzato da interazioni deboli e ponti disolfuro",
+        "Un livello strutturale presente solo nelle proteine di membrana"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "La struttura terziaria descrive il ripiegamento tridimensionale complessivo di una singola catena polipeptidica, stabilizzato da interazioni deboli (idrogeno, ioniche, idrofobiche) e da ponti disolfuro covalenti."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Struttura quaternaria delle proteine",
       "question": "La struttura quaternaria di una proteina si riferisce a:",
       "options": [
+        "Un livello strutturale presente in ogni proteina, senza eccezioni",
+        "La sola sequenza amminoacidica lineare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "L'assenza totale di interazioni tra subunità proteiche",
-        "La sola sequenza amminoacidica lineare nella descrizione tradizionale",
         "L'associazione di due o più subunità polipeptidiche distinte in un complesso proteico funzionale",
-        "Il ripiegamento tridimensionale di una singola subunità proteica",
-        "Un livello strutturale presente in ogni proteina, senza eccezioni"
+        "Il ripiegamento tridimensionale di una singola subunità proteica"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "La struttura quaternaria riguarda l'associazione di due o più subunità polipeptidiche, ciascuna con propria struttura terziaria, in un complesso proteico funzionale, come nel caso dell'emoglobina."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Anomeri dei monosaccaridi",
       "question": "Gli anomeri di un monosaccaride sono stereoisomeri che differiscono per:",
       "options": [
+        "La classe funzionale generale del composto (aldoso o chetoso)",
         "La presenza o assenza del gruppo carbonilico in forma lineare",
         "La configurazione del carbonio anomerico generato durante la ciclizzazione della molecola",
-        "La classe funzionale generale del composto (aldoso o chetoso)",
-        "Il numero totale di atomi di carbonio della catena nella descrizione tradizionale",
+        "Il numero totale di atomi di carbonio della catena, posizione che i dati recenti non confermano",
         "Il tipo di legame glicosidico formato con un altro monosaccaride"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Gli anomeri sono stereoisomeri che si formano durante la ciclizzazione dei monosaccaridi, differendo per la configurazione (alfa o beta) del nuovo centro stereogenico generato al carbonio anomerico."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Ciclizzazione dei monosaccaridi",
       "question": "La ciclizzazione dei monosaccaridi in soluzione acquosa avviene tramite:",
       "options": [
-        "La reazione intramolecolare tra il gruppo carbonilico e un gruppo ossidrile della stessa molecola, formando un emiacetale ciclico",
-        "La reazione con una seconda molecola di monosaccaride, sempre e solo intermolecolare",
-        "L'ossidazione completa del monosaccaride secondo la definizione classica",
+        "La formazione di un legame peptidico interno",
+        "L'ossidazione completa del monosaccaride, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "La perdita irreversibile del gruppo carbonilico",
-        "La formazione di un legame peptidico interno"
+        "La reazione intramolecolare tra il gruppo carbonilico e un gruppo ossidrile della stessa molecola, formando un emiacetale ciclico",
+        "La reazione con una seconda molecola di monosaccaride, sempre e solo intermolecolare"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "I monosaccaridi in soluzione acquosa tendono a ciclizzarsi attraverso la reazione intramolecolare tra il gruppo carbonilico e un gruppo ossidrile della stessa molecola, formando una struttura emiacetalica ciclica."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Legame glicosidico",
       "question": "Il legame glicosidico che unisce due monosaccaridi in un disaccaride si forma tra:",
       "options": [
-        "Il carbonio anomerico di un monosaccaride e un gruppo ossidrile di un altro monosaccaride",
+        "Due gruppi carbossilici di monosaccaridi diversi",
         "Il gruppo fosfato di un nucleotide e uno zucchero",
         "Due atomi di idrogeno di monosaccaridi diversi",
-        "Due gruppi amminici di monosaccaridi diversi secondo la nomenclatura standard",
-        "Due gruppi carbossilici di monosaccaridi diversi"
+        "Il carbonio anomerico di un monosaccaride e un gruppo ossidrile di un altro monosaccaride",
+        "Due gruppi amminici di monosaccaridi diversi, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Il legame glicosidico si forma tra il carbonio anomerico (emiacetalico) di un monosaccaride e un gruppo ossidrile di un secondo monosaccaride, con rilascio di una molecola d'acqua."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Polisaccaridi di riserva energetica",
       "question": "Il glicogeno, principale polisaccaride di riserva energetica nelle cellule animali, è costituito da:",
       "options": [
-        "Unità di ribosio legate tramite legami fosfodiestere",
-        "Unità di glucosio legate tra loro con legami altamente ramificati",
         "Acidi grassi esterificati con glicerolo nella descrizione tradizionale",
+        "Amminoacidi legati tramite legami peptidici",
         "Unità di fruttosio legate in modo lineare",
-        "Amminoacidi legati tramite legami peptidici"
+        "Unità di ribosio legate tramite legami fosfodiestere",
+        "Unità di glucosio legate tra loro con legami altamente ramificati"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "Il glicogeno è un omopolisaccaride di riserva costituito da unità di glucosio, organizzate in una struttura altamente ramificata che ne facilita la rapida mobilizzazione."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Acidi grassi saturi e insaturi",
       "question": "Gli acidi grassi insaturi, rispetto a quelli saturi, sono caratterizzati da:",
       "options": [
-        "Un numero sempre dispari di atomi di carbonio",
-        "L'assenza del gruppo carbossilico terminale",
-        "Una struttura sempre ciclica secondo la definizione classica",
+        "L'assenza totale di atomi di carbonio nella catena",
         "La presenza di uno o più doppi legami carbonio-carbonio nella catena idrocarburica",
-        "L'assenza totale di atomi di carbonio nella catena"
+        "L'assenza del gruppo carbossilico terminale",
+        "Una struttura sempre ciclica, posizione che i dati recenti non confermano",
+        "Un numero sempre dispari di atomi di carbonio"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "Gli acidi grassi insaturi presentano uno o più doppi legami carbonio-carbonio nella catena idrocarburica, a differenza degli acidi grassi saturi che contengono solo legami singoli."
     },
     {
@@ -233,11 +233,11 @@
       "topic": "Trigliceridi",
       "question": "I trigliceridi sono formati dall'esterificazione di:",
       "options": [
-        "Tre molecole di glicerolo con un solo acido grasso",
-        "Una molecola di glicerolo con tre molecole di acido grasso",
         "Un amminoacido con tre acidi grassi",
-        "Una molecola di glucosio con tre acidi grassi",
-        "Una molecola di colesterolo con due acidi grassi"
+        "Una molecola di glicerolo con tre molecole di acido grasso",
+        "Tre molecole di glicerolo con un solo acido grasso",
+        "Una molecola di colesterolo con due acidi grassi",
+        "Una molecola di glucosio con tre acidi grassi"
       ],
       "correctIndex": 1,
       "explanation": "I trigliceridi si formano dall'esterificazione di una molecola di glicerolo con tre molecole di acido grasso, e costituiscono la principale forma di riserva energetica lipidica nell'organismo."
@@ -249,13 +249,13 @@
       "topic": "Glicerofosfolipidi",
       "question": "I glicerofosfolipidi, componenti fondamentali delle membrane biologiche, sono caratterizzati da:",
       "options": [
-        "Un anello steroideo obbligatorio nel modello di riferimento",
-        "L'assenza totale di gruppi fosfato",
-        "Uno scheletro di glicerolo esterificato con due acidi grassi e un gruppo fosfato, spesso legato a un'ulteriore testa polare",
         "Una struttura priva di qualsiasi componente lipidica",
-        "Solo acidi grassi saturi nella loro composizione"
+        "Solo acidi grassi saturi nella loro composizione",
+        "Un anello steroideo obbligatorio, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "L'assenza totale di gruppi fosfato",
+        "Uno scheletro di glicerolo esterificato con due acidi grassi e un gruppo fosfato, spesso legato a un'ulteriore testa polare"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "I glicerofosfolipidi possiedono uno scheletro di glicerolo esterificato con due acidi grassi e un gruppo fosfato, spesso ulteriormente legato a una testa polare (come colina o serina), conferendo loro il caratteristico carattere anfipatico."
     },
     {
@@ -265,13 +265,13 @@
       "topic": "Colesterolo e suoi derivati",
       "question": "Il colesterolo è precursore biologico di:",
       "options": [
-        "Vitamine idrosolubili come la vitamina C",
-        "Ormoni steroidei, acidi biliari e vitamina D",
-        "Amminoacidi essenziali",
         "Carboidrati semplici come il glucosio",
-        "Basi azotate degli acidi nucleici"
+        "Basi azotate degli acidi nucleici",
+        "Amminoacidi essenziali",
+        "Ormoni steroidei, acidi biliari e vitamina D",
+        "Vitamine idrosolubili come la vitamina C"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Il colesterolo è il precursore biologico di numerose molecole di interesse biomedico, tra cui gli ormoni steroidei, gli acidi biliari e la vitamina D."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Importanza biologica dell'ATP",
       "question": "L'ATP (adenosina trifosfato) svolge un ruolo centrale nel metabolismo cellulare perché:",
       "options": [
-        "È utilizzato solo come componente strutturale delle membrane",
+        "I suoi legami fosfoanidridici ad alta energia possono essere idrolizzati per fornire energia a numerose reazioni metaboliche endoergoniche",
         "È un composto completamente inerte dal punto di vista energetico",
-        "Rappresenta l'unico nucleotide presente nella cellula come riportato nei testi di riferimento",
-        "Non è mai coinvolto in reazioni di trasferimento di energia",
-        "I suoi legami fosfoanidridici ad alta energia possono essere idrolizzati per fornire energia a numerose reazioni metaboliche endoergoniche"
+        "Rappresenta l'unico nucleotide presente nella cellula, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "È utilizzato solo come componente strutturale delle membrane",
+        "Non è mai coinvolto in reazioni di trasferimento di energia"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "L'ATP contiene legami fosfoanidridici ad alta energia, la cui idrolisi rilascia energia libera utilizzabile per numerose reazioni metaboliche endoergoniche, rendendolo la principale 'moneta energetica' della cellula."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "NAD+/NADH nelle reazioni redox biologiche",
       "question": "La coppia NAD+/NADH svolge un ruolo fondamentale nel metabolismo cellulare come:",
       "options": [
-        "Base azotata presente solo nel DNA",
-        "Componente strutturale esclusivo delle membrane cellulari",
         "Zucchero semplice utilizzato come riserva energetica",
+        "Componente strutturale esclusivo delle membrane cellulari",
         "Coenzima trasportatore di elettroni e protoni nelle reazioni di ossidoriduzione biologiche",
-        "Amminoacido essenziale secondo la definizione classica"
+        "Amminoacido essenziale, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Base azotata presente solo nel DNA"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Il dinucleotide NAD+/NADH funge da coenzima trasportatore di elettroni e protoni in numerose reazioni di ossidoriduzione del metabolismo cellulare, come la glicolisi e il ciclo di Krebs."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Legame fosfodiestere negli acidi nucleici",
       "question": "Il legame fosfodiestere, che collega i nucleotidi nella catena degli acidi nucleici, si forma tra:",
       "options": [
-        "Due molecole di zucchero senza coinvolgimento del fosfato",
-        "Il gruppo fosfato di un nucleotide e il gruppo ossidrile in posizione 3' dello zucchero del nucleotide successivo",
+        "Due basi azotate adiacenti direttamente, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Il gruppo amminico di due basi azotate diverse",
         "Due gruppi fosfato di nucleotidi non adiacenti",
-        "Due basi azotate adiacenti direttamente secondo la definizione classica"
+        "Due molecole di zucchero senza coinvolgimento del fosfato",
+        "Il gruppo fosfato di un nucleotide e il gruppo ossidrile in posizione 3' dello zucchero del nucleotide successivo"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "Il legame fosfodiestere unisce il gruppo fosfato in posizione 5' di un nucleotide al gruppo ossidrile in posizione 3' dello zucchero del nucleotide successivo, formando lo scheletro zucchero-fosfato degli acidi nucleici."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Deaminazione della citosina",
       "question": "La deaminazione non enzimatica della citosina nel DNA porta alla formazione di:",
       "options": [
-        "Uracile, una base normalmente assente nel DNA, con potenziale effetto mutageno se non riparata",
-        "Timina, senza alcun effetto mutageno come riportato nei testi di riferimento",
+        "Un nuovo legame fosfodiestere aggiuntivo",
         "Guanina, senza alcuna conseguenza biologica",
-        "Adenina, con effetto stabilizzante sul DNA",
-        "Un nuovo legame fosfodiestere aggiuntivo"
+        "Uracile, una base normalmente assente nel DNA, con potenziale effetto mutageno se non riparata",
+        "Timina, senza alcun effetto mutageno, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Adenina, con effetto stabilizzante sul DNA"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "La deaminazione spontanea della citosina genera uracile, una base normalmente assente nel DNA; se non corretta dai sistemi di riparazione, può portare a mutazioni durante la replicazione successiva."
     },
     {

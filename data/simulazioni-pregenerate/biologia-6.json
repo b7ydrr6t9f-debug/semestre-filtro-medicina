@@ -9,13 +9,13 @@
       "topic": "Matrice extracellulare",
       "question": "La matrice extracellulare svolge funzioni essenziali di:",
       "options": [
+        "Trasporto di proteine tra reticolo endoplasmatico e Golgi",
         "Supporto strutturale, ancoraggio cellulare e trasmissione di segnali meccanici e biochimici",
-        "Sintesi diretta di ATP per la cellula",
         "Degradazione dei mitocondri danneggiati",
-        "Duplicazione del DNA nucleare secondo la definizione classica",
-        "Trasporto di proteine tra reticolo endoplasmatico e Golgi"
+        "Duplicazione del DNA nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Sintesi diretta di ATP per la cellula"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "La matrice extracellulare fornisce supporto strutturale ai tessuti, ancoraggio per le cellule e partecipa alla trasmissione di segnali meccanici e biochimici che influenzano il comportamento cellulare."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Integrine",
       "question": "Le integrine sono proteine di membrana che mediano principalmente:",
       "options": [
-        "La replicazione del DNA mitocondriale",
         "L'ancoraggio della cellula alla matrice extracellulare e la trasmissione di segnali bidirezionali",
+        "Il trasporto nucleare di RNA, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "La sintesi di nuovi fosfolipidi di membrana",
-        "Il legame diretto tra due molecole di DNA",
-        "Il trasporto nucleare di RNA secondo la definizione classica"
+        "La replicazione del DNA mitocondriale",
+        "Il legame diretto tra due molecole di DNA"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Le integrine sono recettori di membrana che ancorano la cellula ai componenti della matrice extracellulare (come la fibronectina), trasmettendo segnali in entrambe le direzioni attraverso la membrana."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Meccanotrasduzione",
       "question": "La meccanotrasduzione è il processo per cui:",
       "options": [
-        "L'energia luminosa viene convertita in energia chimica",
-        "Le forze meccaniche applicate alla cellula vengono convertite in segnali biochimici intracellulari, spesso tramite il citoscheletro",
         "Le proteine vengono degradate dal proteasoma",
+        "I mitocondri si dividono per fissione, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Il DNA viene tradotto direttamente in proteina senza passare per l'RNA",
-        "I mitocondri si dividono per fissione secondo la nomenclatura standard"
+        "L'energia luminosa viene convertita in energia chimica",
+        "Le forze meccaniche applicate alla cellula vengono convertite in segnali biochimici intracellulari, spesso tramite il citoscheletro"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "La meccanotrasduzione converte stimoli meccanici (come tensione o compressione) in segnali biochimici intracellulari, spesso attraverso il collegamento tra integrine, matrice extracellulare e citoscheletro."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Fibronectina",
       "question": "La fibronectina è una proteina della matrice extracellulare che, tra le altre funzioni, permette:",
       "options": [
-        "La sintesi di nuovi ribosomi nella descrizione tradizionale",
+        "Il legame diretto delle cellule tramite le integrine, favorendo l'adesione cellulare alla matrice",
         "La formazione dei pori nucleari",
-        "La duplicazione del genoma mitocondriale",
         "Il trasporto di ossigeno nel sangue",
-        "Il legame diretto delle cellule tramite le integrine, favorendo l'adesione cellulare alla matrice"
+        "La duplicazione del genoma mitocondriale",
+        "La sintesi di nuovi ribosomi, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "La fibronectina è una glicoproteina della matrice extracellulare che lega le integrine sulla superficie cellulare, mediando l'adesione delle cellule alla matrice stessa."
     },
     {
@@ -73,13 +73,13 @@
       "topic": "Caderine e adesione cellula-cellula",
       "question": "Le caderine sono proteine di adesione che mediano:",
       "options": [
-        "La sintesi di nuovi lipidi di membrana nel modello di riferimento",
-        "Il trasporto di RNA dal nucleo al citoplasma",
-        "La degradazione delle proteine mal ripiegate",
         "Il legame calcio-dipendente tra cellule adiacenti, contribuendo alla formazione dei tessuti",
-        "L'ancoraggio della cellula alla matrice extracellulare"
+        "La degradazione delle proteine mal ripiegate",
+        "Il trasporto di RNA dal nucleo al citoplasma",
+        "L'ancoraggio della cellula alla matrice extracellulare",
+        "La sintesi di nuovi lipidi di membrana, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Le caderine sono molecole di adesione calcio-dipendenti che mediano il legame diretto tra cellule adiacenti, fondamentale per la formazione e il mantenimento dei tessuti."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Giunzioni occludenti",
       "question": "Le giunzioni occludenti (tight junctions) tra cellule epiteliali adiacenti svolgono principalmente la funzione di:",
       "options": [
-        "Degradare le proteine di membrana danneggiate",
-        "Ancorare la cellula ai microtubuli nel modello di riferimento",
+        "Permettere il passaggio libero di ioni e piccole molecole tra le cellule",
+        "Ancorare la cellula ai microtubuli, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Mediare esclusivamente il trasporto nucleare",
-        "Sigillare lo spazio intercellulare, impedendo il passaggio libero di sostanze tra le cellule",
-        "Permettere il passaggio libero di ioni e piccole molecole tra le cellule"
+        "Degradare le proteine di membrana danneggiate",
+        "Sigillare lo spazio intercellulare, impedendo il passaggio libero di sostanze tra le cellule"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Le giunzioni occludenti sigillano lo spazio tra cellule epiteliali adiacenti, impedendo il passaggio libero di sostanze attraverso lo spazio intercellulare e mantenendo la polarità cellulare."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Desmosomi",
       "question": "I desmosomi svolgono principalmente la funzione di:",
       "options": [
+        "Sigillare completamente lo spazio intercellulare",
         "Degradare le proteine della matrice extracellulare",
-        "Fornire ancoraggio meccanico stabile tra cellule adiacenti, collegandosi ai filamenti intermedi del citoscheletro",
-        "Trasportare RNA dal nucleo al citoplasma nella descrizione tradizionale",
+        "Trasportare RNA dal nucleo al citoplasma, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Permettere il passaggio diretto di piccole molecole tra cellule adiacenti",
-        "Sigillare completamente lo spazio intercellulare"
+        "Fornire ancoraggio meccanico stabile tra cellule adiacenti, collegandosi ai filamenti intermedi del citoscheletro"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "I desmosomi forniscono un forte ancoraggio meccanico tra cellule adiacenti, collegandosi ai filamenti intermedi (come le cheratine) del citoscheletro, particolarmente importanti nei tessuti soggetti a stress meccanico."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Giunzioni comunicanti",
       "question": "Le giunzioni comunicanti (gap junctions) permettono:",
       "options": [
+        "Il passaggio diretto di ioni e piccole molecole tra il citoplasma di cellule adiacenti",
+        "La degradazione delle proteine di membrana, posizione che i dati recenti non confermano",
         "La sintesi diretta di proteine tra due cellule",
-        "Il completo isolamento elettrico tra cellule adiacenti",
-        "La degradazione delle proteine di membrana secondo la definizione classica",
         "L'ancoraggio esclusivo alla matrice extracellulare",
-        "Il passaggio diretto di ioni e piccole molecole tra il citoplasma di cellule adiacenti"
+        "Il completo isolamento elettrico tra cellule adiacenti"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Le giunzioni comunicanti formano canali che collegano direttamente il citoplasma di cellule adiacenti, permettendo il passaggio di ioni e piccole molecole, importante ad esempio nella trasmissione di segnali elettrici tra cellule cardiache."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Segnalazione autocrina e paracrina",
       "question": "Nella segnalazione autocrina, una cellula:",
       "options": [
-        "Comunica solo tramite contatto diretto con un'altra cellula",
-        "Non produce mai alcuna molecola segnale",
-        "Comunica esclusivamente tramite sinapsi nella descrizione tradizionale",
         "Rilascia una molecola segnale che agisce su se stessa, legandosi ai propri recettori",
-        "Riceve segnali esclusivamente da cellule molto distanti tramite il sangue"
+        "Riceve segnali esclusivamente da cellule molto distanti tramite il sangue",
+        "Non produce mai alcuna molecola segnale",
+        "Comunica esclusivamente tramite sinapsi, posizione che i dati recenti non confermano",
+        "Comunica solo tramite contatto diretto con un'altra cellula"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Nella segnalazione autocrina la cellula rilascia una molecola segnale che si lega ai recettori presenti sulla superficie della stessa cellula che l'ha prodotta, a differenza della segnalazione paracrina che agisce su cellule vicine."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Segnalazione endocrina",
       "question": "Nella segnalazione endocrina, il messaggero chimico:",
       "options": [
-        "Richiede sempre il contatto diretto tra due cellule",
-        "Non può mai attraversare la membrana plasmatica della cellula bersaglio",
+        "Agisce solo attraverso una sinapsi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Viene rilasciato nel sangue e raggiunge cellule bersaglio anche molto distanti dal sito di produzione",
-        "Agisce esclusivamente sulla cellula che lo ha prodotto",
-        "Agisce solo attraverso una sinapsi come riportato nei testi di riferimento"
+        "Non può mai attraversare la membrana plasmatica della cellula bersaglio",
+        "Richiede sempre il contatto diretto tra due cellule",
+        "Agisce esclusivamente sulla cellula che lo ha prodotto"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Nella segnalazione endocrina, ormoni rilasciati nel sangue da ghiandole specializzate raggiungono cellule bersaglio anche molto distanti, legandosi ai loro recettori specifici."
     },
     {
@@ -169,11 +169,11 @@
       "topic": "Recettori di membrana e intracellulari",
       "question": "A differenza dei recettori di membrana, i recettori intracellulari, come quelli per gli ormoni steroidei, legano tipicamente:",
       "options": [
-        "Esclusivamente altre proteine di membrana",
+        "Solo ioni carichi positivamente, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Molecole lipofile capaci di attraversare la membrana plasmatica e raggiungere il citoplasma o il nucleo",
         "Molecole idrofile incapaci di attraversare la membrana plasmatica",
         "Solo molecole di grandi dimensioni come le proteine",
-        "Solo ioni carichi positivamente come riportato nei testi di riferimento"
+        "Esclusivamente altre proteine di membrana"
       ],
       "correctIndex": 1,
       "explanation": "I recettori intracellulari legano tipicamente molecole lipofile (come ormoni steroidei o ossido nitrico), capaci di attraversare direttamente la membrana plasmatica per raggiungere il loro bersaglio citoplasmatico o nucleare."
@@ -185,13 +185,13 @@
       "topic": "Ossido nitrico come molecola segnale",
       "question": "L'ossido nitrico (NO), come molecola segnale, agisce tipicamente:",
       "options": [
-        "Solo tramite endocitosi mediata da recettore",
-        "Esclusivamente tramite giunzioni comunicanti",
         "Legandosi a un recettore di membrana con attività tirosin-chinasica",
+        "Solo dopo essere stato fosforilato, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Diffondendo liberamente attraverso la membrana plasmatica per attivare direttamente bersagli intracellulari",
-        "Solo dopo essere stato fosforilato secondo la definizione classica"
+        "Solo tramite endocitosi mediata da recettore",
+        "Esclusivamente tramite giunzioni comunicanti"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "L'ossido nitrico, essendo una piccola molecola gassosa lipofila, diffonde liberamente attraverso le membrane cellulari per attivare direttamente bersagli intracellulari, come la guanilato ciclasi."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Recettori accoppiati a proteine G",
       "question": "I recettori accoppiati a proteine G, una volta attivati dal ligando, tipicamente:",
       "options": [
-        "Duplicano il proprio mRNA come riportato nei testi di riferimento",
-        "Attivano una proteina G trimerica, innescando una cascata di trasduzione del segnale intracellulare",
         "Non hanno alcun effetto sulla cellula bersaglio",
+        "Duplicano il proprio mRNA, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Fosforilano direttamente il DNA nucleare",
-        "Degradano immediatamente il ligando legato"
+        "Degradano immediatamente il ligando legato",
+        "Attivano una proteina G trimerica, innescando una cascata di trasduzione del segnale intracellulare"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "L'attivazione di un recettore accoppiato a proteine G porta all'attivazione della proteina G trimerica associata, che a sua volta innesca una cascata di segnalazione intracellulare, spesso tramite secondi messaggeri."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "GEF e GAP",
       "question": "Le proteine GEF (Guanine nucleotide Exchange Factor) svolgono la funzione di:",
       "options": [
+        "Trascrivere il gene della proteina G nella descrizione tradizionale",
         "Idrolizzare il GTP legato alla proteina G, inattivandola",
         "Degradare la proteina G tramite il proteasoma",
-        "Trascrivere il gene della proteina G nella descrizione tradizionale",
-        "Fosforilare direttamente il recettore di membrana",
-        "Catalizzare lo scambio del GDP con GTP sulla proteina G, attivandola"
+        "Catalizzare lo scambio del GDP con GTP sulla proteina G, attivandola",
+        "Fosforilare direttamente il recettore di membrana"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Le proteine GEF favoriscono lo scambio del GDP legato con GTP sulla proteina G, attivandola; le proteine GAP, al contrario, favoriscono l'idrolisi del GTP, inattivando la proteina G."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Secondi messaggeri",
       "question": "I secondi messaggeri, come il cAMP, svolgono la funzione di:",
       "options": [
-        "Formare nuove giunzioni comunicanti",
-        "Legare direttamente il DNA per attivare la trascrizione senza alcun intermediario",
         "Sostituire completamente la funzione del recettore di membrana",
+        "Formare nuove giunzioni comunicanti",
         "Amplificare e propagare il segnale all'interno della cellula dopo l'attivazione del recettore di membrana",
-        "Degradare il ligando extracellulare secondo la definizione classica"
+        "Legare direttamente il DNA per attivare la trascrizione senza alcun intermediario",
+        "Degradare il ligando extracellulare, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "I secondi messaggeri, come cAMP, IP3 o calcio, si generano rapidamente dopo l'attivazione del recettore e amplificano il segnale, propagandolo all'interno della cellula verso i bersagli finali."
     },
     {
@@ -250,9 +250,9 @@
       "question": "Il fenomeno della desensitizzazione recettoriale, ben esemplificato nel sistema visivo, consiste in:",
       "options": [
         "L'assenza totale di risposta fin dal primo stimolo",
-        "Un aumento progressivo e illimitato della risposta cellulare a uno stimolo persistente",
         "La distruzione irreversibile della cellula bersaglio",
         "Un fenomeno che riguarda esclusivamente i recettori intracellulari",
+        "Un aumento progressivo e illimitato della risposta cellulare a uno stimolo persistente",
         "Una riduzione della responsività del recettore a uno stimolo prolungato o ripetuto"
       ],
       "correctIndex": 4,
@@ -265,10 +265,10 @@
       "topic": "Recettori tirosin-chinasici",
       "question": "I recettori dotati di attività tirosin-chinasica, come il recettore per l'insulina, funzionano tipicamente attivandosi tramite:",
       "options": [
-        "Legame diretto al DNA nucleare nel modello di riferimento",
         "Formazione di un canale ionico permanente",
-        "Attivazione esclusiva di una proteina G trimerica",
         "Idrolisi immediata del ligando legato",
+        "Attivazione esclusiva di una proteina G trimerica",
+        "Legame diretto al DNA nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Dimerizzazione indotta dal ligando e autofosforilazione reciproca su residui di tirosina"
       ],
       "correctIndex": 4,
@@ -282,12 +282,12 @@
       "question": "La via di segnalazione Ras-MAP chinasi è tipicamente attivata a valle di:",
       "options": [
         "I recettori accoppiati a canali ionici",
-        "Esclusivamente i recettori intracellulari per ormoni steroidei",
-        "Le giunzioni comunicanti",
+        "I recettori tirosin-chinasici, come quello dell'EGF",
         "La sola diffusione dell'ossido nitrico",
-        "I recettori tirosin-chinasici, come quello dell'EGF"
+        "Le giunzioni comunicanti",
+        "Esclusivamente i recettori intracellulari per ormoni steroidei"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La via Ras-MAP chinasi è tipicamente attivata a valle di recettori tirosin-chinasici, come il recettore dell'EGF, e regola importanti processi cellulari tra cui proliferazione e differenziamento."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Oncogeni e trasduzione del segnale",
       "question": "Gli oncogeni sono spesso versioni alterate di geni normalmente coinvolti in:",
       "options": [
+        "La sola degradazione delle proteine mal ripiegate",
         "Il trasporto nucleare degli RNA non codificanti",
-        "La formazione dei pori nucleari",
+        "La sintesi dei perossisomi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Le vie di trasduzione del segnale che regolano crescita e proliferazione cellulare",
-        "La sintesi dei perossisomi secondo la definizione classica",
-        "La sola degradazione delle proteine mal ripiegate"
+        "La formazione dei pori nucleari"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "Molti oncogeni derivano da mutazioni di geni (proto-oncogeni) normalmente coinvolti nelle vie di trasduzione del segnale che regolano crescita e proliferazione cellulare, la cui alterazione può contribuire alla trasformazione tumorale."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Segnalazione del recettore per l'insulina",
       "question": "Il legame dell'insulina al proprio recettore innesca una cascata di segnalazione che porta, tra gli altri effetti, a:",
       "options": [
+        "L'inibizione totale e permanente di ogni attività metabolica cellulare",
+        "L'aumento della captazione di glucosio da parte della cellula tramite il reclutamento di trasportatori GLUT",
         "L'attivazione esclusiva della via dell'ossido nitrico",
         "La degradazione immediata del recettore stesso senza alcun effetto a valle",
-        "L'inibizione totale e permanente di ogni attività metabolica cellulare",
-        "Il blocco irreversibile della sintesi proteica nel modello di riferimento",
-        "L'aumento della captazione di glucosio da parte della cellula tramite il reclutamento di trasportatori GLUT"
+        "Il blocco irreversibile della sintesi proteica, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La segnalazione attivata dal recettore dell'insulina promuove, tra gli altri effetti, il reclutamento di trasportatori GLUT sulla membrana plasmatica, aumentando la captazione cellulare di glucosio."
     },
     {
@@ -330,12 +330,12 @@
       "question": "Nella via di segnalazione dei fosfoinositidi, l'idrolisi del PIP2 da parte della fosfolipasi C genera tipicamente:",
       "options": [
         "Un singolo prodotto privo di attività segnalatoria",
-        "Solo molecole di ATP come riportato nei testi di riferimento",
+        "IP3 e diacilglicerolo (DAG), entrambi coinvolti come secondi messaggeri",
+        "Solo molecole di ATP, posizione che i dati recenti non confermano",
         "Solo anidride carbonica e acqua",
-        "Esclusivamente glucosio",
-        "IP3 e diacilglicerolo (DAG), entrambi coinvolti come secondi messaggeri"
+        "Esclusivamente glucosio"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "L'idrolisi del PIP2 da parte della fosfolipasi C genera IP3, che promuove il rilascio di calcio dal reticolo endoplasmatico, e diacilglicerolo (DAG), che attiva la proteina chinasi C, entrambi importanti secondi messaggeri."
     },
     {
