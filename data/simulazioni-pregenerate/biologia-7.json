@@ -9,13 +9,13 @@
       "topic": "Fasi del ciclo cellulare",
       "question": "Il ciclo cellulare eucariotico è suddiviso principalmente in:",
       "options": [
-        "Solo mitosi e meiosi alternate",
         "Fasi G1, S, G2 (interfase) e fase M (mitosi)",
-        "Esclusivamente fase G0 permanente",
         "Solo fase S e fase M, senza fasi intermedie",
-        "Una sola fase indistinta di crescita continua"
+        "Una sola fase indistinta di crescita continua",
+        "Esclusivamente fase G0 permanente",
+        "Solo mitosi e meiosi alternate"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Il ciclo cellulare comprende l'interfase (suddivisa in G1, S, G2), durante cui la cellula cresce e duplica il DNA, e la fase M, in cui avviene la divisione cellulare vera e propria."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Cicline e chinasi ciclina-dipendenti",
       "question": "Le cicline regolano il ciclo cellulare principalmente:",
       "options": [
+        "Legandosi e attivando le chinasi ciclina-dipendenti (CDK), la cui attività varia ciclicamente con la fase del ciclo cellulare",
+        "Formando il capside di virus oncogeni, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Sostituendo completamente la funzione dei ribosomi",
         "Impedendo sempre la progressione del ciclo cellulare",
-        "Legandosi e attivando le chinasi ciclina-dipendenti (CDK), la cui attività varia ciclicamente con la fase del ciclo cellulare",
-        "Degradando direttamente il DNA danneggiato",
-        "Formando il capside di virus oncogeni, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "Degradando direttamente il DNA danneggiato"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "Le cicline si legano e attivano specifiche chinasi ciclina-dipendenti (CDK); la loro concentrazione oscilla ciclicamente, guidando la progressione ordinata attraverso le fasi del ciclo cellulare."
     },
     {
@@ -43,11 +43,11 @@
       "options": [
         "La cellula entra sempre in apoptosi, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Il DNA viene degradato completamente",
+        "La cellula si impegna a completare il ciclo cellulare anche in assenza di ulteriori segnali di fattori di crescita",
         "Il ciclo cellulare si arresta immediatamente e permanentemente",
-        "La cellula rimane indefinitamente dipendente dai fattori di crescita per continuare il ciclo",
-        "La cellula si impegna a completare il ciclo cellulare anche in assenza di ulteriori segnali di fattori di crescita"
+        "La cellula rimane indefinitamente dipendente dai fattori di crescita per continuare il ciclo"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Una volta superato il punto di restrizione, la cellula diventa indipendente dai fattori di crescita esterni e si impegna a completare il resto del ciclo cellulare fino alla divisione."
     },
     {
@@ -58,8 +58,8 @@
       "question": "Il complesso ciclina D-CDK4/6 promuove l'ingresso in fase S principalmente attraverso:",
       "options": [
         "La fosforilazione della proteina del retinoblastoma (Rb), con conseguente rilascio del fattore di trascrizione E2F",
-        "La degradazione diretta della proteina p53",
         "La formazione del fuso mitotico, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "La degradazione diretta della proteina p53",
         "La duplicazione diretta del DNA senza altri intermedi",
         "L'inibizione permanente di tutte le altre cicline"
       ],
@@ -73,13 +73,13 @@
       "topic": "Attivazione di p53 e danno al DNA",
       "question": "In risposta a un danno significativo al DNA, la proteina p53 può indurre:",
       "options": [
-        "L'arresto del ciclo cellulare per permettere la riparazione, o l'apoptosi se il danno è irreparabile",
+        "Sempre e solo la duplicazione accelerata del DNA danneggiato",
         "La formazione di un nuovo nucleolo",
+        "L'arresto del ciclo cellulare per permettere la riparazione, o l'apoptosi se il danno è irreparabile",
         "L'immediata trasformazione tumorale della cellula",
-        "La fusione con un'altra cellula, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Sempre e solo la duplicazione accelerata del DNA danneggiato"
+        "La fusione con un'altra cellula, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "p53, spesso definita 'guardiano del genoma', in risposta al danno al DNA può attivare pathway di arresto del ciclo cellulare per permettere la riparazione, oppure indurre l'apoptosi se il danno è troppo esteso per essere riparato."
     },
     {
@@ -89,11 +89,11 @@
       "topic": "Proto-oncogeni e oncogeni",
       "question": "Un proto-oncogene, se mutato o iperespresso, può trasformarsi in un oncogene, contribuendo alla proliferazione tumorale, perché:",
       "options": [
-        "I proto-oncogeni non vengono mai espressi in cellule normali, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "I proto-oncogeni codificano esclusivamente proteine strutturali della membrana",
         "I proto-oncogeni sono geni privi di qualunque funzione biologica",
         "I proto-oncogeni codificano normalmente proteine che promuovono la crescita e la proliferazione cellulare in modo regolato",
         "Solo i geni oncosoppressori possono trasformarsi in oncogeni",
-        "I proto-oncogeni codificano esclusivamente proteine strutturali della membrana"
+        "I proto-oncogeni non vengono mai espressi in cellule normali, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
       "correctIndex": 2,
       "explanation": "I proto-oncogeni codificano normalmente proteine coinvolte nella regolazione della crescita e proliferazione cellulare; mutazioni o iperespressione possono trasformarli in oncogeni, con perdita del controllo regolativo normale."
@@ -105,13 +105,13 @@
       "topic": "Geni oncosoppressori",
       "question": "I geni oncosoppressori, a differenza dei proto-oncogeni, codificano tipicamente proteine che:",
       "options": [
-        "Inibiscono la proliferazione cellulare o promuovono l'apoptosi, e la loro perdita di funzione favorisce la trasformazione tumorale",
-        "Codificano esclusivamente enzimi digestivi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Non hanno alcuna relazione con lo sviluppo del cancro",
+        "Promuovono sempre e comunque la proliferazione cellulare incontrollata",
         "Sono attivi solo durante lo sviluppo embrionale",
-        "Promuovono sempre e comunque la proliferazione cellulare incontrollata"
+        "Codificano esclusivamente enzimi digestivi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Inibiscono la proliferazione cellulare o promuovono l'apoptosi, e la loro perdita di funzione favorisce la trasformazione tumorale"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "I geni oncosoppressori (come p53 e Rb) codificano proteine che normalmente frenano la proliferazione cellulare o inducono l'apoptosi; la loro inattivazione (perdita di funzione) contribuisce alla trasformazione tumorale."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Fuso mitotico e cinetocore",
       "question": "I microtubuli del cinetocore, durante la mitosi, sono principalmente responsabili di:",
       "options": [
-        "Degradare la lamina nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Ancorare il fuso mitotico al centrosoma soltanto",
-        "Collegarsi al cinetocore dei cromosomi e mediarne il movimento durante la separazione",
+        "Degradare la lamina nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Sintetizzare nuove proteine durante la mitosi",
+        "Collegarsi al cinetocore dei cromosomi e mediarne il movimento durante la separazione",
         "Formare la membrana plasmatica delle cellule figlie"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "I microtubuli del cinetocore si attaccano specificamente al cinetocore dei cromosomi, mediando il loro corretto movimento e allineamento durante la mitosi."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Complesso NDC80",
       "question": "Il complesso NDC80 svolge un ruolo cruciale nella mitosi perché:",
       "options": [
-        "Regola esclusivamente la citodieresi",
-        "Media l'interfaccia fisica di attacco tra i microtubuli del fuso e il cinetocore dei cromosomi",
         "Degrada la securina al termine della mitosi",
         "Sintetizza le cicline necessarie per l'ingresso in mitosi",
+        "Media l'interfaccia fisica di attacco tra i microtubuli del fuso e il cinetocore dei cromosomi",
+        "Regola esclusivamente la citodieresi",
         "Forma il centrosoma, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Il complesso NDC80 è una componente chiave del cinetocore che media l'attacco fisico tra i microtubuli del fuso mitotico e i cromosomi, essenziale per la corretta segregazione cromosomica."
     },
     {
@@ -154,12 +154,12 @@
       "question": "Il complesso APC/C (o ciclosoma), attivandosi verso la fine della mitosi, promuove:",
       "options": [
         "La formazione dei pori nucleari",
-        "L'inibizione permanente della citodieresi",
         "La degradazione della securina e delle cicline mitotiche, permettendo la separazione dei cromatidi fratelli e l'uscita dalla mitosi",
+        "L'inibizione permanente della citodieresi",
         "La sintesi di nuove cicline, evento proprio dell'ingresso nel ciclo successivo e non dell'uscita dalla mitosi, ipotesi priva di riscontro",
         "La duplicazione del DNA per la fase S successiva"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Il complesso APC/C promuove la degradazione ubiquitina-dipendente della securina (permettendo la separazione dei cromatidi fratelli) e delle cicline mitotiche, consentendo alla cellula di uscire dalla mitosi."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Separazione dei cromatidi fratelli",
       "question": "La separazione dei cromatidi fratelli durante la mitosi è resa possibile da:",
       "options": [
-        "Il blocco irreversibile del ciclo cellulare",
-        "La degradazione della coesina, mediata dall'attivazione della separasi dopo la distruzione della securina",
         "L'aumento della concentrazione di cicline mitotiche",
         "La formazione di nuovi centromeri",
-        "La sintesi di nuovo DNA, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "La sintesi di nuovo DNA, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Il blocco irreversibile del ciclo cellulare",
+        "La degradazione della coesina, mediata dall'attivazione della separasi dopo la distruzione della securina"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "La degradazione della securina da parte dell'APC/C libera la separasi, un enzima che degrada la coesina che tiene uniti i cromatidi fratelli, permettendone la separazione."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Crossing over nella meiosi",
       "question": "Il crossing over durante la meiosi consiste in:",
       "options": [
-        "La perdita completa di un intero cromosoma",
-        "La duplicazione completa dell'intero genoma",
-        "Lo scambio di segmenti di cromatidi tra cromosomi omologhi, aumentando la variabilità genetica",
         "La formazione di un solo gamete aploide per ogni cellula germinale",
+        "La duplicazione completa dell'intero genoma",
+        "La perdita completa di un intero cromosoma",
+        "Lo scambio di segmenti di cromatidi tra cromosomi omologhi, aumentando la variabilità genetica",
         "La fusione di due cellule germinali, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "Il crossing over è lo scambio fisico di segmenti tra cromatidi di cromosomi omologhi durante la profase I meiotica, un meccanismo che genera nuove combinazioni alleliche aumentando la variabilità genetica."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Differenze tra mitosi e meiosi",
       "question": "Una differenza fondamentale tra mitosi e meiosi è che:",
       "options": [
-        "La mitosi comporta due divisioni cellulari successive, la meiosi una sola",
-        "Non esiste alcuna differenza sostanziale tra i due processi",
         "La meiosi produce sempre cellule diploidi identiche alla cellula madre",
         "Solo la mitosi prevede la duplicazione del DNA, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "La mitosi produce cellule figlie geneticamente identiche alla cellula madre, la meiosi produce gameti aploidi geneticamente diversi tra loro"
+        "La mitosi produce cellule figlie geneticamente identiche alla cellula madre, la meiosi produce gameti aploidi geneticamente diversi tra loro",
+        "La mitosi comporta due divisioni cellulari successive, la meiosi una sola",
+        "Non esiste alcuna differenza sostanziale tra i due processi"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "La mitosi genera due cellule figlie geneticamente identiche alla cellula madre (diploidi), mentre la meiosi, attraverso due divisioni successive, produce gameti aploidi geneticamente variabili grazie a crossing over e assortimento indipendente."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Cause di aneuploidia",
       "question": "L'aneuploidia può derivare principalmente da:",
       "options": [
-        "Una corretta segregazione di tutti i cromosomi durante la meiosi",
-        "La non-disgiunzione, cioè il mancato distacco di cromosomi omologhi o cromatidi fratelli durante la divisione meiotica",
         "La duplicazione perfetta dell'intero genoma",
+        "L'assenza totale di crossing over, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Una corretta segregazione di tutti i cromosomi durante la meiosi",
         "L'attivazione eccessiva della telomerasi",
-        "L'assenza totale di crossing over, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "La non-disgiunzione, cioè il mancato distacco di cromosomi omologhi o cromatidi fratelli durante la divisione meiotica"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "L'aneuploidia deriva tipicamente da eventi di non-disgiunzione, in cui cromosomi omologhi o cromatidi fratelli non si separano correttamente durante la meiosi, generando gameti con un numero anomalo di cromosomi."
     },
     {
@@ -234,12 +234,12 @@
       "question": "Una cellula staminale è caratterizzata principalmente da:",
       "options": [
         "L'incapacità totale di dividersi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "L'incapacità di rispondere a segnali di differenziamento",
-        "L'assenza di qualsiasi materiale genetico",
         "La sola presenza in organismi adulti, mai in quelli embrionali",
-        "La capacità di auto-rinnovarsi e di differenziarsi in uno o più tipi cellulari specializzati"
+        "La capacità di auto-rinnovarsi e di differenziarsi in uno o più tipi cellulari specializzati",
+        "L'assenza di qualsiasi materiale genetico",
+        "L'incapacità di rispondere a segnali di differenziamento"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Le cellule staminali sono caratterizzate dalla capacità di auto-rinnovarsi indefinitamente e di differenziarsi in una o più linee cellulari specializzate, a seconda del loro grado di potenza."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Necrosi e apoptosi",
       "question": "A differenza dell'apoptosi, la necrosi cellulare è caratterizzata da:",
       "options": [
-        "Un processo che richiede sempre l'attivazione delle caspasi esecutrici",
         "L'assenza totale di danno cellulare, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
-        "Un processo ordinato e geneticamente programmato, privo di reazione infiammatoria",
         "Un rigonfiamento cellulare incontrollato con rottura della membrana plasmatica e conseguente reazione infiammatoria",
+        "Un processo che richiede sempre l'attivazione delle caspasi esecutrici",
+        "Un processo ordinato e geneticamente programmato, privo di reazione infiammatoria",
         "La formazione di corpi apoptotici ordinatamente fagocitati"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "La necrosi è generalmente un processo non regolato, caratterizzato da rigonfiamento cellulare e rottura della membrana plasmatica, con conseguente rilascio del contenuto cellulare e innesco di una risposta infiammatoria, a differenza dell'apoptosi che è ordinata e non infiammatoria."
     },
     {
@@ -266,10 +266,10 @@
       "question": "Nella via apoptotica intrinseca (mitocondriale), un evento chiave è rappresentato da:",
       "options": [
         "La permeabilizzazione della membrana mitocondriale esterna (MOMP), con rilascio del citocromo C e formazione dell'apoptosoma",
-        "L'assenza totale di coinvolgimento delle caspasi",
         "La sintesi di nuovo DNA mitocondriale",
-        "L'attivazione diretta dei recettori di morte sulla membrana plasmatica",
-        "L'attivazione della telomerasi, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "L'attivazione della telomerasi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "L'assenza totale di coinvolgimento delle caspasi",
+        "L'attivazione diretta dei recettori di morte sulla membrana plasmatica"
       ],
       "correctIndex": 0,
       "explanation": "Nella via intrinseca, la permeabilizzazione della membrana mitocondriale esterna (MOMP) rilascia il citocromo C nel citosol, che si associa ad Apaf-1 formando l'apoptosoma, responsabile dell'attivazione della caspasi-9."
@@ -283,9 +283,9 @@
       "options": [
         "La permeabilizzazione spontanea del reticolo endoplasmatico",
         "Il legame di ligandi specifici ai recettori di morte sulla superficie cellulare",
-        "L'esclusivo danno diretto al DNA nucleare",
         "La sola attivazione di p53",
-        "L'assenza totale di segnali extracellulari"
+        "L'assenza totale di segnali extracellulari",
+        "L'esclusivo danno diretto al DNA nucleare"
       ],
       "correctIndex": 1,
       "explanation": "La via estrinseca viene attivata dal legame di ligandi specifici (come FasL o TNF) ai rispettivi recettori di morte sulla superficie cellulare, che reclutano e attivano le caspasi iniziatrici (come la caspasi-8)."
@@ -297,13 +297,13 @@
       "topic": "Caspasi",
       "question": "Le caspasi esecutrici, nella cascata apoptotica, sono responsabili principalmente di:",
       "options": [
-        "Scindere specifici substrati proteici cellulari, causando i cambiamenti morfologici caratteristici dell'apoptosi",
-        "Duplicare il genoma mitocondriale",
         "Formare il fuso mitotico, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "Sintetizzare nuovo DNA per la riparazione cellulare",
-        "Attivare le caspasi iniziatrici a monte del processo"
+        "Duplicare il genoma mitocondriale",
+        "Attivare le caspasi iniziatrici a monte del processo",
+        "Scindere specifici substrati proteici cellulari, causando i cambiamenti morfologici caratteristici dell'apoptosi",
+        "Sintetizzare nuovo DNA per la riparazione cellulare"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Le caspasi esecutrici, attivate a valle delle caspasi iniziatrici, scindono numerosi substrati proteici cellulari (come componenti del citoscheletro e della lamina nucleare), producendo i cambiamenti morfologici tipici dell'apoptosi."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Famiglia BCL2",
       "question": "Le proteine della famiglia BCL2 regolano l'apoptosi principalmente:",
       "options": [
-        "Controllando la permeabilizzazione della membrana mitocondriale esterna, con membri pro-apoptotici e anti-apoptotici che ne regolano l'equilibrio",
         "Attivando esclusivamente i recettori di morte sulla membrana plasmatica",
-        "Formando il complesso NDC80, coinvolto nell'attacco dei microtubuli al cinetocore, non nell'apoptosi, ipotesi priva di riscontro",
+        "Controllando la permeabilizzazione della membrana mitocondriale esterna, con membri pro-apoptotici e anti-apoptotici che ne regolano l'equilibrio",
         "Sintetizzando direttamente nuove cicline",
-        "Duplicando il DNA danneggiato"
+        "Duplicando il DNA danneggiato",
+        "Formando il complesso NDC80, coinvolto nell'attacco dei microtubuli al cinetocore, non nell'apoptosi, ipotesi priva di riscontro"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "La famiglia BCL2 comprende sia proteine pro-apoptotiche (come BAX e BAK) sia anti-apoptotiche (come BCL2 e BCL-XL), il cui equilibrio regola la permeabilizzazione della membrana mitocondriale esterna e quindi l'attivazione della via apoptotica intrinseca."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Virus oncogeni",
       "question": "I virus oncogeni possono contribuire alla trasformazione tumorale della cellula ospite principalmente:",
       "options": [
+        "Impedendo sempre e comunque qualsiasi replicazione cellulare",
+        "Introducendo o attivando oncogeni virali, o inattivando proteine oncosoppressori cellulari come p53 e Rb",
         "Attivando esclusivamente l'apoptosi in ogni cellula infettata",
         "Riparando sempre il DNA danneggiato della cellula ospite, posizione che i dati recenti non confermano",
-        "Introducendo o attivando oncogeni virali, o inattivando proteine oncosoppressori cellulari come p53 e Rb",
-        "Non avendo alcuna interazione con il ciclo cellulare della cellula ospite",
-        "Impedendo sempre e comunque qualsiasi replicazione cellulare"
+        "Non avendo alcuna interazione con il ciclo cellulare della cellula ospite"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Alcuni virus oncogeni possono introdurre oncogeni virali nel genoma dell'ospite o produrre proteine che inattivano oncosoppressori cellulari chiave come p53 e Rb, contribuendo alla perdita del controllo della proliferazione cellulare."
     },
     {

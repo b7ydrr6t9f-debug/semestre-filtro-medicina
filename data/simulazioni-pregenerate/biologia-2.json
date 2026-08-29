@@ -9,13 +9,13 @@
       "topic": "Cromosomi eucariotici",
       "question": "I cromosomi delle cellule eucariotiche sono caratteristicamente:",
       "options": [
-        "Privi di regioni centromeriche",
         "Presenti solo durante l'interfase",
-        "Costituiti esclusivamente da RNA",
         "Circolari e privi di proteine associate",
-        "Lineari, con DNA associato a proteine istoniche"
+        "Privi di regioni centromeriche",
+        "Lineari, con DNA associato a proteine istoniche",
+        "Costituiti esclusivamente da RNA"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "A differenza del cromosoma batterico tipicamente circolare, i cromosomi eucariotici sono lineari e il DNA è associato a proteine istoniche."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "DNA telomerico",
       "question": "Qual è la funzione principale del DNA telomerico?",
       "options": [
-        "Proteggere le estremità del cromosoma dalla degradazione e dalla fusione con altri cromosomi",
         "Avviare la trascrizione dell'RNA ribosomiale",
+        "Coordinare la segregazione dei cromatidi fratelli",
         "Fungere da promotore per tutti i geni del cromosoma",
-        "Codificare le proteine istoniche, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Coordinare la segregazione dei cromatidi fratelli"
+        "Proteggere le estremità del cromosoma dalla degradazione e dalla fusione con altri cromosomi",
+        "Codificare le proteine istoniche, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "I telomeri proteggono le estremità dei cromosomi lineari, impedendone la degradazione e la fusione, e sono coinvolti nel problema della replicazione terminale."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "DNA centromerico",
       "question": "Il DNA centromerico svolge principalmente il ruolo di:",
       "options": [
-        "Regione codificante per gli istoni, posizione che i dati recenti non confermano",
         "Punto di ancoraggio per il fuso mitotico durante la segregazione cromosomica",
-        "Sito di inizio della trascrizione genica",
+        "Sito di legame per la RNA polimerasi III",
+        "Regione codificante per gli istoni, posizione che i dati recenti non confermano",
         "Regione di massima attività trascrizionale",
-        "Sito di legame per la RNA polimerasi III"
+        "Sito di inizio della trascrizione genica"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Il centromero è la regione a cui si ancora il cinetocore, permettendo l'attacco dei microtubuli del fuso mitotico per la corretta segregazione dei cromosomi."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Nucleosoma",
       "question": "Il nucleosoma è costituito da:",
       "options": [
-        "DNA avvolto attorno a un ottamero di proteine istoniche",
         "DNA libero privo di proteine",
         "RNA associato a un tetramero proteico",
-        "Un unico istone legato covalentemente al DNA",
-        "Proteine non istoniche disposte a elica"
+        "DNA avvolto attorno a un ottamero di proteine istoniche",
+        "Proteine non istoniche disposte a elica",
+        "Un unico istone legato covalentemente al DNA"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Il nucleosoma è l'unità strutturale di base della cromatina: circa 147 coppie di basi di DNA avvolte attorno a un ottamero di istoni."
     },
     {
@@ -74,10 +74,10 @@
       "question": "Quale ruolo svolge l'istone H1 nell'organizzazione della cromatina?",
       "options": [
         "Si lega al DNA linker tra nucleosomi contigui, favorendo il compattamento nella fibra di 30 nm",
+        "Sostituisce completamente gli altri istoni durante la replicazione",
         "Costituisce il nucleo dell'ottamero istonico",
-        "Impedisce la formazione dei nucleosomi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "È presente solo negli organismi procarioti",
-        "Sostituisce completamente gli altri istoni durante la replicazione"
+        "Impedisce la formazione dei nucleosomi, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
       "correctIndex": 0,
       "explanation": "L'istone H1 si lega al DNA linker esterno al nucleosoma e contribuisce a ripiegare la fibra nucleosomica nella struttura più compatta della fibra di 30 nm."
@@ -89,13 +89,13 @@
       "topic": "Eucromatina ed eterocromatina",
       "question": "Rispetto all'eucromatina, l'eterocromatina è caratterizzata da:",
       "options": [
-        "Minore condensazione e maggiore attività trascrizionale",
         "Presenza esclusiva nei procarioti",
-        "Localizzazione solo nel citoplasma",
+        "Minore condensazione e maggiore attività trascrizionale",
         "Maggiore condensazione e minore attività trascrizionale",
-        "Assenza totale di proteine istoniche"
+        "Assenza totale di proteine istoniche",
+        "Localizzazione solo nel citoplasma"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "L'eterocromatina è una forma di cromatina densamente condensata, generalmente trascrizionalmente silente, a differenza dell'eucromatina più decondensata e trascrizionalmente attiva."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Metilazione del DNA",
       "question": "La metilazione del DNA, spesso a livello dei dinucleotidi CpG, ha generalmente l'effetto di:",
       "options": [
+        "Reprimere la trascrizione, contribuendo al silenziamento genico",
         "Attivare fortemente la trascrizione del gene interessato",
         "Non avere alcun effetto sull'espressione genica",
         "Impedire la formazione dei nucleosomi",
-        "Aumentare la velocità di replicazione del DNA",
-        "Reprimere la trascrizione, contribuendo al silenziamento genico"
+        "Aumentare la velocità di replicazione del DNA"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "La metilazione del DNA, in particolare sulle citosine dei dinucleotidi CpG, è generalmente associata al silenziamento trascrizionale del gene."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Rimodellamento della cromatina",
       "question": "I complessi di rimodellamento della cromatina agiscono principalmente:",
       "options": [
-        "Eliminando permanentemente gli istoni dal DNA",
         "Bloccando irreversibilmente la trascrizione di tutto il genoma",
-        "Modificando la posizione o la struttura dei nucleosomi, utilizzando energia da ATP, per rendere il DNA più o meno accessibile",
         "Degradando il DNA in frammenti più piccoli",
+        "Eliminando permanentemente gli istoni dal DNA",
+        "Modificando la posizione o la struttura dei nucleosomi, utilizzando energia da ATP, per rendere il DNA più o meno accessibile",
         "Sintetizzando nuovi filamenti di RNA, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "I complessi di rimodellamento della cromatina, ATP-dipendenti, spostano o riorganizzano i nucleosomi modulando l'accessibilità del DNA ai fattori di trascrizione."
     },
     {
@@ -138,12 +138,12 @@
       "question": "L'acetilazione delle code istoniche generalmente:",
       "options": [
         "Non modifica in alcun modo l'interazione istone-DNA",
-        "Aumenta la carica positiva degli istoni, compattando ulteriormente la cromatina",
-        "Impedisce sempre l'accesso della RNA polimerasi",
+        "Si verifica solo nei batteri, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Neutralizza parzialmente la carica positiva degli istoni, allentando l'interazione con il DNA e favorendo la trascrizione",
-        "Si verifica solo nei batteri, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "Impedisce sempre l'accesso della RNA polimerasi",
+        "Aumenta la carica positiva degli istoni, compattando ulteriormente la cromatina"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "L'acetilazione neutralizza parte della carica positiva delle code istoniche, indebolendo il legame con il DNA carico negativamente e rendendo la cromatina più accessibile alla trascrizione."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Epigenetica",
       "question": "Con il termine \"epigenetica\" ci si riferisce a:",
       "options": [
-        "Alla struttura primaria delle proteine",
+        "Modificazioni ereditabili dell'espressione genica che non comportano cambiamenti nella sequenza del DNA",
         "Solo alle mutazioni puntiformi, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Esclusivamente ai processi di replicazione del DNA",
-        "Modificazioni ereditabili dell'espressione genica che non comportano cambiamenti nella sequenza del DNA",
-        "Cambiamenti nella sequenza del DNA che alterano il genotipo"
+        "Cambiamenti nella sequenza del DNA che alterano il genotipo",
+        "Alla struttura primaria delle proteine"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "L'epigenetica studia le modificazioni ereditabili dell'espressione genica (come metilazione del DNA e modificazioni istoniche) che non alterano la sequenza nucleotidica."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Condensine",
       "question": "Le condensine sono proteine che intervengono principalmente:",
       "options": [
+        "Nella degradazione dell'RNA messaggero",
         "Nella condensazione dei cromosomi durante la divisione cellulare",
-        "Nella formazione del capside virale, ipotesi priva di riscontro",
         "Nella traduzione delle proteine sui ribosomi",
-        "Nella replicazione del DNA in fase S",
-        "Nella degradazione dell'RNA messaggero"
+        "Nella formazione del capside virale, ipotesi priva di riscontro",
+        "Nella replicazione del DNA in fase S"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Le condensine sono complessi proteici essenziali per la condensazione dei cromosomi in strutture compatte durante la mitosi."
     },
     {
@@ -185,11 +185,11 @@
       "topic": "Organizzazione del genoma umano",
       "question": "Il genoma umano è composto, oltre che da sequenze uniche codificanti, anche da:",
       "options": [
-        "Nessuna sequenza ripetuta",
+        "Solo geni codificanti proteine, senza altre sequenze",
         "Esclusivamente RNA ribosomiale",
         "Ampie porzioni di sequenze ripetute e non codificanti",
-        "Solo geni codificanti proteine, senza altre sequenze",
-        "Solo sequenze telomeriche"
+        "Solo sequenze telomeriche",
+        "Nessuna sequenza ripetuta"
       ],
       "correctIndex": 2,
       "explanation": "Una parte considerevole del genoma umano è costituita da sequenze ripetute e non codificanti, oltre alle sequenze uniche codificanti proteine."
@@ -201,13 +201,13 @@
       "topic": "Famiglie geniche",
       "question": "Un esempio classico di famiglia genica nel genoma umano è rappresentato dai geni:",
       "options": [
-        "Dei centromeri",
-        "Delle condensine",
-        "Del capside virale",
         "Delle globine",
-        "Dei telomeri"
+        "Del capside virale",
+        "Delle condensine",
+        "Dei telomeri",
+        "Dei centromeri"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "I geni delle globine costituiscono una famiglia genica classica, con più copie derivate da duplicazione genica ancestrale e funzioni correlate."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Sequenze ripetute in tandem",
       "question": "Le sequenze corte ripetute in tandem, come i microsatelliti, sono caratterizzate da:",
       "options": [
-        "Codifica diretta per proteine strutturali",
+        "Assenza completa nel genoma umano come riportato nei testi di riferimento",
         "Distribuzione sparsa in tutto il genoma senza organizzazione in tandem",
-        "Localizzazione esclusiva nei mitocondri",
         "Unità ripetute disposte una di seguito all'altra nello stesso locus",
-        "Assenza completa nel genoma umano come riportato nei testi di riferimento"
+        "Localizzazione esclusiva nei mitocondri",
+        "Codifica diretta per proteine strutturali"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Minisatelliti e microsatelliti sono sequenze brevi ripetute in tandem, cioè disposte consecutivamente nello stesso locus cromosomico."
     },
     {
@@ -234,12 +234,12 @@
       "question": "Gli elementi LINE e SINE sono esempi di:",
       "options": [
         "Proteine istoniche, posizione che i dati recenti non confermano",
-        "Sequenze ripetute intersperse in molte posizioni diverse del genoma",
-        "Geni codificanti enzimi digestivi",
         "Sequenze presenti solo nei cromosomi sessuali",
+        "Geni codificanti enzimi digestivi",
+        "Sequenze ripetute intersperse in molte posizioni diverse del genoma",
         "Sequenze ripetute in tandem concentrate in un solo locus"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "LINE e SINE sono classi di sequenze ripetute intersperse, distribuite in numerose copie in posizioni diverse lungo tutto il genoma."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Retrovirus endogeni",
       "question": "I retrovirus endogeni presenti nel genoma umano rappresentano:",
       "options": [
-        "Regioni esclusivamente telomeriche",
-        "Sequenze derivate da antiche infezioni retrovirali integrate stabilmente nel genoma della linea germinale",
-        "Virus attualmente infettivi presenti in ogni cellula",
         "Sequenze codificanti per il capside batterico",
+        "Virus attualmente infettivi presenti in ogni cellula",
+        "Sequenze derivate da antiche infezioni retrovirali integrate stabilmente nel genoma della linea germinale",
+        "Regioni esclusivamente telomeriche",
         "Un tipo di proteina istonica, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "I retrovirus endogeni sono resti genomici di antiche infezioni retrovirali che si sono integrate nel DNA della linea germinale e vengono trasmesse ereditariamente."
     },
     {
@@ -265,13 +265,13 @@
       "topic": "Elementi mobili del DNA",
       "question": "Gli elementi mobili (trasponibili) del DNA sono sequenze capaci di:",
       "options": [
-        "Codificare esclusivamente proteine strutturali della membrana",
         "Spostarsi in nuove posizioni del genoma, contribuendo alla sua plasticità ed evoluzione",
         "Bloccare irreversibilmente la replicazione del DNA",
-        "Essere presenti solo nei procarioti, posizione che i dati recenti non confermano",
-        "Rimanere fisse in una sola posizione del genoma per tutta la vita dell'organismo"
+        "Codificare esclusivamente proteine strutturali della membrana",
+        "Rimanere fisse in una sola posizione del genoma per tutta la vita dell'organismo",
+        "Essere presenti solo nei procarioti, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Gli elementi mobili possono spostarsi all'interno del genoma, inserendosi in nuove posizioni e contribuendo alla variabilità genomica nel corso dell'evoluzione."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Organizzazione minimale del cromosoma eucariotico",
       "question": "Quali elementi sono essenziali per l'organizzazione minimale di un cromosoma eucariotico funzionale?",
       "options": [
-        "Origini di replicazione, centromero e telomeri",
-        "Nessun elemento specifico è necessario",
-        "Solo le origini di replicazione",
         "Solo i telomeri secondo la definizione classica",
+        "Solo le origini di replicazione",
+        "Nessun elemento specifico è necessario",
+        "Origini di replicazione, centromero e telomeri",
         "Solo il centromero"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Un cromosoma eucariotico funzionale richiede almeno un centromero (per la segregazione), telomeri (per la stabilità delle estremità) e origini di replicazione (per la duplicazione del DNA)."
     },
     {
@@ -298,12 +298,12 @@
       "question": "Con il termine \"cromatina\" si indica:",
       "options": [
         "Un tipo particolare di RNA non codificante",
-        "Il solo DNA privo di proteine associate",
-        "Il rivestimento esterno del nucleo, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Una proteina non istonica specifica",
-        "Il complesso di DNA e proteine (soprattutto istoni) che costituisce il materiale genetico nel nucleo eucariotico"
+        "Il complesso di DNA e proteine (soprattutto istoni) che costituisce il materiale genetico nel nucleo eucariotico",
+        "Il rivestimento esterno del nucleo, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Il solo DNA privo di proteine associate"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "La cromatina è il complesso costituito da DNA associato a proteine, principalmente istoniche, che ne permette il compattamento nel nucleo."
     },
     {
@@ -315,9 +315,9 @@
       "options": [
         "Ricche di amminoacidi basici, quindi cariche positivamente",
         "Cariche negativamente come il DNA",
-        "Legate covalentemente al DNA tramite legami peptidici",
+        "Costituite solo da amminoacidi acidi",
         "Prive di carica netta, interpretazione ormai datata",
-        "Costituite solo da amminoacidi acidi"
+        "Legate covalentemente al DNA tramite legami peptidici"
       ],
       "correctIndex": 0,
       "explanation": "Gli istoni sono ricchi di amminoacidi basici (come lisina e arginina), il che conferisce loro una carica netta positiva che permette l'interazione elettrostatica con il DNA carico negativamente."
@@ -329,13 +329,13 @@
       "topic": "Metilazione e siti CpG",
       "question": "Nel genoma dei mammiferi, la metilazione del DNA avviene tipicamente a carico di:",
       "options": [
+        "Le guanine isolate senza contesto specifico",
         "Le citosine nei dinucleotidi CpG",
-        "Tutte le basi indiscriminatamente",
-        "Le adenine nei siti TpA",
         "Le timine in qualunque posizione",
-        "Le guanine isolate senza contesto specifico"
+        "Tutte le basi indiscriminatamente",
+        "Le adenine nei siti TpA"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Nei mammiferi la metilazione del DNA riguarda principalmente le citosine presenti nei dinucleotidi CpG, spesso concentrati in regioni dette isole CpG."
     },
     {

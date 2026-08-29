@@ -9,13 +9,13 @@
       "topic": "Struttura dell'atomo",
       "question": "Quale particella subatomica determina la carica positiva del nucleo?",
       "options": [
-        "Il neutrone",
-        "Il protone",
         "Il positrone",
         "Il fotone",
+        "Il neutrone",
+        "Il protone",
         "L'elettrone"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Il protone ha carica positiva ed è, insieme al neutrone (privo di carica), costituente del nucleo atomico."
     },
     {
@@ -25,11 +25,11 @@
       "topic": "Numero atomico e numero di massa",
       "question": "Il numero atomico (Z) di un elemento corrisponde a:",
       "options": [
-        "La massa totale dell'atomo in grammi",
-        "Il numero di elettroni di valenza",
-        "Il numero di protoni nel nucleo",
         "Il numero di neutroni nel nucleo",
-        "La somma di protoni e neutroni"
+        "La somma di protoni e neutroni",
+        "Il numero di protoni nel nucleo",
+        "La massa totale dell'atomo in grammi",
+        "Il numero di elettroni di valenza"
       ],
       "correctIndex": 2,
       "explanation": "Il numero atomico Z è il numero di protoni presenti nel nucleo e identifica univocamente l'elemento chimico."
@@ -41,13 +41,13 @@
       "topic": "Isotopi",
       "question": "Due isotopi dello stesso elemento differiscono per:",
       "options": [
-        "Il numero di neutroni",
-        "Il numero di protoni",
-        "La carica nucleare complessiva",
         "Il numero atomico",
-        "Il numero di elettroni di valenza"
+        "Il numero di elettroni di valenza",
+        "Il numero di neutroni",
+        "La carica nucleare complessiva",
+        "Il numero di protoni"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Gli isotopi hanno lo stesso numero di protoni (stesso elemento) ma un diverso numero di neutroni, quindi diversa massa atomica."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Numeri quantici e principio di Pauli",
       "question": "Il principio di esclusione di Pauli afferma che:",
       "options": [
+        "Un orbitale può contenere al massimo un elettrone, interpretazione ormai datata",
         "Due elettroni dello stesso atomo non possono avere gli stessi quattro numeri quantici",
         "Il numero di neutroni deve sempre uguagliare quello dei protoni",
-        "Tutti gli elettroni di un atomo hanno la stessa energia",
         "Gli elettroni occupano sempre l'orbitale a energia più alta",
-        "Un orbitale può contenere al massimo un elettrone, interpretazione ormai datata"
+        "Tutti gli elettroni di un atomo hanno la stessa energia"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Il principio di Pauli stabilisce che in uno stesso atomo non possono esistere due elettroni con la stessa combinazione dei quattro numeri quantici, quindi ogni orbitale ospita al massimo due elettroni con spin opposto."
     },
     {
@@ -73,11 +73,11 @@
       "topic": "Regola di Hund",
       "question": "Secondo la regola di Hund, gli elettroni in orbitali degeneri (stessa energia):",
       "options": [
-        "Si accoppiano subito a due a due nello stesso orbitale",
-        "Restano nell'orbitale s finché non è completamente pieno",
         "Si dispongono sempre nell'orbitale più vicino al nucleo",
+        "Si accoppiano subito a due a due nello stesso orbitale",
+        "Non possono occupare orbitali della stessa sottoshell, interpretazione ormai datata",
         "Occupano singolarmente il maggior numero di orbitali possibile prima di accoppiarsi",
-        "Non possono occupare orbitali della stessa sottoshell, interpretazione ormai datata"
+        "Restano nell'orbitale s finché non è completamente pieno"
       ],
       "correctIndex": 3,
       "explanation": "La regola di Hund prevede che gli elettroni riempiano prima singolarmente tutti gli orbitali degeneri disponibili, con spin paralleli, prima di iniziare ad accoppiarsi."
@@ -90,12 +90,12 @@
       "question": "Lungo un periodo del sistema periodico, procedendo da sinistra a destra, l'elettronegatività generalmente:",
       "options": [
         "Diminuisce",
-        "Non ha andamento periodico",
         "Aumenta poi diminuisce bruscamente",
+        "Aumenta",
         "Resta costante",
-        "Aumenta"
+        "Non ha andamento periodico"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Lungo un periodo l'elettronegatività tende ad aumentare, a causa dell'aumento della carica nucleare effettiva a parità di livello energetico."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Regola dell'ottetto",
       "question": "La regola dell'ottetto prevede che gli atomi tendano a raggiungere una configurazione stabile con:",
       "options": [
-        "Il completo trasferimento di tutti gli elettroni di valenza",
         "Due elettroni nel livello più esterno",
-        "Un numero di elettroni pari al numero atomico",
+        "Otto elettroni nel livello più esterno (salvo eccezioni come l'idrogeno)",
         "Nessun elettrone spaiato in assoluto, interpretazione ormai datata",
-        "Otto elettroni nel livello più esterno (salvo eccezioni come l'idrogeno)"
+        "Un numero di elettroni pari al numero atomico",
+        "Il completo trasferimento di tutti gli elettroni di valenza"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La regola dell'ottetto descrive la tendenza degli atomi a raggiungere otto elettroni nel guscio di valenza (due per l'idrogeno), configurazione tipica dei gas nobili."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Mole e numero di Avogadro",
       "question": "Una mole di una qualsiasi sostanza contiene un numero di entità elementari pari a:",
       "options": [
-        "1,000 × 10^23",
-        "9,109 × 10^23",
         "3,14 × 10^23",
+        "6,022 × 10^23",
         "6,022 × 10^20",
-        "6,022 × 10^23"
+        "9,109 × 10^23",
+        "1,000 × 10^23"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "Il numero di Avogadro, pari a 6,022 × 10^23, definisce quante entità (atomi, molecole, ioni) sono contenute in una mole."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Legame covalente",
       "question": "Un legame covalente omopolare si forma quando:",
       "options": [
-        "Un atomo cede completamente un elettrone all'altro",
         "Gli atomi coinvolti hanno la stessa elettronegatività e condividono la coppia di elettroni in modo simmetrico",
-        "Si condivide solo un protone tra i due atomi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Gli atomi coinvolti hanno elettronegatività molto diversa",
+        "Un atomo cede completamente un elettrone all'altro",
+        "Si condivide solo un protone tra i due atomi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Si forma per attrazione elettrostatica tra ioni"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Nel legame covalente omopolare (o puro) la coppia di elettroni condivisa è distribuita simmetricamente perché i due atomi hanno elettronegatività uguale o molto simile."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Legame ionico",
       "question": "Il legame ionico si forma principalmente per:",
       "options": [
+        "Interazione debole tra dipoli permanenti",
         "Trasferimento di uno o più elettroni da un atomo elettropositivo a uno elettronegativo, con formazione di ioni di carica opposta",
         "Condivisione paritaria di elettroni tra due atomi",
-        "Interazione debole tra dipoli permanenti",
-        "Sovrapposizione di orbitali d, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "Condivisione di un solo protone tra due nuclei"
+        "Condivisione di un solo protone tra due nuclei",
+        "Sovrapposizione di orbitali d, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Nel legame ionico un atomo cede uno o più elettroni a un altro molto più elettronegativo, generando ioni di carica opposta che si attraggono elettrostaticamente."
     },
     {
@@ -169,11 +169,11 @@
       "topic": "Ibridazione degli orbitali",
       "question": "Un atomo di carbonio con ibridazione sp³ ha una geometria molecolare di tipo:",
       "options": [
-        "Ottaedrica",
+        "Trigonale planare",
         "Tetraedrica",
         "Bipiramidale",
         "Lineare",
-        "Trigonale planare"
+        "Ottaedrica"
       ],
       "correctIndex": 1,
       "explanation": "L'ibridazione sp³ genera quattro orbitali ibridi equivalenti disposti secondo una geometria tetraedrica, tipica ad esempio del carbonio negli alcani."
@@ -185,13 +185,13 @@
       "topic": "Orbitali molecolari sigma e pi-greco",
       "question": "Un legame doppio carbonio-carbonio è costituito da:",
       "options": [
-        "Un legame ionico e un legame covalente",
         "Due legami sigma",
-        "Un legame sigma e un legame pi-greco",
+        "Un legame ionico e un legame covalente",
         "Un solo legame pi-greco senza legame sigma",
-        "Due legami pi-greco"
+        "Due legami pi-greco",
+        "Un legame sigma e un legame pi-greco"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "Un doppio legame è formato da un legame sigma (sovrapposizione frontale degli orbitali) e da un legame pi-greco (sovrapposizione laterale)."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Interazioni deboli",
       "question": "Il legame idrogeno si forma tipicamente tra:",
       "options": [
+        "Un atomo di idrogeno legato a un elemento molto elettronegativo (come O o N) e un altro atomo elettronegativo vicino",
         "Due atomi di carbonio adiacenti",
         "Un protone libero e un neutrone",
-        "Due elettroni dello stesso orbitale",
-        "Un atomo di idrogeno legato a un elemento molto elettronegativo (come O o N) e un altro atomo elettronegativo vicino",
-        "Due ioni della stessa carica, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "Due ioni della stessa carica, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Due elettroni dello stesso orbitale"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Il legame idrogeno è un'interazione debole che si instaura tra un atomo di H legato covalentemente a un elemento elettronegativo (O, N, F) e un altro atomo elettronegativo nelle vicinanze."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Numero di ossidazione",
       "question": "Il numero di ossidazione di un elemento allo stato elementare (non combinato) è sempre:",
       "options": [
+        "-1",
         "Uguale al numero atomico",
         "Variabile a seconda della temperatura",
-        "-1",
-        "0",
-        "+1"
+        "+1",
+        "0"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Per convenzione, il numero di ossidazione di un elemento allo stato libero (non legato ad altri elementi) è pari a zero."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Stato solido",
       "question": "I solidi tenuti insieme da un reticolo di ioni positivi immersi in un mare di elettroni delocalizzati sono detti:",
       "options": [
-        "Solidi metallici",
         "Solidi amorfi puri",
-        "Solidi molecolari",
+        "Solidi metallici",
         "Solidi covalenti",
+        "Solidi molecolari",
         "Solidi ionici"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Nei solidi metallici gli ioni positivi occupano un reticolo cristallino immerso in un \"mare\" di elettroni di valenza delocalizzati, responsabile della conducibilità elettrica e termica."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Leggi dei gas",
       "question": "La legge di Boyle descrive la relazione, a temperatura costante, tra:",
       "options": [
-        "Volume e temperatura di un gas secondo la nomenclatura standard",
-        "Numero di moli e pressione di un gas",
-        "Densità e massa molecolare di un gas",
         "Pressione e volume di un gas, inversamente proporzionali",
-        "Pressione e temperatura di un gas"
+        "Densità e massa molecolare di un gas",
+        "Volume e temperatura di un gas secondo la nomenclatura standard",
+        "Pressione e temperatura di un gas",
+        "Numero di moli e pressione di un gas"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "La legge di Boyle afferma che, a temperatura costante, pressione e volume di un gas ideale sono inversamente proporzionali (PV = costante)."
     },
     {
@@ -265,13 +265,13 @@
       "topic": "Leggi dei gas",
       "question": "La legge di Gay-Lussac mette in relazione, a volume costante:",
       "options": [
+        "Numero di moli e volume",
         "Pressione e numero di Avogadro",
         "Pressione e temperatura assoluta di un gas, direttamente proporzionali",
-        "Numero di moli e volume",
-        "Volume e pressione di un gas",
-        "Temperatura e densità, posizione che i dati recenti non confermano"
+        "Temperatura e densità, posizione che i dati recenti non confermano",
+        "Volume e pressione di un gas"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "La legge di Gay-Lussac stabilisce che, a volume costante, la pressione di un gas è direttamente proporzionale alla sua temperatura assoluta."
     },
     {
@@ -282,12 +282,12 @@
       "question": "L'equazione di stato dei gas perfetti è correttamente espressa come:",
       "options": [
         "PV = RT/n",
-        "P + V = nRT",
-        "PV = nRT",
         "VT = nRP",
-        "PT = nRV"
+        "PT = nRV",
+        "PV = nRT",
+        "P + V = nRT"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "L'equazione di stato dei gas perfetti è PV = nRT, dove P è la pressione, V il volume, n il numero di moli, R la costante universale dei gas e T la temperatura assoluta."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Termodinamica e bioenergetica",
       "question": "L'entalpia di un sistema è una funzione di stato che rappresenta principalmente:",
       "options": [
+        "La carica elettrica netta del sistema",
+        "Il numero di moli di reagente",
         "Il disordine molecolare del sistema",
         "La velocità di una reazione chimica",
-        "La carica elettrica netta del sistema",
-        "Il contenuto termico del sistema a pressione costante",
-        "Il numero di moli di reagente"
+        "Il contenuto termico del sistema a pressione costante"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "L'entalpia è la funzione di stato che esprime il contenuto termico di un sistema a pressione costante, utile per descrivere reazioni esotermiche ed endotermiche."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Energia libera di Gibbs",
       "question": "Una reazione con variazione di energia libera di Gibbs (ΔG) negativa è definita:",
       "options": [
-        "Indipendente dalla temperatura",
+        "Endoergonica e non spontanea",
         "Impossibile dal punto di vista termodinamico",
-        "In equilibrio perfetto",
         "Esoergonica e spontanea nelle condizioni date",
-        "Endoergonica e non spontanea"
+        "In equilibrio perfetto",
+        "Indipendente dalla temperatura"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Una reazione con ΔG negativo è esoergonica e procede spontaneamente nelle condizioni considerate; con ΔG positivo è invece endoergonica e non spontanea."
     },
     {
@@ -330,12 +330,12 @@
       "question": "Uno ione poliatomico, come lo ione solfato (SO4²⁻), è costituito da:",
       "options": [
         "Un atomo isolato privo di elettroni",
-        "Un singolo atomo con carica netta diversa da zero",
         "Solo protoni liberi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Una coppia di atomi identici neutri",
-        "Un gruppo di atomi legati covalentemente che possiede nel complesso una carica netta"
+        "Un gruppo di atomi legati covalentemente che possiede nel complesso una carica netta",
+        "Un singolo atomo con carica netta diversa da zero"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Uno ione poliatomico è un insieme di atomi uniti da legami covalenti che, nel complesso, possiede una carica elettrica netta positiva o negativa."
     },
     {

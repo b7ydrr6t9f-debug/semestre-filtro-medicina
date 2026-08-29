@@ -9,13 +9,13 @@
       "topic": "Moto rettilineo uniforme",
       "question": "Nel moto rettilineo uniforme, la velocità di un corpo:",
       "options": [
-        "Rimane costante nel tempo",
-        "Dipende dalla posizione iniziale del corpo",
-        "Cresce linearmente nel tempo",
         "È sempre nulla",
-        "Diminuisce in modo esponenziale"
+        "Diminuisce in modo esponenziale",
+        "Dipende dalla posizione iniziale del corpo",
+        "Rimane costante nel tempo",
+        "Cresce linearmente nel tempo"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Nel moto rettilineo uniforme il corpo percorre spazi uguali in tempi uguali: la velocità è costante."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Moto uniformemente accelerato",
       "question": "Quale relazione descrive correttamente la velocità in un moto uniformemente accelerato con velocità iniziale v0 e accelerazione costante a?",
       "options": [
+        "v = v0 - a²·t",
+        "v = v0 · a · t",
         "v = a / t",
         "v = v0 + a·t",
-        "v = v0 · t²",
-        "v = v0 - a²·t",
-        "v = v0 · a · t"
+        "v = v0 · t²"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Nel moto uniformemente accelerato la velocità cresce linearmente nel tempo secondo v = v0 + a·t."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Caduta libera",
       "question": "In condizioni di caduta libera (trascurando l'attrito dell'aria), l'accelerazione di un corpo è:",
       "options": [
-        "Nulla se il corpo parte da fermo",
-        "Inversamente proporzionale al tempo di caduta",
+        "Costante e pari all'accelerazione di gravità, indipendentemente dalla massa",
         "Variabile in modo casuale, posizione che i dati recenti non confermano",
+        "Inversamente proporzionale al tempo di caduta",
         "Proporzionale alla sua massa",
-        "Costante e pari all'accelerazione di gravità, indipendentemente dalla massa"
+        "Nulla se il corpo parte da fermo"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "In assenza di attrito, tutti i corpi in caduta libera subiscono la stessa accelerazione di gravità g, indipendentemente dalla loro massa."
     },
     {
@@ -58,12 +58,12 @@
       "question": "Nel moto circolare uniforme, l'accelerazione centripeta è diretta:",
       "options": [
         "In direzione opposta al moto",
-        "Non esiste accelerazione nel moto circolare uniforme",
-        "Tangenzialmente alla traiettoria",
         "Verso l'esterno della traiettoria",
-        "Verso il centro della traiettoria circolare"
+        "Tangenzialmente alla traiettoria",
+        "Verso il centro della traiettoria circolare",
+        "Non esiste accelerazione nel moto circolare uniforme"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Nel moto circolare uniforme la velocità cambia solo in direzione, e l'accelerazione centripeta risultante è sempre diretta verso il centro della circonferenza."
     },
     {
@@ -74,12 +74,12 @@
       "question": "Il primo principio della dinamica (principio di inerzia) afferma che:",
       "options": [
         "Ogni azione genera una reazione uguale e contraria",
-        "Un corpo fermo non può mai essere in equilibrio",
-        "Un corpo accelera sempre se sottoposto a una forza costante",
         "Un corpo mantiene il proprio stato di quiete o di moto rettilineo uniforme se la risultante delle forze esterne è nulla",
+        "Un corpo accelera sempre se sottoposto a una forza costante",
+        "Un corpo fermo non può mai essere in equilibrio",
         "La forza è sempre proporzionale alla velocità, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "Il principio di inerzia stabilisce che, in assenza di forze esterne nette, un corpo persiste nel proprio stato di quiete o di moto rettilineo uniforme."
     },
     {
@@ -92,10 +92,10 @@
         "F = m/a",
         "F = m² · a",
         "F = a/m",
-        "F = m · a",
-        "F = m + a"
+        "F = m + a",
+        "F = m · a"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Il secondo principio della dinamica afferma che la forza risultante applicata a un corpo è pari al prodotto tra la sua massa e l'accelerazione impressa (F = m·a)."
     },
     {
@@ -105,10 +105,10 @@
       "topic": "Terzo principio della dinamica",
       "question": "Il terzo principio della dinamica (azione e reazione) afferma che:",
       "options": [
-        "Solo i corpi in movimento esercitano forze",
+        "Le forze si sommano sempre annullandosi",
         "Ogni forza applicata da un corpo A su un corpo B genera una forza uguale e contraria di B su A",
         "L'azione è sempre maggiore della reazione",
-        "Le forze si sommano sempre annullandosi",
+        "Solo i corpi in movimento esercitano forze",
         "Vale solo per corpi in quiete, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
       "correctIndex": 1,
@@ -121,11 +121,11 @@
       "topic": "Attrito statico e dinamico",
       "question": "La differenza principale tra attrito statico e attrito dinamico è che:",
       "options": [
-        "L'attrito dinamico è sempre maggiore di quello statico",
+        "L'attrito statico agisce solo su corpi in movimento",
         "L'attrito statico si oppone all'inizio del moto relativo tra due superfici a contatto, mentre quello dinamico agisce quando il moto relativo è già in corso",
+        "L'attrito dinamico è sempre maggiore di quello statico",
         "L'attrito statico dipende solo dalla velocità del corpo",
-        "Non esiste differenza tra i due tipi di attrito, nonostante abbiano valori sperimentali diversi e condizioni d'innesco differenti, lettura priva di riscontro",
-        "L'attrito statico agisce solo su corpi in movimento"
+        "Non esiste differenza tra i due tipi di attrito, nonostante abbiano valori sperimentali diversi e condizioni d'innesco differenti, lettura priva di riscontro"
       ],
       "correctIndex": 1,
       "explanation": "L'attrito statico si manifesta finché non si innesca il moto relativo tra le superfici, mentre l'attrito dinamico agisce durante lo scorrimento; generalmente il coefficiente statico è maggiore o uguale a quello dinamico."
@@ -138,12 +138,12 @@
       "question": "La legge di Hooke per una molla ideale afferma che la forza elastica è:",
       "options": [
         "Indipendente dalla deformazione",
+        "Sempre costante indipendentemente dalla molla usata",
         "Proporzionale al quadrato della deformazione",
         "Direttamente proporzionale alla deformazione della molla",
-        "Inversamente proporzionale alla deformazione della molla",
-        "Sempre costante indipendentemente dalla molla usata"
+        "Inversamente proporzionale alla deformazione della molla"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "La legge di Hooke afferma che la forza elastica esercitata da una molla ideale è proporzionale alla sua deformazione (F = -k·x)."
     },
     {
@@ -153,11 +153,11 @@
       "topic": "Lavoro meccanico",
       "question": "Il lavoro meccanico compiuto da una forza costante su uno spostamento è definito come:",
       "options": [
-        "Il prodotto tra massa e spostamento",
+        "Il prodotto tra forza e tempo impiegato",
         "La somma vettoriale di forza e spostamento",
         "Il prodotto tra la componente della forza nella direzione dello spostamento e il modulo dello spostamento stesso",
-        "Il rapporto tra forza e spostamento, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
-        "Il prodotto tra forza e tempo impiegato"
+        "Il prodotto tra massa e spostamento",
+        "Il rapporto tra forza e spostamento, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
       "correctIndex": 2,
       "explanation": "Il lavoro è definito come il prodotto scalare tra la forza applicata e lo spostamento, cioè W = F·d·cos(θ), dove θ è l'angolo tra le due direzioni."
@@ -170,12 +170,12 @@
       "question": "La potenza meccanica è definita come:",
       "options": [
         "Il rapporto tra spostamento e forza",
-        "Il prodotto tra massa e accelerazione",
-        "La forza applicata per unità di distanza",
+        "Il lavoro svolto per unità di tempo",
         "L'energia cinetica per unità di massa",
-        "Il lavoro svolto per unità di tempo"
+        "Il prodotto tra massa e accelerazione",
+        "La forza applicata per unità di distanza"
       ],
-      "correctIndex": 4,
+      "correctIndex": 1,
       "explanation": "La potenza è la rapidità con cui un lavoro viene svolto, definita come P = W/t (lavoro diviso il tempo impiegato)."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Teorema dell'energia cinetica",
       "question": "Il teorema dell'energia cinetica (o teorema delle forze vive) stabilisce che:",
       "options": [
-        "Il lavoro totale svolto su un corpo è uguale alla variazione della sua energia cinetica",
         "Il lavoro è sempre nullo per corpi in movimento, posizione che i dati recenti non confermano",
+        "L'energia cinetica dipende solo dalla forza applicata, non dalla velocità",
+        "Il lavoro totale svolto su un corpo è uguale alla variazione della sua energia cinetica",
         "L'energia cinetica di un corpo è sempre costante",
-        "Il lavoro totale è indipendente dalla massa del corpo",
-        "L'energia cinetica dipende solo dalla forza applicata, non dalla velocità"
+        "Il lavoro totale è indipendente dalla massa del corpo"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Il teorema afferma che il lavoro netto compiuto su un corpo è pari alla variazione della sua energia cinetica (W_tot = ΔEc)."
     },
     {
@@ -201,13 +201,13 @@
       "topic": "Forze conservative",
       "question": "Una forza si dice conservativa quando:",
       "options": [
-        "Il lavoro dipende sempre dal percorso seguito",
-        "Agisce solo in assenza di attrito",
         "Il lavoro che compie dipende solo dalla posizione iniziale e finale, non dal percorso seguito",
+        "È sempre diretta verso il basso",
         "Non compie mai lavoro, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "È sempre diretta verso il basso"
+        "Agisce solo in assenza di attrito",
+        "Il lavoro dipende sempre dal percorso seguito"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "Una forza conservativa compie un lavoro che dipende esclusivamente dai punti iniziale e finale dello spostamento, non dal percorso percorso; a essa è associabile un'energia potenziale."
     },
     {
@@ -217,11 +217,11 @@
       "topic": "Energia potenziale gravitazionale",
       "question": "L'energia potenziale gravitazionale di un corpo di massa m ad altezza h dal suolo (con g accelerazione di gravità) è espressa da:",
       "options": [
-        "Ep = m·h/g",
-        "Ep = m·g/h",
         "Ep = ½·m·v²",
+        "Ep = g·h²",
+        "Ep = m·h/g",
         "Ep = m·g·h",
-        "Ep = g·h²"
+        "Ep = m·g/h"
       ],
       "correctIndex": 3,
       "explanation": "L'energia potenziale gravitazionale vicino alla superficie terrestre è data da Ep = m·g·h."
@@ -234,10 +234,10 @@
       "question": "In un sistema ideale, in assenza di forze non conservative come l'attrito, l'energia meccanica totale (cinetica + potenziale):",
       "options": [
         "Si conserva, rimanendo costante",
-        "Aumenta progressivamente nel tempo",
-        "Non ha alcuna relazione con l'energia potenziale",
+        "Diminuisce sempre fino ad annullarsi",
         "Dipende solo dall'energia cinetica",
-        "Diminuisce sempre fino ad annullarsi"
+        "Aumenta progressivamente nel tempo",
+        "Non ha alcuna relazione con l'energia potenziale"
       ],
       "correctIndex": 0,
       "explanation": "In assenza di forze dissipative, l'energia meccanica totale di un sistema isolato si conserva nel tempo."
@@ -249,11 +249,11 @@
       "topic": "Quantità di moto",
       "question": "La quantità di moto di un corpo è definita come il prodotto tra:",
       "options": [
-        "Forza e tempo",
-        "Massa e accelerazione",
         "Massa e spostamento",
+        "Velocità e tempo",
+        "Forza e tempo",
         "Massa e velocità",
-        "Velocità e tempo"
+        "Massa e accelerazione"
       ],
       "correctIndex": 3,
       "explanation": "La quantità di moto p è definita come p = m·v, prodotto tra massa e velocità del corpo."
@@ -265,13 +265,13 @@
       "topic": "Impulso",
       "question": "L'impulso di una forza applicata a un corpo per un certo intervallo di tempo è uguale a:",
       "options": [
-        "La variazione della quantità di moto del corpo",
-        "La variazione dell'energia potenziale",
+        "La velocità media del corpo",
         "Il lavoro svolto dalla forza",
-        "L'energia cinetica finale del corpo",
-        "La velocità media del corpo"
+        "La variazione dell'energia potenziale",
+        "La variazione della quantità di moto del corpo",
+        "L'energia cinetica finale del corpo"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "L'impulso di una forza è pari alla variazione della quantità di moto del corpo su cui essa agisce (teorema dell'impulso)."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Conservazione della quantità di moto",
       "question": "In un sistema isolato, privo di forze esterne nette, la quantità di moto totale:",
       "options": [
-        "Diminuisce fino ad annullarsi",
-        "Dipende solo dalla massa totale, non dalle velocità",
-        "Aumenta progressivamente",
         "Si conserva nel tempo",
+        "Diminuisce fino ad annullarsi",
+        "Aumenta progressivamente",
+        "Dipende solo dalla massa totale, non dalle velocità",
         "Non è mai definibile"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "In assenza di forze esterne nette, la quantità di moto totale di un sistema isolato si conserva, come nel caso classico degli urti."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Centro di massa",
       "question": "Il centro di massa di un sistema di corpi è definito come:",
       "options": [
-        "Il punto geometrico dove è concentrata l'intera massa del sistema ai fini del calcolo del moto traslazionale",
-        "Un punto sempre coincidente con il centro geometrico della figura",
-        "Il punto più lontano dal baricentro geometrico",
         "Il punto di applicazione dell'attrito, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Il punto più lontano dal baricentro geometrico",
+        "Un punto sempre coincidente con il centro geometrico della figura",
+        "Il punto geometrico dove è concentrata l'intera massa del sistema ai fini del calcolo del moto traslazionale",
         "Il punto in cui la velocità è sempre nulla"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Il centro di massa è il punto in cui si può considerare concentrata l'intera massa del sistema ai fini della descrizione del moto traslazionale complessivo."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Momento torcente ed equilibrio rotazionale",
       "question": "Il momento torcente (momento di una forza) rispetto a un asse dipende da:",
       "options": [
-        "Esclusivamente dalla velocità angolare",
         "Dal modulo della forza, dal braccio (distanza dall'asse) e dall'angolo di applicazione",
-        "Solo dalla massa del corpo su cui agisce la forza",
         "Solo dal modulo della forza applicata",
-        "Dalla temperatura del sistema, un'ipotesi che la letteratura più recente ha ampiamente smentito"
+        "Esclusivamente dalla velocità angolare",
+        "Dalla temperatura del sistema, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Solo dalla massa del corpo su cui agisce la forza"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Il momento torcente è dato dal prodotto tra il modulo della forza, il braccio (distanza dall'asse di rotazione) e il seno dell'angolo tra forza e braccio."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Forza peso e forza gravitazionale",
       "question": "La forza peso di un corpo vicino alla superficie terrestre è espressa da:",
       "options": [
-        "P = m + g",
-        "P = m·g²",
-        "P = m/g",
         "P = g/m",
-        "P = m·g"
+        "P = m·g²",
+        "P = m·g",
+        "P = m + g",
+        "P = m/g"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "La forza peso è il prodotto tra la massa del corpo e l'accelerazione di gravità: P = m·g."
     },
     {

@@ -9,11 +9,11 @@
       "topic": "Replicazione semiconservativa",
       "question": "Il meccanismo semiconservativo della replicazione del DNA prevede che:",
       "options": [
-        "I due filamenti parentali si fondano in un unico filamento ibrido permanente",
+        "Un solo filamento venga replicato e l'altro degradato",
         "Ogni molecola figlia sia costituita da un filamento parentale e uno di nuova sintesi",
         "La replicazione avvenga senza l'uso di uno stampo secondo la definizione classica",
-        "Il DNA nuovo sia formato da due filamenti completamente nuovi",
-        "Un solo filamento venga replicato e l'altro degradato"
+        "I due filamenti parentali si fondano in un unico filamento ibrido permanente",
+        "Il DNA nuovo sia formato da due filamenti completamente nuovi"
       ],
       "correctIndex": 1,
       "explanation": "Nella replicazione semiconservativa ciascuna delle due molecole figlie di DNA conserva un filamento parentale originale e ne sintetizza uno complementare nuovo."
@@ -25,13 +25,13 @@
       "topic": "Origine di replicazione e forcella replicativa",
       "question": "La forcella replicativa si forma:",
       "options": [
-        "Dopo la completa separazione dei due filamenti dell'intero cromosoma",
-        "Nel punto in cui il DNA elicasi apre la doppia elica a partire dall'origine di replicazione",
-        "Esclusivamente nei mitocondri, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Solo alla fine del processo di replicazione",
-        "Solo negli organismi procarioti"
+        "Esclusivamente nei mitocondri, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Solo negli organismi procarioti",
+        "Dopo la completa separazione dei due filamenti dell'intero cromosoma",
+        "Nel punto in cui il DNA elicasi apre la doppia elica a partire dall'origine di replicazione"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "La forcella replicativa si origina nel punto in cui la doppia elica viene aperta dall'elicasi a partire dall'origine di replicazione, permettendo la sintesi bidirezionale di nuovo DNA."
     },
     {
@@ -42,10 +42,10 @@
       "question": "Quale coppia di enzimi collabora per srotolare la doppia elica del DNA durante la replicazione, gestendo anche le tensioni torsionali generate?",
       "options": [
         "Elicasi e topoisomerasi",
-        "RNA polimerasi e ribosoma",
-        "DNA polimerasi e ligasi",
+        "Primasi e telomerasi",
         "Chaperon e proteasoma",
-        "Primasi e telomerasi"
+        "DNA polimerasi e ligasi",
+        "RNA polimerasi e ribosoma"
       ],
       "correctIndex": 0,
       "explanation": "L'elicasi rompe i legami idrogeno srotolando la doppia elica, mentre le topoisomerasi rilasciano le tensioni torsionali che si generano davanti alla forcella replicativa."
@@ -57,13 +57,13 @@
       "topic": "Primasi e innesco della replicazione",
       "question": "La primasi è l'enzima responsabile di:",
       "options": [
-        "Sintetizzare un breve innesco di RNA necessario per l'avvio della sintesi di DNA da parte della DNA polimerasi",
         "Saldare i frammenti di Okazaki, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
-        "Rimuovere gli introni dall'mRNA",
+        "Sintetizzare un breve innesco di RNA necessario per l'avvio della sintesi di DNA da parte della DNA polimerasi",
+        "Srotolare la doppia elica del DNA",
         "Aggiungere nucleotidi ai telomeri",
-        "Srotolare la doppia elica del DNA"
+        "Rimuovere gli introni dall'mRNA"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "La DNA polimerasi non può iniziare la sintesi de novo: la primasi sintetizza un breve primer di RNA che fornisce l'estremità 3'-OH necessaria all'inizio della replicazione."
     },
     {
@@ -73,13 +73,13 @@
       "topic": "Correzione degli errori della DNA polimerasi",
       "question": "L'attività di correzione degli errori (proofreading) di molte DNA polimerasi si basa su:",
       "options": [
-        "Un'attività esonucleasica 3'→5' che rimuove i nucleotidi appaiati in modo scorretto",
-        "La degradazione completa del filamento neosintetizzato",
-        "La sintesi di RNA complementare di controllo",
         "L'azione della telomerasi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "L'intervento esclusivo delle topoisomerasi"
+        "Un'attività esonucleasica 3'→5' che rimuove i nucleotidi appaiati in modo scorretto",
+        "La sintesi di RNA complementare di controllo",
+        "L'intervento esclusivo delle topoisomerasi",
+        "La degradazione completa del filamento neosintetizzato"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "Molte DNA polimerasi possiedono un'attività esonucleasica 3'→5' che riconosce e rimuove i nucleotidi inseriti erroneamente, aumentando la fedeltà della replicazione."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Frammenti di Okazaki",
       "question": "I frammenti di Okazaki si formano:",
       "options": [
-        "Esclusivamente nei telomeri, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Sul filamento ritardato, sintetizzato in modo discontinuo in direzione opposta alla forcella replicativa",
-        "Solo durante la trascrizione, non nella replicazione",
+        "Solo negli organismi privi di DNA polimerasi",
         "Sul filamento guida, sintetizzato in modo continuo",
-        "Solo negli organismi privi di DNA polimerasi"
+        "Solo durante la trascrizione, non nella replicazione",
+        "Esclusivamente nei telomeri, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Sul filamento ritardato, la sintesi procede in modo discontinuo generando brevi frammenti di Okazaki, poiché la DNA polimerasi sintetizza sempre in direzione 5'→3'."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "DNA ligasi",
       "question": "Dopo la rimozione dei primer di RNA e il loro completamento con DNA, quale enzima salda i frammenti di DNA adiacenti sigillando le interruzioni?",
       "options": [
-        "Primasi",
         "DNA ligasi",
+        "Primasi",
+        "RNA polimerasi",
         "DNA elicasi",
-        "Topoisomerasi",
-        "RNA polimerasi"
+        "Topoisomerasi"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "La DNA ligasi catalizza la formazione del legame fosfodiestereo tra frammenti di DNA adiacenti, completando la continuità del filamento."
     },
     {
@@ -121,10 +121,10 @@
       "topic": "Telomerasi e senescenza replicativa",
       "question": "La telomerasi svolge un ruolo cruciale perché:",
       "options": [
-        "Degrada completamente i telomeri a ogni ciclo cellulare",
-        "Sintetizza esclusivamente RNA messaggero, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Impedisce del tutto la replicazione del DNA",
         "Sostituisce la funzione della DNA polimerasi in tutte le cellule",
+        "Degrada completamente i telomeri a ogni ciclo cellulare",
+        "Sintetizza esclusivamente RNA messaggero, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Allunga le estremità telomeriche del DNA, contrastando il loro progressivo accorciamento a ogni divisione cellulare"
       ],
       "correctIndex": 4,
@@ -137,13 +137,13 @@
       "topic": "Geni procariotici policistronici",
       "question": "Un gene o operone policistronico, tipico dei procarioti, è caratterizzato da:",
       "options": [
-        "Un unico mRNA che codifica per più proteine, trascritte a partire da un solo promotore",
-        "La presenza obbligatoria di introni, posizione che i dati recenti non confermano",
         "La codifica esclusiva di RNA non tradotti",
-        "Un singolo mRNA che codifica per un'unica proteina",
-        "L'assenza totale di regioni regolative"
+        "La presenza obbligatoria di introni, posizione che i dati recenti non confermano",
+        "Un unico mRNA che codifica per più proteine, trascritte a partire da un solo promotore",
+        "L'assenza totale di regioni regolative",
+        "Un singolo mRNA che codifica per un'unica proteina"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Nei procarioti, geni funzionalmente correlati sono spesso organizzati in operoni policistronici, trascritti insieme in un unico mRNA che codifica per più proteine."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Operone Lac",
       "question": "Nel modello dell'operone Lac, in assenza di lattosio il repressore Lac:",
       "options": [
-        "Si lega solo in presenza di glucosio",
+        "Si lega all'operatore, impedendo la trascrizione dei geni per il metabolismo del lattosio",
         "Degrada il promotore dell'operone, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Si lega solo in presenza di glucosio",
         "Non ha alcun ruolo nella regolazione",
-        "Attiva sempre la trascrizione indipendentemente dal lattosio",
-        "Si lega all'operatore, impedendo la trascrizione dei geni per il metabolismo del lattosio"
+        "Attiva sempre la trascrizione indipendentemente dal lattosio"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "In assenza di lattosio, il repressore Lac si lega alla sequenza operatore bloccando la trascrizione dei geni strutturali; la presenza di lattosio (o suoi derivati) inattiva il repressore permettendo la trascrizione."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "RNA polimerasi eucariotiche",
       "question": "Negli eucarioti, quale RNA polimerasi è responsabile della sintesi della maggior parte degli mRNA?",
       "options": [
+        "Primasi",
+        "RNA polimerasi I",
         "RNA polimerasi II",
         "DNA polimerasi I",
-        "RNA polimerasi I",
-        "Primasi",
         "RNA polimerasi III"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "L'RNA polimerasi II trascrive la maggior parte dei geni codificanti proteine, producendo i precursori degli mRNA, mentre le polimerasi I e III trascrivono principalmente rRNA e tRNA."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "TATA box",
       "question": "La TATA box, presente in molti promotori eucariotici, è una sequenza riconosciuta principalmente da:",
       "options": [
-        "I fattori di trascrizione generali, per posizionare correttamente la RNA polimerasi II",
-        "Gli enzimi di splicing",
         "La sola DNA ligasi",
+        "Gli enzimi di splicing",
+        "Le proteine chaperon",
         "Il proteasoma, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
-        "Le proteine chaperon"
+        "I fattori di trascrizione generali, per posizionare correttamente la RNA polimerasi II"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "La TATA box è una sequenza consenso riconosciuta dai fattori di trascrizione generali (come TFIID), che aiutano a posizionare correttamente la RNA polimerasi II sul promotore."
     },
     {
@@ -202,12 +202,12 @@
       "question": "Gli enhancer sono elementi regolativi che:",
       "options": [
         "Bloccano sempre e comunque la trascrizione",
+        "Sono sempre localizzati immediatamente a monte del sito di inizio della trascrizione",
         "Codificano direttamente per proteine strutturali",
         "Possono trovarsi anche a grande distanza dal promotore e aumentare l'efficienza della trascrizione legando fattori di trascrizione specifici",
-        "Sono presenti solo nei procarioti, i quali non possiedono introni né questo tipo di regolazione, ipotesi priva di riscontro",
-        "Sono sempre localizzati immediatamente a monte del sito di inizio della trascrizione"
+        "Sono presenti solo nei procarioti, i quali non possiedono introni né questo tipo di regolazione, ipotesi priva di riscontro"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "Gli enhancer sono sequenze regolative distali, anche molto lontane dal promotore, che legano fattori di trascrizione specifici aumentando l'efficienza della trascrizione del gene bersaglio."
     },
     {
@@ -217,13 +217,13 @@
       "topic": "Maturazione dell'mRNA - capping",
       "question": "Il capping dell'mRNA eucariotico consiste in:",
       "options": [
-        "L'aggiunta di un cappuccio di 7-metilguanosina all'estremità 5' del trascritto",
         "La degradazione del trascritto primario",
+        "La rimozione completa degli esoni, posizione che i dati recenti non confermano",
         "L'aggiunta di una coda di adenine all'estremità 3'",
         "L'aggiunta di introni al messaggero maturo",
-        "La rimozione completa degli esoni, posizione che i dati recenti non confermano"
+        "L'aggiunta di un cappuccio di 7-metilguanosina all'estremità 5' del trascritto"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Il capping consiste nell'aggiunta, all'estremità 5' del trascritto nascente, di un cappuccio di 7-metilguanosina che protegge l'mRNA e ne favorisce la traduzione."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Poliadenilazione",
       "question": "La poliadenilazione dell'mRNA consiste nell'aggiunta di:",
       "options": [
-        "Un cappuccio di guanosina metilata all'estremità 5'",
-        "Una sequenza ripetuta di timine all'estremità 5'",
-        "Introni aggiuntivi al messaggero, interpretazione ormai datata",
+        "Un anticodone complementare al codone di stop",
         "Una sequenza di nucleotidi di adenina all'estremità 3' del trascritto",
-        "Un anticodone complementare al codone di stop"
+        "Introni aggiuntivi al messaggero, interpretazione ormai datata",
+        "Un cappuccio di guanosina metilata all'estremità 5'",
+        "Una sequenza ripetuta di timine all'estremità 5'"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "La poliadenilazione aggiunge una coda di poli-A all'estremità 3' del pre-mRNA, contribuendo alla stabilità e all'esportazione nucleare del messaggero."
     },
     {
@@ -251,9 +251,9 @@
       "options": [
         "La rimozione degli introni e la giunzione degli esoni, catalizzata dallo spliceosoma",
         "La degradazione totale del pre-mRNA, posizione che i dati recenti non confermano",
-        "L'aggiunta di nuovi esoni al trascritto primario",
+        "La trascrizione diretta del DNA in proteina",
         "La duplicazione dell'intero trascritto primario",
-        "La trascrizione diretta del DNA in proteina"
+        "L'aggiunta di nuovi esoni al trascritto primario"
       ],
       "correctIndex": 0,
       "explanation": "Lo splicing, catalizzato dallo spliceosoma (complesso di snRNA e proteine), rimuove gli introni non codificanti e unisce gli esoni per formare l'mRNA maturo."
@@ -265,13 +265,13 @@
       "topic": "miRNA e RNA interference",
       "question": "I microRNA (miRNA) regolano l'espressione genica principalmente:",
       "options": [
-        "Impedendo la replicazione del DNA, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Sostituendo completamente la funzione dei ribosomi",
+        "Legandosi a mRNA complementari e reprimendone la traduzione o promuovendone la degradazione",
         "Solo modificando covalentemente il DNA",
+        "Impedendo la replicazione del DNA, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Attivando in modo diretto la trascrizione di tutti i geni bersaglio",
-        "Legandosi a mRNA complementari e reprimendone la traduzione o promuovendone la degradazione"
+        "Sostituendo completamente la funzione dei ribosomi"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "I miRNA si appaiano a sequenze complementari sull'mRNA bersaglio, reprimendone la traduzione o favorendone la degradazione, un meccanismo alla base dell'RNA interference."
     },
     {
@@ -281,10 +281,10 @@
       "topic": "Codice genetico",
       "question": "Il codice genetico si definisce degenerato perché:",
       "options": [
-        "Ogni codone codifica per più amminoacidi diversi",
-        "Non esiste alcun codone di stop nella descrizione tradizionale",
-        "È diverso in ogni specie vivente",
         "Codifica solo per un numero limitato di tre amminoacidi",
+        "Non esiste alcun codone di stop nella descrizione tradizionale",
+        "Ogni codone codifica per più amminoacidi diversi",
+        "È diverso in ogni specie vivente",
         "Più codoni diversi possono codificare per lo stesso amminoacido"
       ],
       "correctIndex": 4,
@@ -297,13 +297,13 @@
       "topic": "Traduzione e ribosomi",
       "question": "Durante la traduzione, il riconoscimento tra codone dell'mRNA e anticodone avviene a livello di:",
       "options": [
-        "Dello spliceosoma",
-        "Del DNA nel nucleo",
-        "Del proteasoma, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Della membrana plasmatica",
-        "Del ribosoma, tramite l'appaiamento tra codone dell'mRNA e anticodone del tRNA"
+        "Del proteasoma, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Dello spliceosoma",
+        "Del ribosoma, tramite l'appaiamento tra codone dell'mRNA e anticodone del tRNA",
+        "Del DNA nel nucleo"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Sul ribosoma, l'anticodone del tRNA carico del corrispondente amminoacido si appaia al codone dell'mRNA, permettendo l'aggiunta sequenziale degli amminoacidi alla catena polipeptidica nascente."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Proteine chaperon",
       "question": "Le proteine chaperon svolgono principalmente la funzione di:",
       "options": [
-        "Formare il capside dei virus",
         "Trascrivere il DNA in RNA, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Sintetizzare direttamente i nuovi polipeptidi sui ribosomi",
         "Degradare le proteine mal ripiegate marcandole con ubiquitina",
-        "Assistere il corretto ripiegamento tridimensionale delle proteine di nuova sintesi"
+        "Assistere il corretto ripiegamento tridimensionale delle proteine di nuova sintesi",
+        "Sintetizzare direttamente i nuovi polipeptidi sui ribosomi",
+        "Formare il capside dei virus"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Le proteine chaperon assistono il corretto ripiegamento delle proteine neosintetizzate, prevenendo aggregazioni indesiderate e favorendo il raggiungimento della conformazione funzionale."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Degradazione proteasomica ubiquitina-dipendente",
       "question": "La via di degradazione proteasomica ubiquitina-dipendente prevede che le proteine da degradare vengano:",
       "options": [
-        "Ripiegate nuovamente dalle chaperonine senza essere degradate",
-        "Degradate esclusivamente dai lisosomi senza alcuna marcatura",
-        "Immediatamente esportate fuori dalla cellula senza degradazione",
         "Marcate con catene di ubiquitina e successivamente degradate dal proteasoma",
-        "Trasformate in RNA non codificante"
+        "Immediatamente esportate fuori dalla cellula senza degradazione",
+        "Degradate esclusivamente dai lisosomi senza alcuna marcatura",
+        "Trasformate in RNA non codificante",
+        "Ripiegate nuovamente dalle chaperonine senza essere degradate"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Le proteine destinate alla degradazione vengono marcate con catene di poliubiquitina, riconosciute e degradate dal proteasoma, un complesso multiproteico specializzato."
     },
     {

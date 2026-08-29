@@ -11,11 +11,11 @@
       "options": [
         "Le cellule procariotiche non derivano da altre cellule",
         "I virus sono cellule prive di parete",
-        "Tutti gli organismi viventi sono costituiti da una o più cellule",
         "Solo gli organismi pluricellulari sono formati da cellule",
+        "Tutti gli organismi viventi sono costituiti da una o più cellule",
         "Le cellule si generano per assemblaggio spontaneo di macromolecole"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "La teoria cellulare afferma che tutti gli organismi viventi sono composti da cellule e che ogni cellula deriva da una cellula preesistente."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Proprietà della materia vivente",
       "question": "Quale di queste NON è una proprietà fondamentale della materia vivente?",
       "options": [
-        "Omeostasi, interpretazione ormai datata",
-        "Metabolismo",
-        "Assenza totale di organizzazione strutturale",
         "Capacità di riprodursi",
-        "Capacità di rispondere a stimoli"
+        "Omeostasi, interpretazione ormai datata",
+        "Capacità di rispondere a stimoli",
+        "Metabolismo",
+        "Assenza totale di organizzazione strutturale"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "La materia vivente è invece caratterizzata da un elevato grado di organizzazione strutturale, a tutti i livelli."
     },
     {
@@ -41,11 +41,11 @@
       "topic": "Struttura dei virus",
       "question": "Come si chiama l'involucro proteico che racchiude l'acido nucleico di un virus?",
       "options": [
-        "Membrana plasmatica",
-        "Parete cellulare",
-        "Capside",
         "Pericapside",
-        "Envelope lipidico"
+        "Envelope lipidico",
+        "Capside",
+        "Parete cellulare",
+        "Membrana plasmatica"
       ],
       "correctIndex": 2,
       "explanation": "Il capside è il rivestimento proteico che protegge il genoma virale; alcuni virus possiedono anche un ulteriore involucro membranoso esterno."
@@ -57,13 +57,13 @@
       "topic": "Genoma virale",
       "question": "L'acido nucleico di un virus può essere:",
       "options": [
-        "DNA o RNA, a singolo o doppio filamento a seconda della classe virale",
-        "Sempre entrambi, DNA e RNA insieme",
-        "Solo RNA a singolo filamento",
+        "Nessuno dei due, i virus non hanno acido nucleico",
         "Solo DNA a doppio filamento, posizione che i dati recenti non confermano",
-        "Nessuno dei due, i virus non hanno acido nucleico"
+        "Sempre entrambi, DNA e RNA insieme",
+        "DNA o RNA, a singolo o doppio filamento a seconda della classe virale",
+        "Solo RNA a singolo filamento"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Le diverse classi di virus animali si distinguono anche per il tipo di acido nucleico che possiedono: DNA o RNA, a filamento singolo o doppio."
     },
     {
@@ -73,10 +73,10 @@
       "topic": "Ciclo litico",
       "question": "Nel ciclo litico di un virus batterico, cosa accade alla cellula ospite al termine del ciclo?",
       "options": [
+        "Si integra stabilmente con il genoma virale",
         "Diventa resistente a ulteriori infezioni",
         "Si divide per formare due cellule figlie infette",
         "Espelle il virus per esocitosi senza danno",
-        "Si integra stabilmente con il genoma virale",
         "Va incontro a lisi con rilascio dei nuovi virioni"
       ],
       "correctIndex": 4,
@@ -89,8 +89,8 @@
       "topic": "Ciclo lisogenico",
       "question": "Cosa caratterizza il ciclo lisogenico di un virus batterico?",
       "options": [
-        "L'impossibilità di tornare successivamente al ciclo litico",
         "La distruzione immediata della cellula ospite, posizione che i dati recenti non confermano",
+        "L'impossibilità di tornare successivamente al ciclo litico",
         "L'integrazione del genoma virale (profago) nel cromosoma dell'ospite senza lisi immediata",
         "La formazione diretta di virioni maturi senza integrazione",
         "L'assenza totale di replicazione del genoma virale"
@@ -105,13 +105,13 @@
       "topic": "Retrovirus",
       "question": "Quale enzima caratteristico permette ai retrovirus di convertire il proprio RNA in DNA all'interno della cellula ospite?",
       "options": [
-        "Trascrittasi inversa",
-        "DNA polimerasi",
         "RNA polimerasi II",
+        "Elicasi",
+        "Trascrittasi inversa",
         "Ligasi",
-        "Elicasi"
+        "DNA polimerasi"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "I retrovirus possiedono la trascrittasi inversa, che retrotrascrive il loro genoma a RNA in DNA, successivamente integrato nel genoma dell'ospite."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Ingresso del virus nella cellula animale",
       "question": "Attraverso quali modalità principali un virus animale può entrare in una cellula ospite?",
       "options": [
-        "Endocitosi mediata da recettore o fusione diretta dell'envelope con la membrana plasmatica",
-        "Solo per fagocitosi attiva della cellula bersaglio",
-        "Solo tramite trasformazione genetica",
         "Solo per diffusione passiva attraverso la parete cellulare",
-        "Esclusivamente tramite pili sessuali, posizione che i dati recenti non confermano"
+        "Endocitosi mediata da recettore o fusione diretta dell'envelope con la membrana plasmatica",
+        "Esclusivamente tramite pili sessuali, posizione che i dati recenti non confermano",
+        "Solo tramite trasformazione genetica",
+        "Solo per fagocitosi attiva della cellula bersaglio"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "I virus animali entrano tipicamente per endocitosi mediata da recettore oppure, se dotati di envelope, per fusione diretta con la membrana plasmatica."
     },
     {
@@ -139,11 +139,11 @@
       "options": [
         "I Gram negativi non possiedono alcuna parete cellulare",
         "Non esiste alcuna differenza strutturale tra i due gruppi",
-        "I Gram positivi hanno una membrana esterna ricca di lipopolisaccaridi",
         "Solo i Gram negativi possiedono peptidoglicano, posizione che i dati recenti non confermano",
-        "I Gram positivi hanno uno strato di peptidoglicano molto più spesso e privo di membrana esterna"
+        "I Gram positivi hanno uno strato di peptidoglicano molto più spesso e privo di membrana esterna",
+        "I Gram positivi hanno una membrana esterna ricca di lipopolisaccaridi"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "I batteri Gram positivi hanno una parete con spesso strato di peptidoglicano e nessuna membrana esterna, mentre i Gram negativi hanno uno strato sottile di peptidoglicano ricoperto da una membrana esterna con lipopolisaccaridi."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Colorazione di Gram",
       "question": "Su cosa si basa il meccanismo della colorazione di Gram per distinguere i batteri?",
       "options": [
-        "Sulla velocità di replicazione del batterio",
         "Sulla presenza di capsula polisaccaridica",
+        "Sulla velocità di replicazione del batterio",
         "Sul tipo di acido nucleico presente nel batterio",
-        "Sulla presenza o assenza di flagelli, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "Sulla capacità della parete cellulare di trattenere o meno il complesso colorante cristal-violetto/iodio dopo il lavaggio con alcol"
+        "Sulla capacità della parete cellulare di trattenere o meno il complesso colorante cristal-violetto/iodio dopo il lavaggio con alcol",
+        "Sulla presenza o assenza di flagelli, una lettura che gli studi più aggiornati non supportano più in modo convincente"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La colorazione di Gram sfrutta la diversa struttura della parete: i Gram positivi trattengono il complesso colorante per lo spesso strato di peptidoglicano, i Gram negativi lo perdono con il lavaggio alcolico."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Trasferimento genico orizzontale - trasformazione",
       "question": "Cosa si intende per trasformazione batterica?",
       "options": [
-        "La sintesi di nuove proteine di membrana",
-        "Il passaggio di DNA da un batterio all'altro tramite contatto diretto e pilo sessuale",
         "La divisione binaria del batterio, posizione che i dati recenti non confermano",
-        "L'acquisizione da parte di un batterio di DNA libero presente nell'ambiente circostante",
-        "Il trasferimento di geni mediato da un batteriofago"
+        "Il passaggio di DNA da un batterio all'altro tramite contatto diretto e pilo sessuale",
+        "Il trasferimento di geni mediato da un batteriofago",
+        "La sintesi di nuove proteine di membrana",
+        "L'acquisizione da parte di un batterio di DNA libero presente nell'ambiente circostante"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "La trasformazione consiste nell'assunzione, da parte di un batterio competente, di DNA libero (esogeno) presente nell'ambiente."
     },
     {
@@ -185,11 +185,11 @@
       "topic": "Trasferimento genico orizzontale - coniugazione",
       "question": "Quale struttura è tipicamente coinvolta nel trasferimento di DNA per coniugazione batterica?",
       "options": [
-        "Il capside virale",
-        "La capsula",
-        "Il pilo sessuale (pilo F)",
         "Il flagello",
-        "La membrana esterna dei Gram negativi"
+        "La membrana esterna dei Gram negativi",
+        "Il pilo sessuale (pilo F)",
+        "Il capside virale",
+        "La capsula"
       ],
       "correctIndex": 2,
       "explanation": "Nella coniugazione un batterio donatore trasferisce DNA plasmidico a un ricevente attraverso il pilo sessuale, che mette in contatto diretto le due cellule."
@@ -201,11 +201,11 @@
       "topic": "Trasferimento genico orizzontale - trasduzione",
       "question": "La trasduzione batterica è il trasferimento di materiale genetico mediato da:",
       "options": [
-        "L'assunzione diretta di DNA libero dall'ambiente",
+        "Un pilo sessuale, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Un batteriofago che, per errore, incorpora ed inietta DNA batterico in un'altra cellula",
         "Un plasmide coniugativo",
         "La fusione di due protoplasti batterici",
-        "Un pilo sessuale, un'ipotesi che la letteratura più recente ha ampiamente smentito"
+        "L'assunzione diretta di DNA libero dall'ambiente"
       ],
       "correctIndex": 1,
       "explanation": "Nella trasduzione un batteriofago, durante l'assemblaggio, incorpora per errore frammenti di DNA batterico e li trasferisce a un'altra cellula batterica infettandola."
@@ -218,9 +218,9 @@
       "question": "Eubatteri e archeobatteri sono entrambi:",
       "options": [
         "Procarioti, ma appartengono a due domini distinti con differenze biochimiche e genetiche",
+        "La stessa cosa, solo con nomi diversi",
         "Organelli delle cellule eucariotiche",
         "Organismi eucarioti pluricellulari",
-        "La stessa cosa, solo con nomi diversi",
         "Virus a DNA, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
       ],
       "correctIndex": 0,
@@ -233,13 +233,13 @@
       "topic": "Cellula eucariotica - sistema delle endomembrane",
       "question": "Il sistema delle endomembrane della cellula eucariotica comprende:",
       "options": [
-        "Solo la membrana plasmatica",
-        "Esclusivamente il nucleolo",
-        "Solo i mitocondri e i cloroplasti",
         "Involucro nucleare, reticolo endoplasmatico, apparato di Golgi, lisosomi e vescicole di trasporto tra loro funzionalmente collegati",
-        "Solo la parete cellulare, struttura peraltro assente nelle cellule animali, ipotesi ampiamente smentita dalla letteratura più recente"
+        "Solo i mitocondri e i cloroplasti",
+        "Esclusivamente il nucleolo",
+        "Solo la parete cellulare, struttura peraltro assente nelle cellule animali, ipotesi ampiamente smentita dalla letteratura più recente",
+        "Solo la membrana plasmatica"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Il sistema delle endomembrane comprende l'insieme di compartimenti membranosi interni (involucro nucleare, RE, Golgi, lisosomi, vescicole) che comunicano funzionalmente tra loro."
     },
     {
@@ -249,9 +249,9 @@
       "topic": "Origine endosimbiotica dei mitocondri",
       "question": "Secondo la teoria dell'endosimbiosi, i mitocondri deriverebbero da:",
       "options": [
+        "Frammenti dell'involucro nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Particelle virali integrate nel genoma",
         "Vescicole originate dall'apparato di Golgi",
-        "Frammenti dell'involucro nucleare, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Un ripiegamento della membrana plasmatica avvenuto casualmente",
         "Batteri aerobi inglobati da una cellula ospite ancestrale ed evolutisi in organelli simbiotici"
       ],
@@ -265,13 +265,13 @@
       "topic": "Struttura del DNA",
       "question": "Secondo il modello di Watson e Crick, il DNA è costituito da:",
       "options": [
-        "Un singolo filamento ripiegato a globulo",
-        "Due filamenti paralleli uniti da legami peptidici",
-        "Un filamento circolare privo di basi azotate",
+        "Due filamenti antiparalleli avvolti a doppia elica, tenuti insieme da legami idrogeno tra basi complementari",
         "Tre filamenti avvolti a tripla elica, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Due filamenti antiparalleli avvolti a doppia elica, tenuti insieme da legami idrogeno tra basi complementari"
+        "Due filamenti paralleli uniti da legami peptidici",
+        "Un singolo filamento ripiegato a globulo",
+        "Un filamento circolare privo di basi azotate"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "Il modello di Watson e Crick descrive il DNA come una doppia elica di due filamenti antiparalleli, uniti da legami idrogeno tra basi azotate complementari (A-T, G-C)."
     },
     {
@@ -281,11 +281,11 @@
       "topic": "RNA codificante e non codificante",
       "question": "Gli RNA non codificanti si distinguono dall'mRNA perché:",
       "options": [
+        "Corrispondono esclusivamente al tRNA",
         "Sono presenti solo nei procarioti",
-        "Contengono sempre introni, posizione che i dati recenti non confermano",
         "Non vengono mai trascritti dal DNA",
         "Non vengono tradotti in proteine, ma svolgono funzioni strutturali o regolative",
-        "Corrispondono esclusivamente al tRNA"
+        "Contengono sempre introni, posizione che i dati recenti non confermano"
       ],
       "correctIndex": 3,
       "explanation": "Gli RNA non codificanti (come rRNA, tRNA, miRNA) non vengono tradotti in proteine, ma svolgono funzioni strutturali, catalitiche o di regolazione dell'espressione genica."
@@ -298,12 +298,12 @@
       "question": "Il legame peptidico che unisce due amminoacidi si forma tra:",
       "options": [
         "La catena laterale di due amminoacidi qualsiasi, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Due gruppi amminici, con formazione di un ponte disolfuro",
+        "Due gruppi carbossilici, con rilascio di anidride carbonica",
         "Il gruppo fosfato e il gruppo ossidrilico di due zuccheri",
-        "Il gruppo carbossilico di un amminoacido e il gruppo amminico del successivo, con perdita di una molecola d'acqua",
-        "Due gruppi carbossilici, con rilascio di anidride carbonica"
+        "Due gruppi amminici, con formazione di un ponte disolfuro",
+        "Il gruppo carbossilico di un amminoacido e il gruppo amminico del successivo, con perdita di una molecola d'acqua"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Il legame peptidico si forma per condensazione tra il gruppo carbossilico (-COOH) di un amminoacido e il gruppo amminico (-NH2) del successivo, con liberazione di una molecola d'acqua."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Enzimi e classi principali",
       "question": "Quale delle seguenti coppie di enzimi ha funzioni tra loro opposte?",
       "options": [
+        "Isomerasi e mutasi",
         "Elicasi e ligasi",
         "Polimerasi e nucleasi",
         "Proteasi e peptidasi",
-        "Chinasi e fosfatasi",
-        "Isomerasi e mutasi"
+        "Chinasi e fosfatasi"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Le chinasi aggiungono un gruppo fosfato (fosforilazione), mentre le fosfatasi lo rimuovono (defosforilazione): sono quindi enzimi ad azione opposta, spesso usati per regolare reversibilmente l'attività di altre proteine."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Modificazioni post-traduzionali",
       "question": "L'aggiunta di catene di zuccheri a una proteina già sintetizzata è nota come:",
       "options": [
-        "Ubiquitinazione",
-        "Acetilazione",
-        "Metilazione",
         "Glicosilazione",
-        "Fosforilazione"
+        "Metilazione",
+        "Ubiquitinazione",
+        "Fosforilazione",
+        "Acetilazione"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "La glicosilazione è la modificazione post-traduzionale che consiste nell'aggiunta covalente di catene glucidiche a una proteina, spesso importante per il corretto ripiegamento e riconoscimento della molecola."
     },
     {

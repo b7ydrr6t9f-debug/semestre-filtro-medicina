@@ -9,13 +9,13 @@
       "topic": "Definizione di pressione",
       "question": "La pressione è definita come:",
       "options": [
-        "Il rapporto tra forza applicata perpendicolarmente e superficie su cui agisce",
-        "La forza totale applicata a un fluido, indipendentemente dall'area",
         "Il rapporto tra massa e volume, posizione che i dati recenti non confermano",
+        "Il prodotto tra densità e volume",
         "Il prodotto tra forza e superficie",
-        "Il prodotto tra densità e volume"
+        "Il rapporto tra forza applicata perpendicolarmente e superficie su cui agisce",
+        "La forza totale applicata a un fluido, indipendentemente dall'area"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "La pressione è definita come P = F/A, il rapporto tra la componente della forza perpendicolare alla superficie e l'area su cui essa agisce."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Definizione di densità",
       "question": "La densità di una sostanza è definita come:",
       "options": [
-        "Il rapporto tra la sua massa e il suo volume",
         "La forza peso per unità di superficie",
-        "Il rapporto tra volume e massa",
         "Il rapporto tra pressione e temperatura",
-        "Il prodotto tra massa e volume"
+        "Il prodotto tra massa e volume",
+        "Il rapporto tra volume e massa",
+        "Il rapporto tra la sua massa e il suo volume"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "La densità è definita come ρ = m/V, cioè il rapporto tra la massa di una sostanza e il volume da essa occupato."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Legge di Stevino",
       "question": "La legge di Stevino descrive come varia la pressione in un liquido in funzione di:",
       "options": [
+        "Della sola temperatura del liquido",
+        "Della velocità del liquido",
         "Della viscosità del liquido",
         "Della profondità rispetto alla superficie libera del liquido",
-        "Della sola temperatura del liquido",
-        "Del colore del liquido, posizione che i dati recenti non confermano",
-        "Della velocità del liquido"
+        "Del colore del liquido, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "La legge di Stevino afferma che la pressione in un liquido cresce linearmente con la profondità, secondo P = P0 + ρ·g·h."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Principio di Pascal",
       "question": "Il principio di Pascal afferma che:",
       "options": [
-        "Una variazione di pressione applicata a un fluido incomprimibile si trasmette inalterata in tutti i punti del fluido",
         "I fluidi non trasmettono mai variazioni di pressione",
         "La pressione diminuisce sempre con la profondità",
         "La pressione di un fluido dipende solo dalla sua temperatura",
-        "Solo i gas trasmettono variazioni di pressione, un'ipotesi che la letteratura più recente ha ampiamente smentito"
+        "Solo i gas trasmettono variazioni di pressione, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Una variazione di pressione applicata a un fluido incomprimibile si trasmette inalterata in tutti i punti del fluido"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Il principio di Pascal è alla base del funzionamento dei sistemi idraulici, in cui una pressione applicata in un punto si trasmette inalterata a tutto il fluido incomprimibile."
     },
     {
@@ -73,13 +73,13 @@
       "topic": "Principio di Archimede",
       "question": "Secondo il principio di Archimede, un corpo immerso in un fluido riceve una spinta verso l'alto pari a:",
       "options": [
-        "Zero, se il corpo è completamente immerso",
         "La pressione atmosferica sopra il fluido",
-        "La densità del fluido moltiplicata per il volume del corpo immerso in aria",
+        "Zero, se il corpo è completamente immerso",
         "Il peso del volume di fluido spostato dal corpo",
-        "Il peso del corpo stesso"
+        "Il peso del corpo stesso",
+        "La densità del fluido moltiplicata per il volume del corpo immerso in aria"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "La spinta di Archimede è pari al peso del volume di fluido spostato dal corpo immerso, ed è diretta verso l'alto."
     },
     {
@@ -90,12 +90,12 @@
       "question": "Un corpo immerso in un fluido galleggia in equilibrio quando:",
       "options": [
         "La sua densità è sempre maggiore di quella del fluido",
-        "La spinta di Archimede eguaglia il peso del corpo",
-        "La pressione atmosferica è nulla",
         "Il volume del corpo è nullo",
-        "Non riceve alcuna spinta dal fluido"
+        "La spinta di Archimede eguaglia il peso del corpo",
+        "Non riceve alcuna spinta dal fluido",
+        "La pressione atmosferica è nulla"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Un corpo galleggia in equilibrio quando la spinta di Archimede verso l'alto eguaglia esattamente il peso del corpo verso il basso."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Esperimento di Torricelli",
       "question": "L'esperimento di Torricelli, con la colonna di mercurio in un tubo capovolto, ha permesso per la prima volta di:",
       "options": [
-        "Misurare la pressione atmosferica",
         "Misurare la viscosità dei liquidi",
-        "Dimostrare il principio di Archimede",
         "Calcolare la densità dell'acqua",
+        "Dimostrare il principio di Archimede",
+        "Misurare la pressione atmosferica",
         "Misurare la portata di un fluido"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "L'esperimento di Torricelli dimostrò che la pressione atmosferica può sostenere una colonna di mercurio di circa 760 mm, fornendo il primo metodo per misurarla."
     },
     {
@@ -122,10 +122,10 @@
       "question": "Un manometro è uno strumento utilizzato per misurare:",
       "options": [
         "La temperatura di un fluido",
+        "La viscosità di un liquido",
         "La portata volumetrica di un fluido",
-        "La densità di un gas, posizione che i dati recenti non confermano",
         "La pressione di un fluido, spesso rispetto a quella atmosferica",
-        "La viscosità di un liquido"
+        "La densità di un gas, posizione che i dati recenti non confermano"
       ],
       "correctIndex": 3,
       "explanation": "Il manometro misura la pressione di un fluido, generalmente espressa come differenza rispetto alla pressione atmosferica (pressione manometrica)."
@@ -137,13 +137,13 @@
       "topic": "Portata di un fluido",
       "question": "La portata di un fluido in un condotto è definita come:",
       "options": [
+        "La densità del fluido moltiplicata per la sua viscosità",
+        "La velocità massima raggiunta dal fluido, posizione che i dati recenti non confermano",
         "Il volume di fluido che attraversa una sezione del condotto nell'unità di tempo",
         "La pressione totale esercitata sulle pareti del condotto",
-        "La velocità massima raggiunta dal fluido, posizione che i dati recenti non confermano",
-        "Il rapporto tra area e lunghezza del condotto",
-        "La densità del fluido moltiplicata per la sua viscosità"
+        "Il rapporto tra area e lunghezza del condotto"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "La portata (volumetrica) è il volume di fluido che attraversa una data sezione del condotto per unità di tempo, ed è pari al prodotto tra velocità media del fluido e area della sezione."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Moto laminare e turbolento",
       "question": "Il moto laminare di un fluido è caratterizzato da:",
       "options": [
-        "Traiettorie caotiche e vorticose delle particelle di fluido",
-        "Un flusso che si inverte periodicamente",
         "Traiettorie ordinate e parallele, senza rimescolamento tra strati adiacenti",
         "Assenza totale di velocità del fluido, posizione che i dati recenti non confermano",
-        "Una velocità che aumenta indefinitamente nel tempo"
+        "Un flusso che si inverte periodicamente",
+        "Una velocità che aumenta indefinitamente nel tempo",
+        "Traiettorie caotiche e vorticose delle particelle di fluido"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "Nel moto laminare le particelle di fluido si muovono lungo traiettorie ordinate e parallele, senza rimescolamento significativo tra gli strati, a differenza del moto turbolento caratterizzato da vortici e traiettorie caotiche."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Equazione di continuità",
       "question": "L'equazione di continuità per un fluido ideale incomprimibile afferma che:",
       "options": [
+        "La pressione è sempre costante lungo il condotto",
         "Il prodotto tra area della sezione e velocità del fluido è costante lungo il condotto",
         "La densità del fluido varia liberamente lungo il percorso",
-        "La velocità è sempre nulla nei punti di restringimento",
         "Il volume totale del fluido diminuisce nel tempo, interpretazione ormai datata",
-        "La pressione è sempre costante lungo il condotto"
+        "La velocità è sempre nulla nei punti di restringimento"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "L'equazione di continuità (A·v = costante) esprime la conservazione della massa: dove la sezione si restringe, la velocità del fluido aumenta, e viceversa."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Teorema di Bernoulli",
       "question": "Il teorema di Bernoulli, per un fluido ideale in moto stazionario, mette in relazione:",
       "options": [
-        "La temperatura e il volume del fluido, posizione che i dati recenti non confermano",
-        "Solo la pressione e la temperatura del fluido",
-        "Solo la portata e il tempo di percorrenza",
         "Esclusivamente la viscosità e la densità del fluido",
-        "Pressione, velocità ed energia potenziale gravitazionale lungo una linea di flusso"
+        "Solo la portata e il tempo di percorrenza",
+        "La temperatura e il volume del fluido, posizione che i dati recenti non confermano",
+        "Pressione, velocità ed energia potenziale gravitazionale lungo una linea di flusso",
+        "Solo la pressione e la temperatura del fluido"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Il teorema di Bernoulli afferma che, lungo una linea di flusso di un fluido ideale, la somma di pressione, energia cinetica per unità di volume ed energia potenziale gravitazionale per unità di volume si mantiene costante."
     },
     {
@@ -201,11 +201,11 @@
       "topic": "Applicazioni di Bernoulli: stenosi",
       "question": "In un vaso sanguigno con una stenosi (restringimento), secondo l'equazione di Bernoulli e di continuità, nel tratto ristretto la velocità del sangue:",
       "options": [
-        "Diminuisce e la pressione aumenta",
-        "Aumenta e la pressione locale diminuisce",
         "Rimane costante, così come la pressione",
-        "Diventa nulla",
-        "Aumenta insieme alla pressione"
+        "Aumenta e la pressione locale diminuisce",
+        "Diminuisce e la pressione aumenta",
+        "Aumenta insieme alla pressione",
+        "Diventa nulla"
       ],
       "correctIndex": 1,
       "explanation": "Nel tratto ristretto la velocità aumenta (equazione di continuità) e, secondo Bernoulli, la pressione locale diminuisce, un effetto rilevante nella fisiopatologia delle stenosi vascolari."
@@ -217,13 +217,13 @@
       "topic": "Applicazioni di Bernoulli: aneurisma",
       "question": "In corrispondenza di un aneurisma (dilatazione locale di un vaso), la velocità del sangue tende a:",
       "options": [
-        "Annullarsi completamente",
-        "Rimanere invariata, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Diminuire rispetto al tratto normale, con aumento della pressione laterale",
+        "Rimanere invariata, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Annullarsi completamente",
         "Diventare turbolenta indipendentemente dalla geometria",
         "Aumentare rispetto al tratto normale"
       ],
-      "correctIndex": 2,
+      "correctIndex": 0,
       "explanation": "Nella dilatazione la sezione aumenta, quindi per l'equazione di continuità la velocità diminuisce, mentre secondo Bernoulli la pressione laterale aumenta, contribuendo al rischio di ulteriore dilatazione."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Viscosità",
       "question": "La viscosità di un fluido è una misura di:",
       "options": [
-        "La sua tensione superficiale",
-        "La resistenza interna che il fluido oppone allo scorrimento tra i suoi strati",
-        "La sua densità assoluta, posizione che i dati recenti non confermano",
         "La sua temperatura di ebollizione",
-        "La sua pressione di vapore"
+        "La sua tensione superficiale",
+        "La sua pressione di vapore",
+        "La sua densità assoluta, posizione che i dati recenti non confermano",
+        "La resistenza interna che il fluido oppone allo scorrimento tra i suoi strati"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "La viscosità esprime la resistenza interna di un fluido allo scorrimento relativo tra i suoi strati, dovuta all'attrito interno tra le particelle."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Profilo di velocità nel moto laminare",
       "question": "In un fluido viscoso che scorre in regime laminare all'interno di un condotto cilindrico, il profilo delle velocità lungo la sezione è tipicamente:",
       "options": [
-        "Lineare crescente dal centro verso le pareti",
-        "Parabolico, con velocità massima al centro e nulla alle pareti",
-        "Costante su tutta la sezione, interpretazione ormai datata",
         "Nullo in tutti i punti della sezione",
+        "Lineare crescente dal centro verso le pareti",
+        "Costante su tutta la sezione, interpretazione ormai datata",
+        "Parabolico, con velocità massima al centro e nulla alle pareti",
         "Casuale e non descrivibile matematicamente"
       ],
-      "correctIndex": 1,
+      "correctIndex": 3,
       "explanation": "Nel moto laminare in un condotto cilindrico, la velocità è massima al centro e si annulla alle pareti a causa dell'attrito viscoso, generando un profilo parabolico."
     },
     {
@@ -265,13 +265,13 @@
       "topic": "Legge di Poiseuille",
       "question": "Secondo la legge di Poiseuille, la portata di un fluido viscoso in un condotto cilindrico è direttamente proporzionale a:",
       "options": [
-        "Alla viscosità del fluido, posizione che i dati recenti non confermano",
         "Alla radice quadrata del raggio",
         "Al quadrato della lunghezza del condotto",
-        "Alla lunghezza del condotto",
-        "Alla quarta potenza del raggio del condotto e al gradiente di pressione"
+        "Alla viscosità del fluido, posizione che i dati recenti non confermano",
+        "Alla quarta potenza del raggio del condotto e al gradiente di pressione",
+        "Alla lunghezza del condotto"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La legge di Poiseuille mostra che la portata è proporzionale alla quarta potenza del raggio del condotto e al gradiente di pressione, e inversamente proporzionale a viscosità e lunghezza del condotto."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Resistenze idrauliche in serie",
       "question": "Quando due resistenze idrauliche sono disposte in serie lungo un condotto, la resistenza totale del sistema è:",
       "options": [
-        "Indipendente dalle singole resistenze",
-        "Uguale alla minore delle due resistenze",
         "Pari all'inverso della somma degli inversi",
-        "Pari alla somma delle singole resistenze",
-        "Sempre nulla"
+        "Sempre nulla",
+        "Uguale alla minore delle due resistenze",
+        "Indipendente dalle singole resistenze",
+        "Pari alla somma delle singole resistenze"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "In serie, come per le resistenze elettriche, la resistenza idraulica totale è la somma delle singole resistenze."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Resistenze idrauliche in parallelo",
       "question": "Quando più resistenze idrauliche sono disposte in parallelo, la resistenza totale del sistema:",
       "options": [
-        "È uguale alla somma delle singole resistenze",
-        "È minore della più piccola delle singole resistenze",
+        "È sempre maggiore della più grande delle singole resistenze",
         "È sempre infinita",
+        "È uguale alla somma delle singole resistenze",
         "Non dipende dal numero di rami paralleli",
-        "È sempre maggiore della più grande delle singole resistenze"
+        "È minore della più piccola delle singole resistenze"
       ],
-      "correctIndex": 1,
+      "correctIndex": 4,
       "explanation": "In parallelo la resistenza idraulica totale è sempre inferiore alla più piccola delle resistenze dei singoli rami, poiché l'inverso della resistenza totale è la somma degli inversi delle singole resistenze."
     },
     {
@@ -314,9 +314,9 @@
       "question": "La tensione superficiale di un liquido è responsabile di:",
       "options": [
         "Il comportamento della superficie del liquido come una membrana elastica tesa, minimizzando la sua area",
-        "L'aumento incontrollato della densità del liquido",
         "La diminuzione della viscosità del liquido, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "L'annullamento della pressione atmosferica sopra il liquido",
+        "L'aumento incontrollato della densità del liquido",
         "L'aumento della velocità di evaporazione senza altri effetti"
       ],
       "correctIndex": 0,
@@ -332,10 +332,10 @@
         "Solo la temperatura del liquido",
         "La densità del liquido moltiplicata per l'altezza",
         "Solo la viscosità del fluido, posizione che i dati recenti non confermano",
-        "Il volume totale del liquido",
-        "La tensione superficiale e il raggio di curvatura dell'interfaccia"
+        "La tensione superficiale e il raggio di curvatura dell'interfaccia",
+        "Il volume totale del liquido"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La legge di Laplace lega la pressione di curvatura di un'interfaccia alla tensione superficiale e al raggio di curvatura, con pressione maggiore per raggi di curvatura più piccoli."
     },
     {

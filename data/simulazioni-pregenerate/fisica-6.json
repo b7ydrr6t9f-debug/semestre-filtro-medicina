@@ -9,13 +9,13 @@
       "topic": "Conservazione della carica elettrica",
       "question": "Il principio di conservazione della carica elettrica afferma che:",
       "options": [
-        "La carica elettrica può essere creata liberamente in qualsiasi processo fisico",
-        "La carica elettrica si conserva solo nei conduttori metallici",
         "Solo le cariche positive si conservano, non quelle negative",
+        "La carica totale aumenta sempre con il tempo",
         "La carica elettrica totale di un sistema isolato rimane costante nel tempo",
-        "La carica totale aumenta sempre con il tempo"
+        "La carica elettrica può essere creata liberamente in qualsiasi processo fisico",
+        "La carica elettrica si conserva solo nei conduttori metallici"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "In un sistema isolato, la carica elettrica totale si conserva: non può essere creata né distrutta, ma solo trasferita da un corpo all'altro."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Legge di Coulomb",
       "question": "La legge di Coulomb descrive la forza di interazione tra due cariche puntiformi come:",
       "options": [
-        "Indipendente dalla distanza tra le cariche, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
-        "Sempre nulla se le cariche hanno lo stesso segno",
-        "Direttamente proporzionale al prodotto delle cariche e inversamente proporzionale al quadrato della distanza tra esse",
         "Proporzionale solo alla distanza, non al valore delle cariche",
-        "Inversamente proporzionale al prodotto delle cariche"
+        "Inversamente proporzionale al prodotto delle cariche",
+        "Indipendente dalla distanza tra le cariche, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
+        "Direttamente proporzionale al prodotto delle cariche e inversamente proporzionale al quadrato della distanza tra esse",
+        "Sempre nulla se le cariche hanno lo stesso segno"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "La legge di Coulomb afferma che la forza elettrostatica tra due cariche puntiformi è direttamente proporzionale al prodotto delle cariche e inversamente proporzionale al quadrato della distanza che le separa."
     },
     {
@@ -41,11 +41,11 @@
       "topic": "Campo elettrico",
       "question": "Il campo elettrico generato da una carica puntiforme in un punto dello spazio è definito come:",
       "options": [
-        "La forza totale esercitata su qualsiasi carica presente in quel punto, indipendentemente dal suo valore",
+        "Una grandezza scalare priva di direzione, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Indipendente dalla distanza dalla carica sorgente",
         "Il rapporto tra la forza esercitata su una carica di prova posta in quel punto e il valore della carica di prova stessa",
-        "Sempre nullo a qualsiasi distanza dalla carica sorgente",
-        "Una grandezza scalare priva di direzione, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
+        "La forza totale esercitata su qualsiasi carica presente in quel punto, indipendentemente dal suo valore",
+        "Sempre nullo a qualsiasi distanza dalla carica sorgente"
       ],
       "correctIndex": 2,
       "explanation": "Il campo elettrico in un punto è definito come il rapporto tra la forza che agirebbe su una carica di prova posta in quel punto e il valore della carica di prova, risultando quindi indipendente dalla carica di prova stessa."
@@ -57,13 +57,13 @@
       "topic": "Linee di forza del campo elettrico",
       "question": "Le linee di forza del campo elettrico generato da una carica puntiforme positiva sono orientate:",
       "options": [
-        "Radialmente verso l'esterno, uscenti dalla carica",
-        "Sempre parallele tra loro indipendentemente dalla posizione della carica",
-        "Circolari attorno alla carica",
         "Casuali e non descrivibili geometricamente",
-        "Radialmente verso l'interno, dirette verso la carica"
+        "Circolari attorno alla carica",
+        "Radialmente verso l'interno, dirette verso la carica",
+        "Sempre parallele tra loro indipendentemente dalla posizione della carica",
+        "Radialmente verso l'esterno, uscenti dalla carica"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Le linee di forza del campo elettrico generato da una carica positiva puntiforme sono orientate radialmente verso l'esterno, uscenti dalla carica stessa."
     },
     {
@@ -73,13 +73,13 @@
       "topic": "Moto di una carica in campo elettrico uniforme",
       "question": "Una carica elettrica immersa in un campo elettrico uniforme è soggetta a:",
       "options": [
-        "Un moto sempre circolare uniforme, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "Nessuna forza, indipendentemente dal valore della carica",
-        "Una forza costante, che ne determina un'accelerazione costante analoga alla caduta libera nel campo gravitazionale",
         "Una forza che varia periodicamente nel tempo",
-        "Un'accelerazione che dipende esclusivamente dalla massa del campo elettrico"
+        "Un'accelerazione che dipende esclusivamente dalla massa del campo elettrico",
+        "Un moto sempre circolare uniforme, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Una forza costante, che ne determina un'accelerazione costante analoga alla caduta libera nel campo gravitazionale"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "In un campo elettrico uniforme, una carica è soggetta a una forza costante (F = qE), che produce un'accelerazione costante, analogamente a quanto avviene per un corpo in caduta libera nel campo gravitazionale uniforme."
     },
     {
@@ -89,13 +89,13 @@
       "topic": "Potenziale elettrico",
       "question": "Il potenziale elettrico in un punto dello spazio è definito come:",
       "options": [
-        "L'energia potenziale elettrica per unità di carica posta in quel punto",
-        "Sempre uguale al campo elettrico in quel punto secondo la definizione classica",
-        "Una grandezza vettoriale con direzione e verso",
         "Indipendente dalla distribuzione di carica sorgente",
-        "La forza totale esercitata su una carica di prova"
+        "Sempre uguale al campo elettrico in quel punto secondo la definizione classica",
+        "L'energia potenziale elettrica per unità di carica posta in quel punto",
+        "La forza totale esercitata su una carica di prova",
+        "Una grandezza vettoriale con direzione e verso"
       ],
-      "correctIndex": 0,
+      "correctIndex": 2,
       "explanation": "Il potenziale elettrico in un punto è definito come l'energia potenziale elettrica per unità di carica posta in quel punto, ed è una grandezza scalare."
     },
     {
@@ -105,13 +105,13 @@
       "topic": "Differenza di potenziale",
       "question": "La differenza di potenziale tra due punti di un campo elettrico rappresenta:",
       "options": [
-        "L'energia cinetica della carica in movimento",
-        "La distanza fisica tra i due punti, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "Sempre zero se il campo elettrico è uniforme",
         "La forza totale esercitata sulla carica",
-        "Il lavoro compiuto dalla forza elettrica per spostare l'unità di carica positiva da un punto all'altro, cambiato di segno"
+        "Sempre zero se il campo elettrico è uniforme",
+        "Il lavoro compiuto dalla forza elettrica per spostare l'unità di carica positiva da un punto all'altro, cambiato di segno",
+        "La distanza fisica tra i due punti, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "L'energia cinetica della carica in movimento"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "La differenza di potenziale tra due punti è legata al lavoro compiuto dalla forza elettrica (o dall'agente esterno) per spostare l'unità di carica positiva da un punto all'altro."
     },
     {
@@ -121,8 +121,8 @@
       "topic": "Induzione elettrostatica",
       "question": "Il fenomeno dell'induzione elettrostatica si verifica quando:",
       "options": [
-        "Solo gli isolanti possono essere elettrizzati per induzione",
         "Non si verifica mai in assenza di contatto diretto, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Solo gli isolanti possono essere elettrizzati per induzione",
         "Il fenomeno riguarda esclusivamente cariche in movimento",
         "Un conduttore acquista sempre una carica netta identica a quella induttrice, senza contatto",
         "Un conduttore neutro, avvicinato a una carica, sviluppa una separazione di cariche sulla propria superficie"
@@ -137,13 +137,13 @@
       "topic": "Polarizzazione dei dielettrici",
       "question": "La polarizzazione di un materiale dielettrico, immerso in un campo elettrico esterno, consiste in:",
       "options": [
-        "La formazione di corrente elettrica continua nel dielettrico",
-        "Il libero movimento di elettroni attraverso tutto il materiale, come nei conduttori",
         "L'assenza totale di risposta del materiale al campo esterno",
         "Un lieve spostamento delle cariche legate all'interno delle molecole, generando dipoli elettrici indotti",
-        "L'annullamento completo del campo elettrico esterno, posizione che i dati recenti non confermano"
+        "L'annullamento completo del campo elettrico esterno, posizione che i dati recenti non confermano",
+        "Il libero movimento di elettroni attraverso tutto il materiale, come nei conduttori",
+        "La formazione di corrente elettrica continua nel dielettrico"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "Nei materiali dielettrici, a differenza dei conduttori, le cariche non sono libere di muoversi: il campo elettrico esterno induce un lieve spostamento delle cariche legate all'interno delle molecole, generando dipoli elettrici indotti (polarizzazione)."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Legge di Ohm",
       "question": "La legge di Ohm per un conduttore ohmico mette in relazione:",
       "options": [
+        "Il campo magnetico e la corrente, posizione che i dati recenti non confermano",
         "Differenza di potenziale, intensità di corrente e resistenza elettrica",
         "Esclusivamente la potenza dissipata e il tempo",
-        "Solo la resistenza e la temperatura del conduttore",
-        "Il campo magnetico e la corrente, posizione che i dati recenti non confermano",
-        "La capacità elettrica e la carica accumulata"
+        "La capacità elettrica e la carica accumulata",
+        "Solo la resistenza e la temperatura del conduttore"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "La legge di Ohm afferma che, per un conduttore ohmico, la differenza di potenziale applicata è pari al prodotto tra intensità di corrente e resistenza elettrica (V = R·I)."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Resistività dei materiali",
       "question": "La resistività di un materiale conduttore è una grandezza che:",
       "options": [
-        "È indipendente dal tipo di materiale considerato",
-        "Coincide sempre numericamente con la resistenza elettrica del conduttore",
         "È sempre nulla nei materiali isolanti, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "Coincide sempre numericamente con la resistenza elettrica del conduttore",
         "Dipende dalla natura del materiale e, in generale, dalla temperatura, indipendentemente dalla forma geometrica del conduttore",
-        "Dipende solo dalla lunghezza del conduttore"
+        "Dipende solo dalla lunghezza del conduttore",
+        "È indipendente dal tipo di materiale considerato"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "La resistività è una proprietà intrinseca del materiale, dipendente dalla sua natura e dalla temperatura, mentre la resistenza dipende anche dalla geometria del conduttore (lunghezza e sezione)."
     },
     {
@@ -185,10 +185,10 @@
       "topic": "Effetto Joule",
       "question": "L'effetto Joule descrive la dissipazione di energia sotto forma di calore in un conduttore percorso da corrente, con potenza pari a:",
       "options": [
-        "P = I/R",
+        "P = R² · I",
         "P = R/I",
         "P = I - R",
-        "P = R² · I",
+        "P = I/R",
         "P = R · I²"
       ],
       "correctIndex": 4,
@@ -201,13 +201,13 @@
       "topic": "Resistenze in serie",
       "question": "Collegando più resistenze in serie, la resistenza equivalente del circuito è:",
       "options": [
-        "Pari alla somma delle singole resistenze",
-        "Pari all'inverso della somma degli inversi delle singole resistenze",
         "Sempre nulla",
+        "Pari alla somma delle singole resistenze",
         "Sempre inferiore alla più piccola delle singole resistenze",
+        "Pari all'inverso della somma degli inversi delle singole resistenze",
         "Indipendente dal numero di resistenze collegate"
       ],
-      "correctIndex": 0,
+      "correctIndex": 1,
       "explanation": "In una connessione in serie, la resistenza equivalente totale è pari alla somma algebrica delle singole resistenze."
     },
     {
@@ -218,10 +218,10 @@
       "question": "Collegando più resistenze in parallelo, la resistenza equivalente del circuito è:",
       "options": [
         "Sempre inferiore alla più piccola delle singole resistenze",
-        "Pari alla somma delle singole resistenze",
-        "Sempre maggiore della più grande delle singole resistenze",
         "Indipendente dal numero di rami paralleli",
-        "Sempre infinita"
+        "Sempre infinita",
+        "Sempre maggiore della più grande delle singole resistenze",
+        "Pari alla somma delle singole resistenze"
       ],
       "correctIndex": 0,
       "explanation": "In una connessione in parallelo, l'inverso della resistenza equivalente è pari alla somma degli inversi delle singole resistenze, per cui il risultato è sempre inferiore alla più piccola delle resistenze coinvolte."
@@ -233,11 +233,11 @@
       "topic": "Capacità elettrica",
       "question": "La capacità elettrica di un condensatore è definita come:",
       "options": [
-        "Il campo magnetico generato dal condensatore",
+        "La resistenza elettrica delle armature, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale",
         "Il rapporto tra la carica accumulata su ciascuna armatura e la differenza di potenziale applicata tra le armature",
+        "Il campo magnetico generato dal condensatore",
         "L'energia dissipata per effetto Joule nel condensatore",
-        "Il prodotto tra carica e differenza di potenziale",
-        "La resistenza elettrica delle armature, un'interpretazione diffusa in passato ma oggi priva di riscontro sperimentale"
+        "Il prodotto tra carica e differenza di potenziale"
       ],
       "correctIndex": 1,
       "explanation": "La capacità elettrica C è definita come il rapporto tra la carica Q accumulata sulle armature del condensatore e la differenza di potenziale V applicata tra esse (C = Q/V)."
@@ -250,12 +250,12 @@
       "question": "L'inserimento di un materiale dielettrico tra le armature di un condensatore piano generalmente:",
       "options": [
         "Annulla completamente la capacità del condensatore",
-        "Riduce sempre la capacità del condensatore",
-        "Aumenta la capacità del condensatore rispetto al caso con il vuoto o l'aria tra le armature",
         "Trasforma il condensatore in una resistenza pura",
-        "Non ha alcun effetto sulla capacità, un'ipotesi che la letteratura più recente ha ampiamente smentito"
+        "Non ha alcun effetto sulla capacità, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Aumenta la capacità del condensatore rispetto al caso con il vuoto o l'aria tra le armature",
+        "Riduce sempre la capacità del condensatore"
       ],
-      "correctIndex": 2,
+      "correctIndex": 3,
       "explanation": "L'inserimento di un materiale dielettrico tra le armature di un condensatore aumenta generalmente la sua capacità, poiché il dielettrico si polarizza riducendo il campo elettrico netto a parità di carica."
     },
     {
@@ -265,13 +265,13 @@
       "topic": "Energia immagazzinata in un condensatore",
       "question": "L'energia immagazzinata in un condensatore carico dipende da:",
       "options": [
+        "La carica accumulata e la differenza di potenziale (o equivalentemente dalla capacità e dal quadrato della differenza di potenziale)",
         "La lunghezza dei fili conduttori collegati",
         "Esclusivamente dalla temperatura ambiente",
         "Il campo magnetico presente nel circuito, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "Solo dalla resistenza del circuito di carica",
-        "La carica accumulata e la differenza di potenziale (o equivalentemente dalla capacità e dal quadrato della differenza di potenziale)"
+        "Solo dalla resistenza del circuito di carica"
       ],
-      "correctIndex": 4,
+      "correctIndex": 0,
       "explanation": "L'energia immagazzinata in un condensatore carico è data da E = ½·C·V², dipendente dalla capacità del condensatore e dal quadrato della differenza di potenziale applicata."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Origine del campo magnetico dalle correnti",
       "question": "L'esperimento di Oersted dimostrò per la prima volta che:",
       "options": [
-        "Il campo magnetico non ha alcuna relazione con le correnti elettriche",
-        "Le cariche elettriche ferme generano un campo magnetico, interpretazione ormai datata",
-        "La corrente elettrica non produce mai effetti magnetici",
+        "Solo i magneti permanenti possono generare campi magnetici",
         "Una corrente elettrica genera un campo magnetico nello spazio circostante il conduttore",
-        "Solo i magneti permanenti possono generare campi magnetici"
+        "Il campo magnetico non ha alcuna relazione con le correnti elettriche",
+        "La corrente elettrica non produce mai effetti magnetici",
+        "Le cariche elettriche ferme generano un campo magnetico, interpretazione ormai datata"
       ],
-      "correctIndex": 3,
+      "correctIndex": 1,
       "explanation": "L'esperimento di Oersted dimostrò che una corrente elettrica che scorre in un filo genera un campo magnetico nello spazio circostante, stabilendo per la prima volta la connessione tra elettricità e magnetismo."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Forza di Lorentz",
       "question": "La forza di Lorentz agisce su:",
       "options": [
-        "Solo cariche negative, mai su quelle positive",
-        "Cariche in assenza di qualsiasi campo elettrico o magnetico",
-        "Una carica elettrica ferma in un campo elettrico statico",
         "Una carica elettrica in movimento all'interno di un campo magnetico",
+        "Solo cariche negative, mai su quelle positive",
+        "Una carica elettrica ferma in un campo elettrico statico",
+        "Cariche in assenza di qualsiasi campo elettrico o magnetico",
         "Corpi privi di carica elettrica"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "La forza di Lorentz è la forza esercitata da un campo magnetico su una carica elettrica in movimento, con direzione perpendicolare sia alla velocità della carica sia al campo magnetico."
     },
     {
@@ -314,12 +314,12 @@
       "question": "Una carica elettrica che si muove perpendicolarmente a un campo magnetico uniforme descrive tipicamente:",
       "options": [
         "Una traiettoria parabolica identica a quella della caduta libera",
-        "Un moto rettilineo uniformemente accelerato",
-        "Un moto che si arresta immediatamente, posizione che i dati recenti non confermano",
         "Un moto rettilineo uniforme senza deviazioni",
-        "Una traiettoria circolare, poiché la forza di Lorentz agisce come forza centripeta"
+        "Un moto rettilineo uniformemente accelerato",
+        "Una traiettoria circolare, poiché la forza di Lorentz agisce come forza centripeta",
+        "Un moto che si arresta immediatamente, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Quando la velocità della carica è perpendicolare al campo magnetico uniforme, la forza di Lorentz agisce come forza centripeta, producendo un moto circolare uniforme."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Legge di Faraday-Neumann-Lenz",
       "question": "La legge di Faraday-Neumann-Lenz descrive:",
       "options": [
+        "La forza tra due cariche puntiformi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
+        "La resistenza elettrica di un conduttore ohmico",
         "La capacità elettrica di un conduttore isolato",
         "L'energia immagazzinata in un condensatore",
-        "La forza tra due cariche puntiformi, una lettura che gli studi più aggiornati non supportano più in modo convincente",
-        "La generazione di una forza elettromotrice indotta in un circuito in seguito a una variazione del flusso magnetico concatenato",
-        "La resistenza elettrica di un conduttore ohmico"
+        "La generazione di una forza elettromotrice indotta in un circuito in seguito a una variazione del flusso magnetico concatenato"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "La legge di Faraday-Neumann-Lenz stabilisce che una variazione del flusso magnetico concatenato con un circuito genera una forza elettromotrice indotta, il cui verso (legge di Lenz) si oppone alla variazione di flusso che l'ha generata."
     },
     {

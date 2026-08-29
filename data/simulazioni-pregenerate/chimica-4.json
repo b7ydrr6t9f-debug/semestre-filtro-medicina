@@ -9,13 +9,13 @@
       "topic": "Teoria di Bronsted e Lowry",
       "question": "Secondo la teoria di Bronsted e Lowry, un acido è definito come:",
       "options": [
-        "Una sostanza priva di idrogeno nella formula",
         "Una sostanza capace di donare protoni (H+) a un'altra specie",
         "Una sostanza che libera sempre ioni ossidrile in acqua",
         "Una sostanza capace di accettare protoni",
-        "Una sostanza capace di accettare coppie di elettroni"
+        "Una sostanza capace di accettare coppie di elettroni",
+        "Una sostanza priva di idrogeno nella formula"
       ],
-      "correctIndex": 1,
+      "correctIndex": 0,
       "explanation": "Secondo Bronsted e Lowry, un acido è una specie chimica capace di cedere (donare) un protone a una base, che invece lo accetta."
     },
     {
@@ -25,13 +25,13 @@
       "topic": "Autoprotolisi dell'acqua e Kw",
       "question": "La costante Kw, relativa all'autoprotolisi dell'acqua, rappresenta:",
       "options": [
-        "La solubilità massima di un sale in acqua, posizione che i dati recenti non confermano",
-        "La costante di dissociazione di un acido forte generico",
         "Il pH assoluto dell'acqua a qualsiasi temperatura",
-        "La concentrazione totale di acqua in una soluzione",
-        "Il prodotto delle concentrazioni di ioni H+ e OH- in acqua pura a una data temperatura"
+        "La costante di dissociazione di un acido forte generico",
+        "Il prodotto delle concentrazioni di ioni H+ e OH- in acqua pura a una data temperatura",
+        "La solubilità massima di un sale in acqua, posizione che i dati recenti non confermano",
+        "La concentrazione totale di acqua in una soluzione"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Kw è il prodotto ionico dell'acqua, pari al prodotto tra le concentrazioni di ioni H+ e OH-, costante a una data temperatura (circa 10^-14 a 25°C)."
     },
     {
@@ -41,13 +41,13 @@
       "topic": "Definizione di pH",
       "question": "Il pH di una soluzione è definito come:",
       "options": [
-        "Il logaritmo decimale negativo della concentrazione di ioni H+",
+        "Il rapporto tra concentrazione di acido e di base coniugata",
+        "Il logaritmo naturale della concentrazione di ioni OH-",
         "La temperatura della soluzione in gradi Celsius",
         "La concentrazione assoluta di ioni H+ espressa in moli per litro",
-        "Il logaritmo naturale della concentrazione di ioni OH-",
-        "Il rapporto tra concentrazione di acido e di base coniugata"
+        "Il logaritmo decimale negativo della concentrazione di ioni H+"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "Il pH è definito come il logaritmo decimale negativo della concentrazione di ioni idrogeno: pH = -log[H+]."
     },
     {
@@ -57,13 +57,13 @@
       "topic": "Relazione tra pH e pOH",
       "question": "A 25°C, la somma di pH e pOH di una soluzione acquosa è pari a:",
       "options": [
+        "0",
         "1",
         "14",
-        "0",
-        "10",
-        "7"
+        "7",
+        "10"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "A 25°C, per la relazione derivata da Kw, pH + pOH = 14 in qualsiasi soluzione acquosa."
     },
     {
@@ -73,11 +73,11 @@
       "topic": "Costante di dissociazione acida (Ka)",
       "question": "La costante Ka di un acido debole esprime:",
       "options": [
-        "La velocità con cui l'acido reagisce con una base",
-        "L'equilibrio di dissociazione dell'acido debole in acqua, tanto maggiore quanto più l'acido è forte",
-        "Il numero di protoni ceduti dall'acido in un singolo passaggio",
         "La temperatura di ebollizione dell'acido",
-        "La solubilità dell'acido in acqua, un'ipotesi che la letteratura più recente ha ampiamente smentito"
+        "L'equilibrio di dissociazione dell'acido debole in acqua, tanto maggiore quanto più l'acido è forte",
+        "La solubilità dell'acido in acqua, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "La velocità con cui l'acido reagisce con una base",
+        "Il numero di protoni ceduti dall'acido in un singolo passaggio"
       ],
       "correctIndex": 1,
       "explanation": "La Ka descrive quantitativamente l'equilibrio di dissociazione di un acido debole in acqua: valori più elevati di Ka indicano una maggiore forza acida."
@@ -89,13 +89,13 @@
       "topic": "Acidi forti e deboli",
       "question": "Un acido forte, a differenza di un acido debole, in soluzione acquosa:",
       "options": [
-        "Non altera in alcun modo il pH della soluzione",
-        "Ha sempre un pKa molto elevato",
         "Reagisce solo con le basi deboli",
-        "Si dissocia completamente in ioni",
-        "Non si dissocia mai in acqua"
+        "Non altera in alcun modo il pH della soluzione",
+        "Non si dissocia mai in acqua",
+        "Ha sempre un pKa molto elevato",
+        "Si dissocia completamente in ioni"
       ],
-      "correctIndex": 3,
+      "correctIndex": 4,
       "explanation": "Gli acidi forti si dissociano completamente in soluzione acquosa, a differenza degli acidi deboli che raggiungono un equilibrio di dissociazione parziale, descritto dalla loro Ka."
     },
     {
@@ -106,12 +106,12 @@
       "question": "Un acido poliprotico è caratterizzato da:",
       "options": [
         "L'assenza totale di idrogeni ionizzabili",
+        "L'impossibilità di dissociarsi in acqua, una lettura che gli studi più aggiornati non supportano più in modo convincente",
         "La capacità di cedere più di un protone per molecola, in stadi successivi ciascuno con la propria costante di dissociazione",
-        "La cessione di un solo protone indipendentemente dalla struttura",
         "La presenza esclusiva di legami covalenti apolari",
-        "L'impossibilità di dissociarsi in acqua, una lettura che gli studi più aggiornati non supportano più in modo convincente"
+        "La cessione di un solo protone indipendentemente dalla struttura"
       ],
-      "correctIndex": 1,
+      "correctIndex": 2,
       "explanation": "Un acido poliprotico può cedere più di un protone, con dissociazioni successive caratterizzate da costanti di equilibrio decrescenti (Ka1 > Ka2 > Ka3)."
     },
     {
@@ -121,13 +121,13 @@
       "topic": "Comportamento acido-base dei sali",
       "question": "Un sale derivato dalla reazione tra un acido debole e una base forte, disciolto in acqua, tende a dare una soluzione:",
       "options": [
-        "Acida, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Fortemente ossidante",
         "Neutra in ogni caso",
         "Priva di qualunque effetto sul pH",
-        "Basica, a causa dell'idrolisi dell'anione derivato dall'acido debole"
+        "Basica, a causa dell'idrolisi dell'anione derivato dall'acido debole",
+        "Acida, un'ipotesi che la letteratura più recente ha ampiamente smentito"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "L'anione derivato da un acido debole, in soluzione, tende a reagire parzialmente con l'acqua (idrolisi), sottraendo protoni e rendendo la soluzione basica."
     },
     {
@@ -137,13 +137,13 @@
       "topic": "Soluzioni tampone",
       "question": "Una soluzione tampone è caratterizzata dalla capacità di:",
       "options": [
-        "Aumentare drasticamente il pH con l'aggiunta di qualsiasi acido",
-        "Reagire violentemente con qualunque sostanza aggiunta",
         "Precipitare immediatamente qualsiasi sale disciolto, posizione che i dati recenti non confermano",
+        "Aumentare drasticamente il pH con l'aggiunta di qualsiasi acido",
         "Mantenere costante solo la temperatura della soluzione",
-        "Opporsi a variazioni significative di pH in seguito all'aggiunta di piccole quantità di acido o base"
+        "Opporsi a variazioni significative di pH in seguito all'aggiunta di piccole quantità di acido o base",
+        "Reagire violentemente con qualunque sostanza aggiunta"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Una soluzione tampone, tipicamente costituita da un acido debole e la sua base coniugata (o viceversa), resiste a variazioni significative di pH quando vengono aggiunte piccole quantità di acido o base."
     },
     {
@@ -153,13 +153,13 @@
       "topic": "Equazione di Henderson-Hasselbalch",
       "question": "L'equazione di Henderson-Hasselbalch permette di calcolare il pH di una soluzione tampone conoscendo:",
       "options": [
-        "Solo il volume totale della soluzione",
-        "Solo la temperatura della soluzione, posizione che i dati recenti non confermano",
-        "Esclusivamente la concentrazione totale di sale disciolto",
         "Il pKa dell'acido debole e il rapporto tra le concentrazioni di base coniugata e acido",
-        "Il numero di Avogadro e la costante dei gas"
+        "Solo il volume totale della soluzione",
+        "Il numero di Avogadro e la costante dei gas",
+        "Esclusivamente la concentrazione totale di sale disciolto",
+        "Solo la temperatura della soluzione, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "L'equazione di Henderson-Hasselbalch (pH = pKa + log([base]/[acido])) permette di calcolare il pH di un tampone conoscendo il pKa dell'acido debole e il rapporto delle concentrazioni delle due forme coniugate."
     },
     {
@@ -169,13 +169,13 @@
       "topic": "Tampone bicarbonato nel sangue",
       "question": "Il principale sistema tampone del sangue è costituito dalla coppia:",
       "options": [
-        "Acido acetico e acetato",
         "Acido cloridrico e cloruro di sodio",
         "Acido carbonico e bicarbonato (CO2/HCO3-)",
+        "Acido acetico e acetato",
         "Glucosio e acido lattico",
         "Acqua e ossigeno molecolare"
       ],
-      "correctIndex": 2,
+      "correctIndex": 1,
       "explanation": "Il tampone acido carbonico/bicarbonato (CO2/HCO3-) è il principale sistema tampone del plasma sanguigno, fondamentale per mantenere il pH ematico entro un range fisiologico stretto."
     },
     {
@@ -185,13 +185,13 @@
       "topic": "Acidosi e alcalosi",
       "question": "Una condizione clinica caratterizzata da un pH ematico anormalmente basso rispetto ai valori fisiologici si chiama:",
       "options": [
-        "Ipertermia",
+        "Alcalosi",
         "Osmolarità elevata",
-        "Acidosi",
+        "Ipertermia",
         "Isotonia",
-        "Alcalosi"
+        "Acidosi"
       ],
-      "correctIndex": 2,
+      "correctIndex": 4,
       "explanation": "L'acidosi è una condizione clinica in cui il pH del sangue scende al di sotto del range fisiologico normale, mentre l'alcalosi corrisponde a un pH anormalmente elevato."
     },
     {
@@ -201,10 +201,10 @@
       "topic": "Reazioni di ossidoriduzione",
       "question": "In una reazione di ossidoriduzione, la specie che si ossida:",
       "options": [
-        "Diventa sempre un catalizzatore della reazione",
         "Riduce sempre un'altra specie senza mai essere ossidata",
-        "Non subisce alcuna variazione del numero di ossidazione",
         "Acquista elettroni",
+        "Non subisce alcuna variazione del numero di ossidazione",
+        "Diventa sempre un catalizzatore della reazione",
         "Cede elettroni, aumentando il proprio numero di ossidazione"
       ],
       "correctIndex": 4,
@@ -217,13 +217,13 @@
       "topic": "Cella galvanica: anodo e catodo",
       "question": "In una cella galvanica, l'elettrodo dove avviene l'ossidazione è chiamato:",
       "options": [
-        "Anodo",
         "Catodo",
         "Elettrodo di riferimento",
         "Ponte salino",
+        "Anodo",
         "Semicella neutra"
       ],
-      "correctIndex": 0,
+      "correctIndex": 3,
       "explanation": "Per convenzione, in una cella galvanica l'anodo è l'elettrodo dove avviene l'ossidazione (perdita di elettroni), mentre il catodo è dove avviene la riduzione."
     },
     {
@@ -233,13 +233,13 @@
       "topic": "Potenziali redox standard",
       "question": "Il potenziale redox standard di una semireazione misura:",
       "options": [
-        "Il pH della soluzione contenente la specie redox",
         "La velocità con cui avviene la reazione redox",
+        "Il pH della soluzione contenente la specie redox",
         "La massa molare della specie considerata, posizione che i dati recenti non confermano",
-        "La solubilità della specie chimica in acqua",
-        "La tendenza di una specie chimica ad acquistare elettroni (a ridursi) in condizioni standard"
+        "La tendenza di una specie chimica ad acquistare elettroni (a ridursi) in condizioni standard",
+        "La solubilità della specie chimica in acqua"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "Il potenziale redox standard esprime la tendenza di una semireazione di riduzione a procedere spontaneamente in condizioni standard, rispetto all'elettrodo standard a idrogeno."
     },
     {
@@ -249,13 +249,13 @@
       "topic": "Equazione di Nernst",
       "question": "L'equazione di Nernst permette di calcolare:",
       "options": [
-        "La costante di equilibrio di una reazione acido-base",
-        "Solo il pH di una soluzione tampone, grandezza legata semmai all'equazione di Henderson-Hasselbalch, non a questa relazione, lettura priva di fondamento",
-        "La solubilità di un sale poco solubile",
         "Il potenziale di una cella elettrochimica in condizioni diverse da quelle standard, in funzione delle concentrazioni delle specie coinvolte",
+        "La solubilità di un sale poco solubile",
+        "Solo il pH di una soluzione tampone, grandezza legata semmai all'equazione di Henderson-Hasselbalch, non a questa relazione, lettura priva di fondamento",
+        "La costante di equilibrio di una reazione acido-base",
         "La velocità di una reazione chimica generica"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "L'equazione di Nernst estende il calcolo del potenziale elettrochimico a condizioni non standard, tenendo conto delle concentrazioni effettive delle specie ossidate e ridotte coinvolte."
     },
     {
@@ -266,12 +266,12 @@
       "question": "La relazione tra variazione di energia libera di Gibbs (ΔG) e differenza di potenziale (ΔE) di una reazione redox è tale che:",
       "options": [
         "ΔG è indipendente dal numero di elettroni scambiati",
-        "Non esiste alcuna relazione tra le due grandezze",
         "ΔE dipende solo dalla temperatura, non da ΔG, posizione che i dati recenti non confermano",
-        "ΔG è sempre positivo indipendentemente da ΔE",
-        "ΔG è direttamente proporzionale a -ΔE: una reazione con ΔE positivo ha ΔG negativo ed è spontanea"
+        "Non esiste alcuna relazione tra le due grandezze",
+        "ΔG è direttamente proporzionale a -ΔE: una reazione con ΔE positivo ha ΔG negativo ed è spontanea",
+        "ΔG è sempre positivo indipendentemente da ΔE"
       ],
-      "correctIndex": 4,
+      "correctIndex": 3,
       "explanation": "La relazione ΔG = -nFΔE lega la variazione di energia libera al potenziale della cella: un ΔE positivo corrisponde a un ΔG negativo, indicando una reazione spontanea."
     },
     {
@@ -281,13 +281,13 @@
       "topic": "Ossigeno come accettore di elettroni",
       "question": "Nella respirazione cellulare, l'ossigeno molecolare funge da:",
       "options": [
-        "Donatore di elettroni nella catena respiratoria",
-        "Catalizzatore privo di partecipazione diretta alla reazione redox",
         "Semplice spettatore, senza alcun ruolo redox",
-        "Agente riducente che cede elettroni al NADH, posizione che i dati recenti non confermano",
-        "Accettore finale di elettroni nella catena di trasporto degli elettroni, riducendosi ad acqua"
+        "Catalizzatore privo di partecipazione diretta alla reazione redox",
+        "Accettore finale di elettroni nella catena di trasporto degli elettroni, riducendosi ad acqua",
+        "Donatore di elettroni nella catena respiratoria",
+        "Agente riducente che cede elettroni al NADH, posizione che i dati recenti non confermano"
       ],
-      "correctIndex": 4,
+      "correctIndex": 2,
       "explanation": "Nella catena di trasporto degli elettroni della respirazione cellulare, l'ossigeno è l'accettore finale di elettroni, riducendosi ad acqua al termine del processo."
     },
     {
@@ -297,13 +297,13 @@
       "topic": "Reazioni di Fenton e Haber-Weiss",
       "question": "Le reazioni di Fenton e Haber-Weiss sono esempi di reazioni redox non enzimatiche che coinvolgono:",
       "options": [
-        "La formazione di legami peptidici tra amminoacidi",
-        "La dissociazione di un acido forte in acqua, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "La formazione di legami glicosidici tra zuccheri",
+        "La dissociazione di un acido forte in acqua, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "La formazione del radicale idrossilico a partire da perossido di idrogeno in presenza di ioni ferro",
-        "La sintesi diretta di ATP senza coinvolgimento di ossigeno"
+        "La sintesi diretta di ATP senza coinvolgimento di ossigeno",
+        "La formazione di legami peptidici tra amminoacidi"
       ],
-      "correctIndex": 3,
+      "correctIndex": 2,
       "explanation": "Le reazioni di Fenton e Haber-Weiss descrivono la formazione del radicale idrossilico, altamente reattivo, a partire da perossido di idrogeno in presenza di ioni Fe2+, con rilevanza nello stress ossidativo cellulare."
     },
     {
@@ -313,13 +313,13 @@
       "topic": "Indicatori di pH",
       "question": "Un indicatore di pH è una sostanza che:",
       "options": [
-        "Non ha alcuna relazione con la concentrazione di ioni H+",
-        "Reagisce solo con le basi forti, mai con gli acidi",
-        "Serve esclusivamente a misurare la temperatura, un'ipotesi che la letteratura più recente ha ampiamente smentito",
         "Cambia colore in funzione del pH della soluzione in cui si trova, segnalandone il valore approssimativo",
-        "Modifica sempre in modo permanente la composizione chimica della soluzione"
+        "Modifica sempre in modo permanente la composizione chimica della soluzione",
+        "Serve esclusivamente a misurare la temperatura, un'ipotesi che la letteratura più recente ha ampiamente smentito",
+        "Non ha alcuna relazione con la concentrazione di ioni H+",
+        "Reagisce solo con le basi forti, mai con gli acidi"
       ],
-      "correctIndex": 3,
+      "correctIndex": 0,
       "explanation": "Un indicatore di pH è generalmente un acido o una base debole che cambia colore in un determinato intervallo di pH, permettendo una stima visiva del pH della soluzione."
     },
     {
@@ -329,13 +329,13 @@
       "topic": "Solubilità e pH in ambito biomedico",
       "question": "La formazione di calcoli renali, ad esempio di ossalato di calcio o urato di sodio, è influenzata dal pH perché:",
       "options": [
-        "La solubilità di alcuni sali dipende dal pH della soluzione, e condizioni di pH sfavorevoli possono favorirne la precipitazione",
+        "I calcoli renali si formano esclusivamente in assenza di qualsiasi ione disciolto",
+        "Solo la temperatura corporea determina la formazione dei calcoli",
         "Il pH influenza solo la colorazione dei calcoli, non la loro formazione",
         "Il pH non ha alcuna influenza sulla solubilità di questi sali, un'ipotesi che la letteratura più recente ha ampiamente smentito",
-        "Solo la temperatura corporea determina la formazione dei calcoli",
-        "I calcoli renali si formano esclusivamente in assenza di qualsiasi ione disciolto"
+        "La solubilità di alcuni sali dipende dal pH della soluzione, e condizioni di pH sfavorevoli possono favorirne la precipitazione"
       ],
-      "correctIndex": 0,
+      "correctIndex": 4,
       "explanation": "La solubilità di sali come l'ossalato di calcio o l'urato di sodio dipende dal pH dell'ambiente in cui si trovano, e condizioni di pH sfavorevoli possono favorire la loro precipitazione, con formazione di calcoli renali."
     },
     {
