@@ -4,9 +4,31 @@ const express = require('express');
 const https = require('https');
 const path = require('path');
 const crypto = require('crypto');
+const helmet = require('helmet');
 const { createClient } = require('@libsql/client');
 
 const app = express();
+
+// Header di sicurezza HTTP di base. CSP costruita sui soli domini CDN
+// effettivamente usati dal sito (Tailwind, Lucide, xlsx.js) — niente altro
+// script esterno è consentito. Niente cookie sul sito (l'autenticazione usa
+// un token Bearer in localStorage), quindi nessuna direttiva sui cookie serve.
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", 'https://cdn.tailwindcss.com', 'https://unpkg.com', 'https://cdn.jsdelivr.net'],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://cdn.tailwindcss.com', 'https://unpkg.com'],
+      imgSrc: ["'self'", 'data:'],
+      fontSrc: ["'self'", 'data:'],
+      connectSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      frameAncestors: ["'self'"],
+      baseUri: ["'self'"],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -423,6 +445,9 @@ const limitAi = creaLimiter({ maxTentativi: 20, finestraMs: 10 * 60 * 1000 });
 // --- AUTENTICAZIONE ---
 
 app.post('/api/auth/registrati', async (req, res) => {
+  if (!limitLogin(req.ip)) {
+    return res.status(429).json({ errore: 'Troppi tentativi. Riprova tra qualche minuto.' });
+  }
   try {
     const email = normEmail(req.body.email);
     const pin = String(req.body.pin || '');
@@ -1081,4 +1106,11 @@ app.post('/api/genera-lezione', richiedeAutenticazione, (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+// Catch-all per rotte non-API: essendo una SPA servita da index.html, un
+// URL diretto (es. link condiviso, refresh su una sotto-pagina) deve
+// comunque caricare l'app invece del generico "Cannot GET" di Express.
+app.get(/^(?!\/api\/).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => console.log(`Server attivo sulla porta ${PORT}`));
