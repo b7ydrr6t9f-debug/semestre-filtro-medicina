@@ -2,7 +2,7 @@
 
 // Switch tab
 function switchTab(tabName) {
-  ['syllabus', 'simulator', 'flashcard', 'deposito', 'lezioni', 'valutazione', 'contatti'].forEach(t => {
+  ['syllabus', 'simulator', 'flashcard', 'deposito', 'lezioni', 'valutazione', 'contatti', 'profilo'].forEach(t => {
     document.getElementById(`sec-${t}`).classList.add('hidden');
     document.getElementById(`tab-${t}`).classList.remove('tab-active');
   });
@@ -11,6 +11,7 @@ function switchTab(tabName) {
   if (tabName === 'deposito') renderDepositoRiepilogo();
   if (tabName === 'lezioni') renderLezioniSuggerite();
   if (tabName === 'contatti') renderStoricoSegnalazioni();
+  if (tabName === 'profilo') renderProfilo();
 }
 
 // Countdown al prossimo appello nazionale del Semestre Filtro (date ufficiali

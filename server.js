@@ -879,10 +879,88 @@ app.post('/api/cronologia/:chiave', richiedeAutenticazione, async (req, res) => 
 });
 
 // ------------------------------------------------------------------
-// Segnalazioni ("Contattaci"): bug o suggerimenti mandati dagli studenti.
+// Profilo personale: info account, cambio PIN, esportazione dati,
+// eliminazione account (self-service, nessun admin richiesto).
 // ------------------------------------------------------------------
 
 const CATEGORIE_SEGNALAZIONE = ['Bug / errore tecnico', 'Errore nei contenuti', 'Suggerimento', 'Altro'];
+
+
+app.get('/api/account/info', richiedeAutenticazione, async (req, res) => {
+  try {
+    const result = await db.execute({ sql: 'SELECT email, created_at, last_login FROM users WHERE id = ?', args: [req.userId] });
+    const user = result.rows[0];
+    if (!user) return res.status(404).json({ errore: 'Utente non trovato.' });
+    res.json({ email: user.email, createdAt: user.created_at, lastLogin: user.last_login });
+  } catch (e) {
+    res.status(500).json({ errore: 'Errore database.' });
+  }
+});
+
+// Cambio PIN da loggati: richiede il PIN attuale, a differenza del recupero
+// via domanda di sicurezza (pensato per quando il PIN non lo si ricorda più).
+app.post('/api/account/cambia-pin', richiedeAutenticazione, async (req, res) => {
+  try {
+    const pinAttuale = String(req.body.pinAttuale || '');
+    const nuovoPin = String(req.body.nuovoPin || '');
+    if (!/^\d{4,6}$/.test(nuovoPin)) return res.status(400).json({ errore: 'Il nuovo PIN deve avere tra 4 e 6 cifre numeriche.' });
+
+    const result = await db.execute({ sql: 'SELECT pin_hash FROM users WHERE id = ?', args: [req.userId] });
+    const user = result.rows[0];
+    if (!user || !verificaHash(pinAttuale, user.pin_hash)) return res.status(401).json({ errore: 'Il PIN attuale non è corretto.' });
+
+    const nuovoPinHash = hashConSalt(nuovoPin);
+    await db.execute({ sql: 'UPDATE users SET pin_hash = ? WHERE id = ?', args: [nuovoPinHash, req.userId] });
+    res.json({ success: true });
+  } catch (e) {
+    console.error('[Account] Errore cambio PIN:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'aggiornamento del PIN.' });
+  }
+});
+
+// Esporta tutti i dati personali in un unico file JSON scaricabile
+// (diritto alla portabilità: nessuna credenziale viene mai inclusa).
+app.get('/api/account/esporta', richiedeAutenticazione, async (req, res) => {
+  try {
+    const [utente, errori, valutazioni] = await Promise.all([
+      db.execute({ sql: 'SELECT email, created_at, last_login FROM users WHERE id = ?', args: [req.userId] }),
+      db.execute({ sql: 'SELECT materia, topic, question, user_answer, correct_answer, explanation, timestamp FROM errori WHERE user_id = ?', args: [req.userId] }),
+      db.execute({ sql: 'SELECT * FROM valutazioni WHERE user_id = ?', args: [req.userId] }),
+    ]);
+    const pacchetto = {
+      esportatoIl: new Date().toISOString(),
+      account: utente.rows[0] || null,
+      erroriDepositati: errori.rows,
+      valutazioni: valutazioni.rows,
+    };
+    res.setHeader('Content-Disposition', 'attachment; filename="i-miei-dati.json"');
+    res.json(pacchetto);
+  } catch (e) {
+    console.error('[Account] Errore esportazione dati:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'esportazione dei dati.' });
+  }
+});
+
+// Elimina il proprio account (self-service, nessun ruolo admin richiesto):
+// qualunque utente autenticato può cancellare il proprio account e tutti i
+// dati collegati in qualunque momento. Operazione irreversibile: i dati
+// vengono persi per sempre, non è un flag di disattivazione.
+app.delete('/api/account', richiedeAutenticazione, async (req, res) => {
+  try {
+    await db.execute({ sql: 'DELETE FROM errori WHERE user_id = ?', args: [req.userId] });
+    await db.execute({ sql: 'DELETE FROM valutazioni WHERE user_id = ?', args: [req.userId] });
+    await db.execute({ sql: 'DELETE FROM sessions WHERE user_id = ?', args: [req.userId] });
+    const result = await db.execute({ sql: 'DELETE FROM users WHERE id = ?', args: [req.userId] });
+    res.json({ success: true, eliminato: result.rowsAffected > 0 });
+  } catch (e) {
+    console.error('[Account] Errore autoeliminazione account:', e.message);
+    res.status(500).json({ errore: 'Errore durante l\'eliminazione dell\'account.' });
+  }
+});
+
+// ------------------------------------------------------------------
+// Segnalazioni ("Contattaci"): bug o suggerimenti mandati dagli studenti.
+// ------------------------------------------------------------------
 
 app.post('/api/segnalazioni', richiedeAutenticazione, async (req, res) => {
   const categoria = String(req.body.categoria || '').trim();

@@ -178,6 +178,9 @@
         <button onclick="switchTab('contatti')" id="tab-contatti" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
           <i data-lucide="message-circle-warning" class="w-4 h-4"></i> Contattaci
         </button>
+        <button onclick="switchTab('profilo')" id="tab-profilo" class="py-3 px-2 flex items-center gap-2 shrink-0 whitespace-nowrap hover:text-white transition">
+          <i data-lucide="user-circle" class="w-4 h-4"></i> Profilo
+        </button>
       </div>
     </nav>
   </header>
@@ -499,6 +502,64 @@
       </div>
     </section>
 
+    <!-- SEZIONE PROFILO -->
+    <section id="sec-profilo" class="hidden space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+          <i data-lucide="user-circle" class="text-indigo-600"></i>
+          Il tuo profilo
+        </h2>
+        <dl class="mt-4 grid sm:grid-cols-3 gap-4 text-sm">
+          <div>
+            <dt class="text-slate-500 uppercase text-xs font-semibold">Email</dt>
+            <dd id="profilo-email" class="font-mono text-slate-900 mt-1">-</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500 uppercase text-xs font-semibold">Account creato il</dt>
+            <dd id="profilo-creato" class="text-slate-900 mt-1">-</dd>
+          </div>
+          <div>
+            <dt class="text-slate-500 uppercase text-xs font-semibold">Ultimo accesso</dt>
+            <dd id="profilo-ultimo-accesso" class="text-slate-900 mt-1">-</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h3 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="key-round" class="w-4 h-4 text-indigo-600"></i> Cambia PIN</h3>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">PIN attuale</label>
+            <input type="password" inputmode="numeric" id="profilo-pin-attuale" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Nuovo PIN (4-6 cifre)</label>
+            <input type="password" inputmode="numeric" id="profilo-pin-nuovo" class="w-full p-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          </div>
+          <div class="flex items-end">
+            <button onclick="cambiaPinProprio()" id="btn-cambia-pin" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow transition text-sm">Aggiorna PIN</button>
+          </div>
+        </div>
+        <p id="profilo-pin-esito" class="hidden text-sm mt-3 p-2.5 rounded-lg"></p>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2"><i data-lucide="download" class="w-4 h-4 text-indigo-600"></i> Esporta i tuoi dati</h3>
+        <p class="text-slate-600 text-sm mb-3">Scarica un file con tutti i tuoi dati salvati sulla piattaforma (errori depositati, valutazioni, informazioni account).</p>
+        <button onclick="esportaDatiProprio()" class="px-5 py-2.5 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded-lg shadow transition text-sm flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i> Scarica i miei dati
+        </button>
+      </div>
+
+      <div class="bg-rose-50 p-6 rounded-xl shadow-sm border border-rose-200">
+        <h3 class="font-bold text-rose-900 mb-2 flex items-center gap-2"><i data-lucide="triangle-alert" class="w-4 h-4"></i> Elimina account</h3>
+        <p class="text-rose-800 text-sm mb-3">Elimina definitivamente il tuo account. Tutti i tuoi dati (errori depositati, simulazioni svolte, storico valutazioni) vengono <strong>persi per sempre</strong>: non è recuperabile in nessun modo, da nessuno, nemmeno dall'amministratore. Puoi farlo quando vuoi, senza bisogno di autorizzazioni.</p>
+        <button onclick="eliminaAccountProprio()" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-semibold rounded-lg shadow transition text-sm flex items-center gap-2">
+          <i data-lucide="user-x" class="w-4 h-4"></i> Elimina il mio account per sempre
+        </button>
+      </div>
+    </section>
+
   </main>
   </div>
 
@@ -559,6 +620,7 @@
   <script src="js/flashcard.js"></script>
   <script src="js/deposito-lezioni.js"></script>
   <script src="js/valutazioni.js"></script>
+  <script src="js/profilo.js"></script>
   <script src="js/contatti.js"></script>
   <script src="js/main.js"></script>
 </body>
